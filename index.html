@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js demo-1">
+<head>
+	<title>Plan Island</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="generator" content="Google Web Designer 1.0.0.924">
+    
+	<link rel="stylesheet" type="text/css" href="css/bookblock.css" />
+	<link rel="stylesheet" type="text/css" href="css/layout_index.css">
+	<link rel="stylesheet" type="text/css" href="css/layout_book.css">
+    
+	<script type="text/javascript" src="jQueryPulgin/jquery-2.0.3.js"></script>
+	<script type="text/javascript" src="jQueryPulgin/modernizr.custom.js"></script>
+    <script type="text/javascript" src="jQueryPulgin/jquery-ui-1.10.3.custom.min.js"></script>	
+	<script type="text/javascript" src="jQueryPulgin/jquery.animate-shadow.js"></script>
+	
+	<script type="text/javascript" src="jQuery/jQuery_index.js"></script>
+</head>
+<body onSelectStart="event.returnValue=false">
+	<header></header>
+	
+    <aside>
+      <div id="aside_switch"></div>
+      <div id="aside_contents">
+        <ul id="list_plans">個人計畫
+        </ul>
+		<div id="new_plan">創建新計畫</div>
+      </div>
+    </aside>
+	
+	<article>
+		<div id="cover">
+			<img id="lock" src="img/book_sign.png"/>
+			<div id="dialog_login">
+				<div class="hint" id="hint">我畫面很醜但是有AJAX喔!! <br/> 請嘗試註冊一下拜託!! <br/> 或用 aaaaaa / aaaaaa 登入看看 感謝!!</div>
+				<div><input type="text" id="acc" maxlength="20" placeholder="帳號"/></div>
+				<div><input type="password" id="pwd" placeholder="密碼"/></div>
+				
+				<div class="info_login">
+					<div>
+						<span class="loginButton" id="login">登入</span>
+						<span class="loginButton" id="reset">清除</span>
+					</div>	
+				</div>
+				
+				<div class="info_register">
+					<div><input type="password" id="check_pwd" placeholder="確認密碼"/></div>
+					<br/>
+					<div>
+						<input type="text" id="first_name" placeholder="姓氏" size="8"/>
+						<input type="text" id="last_name" placeholder="名字" size="8"/>
+					</div>
+					<div>
+						<span class="loginButton radio"><input type="radio" name="gender" value="male" checked="true"/>男</span>
+						<span class="loginButton radio"><input type="radio" name="gender" value="female"/>女</span>
+					</div>
+					<div><input type="text" id="mail" size="25" placeholder="電子郵件"/></div>
+					<span class="loginButton" id="register">確認</span>
+					<span class="loginButton" id="register_reset">清除</span><br/>
+				</div>
+				
+				<span class="loginButton" id="login_register">註冊</span>
+			</div>
+		</div>
+		
+		<div id="book" class="bb-bookblock">
+			<div class="bb-item" id="createPlan">
+				<img src="img/table.jpg"/>
+				<!--<div class="page_left">
+					<div class="title">
+						Create your own plan!!<br/>
+						And do it!!!!!!!!!!!!
+					</div>
+				</div>
+				<div class="page_right">
+					<div class="createButton">
+						
+					</div>
+					
+					<div class="createButton">
+					</div>
+				</div>-->
+			</div>
+		</div>
+		
+	</article>
+
+	<div id="mask">
+	</div>
+	
+	<script src="jQueryPulgin/jquerypp.custom.js"></script>
+	<script src="jQueryPulgin/jquery.bookblock.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+*{
+	margin: 0;
+    padding: 0;
+}
+
+body{
+	position: absolute;
+    left: 0;
+    top: 0;
+    background: url(../img/table.jpg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+header{
+	
+}
+
+aside{
+	display: none;
+	position: absolute;
+    right: 0;
+    height: 90%;    
+    background: rgba(0, 0, 0, 0.2);
+	
+	border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+	z-index: 1000;
+}
+
+aside #aside_switch{
+	float: left;
+    
+    position: relative;
+    background: rgba(0, 0, 0, 0.2);
+    height: 100%;
+    width: 15px;
+
+	border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+	
+	cursor: pointer;
+}
+
+aside #aside_contents{
+	float: left;
+    height: 100%;
+    width: 240px;
+	
+	position: relative;
+
+    background: url(../img/scroll.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+aside #aside_contents #list_plans{
+	list-style-type: none;
+    
+    margin: 15px 22px 0px 22px;
+
+	position: relative; 
+}
+
+aside #aside_contents #list_plans:not(li){
+	line-height: 60px;
+    text-align:  center;
+    font-size: 20px;
+    font-family: 微軟正黑體;
+}
+
+aside #aside_contents #list_plans li{
+	text-align: left;
+	line-height: 20px;
+    font-family: Buxton Sketch;
+    font-size: 20px;
+    
+    color: brown;
+    
+    padding: 10px 10px 10px 15px;
+    //border-top: 1px dotted purple;
+}
+
+aside #aside_contents #new_plan{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	
+	text-align: center;
+	line-height: 22px;
+    font-family: Buxton Sketch;
+    font-size: 22px;
+	
+	margin: 27px 0px 27px 0px;
+    
+	cursor:pointer;
+    color: brown;
+	font-weight: bold;
+}
+
+article{
+	position: relative;
+	left: 0;
+	top: 0;
+	
+	height: 100%;
+	width: 100%;
+
+	overflow:hidden;
+	_zoom:1;
+}
+
+#book{
+	position: relative;  
+	margin: auto;
+	display: none;
+	box-shadow: 0px 0px 25px rgba(0%,0%,0%,0.9);
+}
+
+#content{
+	height: 100%;
+	width: 100%;
+	
+	background: white;
+}
+
+#cover{
+	position: relative;
+	margin: 0 auto;
+	text-align: center;
+	height: 100%;
+	width: 380px;
+	background: url(../img/book_base.jpg) no-repeat;
+	background-size: contain;
+	background-position: center center;
+}
+
+#lock{
+	position: relative;
+	top:250px;
+	width: 380px;
+	height: 380px;
+}	
+
+#dialog_login{
+	position: relative;
+	top: -200px;
+	width: 300px;
+	//margin: 0 auto;
+	background: rgba(0, 0, 0, 0.7);
+	border-radius: 15px;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	font-size: 23px;
+}
+
+#dialog_login input{
+	font-size: 20px;
+	border-radius: 10px;
+	padding: 0 7px;
+	margin: 4px 0;
+	text-align: center;
+}
+
+#dialog_login input:focus{
+	background: #AFFEFF;
+}
+
+::-webkit-input-placeholder{
+	color: #3799FF;
+	font-weight: bold;
+	text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+	color: #3799FF;
+	font-weight: bold;
+	text-align: center;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+	color: #3799FF;
+	font-weight: bold; 
+	text-align: center;
+}
+
+:-ms-input-placeholder {  
+	color: #3799FF;
+	font-weight: bold;
+	text-align: center;	
+}
+
+#dialog_login input{
+	font-size: 20px;
+	border-radius: 10px;
+	padding: 0 7px;
+	margin: 4px 0;
+}
+
+#dialog_login input[name=gender]{
+	margin: 0px 5px;
+}
+
+#dialog_login:not(span){
+	line-height: 30px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+#dialog_login span{
+	line-height: 40px;
+	margin: 0 10px;
+	cursor: pointer;
+	padding: 5px 8px;
+	border-radius: 8px;
+}
+
+#dialog_login .info_register{
+	display: none;
+}
+
+#dialog_login .hint{
+	font-size: 14px;
+}
+
+#mask{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 3;
+	
+	background: rgba(255, 255, 255, 0.7);
+	z-index: 2000;
+	display:none;
+}
+
+#hint{
+	color: pink;
+}
