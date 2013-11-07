@@ -117,6 +117,8 @@ article{
 	margin: auto;
 	display: none;
 	box-shadow: 0px 0px 25px rgba(0%,0%,0%,0.9);
+	
+	width: 860px;
 }
 
 #content{

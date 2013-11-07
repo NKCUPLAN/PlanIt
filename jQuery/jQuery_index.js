@@ -181,8 +181,8 @@ var AdjustBookSize = function(){
 
     if(w <= 1200){
     	$('aside').css('right', -$('#aside_contents').width());
-		$('#book').css('width', 760);
-		$('#book').css('height', 580);
+		//$('#book').css('width', 760);
+		//$('#book').css('height', 580);
 		$('#book').css('marginTop', 0.05 * h);
 		$('#book').css('marginBottom', 0.05 * h);
 		hide_aside = false;
@@ -190,8 +190,8 @@ var AdjustBookSize = function(){
 	else{
 		$('aside').css('right', 0);
 		w = w - $('aside').width();
-		$('#book').css('width', 760);
-		$('#book').css('height', 580);
+		//$('#book').css('width', 760);
+		//$('#book').css('height', 580);
 		$('#book').css('marginTop', 0.5 * (h - $('#book').height()));
 		$('#book').css('marginBottom', 0.5 * (h - $('#book').height()));
 		hide_aside = true;
