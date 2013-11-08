@@ -9,6 +9,8 @@ var current_page = 1;
 $(document).ready(function(){
 	initialCSS();
 	
+	
+	
     $('#aside_switch').click(function(){
     	if(hide_aside){
         	$('aside').animate(
@@ -181,7 +183,7 @@ var AdjustBookSize = function(){
 
     if(w <= 1200){
     	$('aside').css('right', -$('#aside_contents').width());
-		//$('#book').css('width', 760);
+		//$('#book').css('width', 890);
 		//$('#book').css('height', 580);
 		$('#book').css('marginTop', 0.05 * h);
 		$('#book').css('marginBottom', 0.05 * h);
@@ -190,7 +192,7 @@ var AdjustBookSize = function(){
 	else{
 		$('aside').css('right', 0);
 		w = w - $('aside').width();
-		//$('#book').css('width', 760);
+		//$('#book').css('width', 890);
 		//$('#book').css('height', 580);
 		$('#book').css('marginTop', 0.5 * (h - $('#book').height()));
 		$('#book').css('marginBottom', 0.5 * (h - $('#book').height()));

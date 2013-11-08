@@ -3,18 +3,6 @@
     padding: 0;
 }
 
-body{
-	position: absolute;
-    left: 0;
-    top: 0;
-    background: url(../img/table.jpg);
-	background-size: 100%;
-	background-repeat: no-repeat;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
 header{
 	
 }
@@ -103,7 +91,7 @@ aside #aside_contents #new_plan{
 article{
 	position: relative;
 	left: 0;
-	top: 0;
+	top: -2rem;
 	
 	height: 100%;
 	width: 100%;
@@ -112,13 +100,24 @@ article{
 	_zoom:1;
 }
 
+body{
+	position: absolute;
+    left: 0;
+    top: 0;
+    background: url(../img/table.jpg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
 #book{
 	position: relative;  
 	margin: auto;
+	right : 12em;
 	display: none;
 	box-shadow: 0px 0px 25px rgba(0%,0%,0%,0.9);
-	
-	width: 860px;
 }
 
 #content{
@@ -132,8 +131,8 @@ article{
 	position: relative;
 	margin: 0 auto;
 	text-align: center;
-	height: 100%;
-	width: 380px;
+	top :0,5rem;
+	height: 40rem;
 	background: url(../img/book_base.jpg) no-repeat;
 	background-size: contain;
 	background-position: center center;
@@ -150,6 +149,7 @@ article{
 	position: relative;
 	top: -200px;
 	width: 300px;
+	left : 28rem;
 	//margin: 0 auto;
 	background: rgba(0, 0, 0, 0.7);
 	border-radius: 15px;
@@ -241,6 +241,17 @@ article{
 	display:none;
 }
 
+/* ^^^^^^^^ BELOW IS THE CODE FOR THE MENU ^^^^^^^^^^ */
+#stylefour{position:relative;display:block;height:39px;font-size:11px;font-weight:bold;background:transparent repeat-x top left;font-family:Arial,Verdana,Helvitica,sans-serif;border-top:4px solid #B30000;}
+#stylefour ul{margin:0;padding:0;list-style-type:none;width:auto;}
+#stylefour ul li{display:block;float:left;margin:0;}
+#stylefour ul li a{display:block;float:left;color:#666;text-decoration:none;padding:11px 20px 0 20px;height:23px;background:transparent no-repeat top right;}
+#stylefour ul li a:hover,#stylefour ul li a.current{color:#B30000;background:#fff url(img/bgON1.gif) no-repeat top right;}
+#login_menu{position:fixed;right:1rem;}
+/* ^^^^^^^^ ABOVE IS THE CODE FOR THE MENU ^^^^^^^^^^ */
+
 #hint{
 	color: pink;
 }
+
+html { font-size:100% } 
