@@ -1,4 +1,5 @@
 var hide_aside;
+var hide_dialog_login = true;
 var hide_register = true;
 
 var acc, pwd;
@@ -9,8 +10,19 @@ var current_page = 1;
 $(document).ready(function(){
 	initialCSS();
 	
+	//-----------------------------------------------------------header
+	$('#menu_login').click(function(){
+		if(hide_dialog_login){
+        	$('#dialog_login').slideToggle('slow');
+		}
+        else{
+        	$('#dialog_login').slideToggle('slow');
+		}
+        hide_dialog_login = !hide_dialog_login;
+	});
 	
 	
+	//-----------------------------------------------------------aside
     $('#aside_switch').click(function(){
     	if(hide_aside){
         	$('aside').animate(

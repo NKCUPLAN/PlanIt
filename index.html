@@ -21,7 +21,7 @@
 	<link href="facebox1.1/facefiles/facebox.css" media="screen" rel="stylesheet" type="text/css" />
 	<script src="facebox1.1/facefiles/facebox.js" type="text/javascript"></script>
 	<script type="text/javascript">
-    	jQuery(document).ready(function($) {
+    	$(document).ready(function($) {
       		$('a[rel*=facebox]').facebox() 
     	})
 	</script>
@@ -29,12 +29,12 @@
 </head>
 <body onSelectStart="event.returnValue=false">
 	<header>
-		<div id="stylefour">
+		<div id="menu">
 			<ul>
-				<li><a href="#" title="" class="current"><span>Home</span></a></li>
-				<li><a href="#" title=""><span>About Us</span></a></li>
-				<li><a href="#introduction" rel= "facebox" title=""><span>Introduction</span></a></li>
-				<li><a href="#" title="" id="login_menu"><span>Login</span></a></li>
+				<li><a id="menu_home">Home</a></li>
+				<li><a id="menu_aboutus">About Us</a></li>
+				<li><a href="#introduction" rel= "facebox" title="">Introduction</a></li>
+				<li><a id="menu_login">Login</a></li>
 			</ul>
 		</div>
 	</header>
@@ -57,7 +57,7 @@
 		<div id="cover">
 			<img id="lock" src="img/book_sign.png"/>
 			<div id="dialog_login">
-				<div class="hint" id="hint">我畫面很醜但是有AJAX喔!! <br/> 請嘗試註冊一下拜託!! <br/> 或用 aaaaaa / aaaaaa 登入看看 感謝!!</div>
+				<div class="hint" id="hint"> 請用 aaaaaa / aaaaaa 登入看看 感謝!!</div>
 				<div><input type="text" id="acc" maxlength="20" placeholder="帳號"/></div>
 				<div><input type="password" id="pwd" placeholder="密碼"/></div>
 				
