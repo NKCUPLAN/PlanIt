@@ -11,12 +11,13 @@ aside{
 	display: none;
 	position: absolute;
     right: 0;
-    height: 90%;    
+    height: 90%;
     background: rgba(0, 0, 0, 0.2);
 	
 	border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 	z-index: 1000;
+	margin: 0;
 }
 
 aside #aside_switch{
@@ -91,7 +92,7 @@ aside #aside_contents #new_plan{
 article{
 	position: relative;
 	left: 0;
-	top: -2rem;
+	top: 0;
 	
 	height: 100%;
 	width: 100%;
@@ -129,10 +130,9 @@ body{
 
 #cover{
 	position: relative;
-	margin: 0 auto;
+	margin: 1.5rem auto 0 auto;
 	text-align: center;
-	top :0,5rem;
-	height: 40rem;
+	height: 39rem;
 	background: url(../img/book_base.jpg) no-repeat;
 	background-size: contain;
 	background-position: center center;
@@ -245,7 +245,8 @@ body{
 
 /* ^^^^^^^^ BELOW IS THE CODE FOR THE MENU ^^^^^^^^^^ */
 #menu{
-	position: relative;
+	position: fixed;
+	width: 100%;
 	display: block;
 	height: 39px;
 	font-size: 11px;
@@ -253,7 +254,7 @@ body{
 	background: transparent repeat-x top left;
 	font-family: Arial, Verdana, Helvitica, sans-serif;
 	border-top:4px solid #B30000;
-	z-index: 2;
+	z-index: 100;
 }
 
 #menu ul{
