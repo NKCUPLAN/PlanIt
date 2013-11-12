@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js demo-1">
 <head>
-	<title>Plan Island</title>
+	<title>Plan It! 不爛泥!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="generator" content="Google Web Designer 1.0.0.924">
+    <meta name="generator" content="Google Web Designer 1.0.0.924">   
+	
+	<script type="text/javascript" src="Plugin_jQuery/jquery-2.0.3.js"></script>
+	<script type="text/javascript" src="Plugin_jQuery/jquery-ui-1.10.3.custom.min.js"></script>	
     
-	<link rel="stylesheet" type="text/css" href="css/bookblock.css" />
+	<!-- For effects (Book shadow) -->
+	<script type="text/javascript" src="Plugin_jQuery/jquery.animate-shadow.js"></script>
+
+	<!-- For modal UI (Introduction) -->
+	<link rel="stylesheet" type="text/css" href="Plugin_css/semantic.css">
+	<script src="Plugin_jQuery/semantic.js"></script>
+
+	<!-- For bookblock (turn pages) -->
+	<link rel="stylesheet" type="text/css" href="Plugin_css/bookblock.css" />
+	<script type="text/javascript" src="Plugin_jQuery/jquerypp.custom.js"></script>
+	<script type="text/javascript" src="Plugin_jQuery/jquery.bookblock.js"></script>
+	<script type="text/javascript" src="Plugin_jQuery/modernizr.custom.js"></script>
+	
+	<!-- Self-defined Settings -->
 	<link rel="stylesheet" type="text/css" href="css/layout_index.css">
 	<link rel="stylesheet" type="text/css" href="css/layout_book.css">
-    
-	<script type="text/javascript" src="jQueryPulgin/jquery-2.0.3.js"></script>
-	<script type="text/javascript" src="jQueryPulgin/modernizr.custom.js"></script>
-    <script type="text/javascript" src="jQueryPulgin/jquery-ui-1.10.3.custom.min.js"></script>	
-	<script type="text/javascript" src="jQueryPulgin/jquery.animate-shadow.js"></script>
 	
-	<script type="text/javascript" src="jQuery/jQuery_index.js"></script>
-	
-	<!-- For modal UI (Introduction) -->
-	<link rel="stylesheet" type="text/css" href="css/semantic.css">
-	<script src="jQueryPulgin/semantic.js"></script>
+	<script type="text/javascript" src="jQuery/jQuery_index.js"></script> 
 	
 </head>
 <body onSelectStart="event.returnValue=false">
@@ -131,9 +138,7 @@
 
 	<div id="mask">
 	</div>
-	
-	<script src="jQueryPulgin/jquerypp.custom.js"></script>
-	<script src="jQueryPulgin/jquery.bookblock.js"></script>
+
 	<script type="text/javascript">
 		$('#introduction').click(function(){
     		$('.ui.modal').modal('show');
