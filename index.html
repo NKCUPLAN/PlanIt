@@ -16,15 +16,9 @@
 	
 	<script type="text/javascript" src="jQuery/jQuery_index.js"></script>
 	
-	<!-- For facebox -->
-	<script src="facebox1.1/facebox/facefiles/jquery-1.2.2.pack.js" type="text/javascript"></script>
-	<link href="facebox1.1/facefiles/facebox.css" media="screen" rel="stylesheet" type="text/css" />
-	<script src="facebox1.1/facefiles/facebox.js" type="text/javascript"></script>
-	<script type="text/javascript">
-    	$(document).ready(function($) {
-      		$('a[rel*=facebox]').facebox() 
-    	})
-	</script>
+	<!-- For modal UI (Introduction) -->
+	<link rel="stylesheet" type="text/css" href="css/semantic.css">
+	<script src="jQueryPulgin/semantic.js"></script>
 	
 </head>
 <body onSelectStart="event.returnValue=false">
@@ -33,15 +27,23 @@
 			<ul>
 				<li><a id="menu_home">Home</a></li>
 				<li><a id="menu_aboutus">About Us</a></li>
-				<li><a href="#introduction" rel= "facebox" title="">Introduction</a></li>
+				<li><a id="introduction">Introduction</a></li>
 				<li><a id="menu_login">Login</a></li>
 			</ul>
 		</div>
 	</header>
 	
-	<div id="introduction" style="display: none">
-		<h1>Introduction</h1>
-		<p>我是介紹我是介紹我是介紹我是介紹我是介紹我是介紹我是介紹我是介紹我是介紹我是介紹我是介紹</p>
+	<div class="ui small modal">
+		<div class="header">Introduction</div>
+		<div class="content">
+			<div class="left">
+				我是介紹 我是介紹 我是介紹 我是介紹 <br>我是介紹 我是介紹 我是介紹 我是介紹 <br>我是介紹 我是介紹
+				我是介紹 我是介紹
+			</div>
+		</div>
+		<div class="actions">
+			<div class="ui button">OK</div>
+		</div>
 	</div>
     
     <aside>
@@ -132,6 +134,10 @@
 	
 	<script src="jQueryPulgin/jquerypp.custom.js"></script>
 	<script src="jQueryPulgin/jquery.bookblock.js"></script>
-
+	<script type="text/javascript">
+		$('#introduction').click(function(){
+    		$('.ui.modal').modal('show');
+  		});
+	</script>
 </body>
 </html>
