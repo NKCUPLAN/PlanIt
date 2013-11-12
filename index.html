@@ -17,8 +17,6 @@
 
 	<!-- For bookblock (turn pages) -->
 	<link rel="stylesheet" type="text/css" href="Plugin_css/bookblock.css" />
-	<script type="text/javascript" src="Plugin_jQuery/jquerypp.custom.js"></script>
-	<script type="text/javascript" src="Plugin_jQuery/jquery.bookblock.js"></script>
 	<script type="text/javascript" src="Plugin_jQuery/modernizr.custom.js"></script>
 	
 	<!-- Self-defined Settings -->
@@ -29,6 +27,8 @@
 	
 </head>
 <body onSelectStart="event.returnValue=false">
+
+	<!-- Menu -->
 	<header>
 		<div id="menu">
 			<ul>
@@ -40,6 +40,7 @@
 		</div>
 	</header>
 	
+	<!-- Introduction Dialog -->
 	<div class="ui small modal">
 		<div class="header">Introduction</div>
 		<div class="content">
@@ -53,6 +54,7 @@
 		</div>
 	</div>
     
+	<!-- SideBar Menu -->
     <aside>
       <div id="aside_switch"></div>
       <div id="aside_contents">
@@ -62,6 +64,7 @@
       </div>
     </aside>
 	
+	<!-- Main Content -->
 	<article>
 		<div id="cover">
 			<img id="lock" src="img/book_sign.png"/>
@@ -136,9 +139,15 @@
 		
 	</article>
 
+	<!-- Unused Now -->
 	<div id="mask">
 	</div>
-
+	
+	<!-- For bookblock (turn pages) -->
+	<script type="text/javascript" src="Plugin_jQuery/jquerypp.custom.js"></script>
+	<script type="text/javascript" src="Plugin_jQuery/jquery.bookblock.js"></script>
+	
+	<!-- For modal UI (Introduction) -->
 	<script type="text/javascript">
 		$('#introduction').click(function(){
     		$('.ui.modal').modal('show');
