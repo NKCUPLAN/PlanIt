@@ -213,6 +213,8 @@ var AdjustBookSize = function(){
 	$('#book .page_statistic').css('height', h * 0.5);
 	$('#book .page_game').css('height', h * 0.4);
 	$('#book .page_diary').css('height', h * 0.5);
+	
+	$
 }
 
 var CheckAcc = function(acc){ 

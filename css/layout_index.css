@@ -106,7 +106,7 @@ body{
     left: 0;
     top: 0;
     background: url(../img/table.jpg);
-	background-size: 100%;
+	background-size: cover;
 	background-repeat: no-repeat;
     width: 100%;
     height: 100%;
@@ -130,27 +130,36 @@ body{
 
 #cover{
 	position: relative;
-	margin: 1.5rem auto 0 auto;
-	text-align: center;
-	height: 39rem;
+	margin: 1.5rem auto 0 40%;
+
+	height: 38rem;
+	width: 40rem;
 	background: url(../img/book_base.jpg) no-repeat;
 	background-size: contain;
 	background-position: center center;
+	
+	text-align: center;
 }
 
-#lock{
+#cover_lock{
 	position: relative;
-	top:250px;
+	
 	width: 380px;
 	height: 380px;
+	margin: auto;
+	background: url(../img/book_sign.png) no-repeat;
+	background-size: contain;
+	background-position: center center;
+	top: 220px;
 }	
 
 #dialog_login{
-	position: relative;
-	top: -200px;
+	position: absolute;
+	top: 0;
 	width: 300px;
-	left : 28rem;
-	//margin: 0 auto;
+	left : 3rem;
+	top: 4rem;
+	
 	background: rgba(0, 0, 0, 0.7);
 	border-radius: 15px;
 	text-align: center;
@@ -295,6 +304,14 @@ body{
 	right:1rem;
 }
 /* ^^^^^^^^ ABOVE IS THE CODE FOR THE MENU ^^^^^^^^^^ */
+
+#bug{
+	position: fixed;
+	bottom: 0;
+	left: 25%;
+	height: 220px;
+	width: 150px;
+}
 
 #hint{
 	color: pink;

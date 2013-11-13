@@ -67,37 +67,38 @@
 	<!-- Main Content -->
 	<article>
 		<div id="cover">
-			<img id="lock" src="img/book_sign.png"/>
-			<div id="dialog_login">
-				<div class="hint" id="hint"> 請用 aaaaaa / aaaaaa 登入看看 感謝!!</div>
-				<div><input type="text" id="acc" maxlength="20" placeholder="帳號"/></div>
-				<div><input type="password" id="pwd" placeholder="密碼"/></div>
-				
-				<div class="info_login">
-					<div>
-						<span class="loginButton" id="login">登入</span>
-						<span class="loginButton" id="reset">清除</span>
-					</div>	
-				</div>
-				
-				<div class="info_register">
-					<div><input type="password" id="check_pwd" placeholder="確認密碼"/></div>
-					<br/>
-					<div>
-						<input type="text" id="first_name" placeholder="姓氏" size="8"/>
-						<input type="text" id="last_name" placeholder="名字" size="8"/>
-					</div>
-					<div>
-						<span class="loginButton radio"><input type="radio" name="gender" value="male" checked="true"/>男</span>
-						<span class="loginButton radio"><input type="radio" name="gender" value="female"/>女</span>
-					</div>
-					<div><input type="text" id="mail" size="25" placeholder="電子郵件"/></div>
-					<span class="loginButton" id="register">確認</span>
-					<span class="loginButton" id="register_reset">清除</span><br/>
-				</div>
-				
-				<span class="loginButton" id="login_register">註冊</span>
+			<div id="cover_lock"></div>
+		</div>
+		
+		<div id="dialog_login">
+			<div class="hint" id="hint"> 請用 aaaaaa / aaaaaa 登入看看 感謝!!</div>
+			<div><input type="text" id="acc" maxlength="20" placeholder="帳號"/></div>
+			<div><input type="password" id="pwd" placeholder="密碼"/></div>
+			
+			<div class="info_login">
+				<div>
+					<span class="loginButton" id="login">登入</span>
+					<span class="loginButton" id="reset">清除</span>
+				</div>	
 			</div>
+			
+			<div class="info_register">
+				<div><input type="password" id="check_pwd" placeholder="確認密碼"/></div>
+				<br/>
+				<div>
+					<input type="text" id="first_name" placeholder="姓氏" size="8"/>
+					<input type="text" id="last_name" placeholder="名字" size="8"/>
+				</div>
+				<div>
+					<span class="loginButton radio"><input type="radio" name="gender" value="male" checked="true"/>男</span>
+					<span class="loginButton radio"><input type="radio" name="gender" value="female"/>女</span>
+				</div>
+				<div><input type="text" id="mail" size="25" placeholder="電子郵件"/></div>
+				<span class="loginButton" id="register">確認</span>
+				<span class="loginButton" id="register_reset">清除</span><br/>
+			</div>
+			
+			<span class="loginButton" id="login_register">註冊</span>
 		</div>
 		
 		<div id="book" class="bb-bookblock">
@@ -139,6 +140,8 @@
 		
 	</article>
 
+	<img id="bug" src="img/bug.png"/>
+	
 	<!-- Unused Now -->
 	<div id="mask">
 	</div>
