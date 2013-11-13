@@ -1,7 +1,7 @@
 .bb-bookblock {
 	width: 890px;
 	height: 580px;
-	margin: 0 auto;
+	//margin: 0 auto;
 	position: relative;
 	z-index: 100;
 	-webkit-perspective: 1300px;

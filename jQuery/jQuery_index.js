@@ -97,7 +97,7 @@ $(document).ready(function(){
 			},
 			success: function(response) {
 				var data = $.parseJSON(response);
-			
+				
 				if(data['msg'] == "success"){	
 					first_name = data['first_name'];
 					last_name = data['last_name'];
@@ -199,6 +199,7 @@ var AdjustBookSize = function(){
 		hide_aside = false;
     }
 	else{
+		$('#book').css('left', (w-$('#aside_contents').width()-$('#book').width())/2);
 		$('aside').css('right', 0);
 		hide_aside = true;
 	}
@@ -207,6 +208,7 @@ var AdjustBookSize = function(){
 	$('#book').css('marginBottom', 0.05 * h);
 	
 	var book_h = h * 0.9;
+	//$('#book').css('height', book_h);
 		
 	$('#book .page_title').css('height', h * 0.1);
 	$('#book .page_title').css('line-height', h * 0.1 +'px');

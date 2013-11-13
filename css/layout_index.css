@@ -114,9 +114,8 @@ body{
 }
 
 #book{
-	position: relative;  
-	margin: auto;
-	right : 12em;
+	position: relative; 
+	left: 2rem;
 	display: none;
 	box-shadow: 0px 0px 25px rgba(0%,0%,0%,0.9);
 }
