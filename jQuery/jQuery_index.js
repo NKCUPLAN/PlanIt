@@ -5,7 +5,7 @@ var hide_register = true;
 var acc, pwd;
 var first_name, last_name;
 
-var current_page = 1;
+var cur_page = 1;
 
 $(document).ready(function(){
 	initialCSS();
@@ -103,8 +103,9 @@ $(document).ready(function(){
 					last_name = data['last_name'];
 					
 					LoadPlans();
-					$('#dialog_login').stop().fadeOut(1000, function(){
-						$('#lock').toggle('explode', 1000, function(){
+					$('#dialog_login').stop().slideToggle(1000, function(){
+						$('#cover_lock').toggle('explode', 1000, function(){
+							$('#bug').toggle('explode', 1000,9);
 							$('#cover').fadeOut(1000, function(){
 								$('#book').fadeIn(1000);
 								$('aside').fadeIn(1000);
@@ -213,8 +214,6 @@ var AdjustBookSize = function(){
 	$('#book .page_statistic').css('height', h * 0.5);
 	$('#book .page_game').css('height', h * 0.4);
 	$('#book .page_diary').css('height', h * 0.5);
-	
-	$
 }
 
 var CheckAcc = function(acc){ 
@@ -344,10 +343,13 @@ var LoadPlans = function(){
 			
 			$('#aside_contents li').each(function(i){
 				$(this).click(function(){
-					$('#book').bookblock('jump', i+2);
-					$('#book')
-						.animate({boxShadow: '0px 0px 40px rgba(255,255,51,0.9)'}, 500)
-						.animate({boxShadow: '0px 0px 25px rgba(0,0,0,0.9)'}, 500);
+					if(cur_page != i+2){
+						cur_page = i + 2;
+						$('#book').bookblock('jump', i+2);
+						$('#book')
+							.animate({boxShadow: '0px 0px 40px rgba(255,255,51,0.9)'}, 500)
+							.animate({boxShadow: '0px 0px 25px rgba(0,0,0,0.9)'}, 500);
+					}
 				});
 			});
 			

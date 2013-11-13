@@ -2,6 +2,8 @@
 	position: absolute;
 	left: 0;
 	background: url(../img/paper.jpg) 0 0;
+	
+	//border-right: 1px solid black;
 }
 
 .page_right{
@@ -12,6 +14,8 @@
 
 	transform-origin:right;
 	transform:skewY(5deg);
+	
+	//border-left: 1px solid black;
 }
 
 .page_right, .page_left{
@@ -30,7 +34,7 @@
 	padding: 10px;
 	line-height: 30px;
 	
-
+	font-size: 18px; 
 }
 
 #book :not(input[type="text"]){
@@ -39,6 +43,13 @@
 
 #book input[type="text"]{
 	background: transparent;
+	
+	border-width: 0;
+	padding: 5px 10px; 
+
+	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
 }
 
-
+#book input[type="text"]:focus{
+	outline:none;
+}
