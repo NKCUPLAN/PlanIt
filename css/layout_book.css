@@ -12,8 +12,6 @@
 	top: 0;
 	background: url(../img/paper1.jpg) -50em 0;
 
-	transform-origin:right;
-	transform:skewY(5deg);
 	
 	//border-left: 1px solid black;
 }
