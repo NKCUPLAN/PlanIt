@@ -114,16 +114,19 @@ body{
 }
 
 #book{
-	position: relative; 
+	position: fixed; 
 	left: 2rem;
-	top: 45px;
+	top: 5rem;
 	display: none;
 	box-shadow: 0px 0px 25px rgba(0%,0%,0%,0.9);
 }
 
-#book-padding{
-	position:relative;
-	background : url(../img/blue)
+#book-base{
+	position:fixed;
+	background:url(../img/BlueBook.png);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	display:none;
 }
 
 #content{

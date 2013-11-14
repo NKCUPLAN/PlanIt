@@ -109,6 +109,8 @@ $(document).ready(function(){
 							$('#cover').fadeOut(1000, function(){
 								$('#book').fadeIn(1000);
 								$('aside').fadeIn(1000);
+								AdjustBookSize();
+								$('#book-base').fadeIn(1000);
 							});
 						});
 					});	
@@ -178,6 +180,7 @@ $(document).ready(function(){
 		});
 		}
 	});
+	
 });
 
 var initialCSS = function(){
@@ -197,6 +200,7 @@ var AdjustBookSize = function(){
     if(w <= 1200){
 		$('#book').css('left', (w-$('#book').width())/2);
     	$('aside').css('right', -$('#aside_contents').width());
+		
 		hide_aside = false;
     }
 	else{
@@ -204,6 +208,11 @@ var AdjustBookSize = function(){
 		$('aside').css('right', 0);
 		hide_aside = true;
 	}
+	
+	$('#book-base').css('width',$('#book').width()+270);
+	$('#book-base').css('height',$('#book').height()+110);
+	$('#book-base').css('left',$('#book').position().left-130);
+	$('#book-base').css('top',$('#book').position().top-44);
 	
 	//$('#book').css('marginTop', 0.05 * h);
 	//$('#book').css('marginBottom', 0.05 * h);
