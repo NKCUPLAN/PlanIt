@@ -104,7 +104,7 @@ $(document).ready(function(){
 					
 					LoadPlans();
 					$('#dialog_login').stop().slideToggle(1000, function(){
-						$('#cover_lock').toggle('explode', 1000, function(){
+						$('#cover_lock').animate({transform: 'rotate(1080deg)'}, 2000, function(){
 							$('#bug').toggle('explode', 1000,9);
 							$('#cover').fadeOut(1000, function(){
 								$('#book').fadeIn(1000);
@@ -195,6 +195,7 @@ var AdjustBookSize = function(){
     var w = $(document).width();
 
     if(w <= 1200){
+		$('#book').css('left', (w-$('#book').width())/2);
     	$('aside').css('right', -$('#aside_contents').width());
 		hide_aside = false;
     }
@@ -204,8 +205,8 @@ var AdjustBookSize = function(){
 		hide_aside = true;
 	}
 	
-	$('#book').css('marginTop', 0.05 * h);
-	$('#book').css('marginBottom', 0.05 * h);
+	//$('#book').css('marginTop', 0.05 * h);
+	//$('#book').css('marginBottom', 0.05 * h);
 	
 	var book_h = h * 0.9;
 	//$('#book').css('height', book_h);
