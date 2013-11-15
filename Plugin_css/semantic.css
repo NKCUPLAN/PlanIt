@@ -12491,7 +12491,7 @@ a.ui.teal.label:hover:before {
 *******************************/
 
 .ui.dimmable {
-  position: relative;
+  //position: relative;
 }
 
 .ui.dimmer {

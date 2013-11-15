@@ -80,12 +80,18 @@ $(document).ready(function(){
 		$('#dialog_login input').val('');
 	});
 	
-	$("#dialog_login").keypress(function(e){
+	$('#dialog_login').keypress(function(e){
 		code = (e.keyCode ? e.keyCode : e.which);
 		if (code == 13)
 		{
-			$('#login').focus();
-			$('#login').trigger('click');
+			if(hide_register){
+				$('#login').focus();
+				$('#login').trigger('click');
+			}
+			else{
+				$('#register').focus();
+				$('#register').trigger('click');
+			}
 		}
 	});
 	
@@ -113,6 +119,7 @@ $(document).ready(function(){
 					
 					LoadPlans();
 					$('#dialog_login').stop().slideToggle(1000, function(){
+						//$('#')
 						$('#cover_lock').animate({transform: 'rotate(1080deg)'}, 2000, function(){
 							$('#bug').toggle('explode', 1000,9);
 							$('#cover').fadeOut(1000, function(){
@@ -228,13 +235,15 @@ var AdjustBookSize = function(){
 	
 	var book_h = h * 0.9;
 	//$('#book').css('height', book_h);
-		
+	
+/*	
 	$('#book .page_title').css('height', h * 0.1);
 	$('#book .page_title').css('line-height', h * 0.1 +'px');
 	$('#book .page_update').css('height', h * 0.4);
 	$('#book .page_statistic').css('height', h * 0.5);
 	$('#book .page_game').css('height', h * 0.4);
 	$('#book .page_diary').css('height', h * 0.5);
+*/
 }
 
 var CheckAcc = function(acc){ 
