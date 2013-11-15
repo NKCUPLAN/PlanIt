@@ -80,6 +80,15 @@ $(document).ready(function(){
 		$('#dialog_login input').val('');
 	});
 	
+	$("#dialog_login").keypress(function(e){
+		code = (e.keyCode ? e.keyCode : e.which);
+		if (code == 13)
+		{
+			$('#login').focus();
+			$('#login').trigger('click');
+		}
+	});
+	
 	$('#login').click(function(){
 		acc = $('#acc').val();
 		pwd = $('#pwd').val();
