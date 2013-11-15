@@ -118,12 +118,11 @@ body{
 	left: 2rem;
 	top: 5rem;
 	display: none;
-	box-shadow: 0px 0px 25px rgba(0%,0%,0%,0.9);
 }
 
 #book-base{
 	position:fixed;
-	background:url(../img/BlueBook.png);
+	background:url(../img/BlueBook3.png);
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	display:none;
@@ -145,7 +144,6 @@ body{
 	background: url(../img/cover_base.png) no-repeat;
 	background-size: contain;
 	background-position: center center;
-	
 	text-align: center;
 }
 

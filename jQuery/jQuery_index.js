@@ -209,10 +209,10 @@ var AdjustBookSize = function(){
 		hide_aside = true;
 	}
 	
-	$('#book-base').css('width',$('#book').width()+270);
-	$('#book-base').css('height',$('#book').height()+110);
-	$('#book-base').css('left',$('#book').position().left-130);
-	$('#book-base').css('top',$('#book').position().top-44);
+	$('#book-base').css('width',$('#book').width()+128);
+	$('#book-base').css('height',$('#book').height()+88);
+	$('#book-base').css('left',$('#book').position().left-65);
+	$('#book-base').css('top',$('#book').position().top-35);
 	
 	//$('#book').css('marginTop', 0.05 * h);
 	//$('#book').css('marginBottom', 0.05 * h);
@@ -358,7 +358,7 @@ var LoadPlans = function(){
 					if(cur_page != i+2){
 						cur_page = i + 2;
 						$('#book').bookblock('jump', i+2);
-						$('#book')
+						$('#book-base')
 							.animate({boxShadow: '0px 0px 40px rgba(255,255,51,0.9)'}, 500)
 							.animate({boxShadow: '0px 0px 25px rgba(0,0,0,0.9)'}, 500);
 					}
