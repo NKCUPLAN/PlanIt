@@ -8,7 +8,7 @@ header{
 }
 
 aside{
-	display: none;
+	//display: none;
 	position: absolute;
     right: 0;
     height: 90%;
@@ -89,8 +89,8 @@ aside #aside_contents #new_plan{
 	font-weight: bold;
 }
 
-article{
-	position: relative;
+#unauth, #auth{
+	position: fixed;
 	left: 0;
 	top: 0;
 	
@@ -98,7 +98,12 @@ article{
 	width: 100%;
 
 	overflow:hidden;
+	background: transparent;
 	_zoom:1;
+}
+
+#auth{
+	display:none;
 }
 
 body{
@@ -117,7 +122,6 @@ body{
 	position: fixed; 
 	left: 2rem;
 	top: 5rem;
-	display:none;
 }
 
 #book-base{
@@ -125,7 +129,8 @@ body{
 	background:url(../img/BlueBook3.png);
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
-	display:none;
+	
+	box-shadow: 0px 0px 25px rgba(0,0,0,0.9);
 }
 
 #content{
@@ -315,7 +320,6 @@ body{
 	left: 25%;
 	height: 220px;
 	width: 150px;
-	
 }
 
 #hint{

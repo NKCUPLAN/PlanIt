@@ -55,19 +55,10 @@
 			<div class="ui button">OK</div>
 		</div>
 	</div>
-    
-	<!-- SideBar Menu -->
-    <aside>
-      <div id="aside_switch"></div>
-      <div id="aside_contents">
-        <ul id="list_plans">個人計畫
-        </ul>
-		<div id="new_plan">創建新計畫</div>
-      </div>
-    </aside>
 	
 	<!-- Main Content -->
-	<article>
+	
+	<div id="unauth">
 		<div id="cover">
 			<div id="cover_lock"></div>
 		</div>
@@ -102,13 +93,27 @@
 			
 			<span class="loginButton" id="login_register">註冊</span>
 		</div>
+		
+		<img id="bug" src="img/bug.png"/>
+	</div>
+	
+	<div id="auth">
+			<!-- SideBar Menu -->
+		<aside>
+		  <div id="aside_switch"></div>
+		  <div id="aside_contents">
+			<ul id="list_plans">個人計畫
+			</ul>
+			<div id="new_plan">創建新計畫</div>
+		  </div>
+		</aside>
+		
 		<div id="book-base"></div>
 		
 		<!--BOOK CONTENT-->
 		<div id="book" class="bb-bookblock">
 			<div class="bb-item" id="createPlan">
 				<div class="page_left">
-          
 					<div class="page_title">
 						本日達成
 					</div>				
@@ -147,11 +152,8 @@
 				</div>
 			</div>
 		</div>
-		<!--BOOK CONTENT-->
 		
-	</article>
-
-	<img id="bug" src="img/bug.png"/>
+	</div>
 	
 	<!-- Unused Now -->
 	<div id="mask">
