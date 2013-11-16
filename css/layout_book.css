@@ -1,7 +1,7 @@
 .page_left{
 	position: absolute;
 	left: 0;
-	background: url(http://merry.ee.ncku.edu.tw/~htckenny/cur/img/paper1.jpg) 0 0;
+	background: url(img/paper1.jpg) 0 0;
 	box-shadow: inset -1px -1px 6px -1px #5A8397;
 	
 }
@@ -10,7 +10,7 @@
 	position: absolute;
 	right: 0;	
   top:0;
-	background: url(http://merry.ee.ncku.edu.tw/~htckenny/cur/img/paper1.jpg) -50em 0;
+	background: url(img/paper1.jpg) -50em 0;
 	box-shadow: inset 1px -1px 6px -1px #5A8397;
 
  
