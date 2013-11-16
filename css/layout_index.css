@@ -102,8 +102,8 @@ aside #aside_contents #new_plan{
 	_zoom:1;
 }
 
-#auth{
-	display:none;
+.unauth, .auth{
+	display: none;
 }
 
 body{
@@ -188,6 +188,11 @@ body{
 	text-align: center;
 }
 
+#dialog_login .checkBox{
+	font-size: 14px;
+	line-height: 14px;
+}
+
 #dialog_login input:focus{
 	background: #AFFEFF;
 }
@@ -249,6 +254,8 @@ body{
 	font-size: 14px;
 }
 
+
+
 #mask{
 	position: fixed;
 	top: 0;
@@ -288,7 +295,6 @@ body{
 }
 
 #menu ul li a{
-	display:block;
 	float: left;
 	
 	color: #888;
@@ -300,7 +306,6 @@ body{
 	height: 28px;
 	line-height: 28px;
 	background: transparent no-repeat top right;
-	
 }
 
 #menu ul li a:hover{
@@ -308,14 +313,19 @@ body{
 	background: #fff url(img/bgON1.gif) no-repeat top right;
 }
 
-#menu_login{
+#menu ul li a:not(#menu_logout){
+	display:block;
+}
+
+#menu_logout{
 	position:fixed;
 	right:1rem;
+	display:none;
 }
 /* ^^^^^^^^ ABOVE IS THE CODE FOR THE MENU ^^^^^^^^^^ */
 
 #bug{
-	position: fixed;
+	position: absolute;
 	bottom: 0;
 	left: 25%;
 	height: 220px;

@@ -8,8 +8,10 @@
 	$last_name = $_POST['last_name'];
 	$mail = $_POST['mail'];
 	$gender = $_POST['gender'];
+
+	$hash = hash('ripemd160', $acc.$pwd);
 	
-	$query = "INSERT INTO 2_member VALUES('', '$acc', '$pwd', '$first_name', '$last_name', '$mail', '$gender')";
+	$query = "INSERT INTO 2_member VALUES('', '$acc', '$pwd', '$first_name', '$last_name', '$mail', '$gender', '$hash')";
 	$query = mysql_query($query);
 
 	echo "success";

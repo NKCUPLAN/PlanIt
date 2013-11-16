@@ -4,9 +4,9 @@
 	require_once('connect.php');
 	mysql_query("SET NAMES 'UTF8'");
 	
-	$acc = $_POST['acc'];
+	$secret = $_POST['secret'];
 	
-	$query = "SELECT * FROM 2_plan WHERE user_id = (SELECT id FROM 2_member WHERE acc = '$acc') ";
+	$query = "SELECT * FROM 2_plan WHERE user_id = (SELECT id FROM 2_member WHERE secret = '$secret') ";
 	$re = mysql_query($query);
 	
 	while($k = mysql_fetch_assoc($re)){

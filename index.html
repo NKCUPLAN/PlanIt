@@ -37,7 +37,7 @@
 				<li><a id="menu_home">Home</a></li>
 				<li><a id="menu_aboutus">About Us</a></li>
 				<li><a id="introduction">Introduction</a></li>
-				<!--<li><a id="menu_login">Login</a></li>-->
+				<li><a id="menu_logout" class="auth">Logout</a></li>
 			</ul>
 		</div>
 	</header>
@@ -58,7 +58,7 @@
 	
 	<!-- Main Content -->
 	
-	<div id="unauth">
+	<div id="unauth" class="unauth">
 		<div id="cover">
 			<div id="cover_lock"></div>
 		</div>
@@ -69,10 +69,10 @@
 			<div><input type="password" id="pwd" placeholder="密碼"/></div>
 			
 			<div class="info_login">
-				<div>
+					<span class="loginButton checkBox"><input type="checkBox" name="rem" id="rem"/> 記住我</span>
+					<br/>
 					<span class="loginButton" id="login">登入</span>
 					<!--<span class="loginButton" id="reset">清除</span>-->
-				</div>	
 			</div>
 			
 			<div class="info_register">
@@ -97,7 +97,7 @@
 		<img id="bug" src="img/bug.png"/>
 	</div>
 	
-	<div id="auth">
+	<div id="auth" class="auth">
 			<!-- SideBar Menu -->
 		<aside>
 		  <div id="aside_switch"></div>

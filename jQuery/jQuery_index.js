@@ -2,23 +2,49 @@ var hide_aside;
 var hide_dialog_login = true;
 var hide_register = true;
 
-var acc, pwd;
 var first_name, last_name;
 
 var cur_page = 1;
 
 $(document).ready(function(){
 	initialCSS();
+
+	$.ajax({
+		url: 'php/loginAuto.php',
+		cache: false,
+		dataType: 'html',
+		type:'POST',
+		data: { 
+			secret: LoadCookie()
+		},
+		error: function(xhr) {
+			alert("網路出現問題，請稍候再試!!");
+		},
+		success: function(response) {
+			var data = $.parseJSON(response);
+			if(data['msg'] == "success"){
+				$(".auth").fadeIn(1000);
+				
+				first_name = data['first_name'];
+				last_name = data['last_name'];
+				secret = data['secret'];
+				
+				LoadPlans(secret);
+				
+				AdjustBookSize();
+			}
+			else{
+				$('.unauth').fadeIn(1000);
+			}
+		}
+	});
 	
 	//-----------------------------------------------------------header
-	$('#menu_login').click(function(){
-		if(hide_dialog_login){
-        	$('#dialog_login').slideToggle('slow');
-		}
-        else{
-        	$('#dialog_login').slideToggle('slow');
-		}
-        hide_dialog_login = !hide_dialog_login;
+	$('#menu_logout').click(function(){
+		$('.auth').fadeOut(1000, function(){
+			$('.unauth').fadeIn(1000);
+		});
+		ClearCookie();
 	});
 	
 	
@@ -63,6 +89,12 @@ $(document).ready(function(){
 			$(this).css('color', 'white');
     	}
 	);
+	
+	$('.loginButton.checkBox').each(function(i){
+		$(this).click(function(){
+			$(':checkBox').get(i).checked = !$(':checkBox').get(i).checked;
+		});
+	});
 
 	$('.loginButton.radio').each(function(i){
 		$(this).click(function(){
@@ -70,11 +102,6 @@ $(document).ready(function(){
 			$(':radio').get(i-1).checked = false;
 		});
 	});
-	
-	$('#reset').click(function(){
-		$('#acc').val('');
-		$('#pwd').val('');
-	});	
 	
 	$('#register_reset').click(function(){
 		$('#dialog_login input').val('');
@@ -96,8 +123,11 @@ $(document).ready(function(){
 	});
 	
 	$('#login').click(function(){
-		acc = $('#acc').val();
-		pwd = $('#pwd').val();
+		if($('#rem').prop('checked') && !navigator.cookieEnabled){
+			alert('需先開啟瀏覽器cookie功能');
+			return;
+		}
+		
 		$.ajax({
 			url: 'php/login.php',
 			cache: false,
@@ -113,20 +143,25 @@ $(document).ready(function(){
 			success: function(response) {
 				var data = $.parseJSON(response);
 				
-				if(data['msg'] == "success"){	
+				if(data['msg'] == "success"){
 					first_name = data['first_name'];
 					last_name = data['last_name'];
+					secret = data['secret'];
 					
-					LoadPlans();
-					$('#dialog_login').stop().slideToggle(1000, function(){
-						$('#cover_lock').animate({transform: 'rotate(1080deg)'}, 2000, function(){
-							$('#bug').toggle('explode', 1000,9);
-							$('#unauth').fadeOut(1000, function(){
-								$("#auth").fadeIn(1000);
-								AdjustBookSize();
-							});
+					if($('#rem').prop('checked'))
+						WriteCookie(secret);
+					else
+						ClearCookie();
+
+					LoadPlans(secret);
+					$('#cover_lock').animate({transform: 'rotate(1080deg)'}, 2000, function(){
+						$('.unauth').fadeOut(1000, function(){
+							$('#acc').val('');
+							$('#pwd').val('');
+							$(".auth").fadeIn(1000);
+							AdjustBookSize();
 						});
-					});	
+					});
 				}
 				else{
 					$('#unauth').effect('shake');
@@ -322,14 +357,14 @@ var CheckRegisterInfo = function(acc, pwd, chk_pwd, first, last, mail, male){
 			&& CheckOther(first, last, mail, male));
 }
 
-var LoadPlans = function(){
+var LoadPlans = function(secret){
 	$.ajax({
 		url: 'php/loadPlans.php',
 		cache: false,
 		dataType: 'html',
 		type:'POST',
 		data: { 
-			acc: acc
+			secret: secret
 		},
 		error: function(xhr) {
 		},
@@ -355,21 +390,13 @@ var LoadPlans = function(){
 			
 			$('#aside_contents li').each(function(i){
 				$(this).click(function(){
-					if(cur_page != i+2){
-						cur_page = i + 2;
-						$('#book').bookblock('jump', i+2);
-						$('#book-base')
-							.animate({boxShadow: '0px 0px 40px rgba(255,255,51,0.9)'}, 500)
-							.animate({boxShadow: '0px 0px 25px rgba(0,0,0,0.9)'}, 500);
-					}
+					TurnToPage(i+2);
 				});
 			});
 			
 			$('#new_plan').click(function(){
-				$('#book').bookblock('first');
+				TurnToPage(1);
 			});
-			
-			$('#createPlan .title').append('Welcome! ' + first_name + " " + last_name);
 		}
 	});
 }
@@ -382,4 +409,44 @@ var AddPage = function(data){
 	
 	left.append('<div class="title">' + data['name'] + '</div>');
 	
+}
+
+var TurnToPage = function(page){
+	if(cur_page != page){
+		cur_page = page;
+		$('#book').bookblock('jump', page);
+		$('#book-base')
+			.animate({boxShadow: '0px 0px 40px rgba(255,255,51,0.9)'}, 500)
+			.animate({boxShadow: '0px 0px 25px rgba(0,0,0,0.9)'}, 500);
+	}
+}
+
+var WriteCookie = function(secret){
+	var cookie = "planit=" + secret;
+    var date = new Date();
+    date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
+    var expirestr = date.toGMTString();
+    cookie += "; expires=" + expirestr;
+    document.cookie = cookie;
+}
+
+var ClearCookie = function(){
+	var cookie = "planit=;";
+	var date = new Date();
+    date.setTime(date.getTime() - 1);
+    var expirestr = date.toGMTString();
+    cookie += "; expires=" + expirestr;
+    document.cookie = cookie;
+}
+
+var LoadCookie = function(){
+    if (document.cookie.length > 0){
+        var c_list = document.cookie.split(";");
+        for(i in c_list){
+            var cook = c_list[i].split("=");
+            if(cook[0] == "planit")
+				return cook[1];
+        }
+    }
+    return;
 }

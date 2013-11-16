@@ -4,10 +4,9 @@
 	require_once('connect.php');
 	mysql_query("SET NAMES 'UTF8'");
 	
-	$acc = $_POST['acc'];
-	$pwd = $_POST['pwd'];
+	$secret = $_POST['secret'];
 	
-	$query = "SELECT * FROM 2_member WHERE acc='$acc' AND pwd='$pwd' ";
+	$query = "SELECT * FROM 2_member WHERE secret='$secret'";
 	$re = mysql_fetch_assoc(mysql_query($query));
 	
 	if($re){
