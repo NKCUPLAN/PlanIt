@@ -105,40 +105,50 @@
 		<div id="book-base"></div>
 		<div id="book" class="bb-bookblock">
 			<div class="bb-item" id="createPlan">
+				<div class="page_top">
+					<div class="page_timer">
+						距離期限還有 2 日 2 時 30 分             
+					</div>
+					<div class="page_gameContent">
+						<img src="img/swords.png" width=50%;>
+						<img src="img/bug.png" width=8%;>
+					</div>
+					<div class="page_status">
+						已完成 50 %
+					</div>
+				</div>
 				<div class="page_left">
+          
 					<div class="page_title">
-						Create your own plan
+						本日達成
+					</div>				
+          
+					<div class="page_progress">
+						<input type="number">             
+						kg  /  20 kg                     
 					</div>
-					
-					<div class="page_update">
-						起始：<input type="text"/><br/>
-						目標：<input type="text"/><br/>
-						<br/>
-						今日狀況：<input type="text"/>
-						
-					</div>
-					
-					<div class="page_statistic">
-						Here tell you statistics
-					</div>
+					<button class="typein">輸入</button>				
 				</div>
-				<div class="page_right">
-					<div class="page_game">
-						Here is the game~
-					</div>
+				<div class="page_right">					
 					<div class="page_diary">
-						Here you can type
+						日記
 					</div>
-				
-					<div class="createButton">
-						
-					</div>
+					<div class ="page_diaryContent">
+						<form>
+							<input type=text maxlength="20">
+							<input type=text maxlength="20">
+							<input type=text maxlength="20" onfocus="this.value=''" value="Write your diary here!!!">
+							<input type=text maxlength="20">
+							<input type=text maxlength="20">						
+						</form>
+					</div>          
 					
-					<div class="createButton">
-					</div>
-				</div>
+				</div>				
 			</div>
 		</div>
+	
+	
+	
 		
 	</article>
 
@@ -158,5 +168,10 @@
     		$('.ui.modal').modal('show');
   		});
 	</script>
+	<!--
+	<script type="text/javascript">
+		$('#book').bookblock();
+	</script>
+	-->
 </body>
 </html>

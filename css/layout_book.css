@@ -1,53 +1,112 @@
 .page_left{
 	position: absolute;
 	left: 0;
-	background: url(../img/paper1.jpg) 0 0;
-
+	background: url(http://merry.ee.ncku.edu.tw/~htckenny/cur/img/paper1.jpg) 0 0;
 	box-shadow: inset -1px -1px 6px -1px #5A8397;
-	//border-right: 1px solid black;
+	
 }
 
 .page_right{
 	position: absolute;
-	right: 0;
-	top: 0;
-	background: url(../img/paper1.jpg) -50em 0;
+	right: 0;	
+  top:0;
+	background: url(http://merry.ee.ncku.edu.tw/~htckenny/cur/img/paper1.jpg) -50em 0;
 	box-shadow: inset 1px -1px 6px -1px #5A8397;
-	//border-left: 1px solid black;
+
+ 
 }
 
 .page_right, .page_left{
-	height: 100%;
+ text-align:center;
+ padding-top:35%;
+	height: 45%;
 	width: 50%;
+ 
 }
-
+.page_top{
+  position:absolute;
+  margin:5% 5% 0 5%;
+  
+  background-color:#fed966;
+  height:40%;
+  width:90%;
+  z-index:2;
+  text-align: center;
+  
+}
+.page_timer{
+  text-align:center;
+  margin:1% 0;
+}
+.page_gameContent{
+  background-color:white;
+  height:30%;
+  margin:1% 5%;
+  padding:3% 0%;
+  border:2px solid; 
+  font-size: 40px;
+}
 .page_title{
-	text-align: center;
-	font-size: 30px;
-	cursor: default;
-
-}
-
-.page_update{
-	padding: 10px;
-	line-height: 30px;
 	
-	font-size: 18px; 
+	font-size: 30px;
+	cursor: default; 
+
+}
+.page_diary{
+  
+  font-size: 30px;
+	cursor: default; 
+  margin-bottom:3%;
+}
+.page_progress{
+  margin-top:10%;
+  margin-bottom:5%;
+	padding: 10px;
+	line-height: 30px;	
+	font-size: 50px;    
+  
 }
 
-#book :not(input[type="text"]){
-	cursor: default;
+.page_diaryContent{ 
+  padding:5px;
+}
+.typein
+{
+   font-size:25px;
+   font-weight:bold;
+   color:#FFFFFF;
+   width:80px;
+   height:50px;
+   background-color:#2f5596;
+}
+
+#book input[type="number"]{
+	font-size:24px;
+  border:1px solid #787878; 
+	padding: 5px 5px;   
+  width:50px;
+  height:30px;
+	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);  
+}
+#book input:focus{
+	outline:none;
+  
 }
 
 #book input[type="text"]{
-	background: transparent;
-	
-	border-width: 0;
-	padding: 5px 10px; 
-
-	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);
+  background-color: transparent;
+	font-size:18px;
+  border-bottom:1px solid #000000; 
+	border-top:0px;
+  border-left:0px;
+  border-right:0px;
+  width:60%;
+  height:30px;
+	text-align:center;
 }
 
-#book input[type="text"]:focus{
-	outline:none;
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
