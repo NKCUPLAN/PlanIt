@@ -96,10 +96,16 @@ aside #aside_contents #new_plan{
 	
 	height: 100%;
 	width: 100%;
-
-	overflow: hidden;
 	background: transparent;
 	_zoom:1;
+}
+
+#unauth{
+	overflow: hidden;
+}
+
+#auth{
+	overflow: hidden;
 }
 
 .unauth, .auth{
@@ -142,10 +148,10 @@ body{
 
 #cover{
 	position: relative;
-	margin: 1.5rem auto 0 40%;
+	margin: 1.5rem 0 0 45%;
 
 	height: 38rem;
-	width: 40rem;
+	width: 33rem;
 	background: url(../img/BookCover2.png) no-repeat;
 	background-size: contain;
 	background-position: center center;
