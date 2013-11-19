@@ -97,7 +97,7 @@ aside #aside_contents #new_plan{
 	height: 100%;
 	width: 100%;
 
-	overflow: auto;
+	overflow: hidden;
 	background: transparent;
 	_zoom:1;
 }
