@@ -121,16 +121,16 @@ body{
 #book{
 	position: fixed; 
 	left: 2rem;
-	top: 5rem;
+	top: 4rem;
 }
 
 #book-base{
 	position:fixed;
-	background:url(../img/BlueBook3.png);
+	background:url(../img/BlueBook4.png);
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	
-	box-shadow: 0px 0px 25px rgba(0,0,0,0.9);
+	//box-shadow: 0px 0px 25px rgba(0,0,0,0.9);
 }
 
 #content{
@@ -146,7 +146,7 @@ body{
 
 	height: 38rem;
 	width: 40rem;
-	background: url(../img/cover_base.png) no-repeat;
+	background: url(../img/BookCover2.png) no-repeat;
 	background-size: contain;
 	background-position: center center;
 	text-align: center;
@@ -158,10 +158,10 @@ body{
 	width: 250px;
 	height: 250px;
 	margin: auto;
-	background: url(../img/cover_lock.png) no-repeat;
+	background: url(../img/lock.png) no-repeat;
 	background-size: contain;
 	background-position: center center;
-	top: 170px;
+	top: 250px;
 }	
 
 #dialog_login{

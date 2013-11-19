@@ -257,10 +257,10 @@ var AdjustBookSize = function(){
 		hide_aside = true;
 	}
 	
-	$('#book-base').css('width',$('#book').width()+128);
-	$('#book-base').css('height',$('#book').height()+88);
-	$('#book-base').css('left',$('#book').position().left-65);
-	$('#book-base').css('top',$('#book').position().top-35);
+	$('#book-base').css('width',$('#book').width()+136);
+	$('#book-base').css('height',$('#book').height()+100);
+	$('#book-base').css('left',$('#book').position().left-76);
+	$('#book-base').css('top',$('#book').position().top);
 }
 
 var CheckAcc = function(acc){ 
@@ -415,9 +415,9 @@ var TurnToPage = function(page){
 	if(cur_page != page){
 		cur_page = page;
 		$('#book').bookblock('jump', page);
-		$('#book-base')
-			.animate({boxShadow: '0px 0px 40px rgba(255,255,51,0.9)'}, 500)
-			.animate({boxShadow: '0px 0px 25px rgba(0,0,0,0.9)'}, 500);
+		//$('#book-base')
+		//	.animate({boxShadow: '0px 0px 40px rgba(255,255,51,0.9)'}, 500)
+		//	.animate({boxShadow: '0px 0px 25px rgba(0,0,0,0.9)'}, 500);
 	}
 }
 

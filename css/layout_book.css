@@ -1,7 +1,8 @@
 .page_left{
 	position: absolute;
 	left: 0;
-	background: url(../img/paper1.jpg) 0 0;
+	//background: url(../img/paper1.jpg) 0 0;
+	background:#e8f0fb;
 	box-shadow: inset -1px -1px 6px -1px #5A8397;
 	
 }
@@ -10,7 +11,8 @@
 	position: absolute;
 	right: 0;	
 	top:0;
-	background: url(../img/paper1.jpg) -50em 0;
+	//background: url(../img/paper1.jpg) 0 0;
+	background:#e8f0fb;
 	box-shadow: inset 1px -1px 6px -1px #5A8397;
 }
 
