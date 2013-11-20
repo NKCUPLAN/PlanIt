@@ -137,7 +137,16 @@ body{
 	background-repeat: no-repeat;
 	-webkit-filter: drop-shadow(5px 5px 10px #222);
     filter:         drop-shadow(5px 5px 10px #222); 
-	//box-shadow: 0px 0px 25px rgba(0,0,0,0.9);
+}
+
+#bug{
+	position: absolute;
+	bottom: 0;
+	left: 25%;
+	height: 220px;
+	width: 150px;
+	-webkit-filter: drop-shadow(3px 3px 5px #222);
+    filter:         drop-shadow(3px 3px 5px #222); 
 }
 
 #content{
@@ -333,13 +342,7 @@ body{
 }
 /* ^^^^^^^^ ABOVE IS THE CODE FOR THE MENU ^^^^^^^^^^ */
 
-#bug{
-	position: absolute;
-	bottom: 0;
-	left: 25%;
-	height: 220px;
-	width: 150px;
-}
+
 
 #hint{
 	color: pink;
