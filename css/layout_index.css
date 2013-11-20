@@ -1,6 +1,7 @@
 *{
 	margin: 0;
     padding: 0;
+	font-family: 微軟正黑體;
 }
 
 header{
@@ -57,7 +58,7 @@ aside #aside_contents #list_plans:not(li){
 	line-height: 60px;
     text-align:  center;
     font-size: 20px;
-    font-family: 微軟正黑體;
+    
 }
 
 aside #aside_contents #list_plans li{
@@ -67,7 +68,7 @@ aside #aside_contents #list_plans li{
     font-size: 20px;
     
     color: brown;
-    
+    font-family: 微軟正黑體;
     padding: 10px 10px 10px 15px;
     //border-top: 1px dotted purple;
 }
@@ -79,7 +80,7 @@ aside #aside_contents #new_plan{
 	
 	text-align: center;
 	line-height: 22px;
-    font-family: Buxton Sketch;
+    
     font-size: 22px;
 	
 	margin: 27px 0px 27px 0px;

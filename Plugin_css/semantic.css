@@ -16348,7 +16348,7 @@ body {
 .ui.connected.items {
   display: table;
   width: 100%;
-  margin: 125px auto;
+  margin: 0px auto;
 }
 
 .ui.connected.items > .row > .item,

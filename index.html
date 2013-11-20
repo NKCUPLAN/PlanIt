@@ -35,19 +35,83 @@
 	<header>
 		<div id="menu">
 			<ul>
-				<li><a id="menu_home">Home</a></li>
+				<!--<li><a id="menu_home">Home</a></li>-->
+				<li><a id="menu_introduction">Introduction</a></li>
 				<li><a id="menu_aboutus">About Us</a></li>
-				<li><a id="introduction">Introduction</a></li>
+				
 				<li><a id="menu_logout" class="auth">Logout</a></li>
 			</ul>
 		</div>
 	</header>
 	
-	<!-- Introduction Dialog -->
-	<div class="ui small modal">
-		<div class="header">Introduction
-			
+	<!-- About Us Dialog -->
+	<div class="ui small modal" id="dialog_aboutus">
+		<div class="header">About Us</div>
+		<div class="ui five connected items">
+			<div class="item">
+				<div class="image">
+					<img src="./img/minion.png">
+				</div>
+				<div class="content">
+					<div class="name">張家倫</div>
+					<p class="description"><br>風向領導者<br><br>推坑同學<br>嘴砲同學<br>全力以赴<br>不遺餘力</p>
+				</div>
+			</div>
+			<div class="item">
+				<div class="image">
+					<img src="./img/minion.png"> 
+				</div>
+				<div class="content">
+					<div class="name">張正穎</div>
+					<p class="description">Sometimes its more important to have a
+						dog you know you can trust. But not every dog is trustworthy, you
+						can tell by looking at its smile.
+					</p>
+				</div>
+			</div>
+			<div class="item">
+				<div class="image">
+					<img src="./img/minion_women.jpg"> 
+				</div>
+				<div class="content">
+					<div class="name">游婷怡</div>
+					<p class="description">Silly dogs can be quite fun to have as
+						companions. You never know what kind of ridiculous thing they will
+						do.
+					</p>
+				</div>
+			</div>
+			<div class="item">
+				<div class="image">
+					<img src="./img/minion.png"> 
+				</div>
+				<div class="content">
+					<div class="name">葉家瑋</div>
+					<p class="description">Happy dogs are pretty interesting if you
+						are an unhappy person.
+					</p>
+				</div>
+			</div>
+			<div class="item">
+				<div class="image">
+					<img src="./img/minion.png"> 
+				</div>
+				<div class="content">
+					<div class="name">黃得銓</div>
+					<p class="description">A quiet dog is nice if you dont like a
+						lot of upkeep for your dogs.
+					</p>
+				</div>
+			</div>
 		</div>
+		<div class="actions">
+			<div class="ui button">OK</div>
+		</div>
+	</div>
+	
+	<!-- Introduction Dialog -->
+	<div class="ui small modal" id="dialog_introduction">
+		<div class="header">Introduction</div>
 		<div class="content">
 			<img src="img/introduction.jpg" height="100%" width="100%"/>
 			<!--<div class="left">
@@ -60,7 +124,6 @@
 	</div>
 	
 	<!-- Main Content -->
-	
 	<div id="unauth" class="unauth">
 		<div id="cover">
 			<div id="cover_lock"></div>
@@ -168,14 +231,13 @@
 	
 	<!-- For modal UI (Introduction) -->
 	<script type="text/javascript">
-		$('#introduction').click(function(){
-    		$('.ui.modal').modal('show');
+		$('#menu_introduction').click(function(){
+    		$('#dialog_introduction').modal('show');
+  		});
+		$('#menu_aboutus').click(function(){
+    		$('#dialog_aboutus').modal('show');
   		});
 	</script>
-	<!--
-	<script type="text/javascript">
-		$('#book').bookblock();
-	</script>
-	-->
+
 </body>
 </html>
