@@ -106,11 +106,11 @@ aside #aside_contents #new_plan{
 }
 
 #auth{
-	overflow: hidden;
+	overflow: hidden; 
 }
 
 .unauth, .auth{
-	display: none;
+	display:none;
 }
 
 body{
@@ -128,7 +128,8 @@ body{
 #book{
 	position: fixed; 
 	left: 2rem;
-	top: 4rem;
+	top: 4rem;	
+	
 }
 
 #book-base{
@@ -137,7 +138,7 @@ body{
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	-webkit-filter: drop-shadow(5px 5px 10px #222);
-    filter:         drop-shadow(5px 5px 10px #222); 
+    filter:         drop-shadow(5px 5px 10px #222); 	
 }
 
 #bug{

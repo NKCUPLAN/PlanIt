@@ -17,7 +17,8 @@
 	<!-- For modal UI (Introduction) -->
 	<link rel="stylesheet" type="text/css" href="Plugin_css/semantic.css">
 	<script src="Plugin_jQuery/semantic.js"></script>
-
+	<!-- For Create Book  -->
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<!-- For bookblock (turn pages) -->
 	<link rel="stylesheet" type="text/css" href="Plugin_css/bookblock.css" />
 	<script type="text/javascript" src="Plugin_jQuery/modernizr.custom.js"></script>
@@ -174,52 +175,98 @@
 		  </div>
 		</aside>
 		
-		<div id="book-base"></div>
-		
+		<div id="book-base"></div>		
 		<!--BOOK CONTENT-->
-		<div id="book" class="bb-bookblock">
-			<div class="bb-item" id="createPlan">
-				<div class="page_left">
-					<div class="page_title">
-						本日達成
+			<div id="book" class="bb-bookblock">
+				<div class="bb-item" id="createPlan">
+					<div class="create_left">
+						<div class="create_title">
+							<h2>Create Plan</h2>
+						</div>				
+						<div class="create_name" id="line">
+							計畫名稱 : 
+							<input type=text maxlength="20">
+						</div>
+						<div class="create_target">
+							目標:
+						</div>  
+						<div class="create_flow">
+							<li>初始值</li>
+							<li>單位</li>
+							<li>最終值</li>                     
+							<form class="value">
+								<input type="number">       
+								<input type="text">                
+								<input type="number"> 
+								<div class="create_deadline">								
+									<p>Dead Line: <input type="text" id="datepicker" /></p>
+								</div>
+							</form> 
+						</div>               
 					</div>				
-          
-					<div class="page_progress">
-						<input type="number">             
-						kg  /  20 kg                     
+					<div class="create_right">	
+						<div class="picture">
+							<img src="img/goals.jpg" width='294px' height='220px'>
+						</div>
+						<div class="create_diary">
+							給自己的話
+						</div>
+						<div class ="create_diaryContent" id="line">
+							<form>
+								<input type=text maxlength="20">
+								<input type=text maxlength="20">
+								<input type=text maxlength="20">														
+							</form>
+						</div>  
+						<div class="create_botton">
+							<a href="" class="button delete">放棄</a>
+							<a href="" class="button save">完成</a>
+						</div>
 					</div>
-					<button class="typein">輸入</button>				
 				</div>
-				<div class="page_right">					
-					<div class="page_diary">
-						日記
+				
+				<div class="bb-item">
+					<div class="page_left">
+						<div class="page_title">
+							本日達成
+						</div>				
+			  
+						<div class="page_progress">
+							<input type="number">             
+							kg  /  20 kg                     
+						</div>
+						<button class="typein">輸入</button>				
 					</div>
-					<div class ="page_diaryContent">
-						<form>
-							<input type=text maxlength="20">
-							<input type=text maxlength="20">
-							<input type=text maxlength="20" onfocus="this.value=''" value="Write your diary here!!!">
-							<input type=text maxlength="20">
-							<input type=text maxlength="20">						
-						</form>
-					</div>          
-				</div>	
-				<div class="page_top">
-					<div class="page_timer">
-						距離期限還有 2 日 2 時 30 分             
-					</div>
-					<div class="page_gameContent">
-						<img src="img/swords.png" width=50%;>
-						<img src="img/bug.png" width=8%;>
-					</div>
-					<div class="page_status">
-						已完成 50 %
+					<div class="page_right">					
+						<div class="page_diary">
+							日記
+						</div>
+						<div class ="page_diaryContent" id="line">
+							<form>
+								<input type=text maxlength="20">
+								<input type=text maxlength="20">
+								<input type=text maxlength="20" onfocus="this.value=''" value="Write your diary here!!!">
+								<input type=text maxlength="20">
+								<input type=text maxlength="20">						
+							</form>
+						</div>          
+					</div>	
+					<div class="page_top">
+						<div class="page_timer">
+							距離期限還有 2 日 2 時 30 分             
+						</div>
+						<div class="page_gameContent">
+							<img src="img/swords.png" width=50%;>
+							<img src="img/bug.png" width=8%;>
+						</div>
+						<div class="page_status">
+							已完成 50 %
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-	</div>
+	
 	
 	<!-- Unused Now -->
 	<div id="mask">
@@ -238,6 +285,13 @@
     		$('#dialog_aboutus').modal('show');
   		});
 	</script>
-
+	<!--datepicker-->
+	<script>
+		$(function(){
+			$("#datepicker").datepicker({dateFormat: 'yy-mm-dd'});
+		});  
+		
+	</script>
+	
 </body>
 </html>
