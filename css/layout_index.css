@@ -283,7 +283,7 @@ body{
 	
 	background: transparent;
 	z-index: 10000;
-	display:none;
+	//display:none;
 	
 	text-align: center;
 }
@@ -346,8 +346,8 @@ body{
 	right:1rem;
 	display:none;
 }
-/* ^^^^^^^^ ABOVE IS THE CODE FOR THE MENU ^^^^^^^^^^ */
 
+/* ^^^^^^^^ ABOVE IS THE CODE FOR THE MENU ^^^^^^^^^^ */
 
 
 #hint{
