@@ -425,27 +425,13 @@ var AddPage = function(data){
 	var a = $('<div class ="page_diaryContent" id="line"></div>').appendTo(page_right);
 	var form = $('<form></form>').appendTo(a);
 	for(var i = 0; i < 5; i++)
-		//if(i == 2)
-		//page_right.append('<input type=text maxlength="20" onfocus="this.value=''" value="Write your diary here!!!"/>');
 		form.append('<input type="text" maxlength="20"/>');	
-				/*	<div class="page_top">
-						<div class="page_timer">
-							距離期限還有 2 日 2 時 30 分             
-						</div>
-						<div class="page_gameContent">
-							<img src="img/swords.png" width=50%;>
-							<img src="img/bug.png" width=8%;>
-						</div>
-						<div class="page_status">
-							已完成 50 %
-						</div>
-					</div>
-				</div>');*/
 	
-	//var left = $('<div class="page_left"></div>').appendTo(page);
-	//var right = $('<div class="page_right"></div>').appendTo(page);
-	
-	//left.append('<div class="title">' + data['name'] + '</div>');
+	page_top.append('<div class="page_timer">距離期限還有 2 日 2 時 30 分</div>');
+	var game = $('<div class="page_gameContent"></div>').appendTo(page_top);
+	game.append('<img src="img/swords.png" width="50%"/>');
+	game.append('<img src="img/bug.png" width="8%"/>');
+	page_top.append('<div class="page_status">已完成 50 %</div>');
 	
 }
 
