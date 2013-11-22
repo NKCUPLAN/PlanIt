@@ -50,7 +50,7 @@
 		<div class="ui inverted menu">
 			<a class="item" id="menu_introduction">Introduction</a> 
 			<a class="item" id="menu_aboutus">About Us</a>
-			<a class="auth" id="menu_logout">Logout</a>
+			<a class="item auth" id="menu_logout">Logout</a>
 		</div>
 	</header>
 
@@ -289,7 +289,7 @@
 	<!-- For modal UI (Introduction) -->
 	<script type="text/javascript">
 		$('#menu_introduction').click(function(){
-    		$('#dialog_introduction').modal('show');
+			$('#dialog_introduction').modal('show');
   		});
 		$('#menu_aboutus').click(function(){
     		$('#dialog_aboutus').modal('show');
@@ -299,7 +299,7 @@
 	<script>
 		$(function(){
 			$("#datepicker").datepicker({dateFormat: 'yy-mm-dd'});
-		});  
+		}); 
 	</script>
 
 </body>
