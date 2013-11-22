@@ -1,58 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js demo-1">
 <head>
-	<title>Plan It! 不爛泥!</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="shortcut icon" href="img/favicon.ico"/>
-	<link rel="icon" type="image/gif" href="img/favicon_animated.gif"/>
-	
-	<script type="text/javascript" src="Plugin_jQuery/jquery-2.0.3.js"></script>
-	<script type="text/javascript" src="Plugin_jQuery/jquery-ui-1.10.3.custom.min.js"></script>	
-    
-	<!-- For effects (Book shadow) -->
-	<script type="text/javascript" src="Plugin_jQuery/jquery.animate-shadow.js"></script>
-	<script type="text/javascript" src="Plugin_jQuery/jquery.transform2d.js"></script>
-	<script type="text/javascript" src="Plugin_jQuery/jquery.transform3d.js"></script>
+<title>Plan It! 不爛泥!</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="img/favicon.ico" />
+<link rel="icon" type="image/gif" href="img/favicon_animated.gif" />
 
-	<!-- For modal UI (Introduction) -->
-	<link rel="stylesheet" type="text/css" href="Plugin_css/semantic.css">
-	<script src="Plugin_jQuery/semantic.js"></script>
-	
-	<!-- For Create Book  -->
-	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-	
-	<!-- For bookblock (turn pages) -->
-	<link rel="stylesheet" type="text/css" href="Plugin_css/bookblock.css" />
-	<script type="text/javascript" src="Plugin_jQuery/modernizr.custom.js"></script>
-	
-	<!-- For loading...-->
-	<script type="text/javascript" src="Plugin_jQuery/jquery.animateImages.js"></script>
-	
-	<!-- Self-defined Settings -->
-	<link rel="stylesheet" type="text/css" href="css/layout_index.css">
-	<link rel="stylesheet" type="text/css" href="css/layout_book.css">
-	
-	<!-- For button style-->
-	<link href="Plugin_css/style.css" rel="stylesheet" type="text/css" />
-	
-	<script type="text/javascript" src="jQuery/jQuery_index.js"></script> 
-	
+<script type="text/javascript" src="Plugin_jQuery/jquery-2.0.3.js"></script>
+<script type="text/javascript"
+	src="Plugin_jQuery/jquery-ui-1.10.3.custom.min.js"></script>
+
+<!-- For effects (Book shadow) -->
+<script type="text/javascript"
+	src="Plugin_jQuery/jquery.animate-shadow.js"></script>
+<script type="text/javascript" src="Plugin_jQuery/jquery.transform2d.js"></script>
+<script type="text/javascript" src="Plugin_jQuery/jquery.transform3d.js"></script>
+
+<!-- For modal UI (Introduction) -->
+<link rel="stylesheet" type="text/css" href="Plugin_css/semantic.css">
+<script src="Plugin_jQuery/semantic.js"></script>
+
+<!-- For Create Book  -->
+<link rel="stylesheet" type="text/css"
+	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+<!-- For bookblock (turn pages) -->
+<link rel="stylesheet" type="text/css" href="Plugin_css/bookblock.css" />
+<script type="text/javascript" src="Plugin_jQuery/modernizr.custom.js"></script>
+
+<!-- For loading...-->
+<script type="text/javascript"
+	src="Plugin_jQuery/jquery.animateImages.js"></script>
+
+<!-- Self-defined Settings -->
+<link rel="stylesheet" type="text/css" href="css/layout_index.css">
+<link rel="stylesheet" type="text/css" href="css/layout_book.css">
+
+<!-- For button style-->
+<link href="Plugin_css/style.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="jQuery/jQuery_index.js"></script>
+
 </head>
 <body onSelectStart="event.returnValue=false">
 
 	<!-- Menu -->
 	<header>
-		<div id="menu">
-			<ul>
-				<!--<li><a id="menu_home">Home</a></li>-->
-				<li><a id="menu_introduction">Introduction</a></li>
-				<li><a id="menu_aboutus">About Us</a></li>
-				
-				<li><a id="menu_logout" class="auth">Logout</a></li>
-			</ul>
+		
+		<div class="ui inverted menu">
+			<a class="item" id="menu_introduction">Introduction</a> 
+			<a class="item" id="menu_aboutus">About Us</a>
+			<a class="auth" id="menu_logout">Logout</a>
 		</div>
 	</header>
-	
+
 	<!-- About Us Dialog -->
 	<div class="ui small modal" id="dialog_aboutus">
 		<div class="header">About Us</div>
@@ -64,62 +65,47 @@
 				<div class="content">
 					<div class="name">張家倫</div>
 					<p class="description">
-						<br/>
-						風向領導者<br/>
-						<br/>
-						推坑同學<br/>
-						嘴砲同學<br/>
-						全力以赴<br/>
-						不遺餘力
+						<br /> 風向領導者<br /> <br /> 推坑同學<br /> 嘴砲同學<br /> 全力以赴<br /> 不遺餘力
 					</p>
 				</div>
 			</div>
 			<div class="item">
 				<div class="image">
-					<img src="./img/minion.png"> 
+					<img src="./img/minion.png">
 				</div>
 				<div class="content">
 					<div class="name">張正穎</div>
-					<p class="description">Sometimes its more important to have a
-						dog you know you can trust. But not every dog is trustworthy, you
-						can tell by looking at its smile.
-					</p>
+					<p class="description"><br>彈琴自唱者</p>
 				</div>
 			</div>
 			<div class="item">
 				<div class="image">
-					<img src="./img/minion_women.jpg"> 
+					<img src="./img/minion_women.jpg">
 				</div>
 				<div class="content">
 					<div class="name">游婷怡</div>
-					<p class="description">Silly dogs can be quite fun to have as
-						companions. You never know what kind of ridiculous thing they will
-						do.
-					</p>
+					<p class="description"><br>我不是忍者</p>
 				</div>
 			</div>
 			<div class="item">
 				<div class="image">
-					<img src="./img/minion.png"> 
+					<img src="./img/minion.png">
 				</div>
 				<div class="content">
 					<div class="name">葉家瑋</div>
 					<p class="description">
-						<br/>
-						蟲蟲清除者<br/>
-						
+						<br /> 蟲蟲清除者<br />
+
 					</p>
 				</div>
 			</div>
 			<div class="item">
 				<div class="image">
-					<img src="./img/minion.png"> 
+					<img src="./img/minion.png">
 				</div>
 				<div class="content">
 					<div class="name">黃得銓</div>
-					<p class="description">A quiet dog is nice if you dont like a
-						lot of upkeep for your dogs.
-					</p>
+					<p class="description"><br>打醬油尊者</p>
 				</div>
 			</div>
 		</div>
@@ -127,12 +113,12 @@
 			<div class="ui button">OK</div>
 		</div>
 	</div>
-	
+
 	<!-- Introduction Dialog -->
 	<div class="ui small modal" id="dialog_introduction">
 		<div class="header">Introduction</div>
 		<div class="content">
-			<img src="img/introduction.jpg" height="100%" width="100%"/>
+			<img src="img/introduction.jpg" height="100%" width="100%" />
 			<!--<div class="left">
 				
 			</div>-->
@@ -141,109 +127,114 @@
 			<div class="ui button">OK</div>
 		</div>
 	</div>
-	
+
 	<!-- Main Content -->
 	<div id="unauth" class="unauth">
 		<div id="cover">
 			<div id="cover_lock"></div>
 		</div>
-		
+
 		<div id="dialog_login">
-			<div class="hint" id="hint"> 請用 a / a 登入看看 感謝!!</div>
-			<div><input type="text" id="acc" maxlength="20" placeholder="帳號"/></div>
-			<div><input type="password" id="pwd" placeholder="密碼"/></div>
-			
+			<div class="hint" id="hint">請用 a / a 登入看看 感謝!!</div>
+			<div>
+				<input type="text" id="acc" maxlength="20" placeholder="帳號" />
+			</div>
+			<div>
+				<input type="password" id="pwd" placeholder="密碼" />
+			</div>
+
 			<div class="info_login">
-					<span class="loginButton checkBox"><input type="checkBox" name="rem" id="rem"/> 記住我</span>
-					<br/>
-					<span class="loginButton" id="login">登入</span>
-					<!--<span class="loginButton" id="reset">清除</span>-->
+				<span class="loginButton checkBox"><input type="checkBox"
+					name="rem" id="rem" /> 記住我</span> <br /> <span class="loginButton"
+					id="login">登入</span>
+				<!--<span class="loginButton" id="reset">清除</span>-->
 			</div>
-			
+
 			<div class="info_register">
-				<div><input type="password" id="check_pwd" placeholder="確認密碼"/></div>
-				<br/>
 				<div>
-					<input type="text" id="first_name" placeholder="姓氏" size="8"/>
-					<input type="text" id="last_name" placeholder="名字" size="8"/>
+					<input type="password" id="check_pwd" placeholder="確認密碼" />
+				</div>
+				<br />
+				<div>
+					<input type="text" id="first_name" placeholder="姓氏" size="8" /> <input
+						type="text" id="last_name" placeholder="名字" size="8" />
 				</div>
 				<div>
-					<span class="loginButton radio"><input type="radio" name="gender" value="male" checked="true"/>男</span>
-					<span class="loginButton radio"><input type="radio" name="gender" value="female"/>女</span>
+					<span class="loginButton radio"><input type="radio"
+						name="gender" value="male" checked="true" />男</span> <span
+						class="loginButton radio"><input type="radio" name="gender"
+						value="female" />女</span>
 				</div>
-				<div><input type="text" id="mail" size="25" placeholder="電子郵件"/></div>
-				<span class="loginButton" id="register">確認</span>
-				<span class="loginButton" id="register_reset">清除</span><br/>
+				<div>
+					<input type="text" id="mail" size="25" placeholder="電子郵件" />
+				</div>
+				<span class="loginButton" id="register">確認</span> <span
+					class="loginButton" id="register_reset">清除</span><br />
 			</div>
-			
+
 			<span class="loginButton" id="login_register">註冊</span>
 		</div>
-		
-		<img id="bug" src="img/bug.png"/>
+
+		<img id="bug" src="img/bug.png" />
 	</div>
-	
+
 	<div id="auth" class="auth">
-			<!-- SideBar Menu -->
+		<!-- SideBar Menu -->
 		<aside>
-		  <div id="aside_switch"></div>
-		  <div id="aside_contents">
-			<ul id="list_plans">個人計畫
-			</ul>
-			<div id="new_plan">創建新計畫</div>
-		  </div>
+			<div id="aside_switch"></div>
+			<div id="aside_contents">
+				<ul id="list_plans">個人計畫
+				</ul>
+				<div id="new_plan">創建新計畫</div>
+			</div>
 		</aside>
-		
-		<div id="book-base"></div>		
+
+		<div id="book-base"></div>
 		<!--BOOK CONTENT-->
-			<div id="book" class="bb-bookblock">
-				<div class="bb-item" id="createPlan">
-					<div class="create_left">
-						<div class="create_title">
-							<h2>Create Plan</h2>
-						</div>				
-						<div class="create_name" id="line">
-							計畫名稱 : 
-							<input type=text maxlength="20">
-						</div>
-						<div class="create_target">
-							目標:
-						</div>  
-						<div class="create_flow">
-							<li>初始值</li>
-							<li>單位</li>
-							<li>最終值</li>                     
-							<form class="value">
-								<input type="number">       
-								<input type="text">                
-								<input type="number"> 
-								<div class="create_deadline">								
-									<p>Dead Line: <input type="text" id="datepicker" /></p>
-								</div>
-							</form> 
-						</div>               
-					</div>				
-					<div class="create_right">	
-						<div class="picture">
-							<img src="img/goals.jpg" width='294px' height='220px'>
-						</div>
-						<div class="create_diary">
-							給自己的話
-						</div>
-						<div class ="create_diaryContent" id="line">
-							<form>
-								<input type=text maxlength="20">
-								<input type=text maxlength="20">
-								<input type=text maxlength="20">														
-							</form>
-						</div>  
-						<div id="button">
-							<a href="" class="back">Back <span></span></a>
-							<a href="" class="create">Create <span></span></a>
-						</div>
+		<div id="book" class="bb-bookblock">
+			<div class="bb-item" id="createPlan">
+				<div class="create_left">
+					<div class="create_title">
+						<h2>Create Plan</h2>
+					</div>
+					<div class="create_name" id="line">
+						計畫名稱 : <input type=text maxlength="20">
+					</div>
+					<div class="create_target">目標:</div>
+					<div class="create_flow">
+						<li>初始值</li>
+						<li>單位</li>
+						<li>最終值</li>
+						<form class="value">
+							<input type="number"> <input type="text"> <input
+								type="number">
+							<div class="create_deadline">
+								<p>
+									Dead Line: <input type="text" id="datepicker" />
+								</p>
+							</div>
+						</form>
 					</div>
 				</div>
-				
-				<!--<div class="bb-item">
+				<div class="create_right">
+					<div class="picture">
+						<img src="img/goals.jpg" width='294px' height='220px'>
+					</div>
+					<div class="create_diary">給自己的話</div>
+					<div class="create_diaryContent" id="line">
+						<form>
+							<input type=text maxlength="20"> <input type=text
+								maxlength="20"> <input type=text maxlength="20">
+						</form>
+					</div>
+					<div id="button">
+						<a href="" class="back">Back <span></span></a> <a href=""
+							class="create">Create <span></span></a>
+					</div>
+				</div>
+			</div>
+
+			<!--<div class="bb-item">
 					<div class="page_left">
 						<div class="page_title">
 							本日達成
@@ -282,19 +273,19 @@
 						</div>
 					</div>
 				</div>-->
-			</div>
 		</div>
-	
-	
+	</div>
+
+
 	<!-- Unused Now -->
 	<div id="mask">
 		<div id="loading"></div>
 	</div>
-	
+
 	<!-- For bookblock (turn pages) -->
 	<script type="text/javascript" src="Plugin_jQuery/jquerypp.custom.js"></script>
 	<script type="text/javascript" src="Plugin_jQuery/jquery.bookblock.js"></script>
-	
+
 	<!-- For modal UI (Introduction) -->
 	<script type="text/javascript">
 		$('#menu_introduction').click(function(){
@@ -310,6 +301,6 @@
 			$("#datepicker").datepicker({dateFormat: 'yy-mm-dd'});
 		});  
 	</script>
-	
+
 </body>
 </html>

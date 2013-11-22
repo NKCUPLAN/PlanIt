@@ -21,6 +21,7 @@
 
 </head>
 <body id="home">
+	
 	<div class="ui five connected items">
 		<div class="item">
 			<div class="image">

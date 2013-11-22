@@ -13232,7 +13232,7 @@ a.ui.teal.label:hover:before {
   width: 100%;
   position: relative;
   padding: 0 1em;;
-  background-color: #F4F4F4;
+  //background-color: #F4F4F4;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -16347,7 +16347,7 @@ body {
 
 .ui.connected.items {
   display: table;
-  width: 100%;
+  width: 95%;
   margin: 0px auto;
 }
 
