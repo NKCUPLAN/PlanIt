@@ -10,39 +10,39 @@ $(document).ready(function(){
 	initialCSS();
 
 	Loading();
-	
-	$.ajax({
-		url: 'php/loginAuto.php',
-		cache: false,
-		dataType: 'html',
-		type:'POST',
-		data: { 
-			secret: LoadCookie()
-		},
-		error: function(xhr) {
-			alert("網路出現問題，請稍候再試!!");
-			Loaded();
-		},
-		success: function(response) {
-			Loaded();
-			var data = $.parseJSON(response);
-			if(data['msg'] == "success"){
-				$(".auth").fadeIn(1000);
-				
-				first_name = data['first_name'];
-				last_name = data['last_name'];
-				secret = data['secret'];
-				
-				LoadPlans(secret);
-				
-				AdjustBookSize();
+	setTimeout(function(){
+		$.ajax({
+			url: 'php/loginAuto.php',
+			cache: false,
+			dataType: 'html',
+			type:'POST',
+			data: { 
+				secret: LoadCookie()
+			},
+			error: function(xhr) {
+				alert("網路出現問題，請稍候再試!!");
+				Loaded();
+			},
+			success: function(response) {
+				Loaded();
+				var data = $.parseJSON(response);
+				if(data['msg'] == "success"){
+					$(".auth").fadeIn(1000);
+					
+					first_name = data['first_name'];
+					last_name = data['last_name'];
+					secret = data['secret'];
+					
+					LoadPlans(secret);
+					
+					AdjustBookSize();
+				}
+				else{
+					$('.unauth').fadeIn(1000);
+				}
 			}
-			else{
-				$('.unauth').fadeIn(1000);
-			}
-		}
-	});
-	
+		});
+	}, 1000);
 	//-----------------------------------------------------------header
 	$('#menu_logout').click(function(){
 		$('.auth').fadeOut(1000, function(){
@@ -135,51 +135,52 @@ $(document).ready(function(){
 		}
 		
 		Loading();
-		
-		$.ajax({
-			url: 'php/login.php',
-			cache: false,
-			dataType: 'html',
-			type:'POST',
-			data: { 
-				acc: $('#acc').val(),
-				pwd: $('#pwd').val()
-			},
-			error: function(xhr) {
-				alert("網路出現問題，請稍候再試!!");
-				Loaded();
-			},
-			success: function(response) {
-				var data = $.parseJSON(response);
-				if(data['msg'] == "success"){
-					first_name = data['first_name'];
-					last_name = data['last_name'];
-					secret = data['secret'];
-					
-					$('#loading').empty();
-					
-					if($('#rem').prop('checked'))
-						WriteCookie(secret);
-					else
-						ClearCookie();
-
-					LoadPlans(secret);
-					$('#cover_lock').animate({transform: 'rotate(1080deg)'}, 2000, function(){
-						$('.unauth').fadeOut(1000, function(){
-							$('#acc').val('');
-							$('#pwd').val('');
-							$(".auth").fadeIn(1000);
-							AdjustBookSize();
-							Loaded();
-						});
-					});
-				}
-				else{
+		setTimeout(function(){
+			$.ajax({
+				url: 'php/login.php',
+				cache: false,
+				dataType: 'html',
+				type:'POST',
+				data: { 
+					acc: $('#acc').val(),
+					pwd: $('#pwd').val()
+				},
+				error: function(xhr) {
+					alert("網路出現問題，請稍候再試!!");
 					Loaded();
-					$('#unauth').effect('shake');
+				},
+				success: function(response) {
+					var data = $.parseJSON(response);
+					if(data['msg'] == "success"){
+						first_name = data['first_name'];
+						last_name = data['last_name'];
+						secret = data['secret'];
+						
+						$('#loading').empty();
+						
+						if($('#rem').prop('checked'))
+							WriteCookie(secret);
+						else
+							ClearCookie();
+
+						LoadPlans(secret);
+						$('#cover_lock').animate({transform: 'rotate(1080deg)'}, 2000, function(){
+							$('.unauth').fadeOut(1000, function(){
+								$('#acc').val('');
+								$('#pwd').val('');
+								$(".auth").fadeIn(1000);
+								AdjustBookSize();
+								Loaded();
+							});
+						});
+					}
+					else{
+						Loaded();
+						$('#unauth').effect('shake');
+					}
 				}
-			}
-		});
+			});
+		}, 1000);
 	});
 	
 	$('#login_register').click(function(){
@@ -210,39 +211,40 @@ $(document).ready(function(){
 				$('#gender').val())){
 			
 			Loading();
-			
-			$.ajax({
-			url: 'php/register.php',
-			cache: false,
-			dataType: 'html',
-			type:'POST',
-			data: { 
-				acc: $('#acc').val(),
-				pwd: $('#pwd').val(),
-				first_name: $('#first_name').val(),
-				last_name: $('#last_name').val(),
-				mail: $('#mail').val(),
-				gender: ($('input[name=gender]:checked').val() == "male")? 1: 0
-			},
-			error: function(xhr) {
-				alert('網路連線錯誤，請稍後再試');
-				Loaded();
-			},
-			success: function(response) {
-				Loaded();
-				if(response.trim() == "success"){
-					$('#hint').css('color', '#00FA03');
-					$('#dialog_login input').val('');
-					alert('申請帳號成功! 請重新登入!');
-					$('#login_register').trigger('click');
-				}
-				else{
-					$('#hint').css('color', 'red');
-					$('#hint').text('申請帳號失敗! 請稍後再次嘗試!');
-				}
-				
-			}
-		});
+			setTimeout(function(){
+				$.ajax({
+					url: 'php/register.php',
+					cache: false,
+					dataType: 'html',
+					type:'POST',
+					data: { 
+						acc: $('#acc').val(),
+						pwd: $('#pwd').val(),
+						first_name: $('#first_name').val(),
+						last_name: $('#last_name').val(),
+						mail: $('#mail').val(),
+						gender: ($('input[name=gender]:checked').val() == "male")? 1: 0
+					},
+					error: function(xhr) {
+						alert('網路連線錯誤，請稍後再試');
+						Loaded();
+					},
+					success: function(response) {
+						Loaded();
+						if(response.trim() == "success"){
+							$('#hint').css('color', '#00FA03');
+							$('#dialog_login input').val('');
+							alert('申請帳號成功! 請重新登入!');
+							$('#login_register').trigger('click');
+						}
+						else{
+							$('#hint').css('color', 'red');
+							$('#hint').text('申請帳號失敗! 請稍後再次嘗試!');
+						}
+						
+					}
+				});
+			}, 1000);
 		}
 	});
 	
@@ -493,5 +495,4 @@ var Loading = function(){
 var Loaded = function(){
 	$('#loading').empty();
 	$('#mask').hide();
-	
 }
