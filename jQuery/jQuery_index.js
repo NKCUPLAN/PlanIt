@@ -9,6 +9,8 @@ var user_pages;
 $(document).ready(function(){
 	initialCSS();
 
+	Loading();
+	
 	$.ajax({
 		url: 'php/loginAuto.php',
 		cache: false,
@@ -130,6 +132,8 @@ $(document).ready(function(){
 			return;
 		}
 		
+		Loading();
+		
 		$.ajax({
 			url: 'php/login.php',
 			cache: false,
@@ -144,7 +148,7 @@ $(document).ready(function(){
 			},
 			success: function(response) {
 				var data = $.parseJSON(response);
-				
+				Loaded();
 				if(data['msg'] == "success"){
 					first_name = data['first_name'];
 					last_name = data['last_name'];
@@ -263,6 +267,9 @@ var AdjustBookSize = function(){
 	$('#book-base').css('height',$('#book').height()+100);
 	$('#book-base').css('left',$('#book').position().left-76);
 	$('#book-base').css('top',$('#book').position().top);
+
+	$('#loading').css('top', h - $('#loading').height()/2);
+	
 }
 
 var CheckAcc = function(acc){ 
@@ -474,4 +481,13 @@ var LoadCookie = function(){
         }
     }
     return;
+}
+
+var Loading = function(){
+	$('#mask').show();
+	$('#loading').animateImages('img/loading/loading_@.png', 5, 300);
+}
+
+var Loaded = function(){
+	$('#mask').hide();
 }
