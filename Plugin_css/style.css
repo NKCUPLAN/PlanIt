@@ -1,0 +1,75 @@
+
+#button span {
+	display: none;
+	position: absolute;
+}
+#button a {
+	display: block;
+	text-indent: -900%;
+	position: absolute;
+	outline: none;
+}
+#button a:hover {
+	background-position: left top;
+}
+#button a:hover span{
+	display: block;
+}
+#button .home {
+	width: 144px;
+	height: 58px;
+	background: url(../img/home.gif) no-repeat;
+	left: 96px;
+	top: 73px;
+}
+#button .home span {
+	width: 86px;
+	height: 14px;
+	background: url(../img/home-over.gif) no-repeat;
+	left: 28px;
+	top: -20px;
+}
+#button .about {
+	width: 131px;
+	height: 51px;
+	background: url(../img/about.gif) no-repeat;
+	left: 338px;
+	top: 97px;
+}
+#button .about span {
+	width: 40px;
+	height: 12px;
+	background: url(../img/about-over.gif) no-repeat;
+	left: 44px;
+	top: 54px;
+}
+#button .create {
+	width: 131px;
+	height: 51px;
+	background: url(../img/create.png) no-repeat;
+	background-position: left bottom;
+	left: 220px;
+	top: 400px;
+}
+#button .back {
+	width: 131px;
+	height: 51px;
+	background: url(../img/back.png) no-repeat;
+	background-position: left bottom;
+	left: 35px;
+	top: 400px;
+}
+#button .rss {
+	width: 112px;
+	height: 47px;
+	background: url(../img/rss.gif) no-repeat;
+	left: 588px;
+	top: 94px;
+}
+#button .rss span {
+	width: 92px;
+	height: 20px;
+	background: url(../img/rss-over.gif) no-repeat;
+	left: 26px;
+	top: -20px;
+}
