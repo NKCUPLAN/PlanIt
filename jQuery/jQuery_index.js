@@ -21,8 +21,10 @@ $(document).ready(function(){
 		},
 		error: function(xhr) {
 			alert("網路出現問題，請稍候再試!!");
+			Loaded();
 		},
 		success: function(response) {
+			Loaded();
 			var data = $.parseJSON(response);
 			if(data['msg'] == "success"){
 				$(".auth").fadeIn(1000);
@@ -145,14 +147,16 @@ $(document).ready(function(){
 			},
 			error: function(xhr) {
 				alert("網路出現問題，請稍候再試!!");
+				Loaded();
 			},
 			success: function(response) {
 				var data = $.parseJSON(response);
-				Loaded();
 				if(data['msg'] == "success"){
 					first_name = data['first_name'];
 					last_name = data['last_name'];
 					secret = data['secret'];
+					
+					$('#loading').empty();
 					
 					if($('#rem').prop('checked'))
 						WriteCookie(secret);
@@ -166,10 +170,12 @@ $(document).ready(function(){
 							$('#pwd').val('');
 							$(".auth").fadeIn(1000);
 							AdjustBookSize();
+							Loaded();
 						});
 					});
 				}
 				else{
+					Loaded();
 					$('#unauth').effect('shake');
 				}
 			}
@@ -203,6 +209,8 @@ $(document).ready(function(){
 				$('#mail').val(),
 				$('#gender').val())){
 			
+			Loading();
+			
 			$.ajax({
 			url: 'php/register.php',
 			cache: false,
@@ -217,8 +225,11 @@ $(document).ready(function(){
 				gender: ($('input[name=gender]:checked').val() == "male")? 1: 0
 			},
 			error: function(xhr) {
+				alert('網路連線錯誤，請稍後再試');
+				Loaded();
 			},
 			success: function(response) {
+				Loaded();
 				if(response.trim() == "success"){
 					$('#hint').css('color', '#00FA03');
 					$('#dialog_login input').val('');
@@ -268,8 +279,8 @@ var AdjustBookSize = function(){
 	$('#book-base').css('left',$('#book').position().left-76);
 	$('#book-base').css('top',$('#book').position().top);
 
-	$('#loading').css('top', h - $('#loading').height()/2);
-	
+	$('#loading').css('top', (h - $('#loading').height())/2);
+	$('#loading').css('left', (w - $('#loading').width())/2);
 }
 
 var CheckAcc = function(acc){ 
@@ -472,8 +483,15 @@ var LoadCookie = function(){
 var Loading = function(){
 	$('#mask').show();
 	$('#loading').animateImages('img/loading/loading_@.png', 5, 300);
+	
+	var h = $(document).height();
+    var w = $(document).width();
+	$('#loading').css('top', (h - $('#loading').height())/2);
+	$('#loading').css('left', (w - $('#loading').width())/2);
 }
 
 var Loaded = function(){
+	$('#loading').empty();
 	$('#mask').hide();
+	
 }
