@@ -4,7 +4,7 @@ var hide_register = true;
 
 var first_name, last_name;
 
-var cur_page = 1;
+var user_pages;
 
 $(document).ready(function(){
 	initialCSS();
@@ -43,6 +43,8 @@ $(document).ready(function(){
 	$('#menu_logout').click(function(){
 		$('.auth').fadeOut(1000, function(){
 			$('.unauth').fadeIn(1000);
+			$('.bb-item:not(#createPlan)').remove();
+			$('#list_plans li').remove();
 		});
 		ClearCookie();
 	});
@@ -404,21 +406,44 @@ var LoadPlans = function(secret){
 var AddPage = function(data){
 	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
 	
-	var left = $('<div class="page_left"></div>').appendTo(page);
-	var right = $('<div class="page_right"></div>').appendTo(page);
+	var page_left = $('<div class="page_left"></div>').appendTo(page);
+	var page_right = $('<div class="page_right"></div>').appendTo(page);
+	var page_top = $('<div class="page_top"></div>').appendTo(page);
 	
-	left.append('<div class="title">' + data['name'] + '</div>');
+	page_left.append('<div class="page_title">' + data['name'] +'</div>');			
+	page_left.append('<div class="page_progress"><input type="number"> kg / 20 kg</div>');
+	page_left.append('<button class="typein">輸入</button>');				  
+
+	page_right.append('<div class="page_diary">日記</div>');
+	var a = $('<div class ="page_diaryContent" id="line"></div>').appendTo(page_right);
+	var form = $('<form></form>').appendTo(a);
+	for(var i = 0; i < 5; i++)
+		//if(i == 2)
+		//page_right.append('<input type=text maxlength="20" onfocus="this.value=''" value="Write your diary here!!!"/>');
+		form.append('<input type="text" maxlength="20"/>');	
+				/*	<div class="page_top">
+						<div class="page_timer">
+							距離期限還有 2 日 2 時 30 分             
+						</div>
+						<div class="page_gameContent">
+							<img src="img/swords.png" width=50%;>
+							<img src="img/bug.png" width=8%;>
+						</div>
+						<div class="page_status">
+							已完成 50 %
+						</div>
+					</div>
+				</div>');*/
+	
+	//var left = $('<div class="page_left"></div>').appendTo(page);
+	//var right = $('<div class="page_right"></div>').appendTo(page);
+	
+	//left.append('<div class="title">' + data['name'] + '</div>');
 	
 }
 
 var TurnToPage = function(page){
-	if(cur_page != page){
-		cur_page = page;
-		$('#book').bookblock('jump', page);
-		//$('#book-base')
-		//	.animate({boxShadow: '0px 0px 40px rgba(255,255,51,0.9)'}, 500)
-		//	.animate({boxShadow: '0px 0px 25px rgba(0,0,0,0.9)'}, 500);
-	}
+	$('#book').bookblock('jump', page);
 }
 
 var WriteCookie = function(secret){
