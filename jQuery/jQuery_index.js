@@ -432,7 +432,7 @@ var AddPage = function(data){
 	
 	page_left.append('<div class="page_title">' + data['name'] +'</div>');			
 	page_left.append('<div class="page_progress"><input type="number"> kg / 20 kg</div>');
-	page_left.append('<button class="typein">輸入</button>');				  
+	page_left.append('<div id="button"><a href="" class="save">Save<span></span></a></div>');				  
 
 	page_right.append('<div class="page_diary">日記</div>');
 	var a = $('<div class ="page_diaryContent" id="line"></div>').appendTo(page_right);
