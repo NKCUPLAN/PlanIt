@@ -198,7 +198,7 @@
 						<h2>Create Plan</h2>
 					</div>
 					<div class="create_name" id="line">
-						計畫名稱 : <input type=text maxlength="20">
+						計畫名稱 : <input type="text" maxlength="20" id="createName"/>
 					</div>
 					<div class="create_target">目標:</div>
 					<div class="create_flow">
@@ -206,11 +206,12 @@
 						<li>單位</li>
 						<li>最終值</li>
 						<form class="value">
-							<input type="number"> <input type="text"> <input
-								type="number">
+							<input type="number" id="createStart"/>
+							<input type="text" id="createUnit"/>
+							<input type="number" id="createEnd"/>
 							<div class="create_deadline">
 								<p>
-									Dead Line: <input type="text" id="datepicker" />
+									Dead Line: <input type="text" maxlength="10" size="10" id="createDeadline" />
 								</p>
 							</div>
 						</form>
@@ -223,13 +224,13 @@
 					<div class="create_diary">給自己的話</div>
 					<div class="create_diaryContent" id="line">
 						<form>
-							<input type=text maxlength="20"> <input type=text
+							<input type=text maxlength="20" id="createContent"> <input type=text
 								maxlength="20"> <input type=text maxlength="20">
 						</form>
 					</div>
 					<div id="button">
-						<a href="" class="back">Back <span></span></a> <a href=""
-							class="create">Create <span></span></a>
+						<a href="javascript: void(0)" class="back" id="create_btn_back">Back<span></span></a>
+						<a href="javascript: void(0)" class="create" id="create_btn_create">Create<span></span></a>
 					</div>
 				</div>
 			</div>
@@ -298,7 +299,7 @@
 	<!--datepicker-->
 	<script>
 		$(function(){
-			$("#datepicker").datepicker({dateFormat: 'yy-mm-dd'});
+			$("#createDeadline").datepicker({dateFormat: 'yy-mm-dd'});
 		}); 
 	</script>
 

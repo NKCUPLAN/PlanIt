@@ -74,9 +74,10 @@
    height:50px;
    background-color:#2f5596;
 }
-p #datepicker{
+p #createDeadline{
   font-size:20px;
   color:red;
+  width: 6em;
 }
 h2{
    font: bold 1.4em 'Lucida sans', 'Trebuchet MS', Tahoma, Arial;
@@ -152,9 +153,7 @@ h2{
 	height:25px;
 	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);  
 }
-#datepicker{
- width:50%;
-}
+
 #line input[type="text"]{
 	background-color: transparent;
 	font-size:18px;

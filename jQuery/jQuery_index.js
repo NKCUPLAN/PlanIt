@@ -248,6 +248,41 @@ $(document).ready(function(){
 		}
 	});
 	
+	$('#create_btn_create').click(function(){
+		Loading();
+		setTimeout(function(){
+			$.ajax({
+				url: 'php/createPlan.php',
+				cache: false,
+				dataType: 'html',
+				type:'POST',
+				data: { 
+					secret: LoadCookie(),
+					name: $('#createName').val(),
+					content: $('#createContent').val(),
+					start: $('#createStart').val(),
+					end: $('#createEnd').val(),
+					unit: $('#createUnit').val(),
+					deadline: $('#createDeadline').val()
+				},
+				error: function(xhr) {
+					alert('網路連線錯誤，請稍後再試');
+					Loaded();
+				},
+				success: function(response) {
+					$('.bb-item:not(#createPlan)').remove();
+					$('#list_plans li').remove();
+					LoadPlans(secret);
+					Loaded();
+					setTimeout(function(){$('#book').bookblock('last');}, 1000);
+				}
+			});
+		}, 1000);			
+	});
+	
+	$('#create_btn_back').click(function(){
+		$('#createPlan input').val('');
+	});
 });
 
 var initialCSS = function(){
