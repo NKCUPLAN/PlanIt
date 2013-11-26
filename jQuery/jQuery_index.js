@@ -24,7 +24,7 @@ $(document).ready(function(){
 		},
 		success: function(response) {
 			var data = $.parseJSON(response);
-			alert(data['msg']);
+			//alert(data['msg']);
 			if(data['msg'] == "success"){
 				
 				$(".auth").fadeIn(1000);
