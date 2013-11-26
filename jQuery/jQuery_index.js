@@ -9,45 +9,42 @@ var user_pages;
 $(document).ready(function(){
 	initialCSS();
 
-	Loading();
-	setTimeout(function(){
-		$.ajax({
-			url: 'php/loginAuto.php',
-			cache: false,
-			dataType: 'html',
-			type:'POST',
-			data: { 
-				secret: LoadCookie()
-			},
-			error: function(xhr) {
-				alert("網路出現問題，請稍候再試!!");
-				Loaded();
-			},
-			success: function(response) {
-				Loaded();
-				var data = $.parseJSON(response);
-				if(data['msg'] == "success"){
-					$(".auth").fadeIn(1000);
-					
-					first_name = data['first_name'];
-					last_name = data['last_name'];
-					secret = data['secret'];
-					
-					LoadPlans(secret);
-					
-					AdjustBookSize();
-				}
-				else{
-					$('.unauth').fadeIn(1000);
-				}
+	$.ajax({
+		url: 'php/loginAuto.php',
+		cache: false,
+		dataType: 'html',
+		type:'POST',
+		data: { 
+			secret: LoadCookie()
+		},
+		error: function(xhr) {
+			alert("網路出現問題，請稍候再試!!");
+		},
+		success: function(response) {
+			var data = $.parseJSON(response);
+			alert(data['msg']);
+			if(data['msg'] == "success"){
+				$(".auth").fadeIn(1000);
+				
+				first_name = data['first_name'];
+				last_name = data['last_name'];
+				secret = data['secret'];
+				
+				LoadPlans(secret);
+				
+				AdjustBookSize();
 			}
-		});
-	}, 1000);
+			else{
+				$('.unauth').fadeIn(1000);
+			}
+		}
+	});
+
 	//-----------------------------------------------------------header
 	$('#menu_logout').click(function(){
 		$('.auth').fadeOut(1000, function(){
 			$('.unauth').fadeIn(1000);
-			$('.bb-item:not(#createPlan)').remove();
+			$('.bb-item:not(#page_create)').remove();
 			$('#list_plans li').remove();
 		});
 		ClearCookie();
@@ -133,54 +130,47 @@ $(document).ready(function(){
 			alert('需先開啟瀏覽器cookie功能');
 			return;
 		}
-		
-		Loading();
-		setTimeout(function(){
-			$.ajax({
-				url: 'php/login.php',
-				cache: false,
-				dataType: 'html',
-				type:'POST',
-				data: { 
-					acc: $('#acc').val(),
-					pwd: $('#pwd').val()
-				},
-				error: function(xhr) {
-					alert("網路出現問題，請稍候再試!!");
-					Loaded();
-				},
-				success: function(response) {
-					var data = $.parseJSON(response);
-					if(data['msg'] == "success"){
-						first_name = data['first_name'];
-						last_name = data['last_name'];
-						secret = data['secret'];
-						
-						$('#loading').empty();
-						
-						if($('#rem').prop('checked'))
-							WriteCookie(secret);
-						else
-							ClearCookie();
+		$.ajax({
+			url: 'php/login.php',
+			cache: false,
+			dataType: 'html',
+			type:'POST',
+			data: { 
+				acc: $('#acc').val(),
+				pwd: $('#pwd').val()
+			},
+			error: function(xhr) {
+				alert("網路出現問題，請稍候再試!!");
+			},
+			success: function(response) {
+				var data = $.parseJSON(response);
+				if(data['msg'] == "success"){
+					first_name = data['first_name'];
+					last_name = data['last_name'];
+					secret = data['secret'];
+					
+					$('#loading').empty();
+					
+					if($('#rem').prop('checked'))
+						WriteCookie(secret);
+					else
+						ClearCookie();
 
-						LoadPlans(secret);
-						$('#cover_lock').animate({transform: 'rotate(1080deg)'}, 2000, function(){
-							$('.unauth').fadeOut(1000, function(){
-								$('#acc').val('');
-								$('#pwd').val('');
-								$(".auth").fadeIn(1000);
-								AdjustBookSize();
-								Loaded();
-							});
+					LoadPlans(secret);
+					$('#cover_lock').animate({transform: 'rotate(1080deg)'}, 2000, function(){
+						$('.unauth').fadeOut(1000, function(){
+							$('#acc').val('');
+							$('#pwd').val('');
+							$(".auth").fadeIn(1000);
+							AdjustBookSize();
 						});
-					}
-					else{
-						Loaded();
-						$('#unauth').effect('shake');
-					}
+					});
 				}
-			});
-		}, 1000);
+				else{
+					$('#unauth').effect('shake');
+				}
+			}
+		});
 	});
 	
 	$('#login_register').click(function(){
@@ -209,79 +199,120 @@ $(document).ready(function(){
 				$('#last_name').val(),
 				$('#mail').val(),
 				$('#gender').val())){
-			
-			Loading();
-			setTimeout(function(){
-				$.ajax({
-					url: 'php/register.php',
-					cache: false,
-					dataType: 'html',
-					type:'POST',
-					data: { 
-						acc: $('#acc').val(),
-						pwd: $('#pwd').val(),
-						first_name: $('#first_name').val(),
-						last_name: $('#last_name').val(),
-						mail: $('#mail').val(),
-						gender: ($('input[name=gender]:checked').val() == "male")? 1: 0
-					},
-					error: function(xhr) {
-						alert('網路連線錯誤，請稍後再試');
-						Loaded();
-					},
-					success: function(response) {
-						Loaded();
-						if(response.trim() == "success"){
-							$('#hint').css('color', '#00FA03');
-							$('#dialog_login input').val('');
-							alert('申請帳號成功! 請重新登入!');
-							$('#login_register').trigger('click');
-						}
-						else{
-							$('#hint').css('color', 'red');
-							$('#hint').text('申請帳號失敗! 請稍後再次嘗試!');
-						}
-						
-					}
-				});
-			}, 1000);
-		}
-	});
-	
-	$('#create_btn_create').click(function(){
-		Loading();
-		setTimeout(function(){
+
 			$.ajax({
-				url: 'php/createPlan.php',
+				url: 'php/register.php',
 				cache: false,
 				dataType: 'html',
 				type:'POST',
 				data: { 
-					secret: LoadCookie(),
-					name: $('#createName').val(),
-					content: $('#createContent').val(),
-					start: $('#createStart').val(),
-					end: $('#createEnd').val(),
-					unit: $('#createUnit').val(),
-					deadline: $('#createDeadline').val()
+					acc: $('#acc').val(),
+					pwd: $('#pwd').val(),
+					first_name: $('#first_name').val(),
+					last_name: $('#last_name').val(),
+					mail: $('#mail').val(),
+					gender: ($('input[name=gender]:checked').val() == "male")? 1: 0
 				},
 				error: function(xhr) {
 					alert('網路連線錯誤，請稍後再試');
-					Loaded();
 				},
 				success: function(response) {
-					$('.bb-item:not(#createPlan)').remove();
-					$('#list_plans li').remove();
-					LoadPlans(secret);
-					Loaded();
-					setTimeout(function(){$('#book').bookblock('last');}, 1000);
+					if(response.trim() == "success"){
+						$('#hint').css('color', '#00FA03');
+						$('#dialog_login input').val('');
+						alert('申請帳號成功! 請重新登入!');
+						$('#login_register').trigger('click');
+					}
+					else{
+						$('#hint').css('color', 'red');
+						$('#hint').text('申請帳號失敗! 請稍後再次嘗試!');
+					}
+					
 				}
 			});
-		}, 1000);			
+		}
 	});
 	
-	$('#create_btn_back').click(function(){
-		$('#createPlan input').val('');
+	$('#create_create').click(function(){
+		$.ajax({
+			url: 'php/createPlan.php',
+			cache: false,
+			dataType: 'html',
+			type:'POST',
+			data: { 
+				secret: LoadCookie(),
+				name: $('#create_name').val(),
+				content: $('#create_content').val(),
+				start: $('#create_start').val(),
+				end: $('#create_end').val(),
+				unit: $('#create_unit').val(),
+				deadline: $('#create_deadline').val()
+			},
+			error: function(xhr) {
+				alert('網路連線錯誤，請稍後再試');
+			},
+			success: function(response) {
+				alert('3');
+				$.ajax({
+					url: 'php/loadPlans.php',
+					cache: false,
+					dataType: 'html',
+					type:'POST',
+					data: { 
+						secret: secret
+					},
+					error: function(xhr) {
+						alert('網路連線錯誤，請稍後再試');
+					},
+					success: function(response) {
+						var data = $.parseJSON(response);
+						
+						$('.bb-item:not(#page_create)').remove();
+						$('#list_plans li').remove();
+						
+						for(var k in data){
+							$('#list_plans').append('<li>' + data[k]['name'] + '</li>');
+							AddPage(data[k]);
+						}
+						
+						$('#aside_contents li, #new_plan').bind({
+							mouseenter: function(){
+								$(this).css('color', 'yellow');
+								$(this).css('cursor', 'pointer');
+							},
+							mouseleave: function(){
+								$(this).css('color', 'brown');
+							}
+						});
+						
+						$('#aside_contents li').each(function(i){
+							$(this).click(function(){
+								TurnToPage(i+2);
+							});
+						});
+						
+						$('#new_plan').click(function(){
+							TurnToPage(1);
+						});
+						
+						$('#book').bookblock();
+					}
+				})/*.then(function(){
+					$('#book').bookblock('next');
+				})*/;
+			}
+		});
+	});
+	
+	$(document).ajaxStart(function(){
+		Loading();
+	});
+	$(document).ajaxComplete(function(){
+		Loaded();
+	});
+	
+	$('#create_back').click(function(){
+		$('#page_create input').val('');
 	});
 });
 
@@ -424,6 +455,7 @@ var LoadPlans = function(secret){
 			secret: secret
 		},
 		error: function(xhr) {
+			return false;
 		},
 		success: function(response) {
 			var data = $.parseJSON(response);
@@ -432,8 +464,6 @@ var LoadPlans = function(secret){
 				$('#list_plans').append('<li>' + data[k]['name'] + '</li>');
 				AddPage(data[k]);
 			}
-			
-			$('#book').bookblock();
 			
 			$('#aside_contents li, #new_plan').bind({
 				mouseenter: function(){
@@ -454,6 +484,8 @@ var LoadPlans = function(secret){
 			$('#new_plan').click(function(){
 				TurnToPage(1);
 			});
+			
+			$('#book').bookblock();
 		}
 	});
 }
