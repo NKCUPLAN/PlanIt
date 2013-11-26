@@ -39,7 +39,7 @@ aside #aside_contents{
 	
 	position: relative;
 
-    background: url(../img/scroll.png) no-repeat;
+    background: url(../img/scroll2.png) no-repeat;
     background-size: 100% 100%;
 }
 
@@ -134,8 +134,8 @@ body{
 	background:url(../img/BlueBook4.png);
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
-	-webkit-filter: drop-shadow(5px 5px 10px #222);
-    filter:         drop-shadow(5px 5px 10px #222); 	
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter:         drop-shadow(5px 5px 5px #222); 	
 }
 
 #bug{
@@ -144,8 +144,8 @@ body{
 	left: 25%;
 	height: 220px;
 	width: 150px;
-	-webkit-filter: drop-shadow(3px 3px 5px #222);
-    filter:         drop-shadow(3px 3px 5px #222); 
+	-webkit-filter: drop-shadow(3px 3px 2px #222);
+    filter:         drop-shadow(3px 3px 2px #222); 
 }
 
 #content{
@@ -161,12 +161,13 @@ body{
 
 	height: 38rem;
 	width: 33rem;
+	top: 1rem;
 	background: url(../img/BookCover2.png) no-repeat;
 	background-size: contain;
 	background-position: center center;
 	text-align: center;
-	-webkit-filter: drop-shadow(5px 5px 10px #222);
-    filter:         drop-shadow(5px 5px 10px #222); 
+	-webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter:         drop-shadow(5px 5px 5px #222); 
 }
 
 #cover_lock{

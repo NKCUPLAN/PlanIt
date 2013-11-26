@@ -84,10 +84,10 @@ h2{
 
 #page_create input{
 	display:inline;
-	margin-right:13px;
+	margin-right:15px;
 	height:25px;
 	border-width:0px;
-	background: rgba(172, 191, 206, 0.25);
+	background: #D0DDE9;
 	color: black;
 }
 
@@ -129,7 +129,6 @@ h2{
 	left:30px;
 	text-align:center;
 	font-size:25px;
-  
 }
 .create_name_text{
 	position:absolute;
@@ -138,7 +137,7 @@ h2{
 	left:30px;
 	height:25px;
 	border-width:0px;
-	background:#acbfce;
+	background: #D0DDE9;
 }
 
 .create_target{
@@ -190,6 +189,13 @@ h2{
 .create_botton{
   margin-top:5%;
 }
+.create_bug{
+	position: absolute;
+	bottom: 0;
+	left: 13%;
+	height: 150px;
+	width: 100px;
+}
 .value{
 	position:absolute;
 	top:230px;
@@ -202,15 +208,17 @@ h2{
 	margin-right:13px;
 	height:25px;
 	border-width:0px;
-	background:#acbfce;
+	background: #D0DDE9;
 }
 
 #create_deadline{
-	width:6em;
+	width:6.25em;
+	background: #D0DDE9;
 }
 
 #create_deadtime{
-	width:5em;
+	width:6.25em;
+	background: #D0DDE9;
 }
 
 #line input[type="text"]{
@@ -249,4 +257,58 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+/****** FIRST CREATE THE BUBBLE *****/
+p.thought {
+position:relative; /*see the support section below for more info*/
+top:320px;
+left:140px;
+width:110px; /*size of the bubble*/
+padding:10px 20px;
+margin:10px 10px 80px 40px;
+/**give the bubble's background a gradient**/
+background:#F8CD31; /*fallback colour for non-supporting browsers*/
+/**give the corners a large curve**/
+-webkit-border-radius:180px;
+-moz-border-radius:180px;
+border-radius:180px;
+/**add a drop shadow to the bubble**/
+
+/**style the text**/
+color:#575544;
+font-size:1em;
+letter-spacing:.06em;
+}
+
+/******NOW CREATE THE THOUGHT CIRCLES*****/
+/****FIRST THE LARGE CIRCLE***/
+p.thought:before {
+content:"";
+position:absolute; /*see the support section below for more info*/
+bottom:-40px; /*distance from the bottom of the bubble*/
+left:20px; /*distance from the left edge of the bubble*/
+background:#F8CD31;
+width:30px; /*same as the height*/
+height:30px; /*same as the width*/
+/*add a curve to the corners the same size as the height and width*/
+-webkit-border-radius:30px;
+-moz-border-radius:30px;
+border-radius:30px;
+/*add a drop shadow*/
+
+}
+/*****NOW THE SMALL CIRCLE***/
+/**Created exactly the same way as the large circle, except with smaller width, height and border-radius**/
+p.thought:after {
+content:"";
+position:absolute;
+bottom:-55px;
+left:0;
+width:15px;
+height:15px;
+background:#F8CD31;
+-webkit-border-radius:15px;
+-moz-border-radius:15px;
+border-radius:15px;
+
 }
