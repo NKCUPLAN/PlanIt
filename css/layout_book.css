@@ -58,8 +58,7 @@
 	margin-bottom:5%;
 	padding: 10px;
 	line-height: 30px;	
-	font-size: 50px;    
-  
+	font-size: 50px;
 }
 
 .page_diaryContent{ 
@@ -74,15 +73,24 @@
    height:50px;
    background-color:#2f5596;
 }
-p #createDeadline{
+p #create_deadline{
   font-size:20px;
-  color:red;
-  width: 6em;
+  //color:red;
 }
 h2{
    font: bold 1.4em 'Lucida sans', 'Trebuchet MS', Tahoma, Arial;
    color: #555;
 }
+
+#page_create input{
+	display:inline;
+	margin-right:13px;
+	height:25px;
+	border-width:0px;
+	background: rgba(172, 191, 206, 0.25);
+	color: black;
+}
+
 .create_left{
 	position: absolute;
 	left: 0;
@@ -96,7 +104,6 @@ h2{
 	position: absolute;
 	right: 0;	
 	top:0;
-	//background: url(http://merry.ee.ncku.edu.tw/~htckenny/PlanIt/img/paper1.jpg) 0 0;
 	background:#e8f0fb;
 	box-shadow: inset 1px -1px 6px -1px #5A8397;
 }
@@ -109,49 +116,101 @@ h2{
  
 }
 .create_title{  
+	position:absolute;
+	top:10px;
+	left:5px;
 	font-size: 30px;
+	padding:10px;
 	cursor: default; 
 }
 .create_name{
-  text-align:center;
-  font-size:30px;
+	position:absolute;
+	top:80px;
+	left:30px;
+	text-align:center;
+	font-size:25px;
   
 }
-.create_target{
-	margin:5% 60% 5% 0;		
-	
-	font-size: 30px;    
+.create_name_text{
+	position:absolute;
+	top:120px;
+	width:313px;
+	left:30px;
+	height:25px;
+	border-width:0px;
+	background:#acbfce;
 }
-.create_deadline{
-	margin-top:20px;
+
+.create_target{
+	position:absolute;
+	top:160px;
+	left:30px;
+	font-size: 25px;    
 }
 .create_flow{
-  margin:10px;
-  font-size: 25px; 
+	position:absolute;
+	top:200px;
+	left:30px;
+	font-size: 20px; 
 }
 .create_flow li{  
-  margin-right:10%;
-  display:inline;
+	display:inline;
+	margin-right:55px;
+	
+}
+.create_deadline{
+	position:absolute;
+	top:280px;
+	left:30px;
+	font-size:25px;
+	font-weight:normal;
+}
+
+.create_picture{
+	background: url(../img/goals.png);
+	width:	294px;
+	height:	180px;
+	position:absolute;
+	top:20px;
+	left:40px;
+	padding:10px;
 }
 .create_diary{
-	font-size: 30px;
-		
+	position:absolute;
+	top:250px;
+	left:110px;	
+	font-size:	30px;
+	
 }
 .create_diaryContent{ 
 	padding:5px;
+	position:absolute;
+	top:280px;
 }
 .create_botton{
   margin-top:5%;
 }
+.value{
+	position:absolute;
+	top:230px;
+	left:30px;
+}
 
 .value input{
-  margin-right:10%;
-	font-size:18px;
-	border:1px solid #787878; 
-	padding: 5px 5px;   
-	width:60px;
+	display:inline;
+	width:90px;
+	margin-right:13px;
 	height:25px;
-	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);  
+	border-width:0px;
+	background:#acbfce;
+}
+
+#create_deadline{
+	width:6em;
+}
+
+#create_deadtime{
+	width:5em;
 }
 
 #line input[type="text"]{
@@ -165,106 +224,7 @@ h2{
 	height:30px;
 	text-align:center;  
 }
-.button
-{        
-  display: inline-block;
-  white-space: nowrap;
-  background-color: #ddd;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ccc));
-  background-image: -webkit-linear-gradient(top, #eee, #ccc);
-  background-image: -moz-linear-gradient(top, #eee, #ccc);
-  background-image: -ms-linear-gradient(top, #eee, #ccc);
-  background-image: -o-linear-gradient(top, #eee, #ccc);
-  background-image: linear-gradient(top, #eee, #ccc);
-  border: 1px solid #777;
-  padding: 0 1.5em;
-  margin: 0.5em;
-  font: bold 1em/2em Arial, Helvetica;
-  text-decoration: none;
-  color: #333;
-  text-shadow: 0 1px 0 rgba(255,255,255,.8);
-  -moz-border-radius: .2em;
-  -webkit-border-radius: .2em;
-  border-radius: .2em;
-  -moz-box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
-  -webkit-box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
-  box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
-}
-.button:hover
-{
-  background-color: #eee;        
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#ddd));
-  background-image: -webkit-linear-gradient(top, #fafafa, #ddd);
-  background-image: -moz-linear-gradient(top, #fafafa, #ddd);
-  background-image: -ms-linear-gradient(top, #fafafa, #ddd);
-  background-image: -o-linear-gradient(top, #fafafa, #ddd);
-  background-image: linear-gradient(top, #fafafa, #ddd);
-}    
-.button:active
-{
-  -moz-box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
-  -webkit-box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
-  box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
-  position: relative;
-  top: 1px;
-}
-    
-.button:focus
-{
-  outline: 0;
-  background: #fafafa;
-}    
-    
-.button:before
-{
-  background: #ccc;
-  background: rgba(0,0,0,.1);
-  float: left;        
-  width: 1em;
-  text-align: center;
-  font-size: 1.5em;
-  margin: 0 1em 0 -1em;
-  padding: 0 .2em;
-  -moz-box-shadow: 1px 0 0 rgba(0,0,0,.5), 2px 0 0 rgba(255,255,255,.5);
-  -webkit-box-shadow: 1px 0 0 rgba(0,0,0,.5), 2px 0 0 rgba(255,255,255,.5);
-  box-shadow: 1px 0 0 rgba(0,0,0,.5), 2px 0 0 rgba(255,255,255,.5);
-  -moz-border-radius: .15em 0 0 .15em;
-  -webkit-border-radius: .15em 0 0 .15em;
-  border-radius: .15em 0 0 .15em;     
-  pointer-events: none;		
-}
-button.button, input.button 
-{ 
-  cursor: pointer;
-  overflow: visible; /* removes extra side spacing in IE */
-}
-	
-	/* removes extra inner spacing in Firefox */
-button::-moz-focus-inner 
-{
-  border: 0;
-  padding: 0;
-}
-	
-	/* If line-height can't be modified, then fix Firefox spacing with padding */
-input::-moz-focus-inner 
-{
-  padding: .4em;
-}
 
-	/* The disabled styles */
-.button[disabled], .button[disabled]:hover, .button.disabled, .button.disabled:hover 
-{
-  background: #eee;
-  color: #aaa;
-  border-color: #aaa;
-  cursor: default;
-  text-shadow: none;
-  position: static;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;		
-}   
     
 .delete:before
 {
@@ -280,20 +240,10 @@ input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
-#book input[type="number"]{
-	font-size:24px;
-	border:1px solid #787878; 
-	padding: 5px 5px;   
-	width:50px;
-	height:30px;
-	box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.4);  
-}
+
 #book input:focus{
-	outline:none;
-  
+	outline:none;	
 }
-
-
 
 input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */

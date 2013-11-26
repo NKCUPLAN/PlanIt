@@ -39,6 +39,10 @@
 <!-- For button style-->
 <link href="Plugin_css/style.css" rel="stylesheet" type="text/css" />
 
+<!-- For time picker-->
+<link href="Plugin_css/jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="Plugin_jQuery/jquery-ui-timepicker-addon.js"></script>
+
 <script type="text/javascript" src="jQuery/jQuery_index.js"></script>
 
 </head>
@@ -192,45 +196,45 @@
 		<div id="book-base"></div>
 		<!--BOOK CONTENT-->
 		<div id="book" class="bb-bookblock">
-			<div class="bb-item" id="createPlan">
+			<div class="bb-item" id="page_create">
 				<div class="create_left">
 					<div class="create_title">
 						<h2>Create Plan</h2>
 					</div>
 					<div class="create_name" id="line">
-						計畫名稱 : <input type="text" maxlength="20" id="createName"/>
+						計畫名稱 : 
 					</div>
-					<div class="create_target">目標:</div>
+					<input class="create_name_text" type="text" maxlength="20" id="create_name">
+					<div class="create_target">設定目標:</div>
 					<div class="create_flow">
 						<li>初始值</li>
-						<li>單位</li>
+						<li>單位 </li>
 						<li>最終值</li>
-						<form class="value">
-							<input type="number" id="createStart"/>
-							<input type="text" id="createUnit"/>
-							<input type="number" id="createEnd"/>
-							<div class="create_deadline">
-								<p>
-									Dead Line: <input type="text" maxlength="10" size="10" id="createDeadline" />
-								</p>
-							</div>
-						</form>
 					</div>
+					<div class="value">
+						<input type="number" id="create_start"/>
+						<input type="text" id="create_unit"/>
+						<input type="number" id="create_end"/>
+					</div>
+					<div class="create_deadline">
+						結束日期：<input type="text" id="create_deadline"/><input type="text" id="create_deadtime" />
+					</div>
+					<!--<div id="date_position" ><input type="text" id="datepicker" /></div>-->
+					
 				</div>
 				<div class="create_right">
-					<div class="picture">
-						<img src="img/goals.png" width='294px' height='220px'>
-					</div>
+					<div class="create_picture"></div>
 					<div class="create_diary">給自己的話</div>
 					<div class="create_diaryContent" id="line">
 						<form>
-							<input type=text maxlength="20" id="createContent"> <input type=text
-								maxlength="20"> <input type=text maxlength="20">
+							<input type="text" maxlength="20" id="create_content"/> 
+							<input type="text" maxlength="20"/> 
+							<input type="text" maxlength="20"/>
 						</form>
 					</div>
 					<div id="button">
-						<a href="javascript: void(0)" class="back" id="create_btn_back">Back<span></span></a>
-						<a href="javascript: void(0)" class="create" id="create_btn_create">Create<span></span></a>
+						<a href="#" class="back" id="create_back">Back<span></span></a>
+						<a href="#" class="create" id="create_create">Create<span></span></a>
 					</div>
 				</div>
 			</div>
@@ -299,7 +303,10 @@
 	<!--datepicker-->
 	<script>
 		$(function(){
-			$("#createDeadline").datepicker({dateFormat: 'yy-mm-dd'});
+			$("#create_deadline").datepicker({dateFormat: 'yy-mm-dd'});
+		}); 
+		$(function(){
+			$("#create_deadtime").timepicker({timeFormat: 'HH:mm:ss'});
 		}); 
 	</script>
 

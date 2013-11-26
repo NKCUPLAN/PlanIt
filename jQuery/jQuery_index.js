@@ -6,6 +6,8 @@ var first_name, last_name;
 
 var user_pages;
 
+var new_page_num;
+
 $(document).ready(function(){
 	initialCSS();
 
@@ -24,6 +26,7 @@ $(document).ready(function(){
 			var data = $.parseJSON(response);
 			alert(data['msg']);
 			if(data['msg'] == "success"){
+				
 				$(".auth").fadeIn(1000);
 				
 				first_name = data['first_name'];
@@ -31,7 +34,6 @@ $(document).ready(function(){
 				secret = data['secret'];
 				
 				LoadPlans(secret);
-				
 				AdjustBookSize();
 			}
 			else{
@@ -149,14 +151,14 @@ $(document).ready(function(){
 					last_name = data['last_name'];
 					secret = data['secret'];
 					
-					$('#loading').empty();
-					
-					if($('#rem').prop('checked'))
-						WriteCookie(secret);
-					else
-						ClearCookie();
-
+					//$('#loading').empty();
 					LoadPlans(secret);
+					
+					//if($('#rem').prop('checked'))
+						WriteCookie(secret);
+					//else
+					//	ClearCookie();
+
 					$('#cover_lock').animate({transform: 'rotate(1080deg)'}, 2000, function(){
 						$('.unauth').fadeOut(1000, function(){
 							$('#acc').val('');
@@ -227,79 +229,49 @@ $(document).ready(function(){
 						$('#hint').css('color', 'red');
 						$('#hint').text('申請帳號失敗! 請稍後再次嘗試!');
 					}
-					
 				}
 			});
 		}
 	});
 	
 	$('#create_create').click(function(){
+		alert('XD');
+		var pageData = { 
+			secret: LoadCookie(),
+			name: $('#create_name').val(),
+			content: $('#create_content').val(),
+			start: $('#create_start').val(),
+			end: $('#create_end').val(),
+			unit: $('#create_unit').val(),
+			deadline: $('#create_deadline').val() + ' ' + $('#create_deadtime').val()
+		};
+		
 		$.ajax({
 			url: 'php/createPlan.php',
 			cache: false,
 			dataType: 'html',
 			type:'POST',
-			data: { 
-				secret: LoadCookie(),
-				name: $('#create_name').val(),
-				content: $('#create_content').val(),
-				start: $('#create_start').val(),
-				end: $('#create_end').val(),
-				unit: $('#create_unit').val(),
-				deadline: $('#create_deadline').val()
-			},
+			data: pageData,
 			error: function(xhr) {
 				alert('網路連線錯誤，請稍後再試');
 			},
-			success: function(response) {
-				alert('3');
-				$.ajax({
-					url: 'php/loadPlans.php',
-					cache: false,
-					dataType: 'html',
-					type:'POST',
-					data: { 
-						secret: secret
+			success: function() {
+				AddPage(pageData);
+
+				$('<li>' + pageData['name'] + '</li>').appendTo($('#list_plans')).bind({
+					mouseenter: function(){
+						$(this).css('color', 'yellow');
+						$(this).css('cursor', 'pointer');
 					},
-					error: function(xhr) {
-						alert('網路連線錯誤，請稍後再試');
-					},
-					success: function(response) {
-						var data = $.parseJSON(response);
-						
-						$('.bb-item:not(#page_create)').remove();
-						$('#list_plans li').remove();
-						
-						for(var k in data){
-							$('#list_plans').append('<li>' + data[k]['name'] + '</li>');
-							AddPage(data[k]);
-						}
-						
-						$('#aside_contents li, #new_plan').bind({
-							mouseenter: function(){
-								$(this).css('color', 'yellow');
-								$(this).css('cursor', 'pointer');
-							},
-							mouseleave: function(){
-								$(this).css('color', 'brown');
-							}
-						});
-						
-						$('#aside_contents li').each(function(i){
-							$(this).click(function(){
-								TurnToPage(i+2);
-							});
-						});
-						
-						$('#new_plan').click(function(){
-							TurnToPage(1);
-						});
-						
-						$('#book').bookblock();
+					mouseleave: function(){
+						$(this).css('color', 'brown');
 					}
-				})/*.then(function(){
-					$('#book').bookblock('next');
-				})*/;
+				}).click(function(){
+					TurnToPage($('#aside_contents li').size() + 1);
+				});
+				$('#page_create input').val('');
+				$('#book').bookblock();
+				$('#book').bookblock('last');
 			}
 		});
 	});
@@ -498,7 +470,7 @@ var AddPage = function(data){
 	var page_top = $('<div class="page_top"></div>').appendTo(page);
 	
 	page_left.append('<div class="page_title">' + data['name'] +'</div>');			
-	page_left.append('<div class="page_progress"><input type="number"> kg / 20 kg</div>');
+	page_left.append('<div class="page_progress"><input type="number"/> kg / 20 kg</div>');
 	page_left.append('<div id="button"><a href="" class="save">Save<span></span></a></div>');				  
 
 	page_right.append('<div class="page_diary">日記</div>');

@@ -300,66 +300,7 @@ body{
 	display: none;
 	float: right;
 }
-
-
-/*#menu{
-	position: fixed;
-	width: 100%;
-	display: block;
-	height: 39px;
-	font-size: 11px;
-	font-weight: bold;
-	background: transparent repeat-x top left;
-	font-family: Arial, Verdana, Helvitica, sans-serif;
-	border-top:4px solid #B30000;
-	z-index: 1000;
-}
-
-#menu ul{
-	list-style-type: none;
-	width: auto;
-}
-
-#menu ul li{
-	display: block;
-	float: left;
-	margin: 0;
-	cursor: pointer;
-}
-
-#menu ul li a{
-	float: left;
-	
-	color: #888;
-	text-decoration: none;
-	text-align: center;
-	font-size: 14px;
-	
-	padding: 0 10px;
-	height: 28px;
-	line-height: 28px;
-	background: transparent no-repeat top right;
-}
-
-#menu ul li a:hover{
-	color: #B30000;
-	background: #fff url(img/bgON1.gif) no-repeat top right;
-}
-
-#menu ul li a:not(#menu_logout){
-	display:block;
-}
-
-#menu_logout{
-	position:fixed;
-	right:1rem;
-	display:none;
-}*/
-
-
-
 /* ^^^^^^^^ ABOVE IS THE CODE FOR THE MENU ^^^^^^^^^^ */
-
 
 #hint{
 	color: pink;
