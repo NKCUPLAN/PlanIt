@@ -24,7 +24,7 @@ $(document).ready(function(){
 		},
 		success: function(response) {
 			var data = $.parseJSON(response);
-			//alert(data['msg']);
+
 			if(data['msg'] == "success"){
 				
 				$(".auth").fadeIn(1000);
@@ -32,6 +32,7 @@ $(document).ready(function(){
 				first_name = data['first_name'];
 				last_name = data['last_name'];
 				secret = data['secret'];
+				$('#menu_user').text(first_name+last_name);
 				
 				LoadPlans(secret);
 				AdjustBookSize();
@@ -150,8 +151,8 @@ $(document).ready(function(){
 					first_name = data['first_name'];
 					last_name = data['last_name'];
 					secret = data['secret'];
-					
-					//$('#loading').empty();
+					$('#menu_user').text(first_name+last_name);
+					$('#loading').empty();
 					LoadPlans(secret);
 					
 					//if($('#rem').prop('checked'))
@@ -165,6 +166,7 @@ $(document).ready(function(){
 							$('#pwd').val('');
 							$(".auth").fadeIn(1000);
 							AdjustBookSize();
+							$('#cover_lock').animate({transform: 'rotate(0deg)'});
 						});
 					});
 				}
@@ -192,7 +194,6 @@ $(document).ready(function(){
 	});
 		
 	$('#register').click(function(){
-		alert($('input[name=gender]:checked').val());
 		if(CheckRegisterInfo(
 				$('#acc').val(),
 				$('#pwd').val(),
@@ -235,7 +236,6 @@ $(document).ready(function(){
 	});
 	
 	$('#create_create').click(function(){
-		alert('XD');
 		var pageData = { 
 			secret: LoadCookie(),
 			name: $('#create_name').val(),
@@ -291,8 +291,6 @@ $(document).ready(function(){
 var initialCSS = function(){
 	var h = $(document).height();
     var w = $(document).width();
-    
-    $('aside').css('marginTop', h * 0.05); 
 	
 	AdjustBookSize();
 	
@@ -321,6 +319,9 @@ var AdjustBookSize = function(){
 
 	$('#loading').css('top', (h - $('#loading').height())/2);
 	$('#loading').css('left', (w - $('#loading').width())/2);
+	
+	$('aside').css('height', (h - $('.ui.inverted.menu').height()) * 0.9);
+	$('aside').css('marginTop', h*0.05 + $('.ui.inverted.menu').height()*0.95); 
 }
 
 var CheckAcc = function(acc){ 
@@ -470,7 +471,9 @@ var AddPage = function(data){
 	var page_top = $('<div class="page_top"></div>').appendTo(page);
 	
 	page_left.append('<div class="page_title"><h3>' + data['name'] +'</h3></div>');			
-	page_left.append('<div class="page_progress"><input class="page_number" type="number"/> kg / 20 kg</div>');
+	page_left.append('<div class="page_progress">'
+						+'<input class="page_number" type="number" value="' + data['now'] + '"/> ' 
+						+ data['unit']+' / '+data['end']+ data['unit'] + '</div>');
 	page_left.append('<div id="button"><a href="" class="save">Save<span></span></a></div>');				  
 
 	page_right.append('<div class="page_diary">日記</div>');

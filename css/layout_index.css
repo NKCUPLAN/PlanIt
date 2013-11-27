@@ -9,7 +9,6 @@ aside{
 	//display: none;
 	position: absolute;
     right: 0;
-    height: 90%;
     background: rgba(0, 0, 0, 0.2);
 	
 	border-top-left-radius: 15px;
@@ -297,7 +296,7 @@ body{
 	width: 100%;
 }
 
-#menu_logout{
+#menu_logout, #menu_user{
 	display: none;
 	float: right;
 }
