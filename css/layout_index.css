@@ -2,149 +2,24 @@
 	margin: 0;
     padding: 0;
 	font-family: 微軟正黑體;
-}
-
-
-aside{
-	//display: none;
-	position: absolute;
-    right: 0;
-    background: rgba(0, 0, 0, 0.2);
 	
-	border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-	z-index: 200;
-	margin: 0;
 }
 
-aside #aside_switch{
-	float: left;
-    
-    position: relative;
-    background: rgba(0, 0, 0, 0.2);
-    height: 100%;
-    width: 15px;
-
-	border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-	
-	cursor: pointer;
-}
-
-aside #aside_contents{
-	float: left;
-    height: 100%;
-    width: 240px;
-	
-	position: relative;
-
-    background: url(../img/scroll2.png) no-repeat;
-    background-size: 100% 100%;
-}
-
-aside #aside_contents #list_plans{
-	list-style-type: none;
-    
-    margin: 15px 22px 0px 22px;
-
-	position: relative; 
-}
-
-aside #aside_contents #list_plans:not(li){
-	line-height: 60px;
-    text-align:  center;
-    font-size: 20px;
-    
-}
-
-aside #aside_contents #list_plans li{
-	text-align: left;
-	line-height: 20px;
-    font-family: Buxton Sketch;
-    font-size: 20px;
-    
-    color: brown;
-    font-family: 微軟正黑體;
-    padding: 10px 10px 10px 15px;
-    //border-top: 1px dotted purple;
-}
-
-aside #aside_contents #new_plan{
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	
-	text-align: center;
-	line-height: 22px;
-    
-    font-size: 22px;
-	
-	margin: 27px 0px 27px 0px;
-    
-	cursor:pointer;
-    color: brown;
-	font-weight: bold;
-}
-
-#unauth, #auth{
-	position: fixed;
-	left: 0;
-	top: 0;
-	
-	height: 100%;
-	width: 100%;
-	background: transparent;
-	_zoom:1;
-}
-
-#unauth{
-	overflow: hidden;
-}
-
-#auth{
-	overflow: hidden; 
-}
-
-.unauth, .auth{
-	display:none;
+html {
+	font-size:100%; 
 }
 
 body{
+	min-width: 600px;
 	position: absolute;
     left: 0;
     top: 0;
     background: url(../img/table.jpg);
 	background-size: cover;
-	background-repeat: no-repeat;
+	background-repeat: repeat;
     width: 100%;
     height: 100%;
     overflow: hidden;
-}
-
-#book{
-	position: fixed; 
-	left: 2rem;
-	top: 4rem;	
-	
-}
-
-#book-base{
-	position:fixed;
-	background:url(../img/BlueBook4.png);
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-	-webkit-filter: drop-shadow(5px 5px 5px #222);
-    filter:         drop-shadow(5px 5px 5px #222); 	
-}
-
-#bug{
-	position: absolute;
-	bottom: 0;
-	left: 25%;
-	height: 220px;
-	width: 150px;
-	-webkit-filter: drop-shadow(3px 3px 2px #222);
-    filter:         drop-shadow(3px 3px 2px #222); 
 }
 
 #content{
@@ -152,123 +27,6 @@ body{
 	width: 100%;
 	
 	background: white;
-}
-
-#cover{
-	position: relative;
-	margin: 1.5rem 0 0 45%;
-
-	height: 38rem;
-	width: 33rem;
-	top: 1rem;
-	background: url(../img/BookCover2.png) no-repeat;
-	background-size: contain;
-	background-position: center center;
-	text-align: center;
-	-webkit-filter: drop-shadow(5px 5px 5px #222);
-    filter:         drop-shadow(5px 5px 5px #222); 
-}
-
-#cover_lock{
-	position: relative;
-	
-	width: 250px;
-	height: 250px;
-	margin: auto;
-	background: url(../img/lock.png) no-repeat;
-	background-size: contain;
-	background-position: center center;
-	top: 250px;
-}	
-
-#dialog_login{
-	position: absolute;
-	top: 0;
-	width: 300px;
-	left : 3rem;
-	top:auto;
-	bottom: 10rem;
-	
-	background: rgba(0, 0, 0, 0.7);
-	border-radius: 15px;
-	text-align: center;
-	color: white;
-	font-weight: bold;
-	font-size: 23px;
-}
-
-#dialog_login input{
-	font-size: 20px;
-	border-radius: 10px;
-	padding: 0 7px;
-	margin: 4px 0;
-	text-align: center;
-}
-
-#dialog_login .checkBox{
-	font-size: 14px;
-	line-height: 14px;
-}
-
-#dialog_login input:focus{
-	background: #AFFEFF;
-}
-
-::-webkit-input-placeholder{
-	color: #3799FF;
-	font-weight: bold;
-	text-align: center;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-	color: #3799FF;
-	font-weight: bold;
-	text-align: center;
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-	color: #3799FF;
-	font-weight: bold; 
-	text-align: center;
-}
-
-:-ms-input-placeholder {  
-	color: #3799FF;
-	font-weight: bold;
-	text-align: center;	
-}
-
-#dialog_login input{
-	font-size: 20px;
-	border-radius: 10px;
-	padding: 0 7px;
-	margin: 4px 0;
-}
-
-#dialog_login input[name=gender]{
-	margin: 0px 5px;
-}
-
-#dialog_login:not(span){
-	line-height: 30px;
-	margin: 0 auto;
-	padding: 20px;
-}
-
-#dialog_login span{
-	line-height: 40px;
-	margin: 0 10px;
-	cursor: pointer;
-	padding: 5px 8px;
-	border-radius: 8px;
-}
-
-#dialog_login .info_register{
-	display: none;
-}
-
-#dialog_login .hint{
-	font-size: 14px;
 }
 
 #mask{
@@ -280,7 +38,7 @@ body{
 	
 	background: transparent;
 	z-index: 10000;
-	//display:none;
+	display:none;
 	
 	text-align: center;
 }
@@ -296,14 +54,4 @@ body{
 	width: 100%;
 }
 
-#menu_logout, #menu_user{
-	display: none;
-	float: right;
-}
 /* ^^^^^^^^ ABOVE IS THE CODE FOR THE MENU ^^^^^^^^^^ */
-
-#hint{
-	color: pink;
-}
-
-html { font-size:100% } 

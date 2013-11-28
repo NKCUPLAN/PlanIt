@@ -11,7 +11,7 @@ var new_page_num;
 $(document).ready(function(){
 	initialCSS();
 
-	$.ajax({
+	/*$.ajax({
 		url: 'php/loginAuto.php',
 		cache: false,
 		dataType: 'html',
@@ -24,10 +24,9 @@ $(document).ready(function(){
 		},
 		success: function(response) {
 			var data = $.parseJSON(response);
-
 			if(data['msg'] == "success"){
 				
-				$(".auth").fadeIn(1000);
+				$('.auth').fadeIn(1000);
 				
 				first_name = data['first_name'];
 				last_name = data['last_name'];
@@ -41,8 +40,8 @@ $(document).ready(function(){
 				$('.unauth').fadeIn(1000);
 			}
 		}
-	});
-
+	});*/
+	$('.unauth').fadeIn(10);
 	//-----------------------------------------------------------header
 	$('#menu_logout').click(function(){
 		$('.auth').fadeOut(1000, function(){
@@ -290,11 +289,7 @@ $(document).ready(function(){
 });
 
 var initialCSS = function(){
-	var h = $(document).height();
-    var w = $(document).width();
-	
-	AdjustBookSize();
-	
+	AdjustBookSize();	
 } 
 
 var AdjustBookSize = function(){

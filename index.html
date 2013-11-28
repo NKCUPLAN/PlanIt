@@ -34,6 +34,8 @@
 
 <!-- Self-defined Settings -->
 <link rel="stylesheet" type="text/css" href="css/layout_index.css">
+<link rel="stylesheet" type="text/css" href="css/layout_index_unauth.css">
+<link rel="stylesheet" type="text/css" href="css/layout_index_auth.css">
 <link rel="stylesheet" type="text/css" href="css/layout_book.css">
 
 <!-- For button style-->
@@ -44,7 +46,8 @@
 <script type="text/javascript" src="Plugin_jQuery/jquery-ui-timepicker-addon.js"></script>
 
 <script type="text/javascript" src="jQuery/jQuery_index.js"></script>
-
+<script type="text/javascript" src="jQuery/jQuery_unauth.js"></script>
+<script type="text/javascript" src="jQuery/jQuery_index.js"></script>
 </head>
 <body onSelectStart="event.returnValue=false">
 
@@ -180,7 +183,7 @@
 			<span class="loginButton" id="login_register">註冊</span>
 		</div>
 
-		<img id="bug" src="img/bug.png" />
+		<div id="bug"></div>
 	</div>
 
 	<div id="auth" class="auth">
