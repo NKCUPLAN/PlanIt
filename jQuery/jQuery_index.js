@@ -17,7 +17,7 @@ $(document).ready(function(){
 		dataType: 'html',
 		type:'POST',
 		data: { 
-			secret: LoadCookie()
+			secret: window.sessionStorage["secret"]
 		},
 		error: function(xhr) {
 			alert("網路出現問題，請稍候再試!!");
@@ -155,10 +155,11 @@ $(document).ready(function(){
 					$('#loading').empty();
 					LoadPlans(secret);
 					
-					//if($('#rem').prop('checked'))
+					window.sessionStorage["secret"] = secret;
+					if($('#rem').prop('checked'))
 						WriteCookie(secret);
-					//else
-					//	ClearCookie();
+					else
+						ClearCookie();
 
 					$('#cover_lock').animate({transform: 'rotate(1080deg)'}, 2000, function(){
 						$('.unauth').fadeOut(1000, function(){
@@ -495,12 +496,15 @@ var TurnToPage = function(page){
 }
 
 var WriteCookie = function(secret){
+	/*
 	var cookie = "planit=" + secret;
     var date = new Date();
     date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
     var expirestr = date.toGMTString();
     cookie += "; expires=" + expirestr;
     document.cookie = cookie;
+	*/
+	window.localStorage["secret"] = secret;
 }
 
 var ClearCookie = function(){
@@ -514,12 +518,13 @@ var ClearCookie = function(){
 
 var LoadCookie = function(){
     if (document.cookie.length > 0){
-        var c_list = document.cookie.split(";");
+        /*var c_list = document.cookie.split(";");
         for(i in c_list){
             var cook = c_list[i].split("=");
             if(cook[0] == "planit")
 				return cook[1];
-        }
+        }*/
+		window.localStorage["secret"] = secret;
     }
     return;
 }
