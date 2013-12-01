@@ -236,12 +236,21 @@ $(document).ready(function(){
 	});
 	
 	$('#create_create').click(function(){
+		var today=new Date()
+		var year=today.getYear();
+		var month=today.getMonth()+1;
+		var date=today.getDate();
+		var hour=today.getHours();
+		var minute=today.getMinutes();
+		var second=today.getSeconds();
+		
 		var pageData = { 
 			secret: LoadCookie(),
 			name: $('#create_name').val(),
 			content: $('#create_content').val(),
 			start: $('#create_start').val(),
 			end: $('#create_end').val(),
+			now: 0,
 			unit: $('#create_unit').val(),
 			deadline: $('#create_deadline').val() + ' ' + $('#create_deadtime').val()
 		};
@@ -255,7 +264,7 @@ $(document).ready(function(){
 			error: function(xhr) {
 				alert('網路連線錯誤，請稍後再試');
 			},
-			success: function() {
+			success: function(response) {
 				AddPage(pageData);
 
 				$('<li>' + pageData['name'] + '</li>').appendTo($('#list_plans')).bind({

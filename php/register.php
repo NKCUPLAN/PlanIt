@@ -12,7 +12,5 @@
 	$hash = hash('ripemd160', $acc.$pwd);
 	
 	$query = "INSERT INTO 2_member VALUES('', '$acc', '$pwd', '$first_name', '$last_name', '$mail', '$gender', '$hash')";
-	$query = mysql_query($query);
-
-	echo "success";
+	echo mysql_query($query) or die(mysql_error());
 ?>
