@@ -11,22 +11,23 @@ var new_page_num;
 $(document).ready(function(){
 	initialCSS();
 
-	/*$.ajax({
+	$.ajax({
 		url: 'php/loginAuto.php',
 		cache: false,
 		dataType: 'html',
 		type:'POST',
 		data: { 
-			secret: window.sessionStorage["secret"]
+			secret: LoadCookie()
 		},
 		error: function(xhr) {
 			alert("網路出現問題，請稍候再試!!");
 		},
 		success: function(response) {
 			var data = $.parseJSON(response);
+
 			if(data['msg'] == "success"){
 				
-				$('.auth').fadeIn(1000);
+				$(".auth").fadeIn(1000);
 				
 				first_name = data['first_name'];
 				last_name = data['last_name'];
@@ -40,8 +41,8 @@ $(document).ready(function(){
 				$('.unauth').fadeIn(1000);
 			}
 		}
-	});*/
-	$('.unauth').fadeIn(10);
+	});
+
 	//-----------------------------------------------------------header
 	$('#menu_logout').click(function(){
 		$('.auth').fadeOut(1000, function(){
@@ -154,11 +155,10 @@ $(document).ready(function(){
 					$('#loading').empty();
 					LoadPlans(secret);
 					
-					window.sessionStorage["secret"] = secret;
-					if($('#rem').prop('checked'))
+					//if($('#rem').prop('checked'))
 						WriteCookie(secret);
-					else
-						ClearCookie();
+					//else
+					//	ClearCookie();
 
 					$('#cover_lock').animate({transform: 'rotate(1080deg)'}, 2000, function(){
 						$('.unauth').fadeOut(1000, function(){
@@ -289,7 +289,11 @@ $(document).ready(function(){
 });
 
 var initialCSS = function(){
-	AdjustBookSize();	
+	var h = $(document).height();
+    var w = $(document).width();
+	
+	AdjustBookSize();
+	
 } 
 
 var AdjustBookSize = function(){
@@ -491,15 +495,12 @@ var TurnToPage = function(page){
 }
 
 var WriteCookie = function(secret){
-	/*
 	var cookie = "planit=" + secret;
     var date = new Date();
     date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
     var expirestr = date.toGMTString();
     cookie += "; expires=" + expirestr;
     document.cookie = cookie;
-	*/
-	window.localStorage["secret"] = secret;
 }
 
 var ClearCookie = function(){
@@ -513,13 +514,12 @@ var ClearCookie = function(){
 
 var LoadCookie = function(){
     if (document.cookie.length > 0){
-        /*var c_list = document.cookie.split(";");
+        var c_list = document.cookie.split(";");
         for(i in c_list){
             var cook = c_list[i].split("=");
             if(cook[0] == "planit")
 				return cook[1];
-        }*/
-		window.localStorage["secret"] = secret;
+        }
     }
     return;
 }
