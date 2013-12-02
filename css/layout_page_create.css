@@ -1,0 +1,182 @@
+.create_title{  
+	position:absolute;
+	top:10px;
+	left:5px;
+	font-size: 30px;
+	padding:10px;
+	cursor: default; 
+	font: bold 1.4em 'Lucida sans', 'Trebuchet MS', Tahoma, Arial;
+	color: #555;
+	font-size: 40px;
+}
+
+.create_planName{
+	position:absolute;
+	top:80px;
+	left:30px;
+	text-align:center;
+	font-size:25px;
+}
+
+#create_name{
+	position:absolute;
+	top:120px;
+	width:313px;
+	left:30px;
+	height:25px;
+}
+
+.create_goal{
+	position:absolute;
+	top:160px;
+	left:30px;
+	font-size: 25px;    
+}
+
+.create_flow{
+	position:absolute;
+	top:200px;
+	left:30px;
+	font-size: 20px; 
+}
+
+.create_flow li{  
+	display:inline;
+	margin-right:55px;
+}
+
+.value{
+	position:absolute;
+	top:230px;
+	left:30px;
+}
+
+.value input{
+	display:inline;
+	width:90px;
+	margin-right:13px;
+	height:25px;
+}
+
+.create_bug{
+	position: absolute;
+	bottom: 0;
+	left: 13%;
+	height: 150px;
+	width: 100px;
+}
+
+.create_deadline{
+	position:absolute;
+	top:280px;
+	left:30px;
+	font-size:25px;
+	font-weight:normal;
+}
+
+#create_deadDate, #create_deadTime{
+	text-align: center;
+	height:25px;
+	width: 25%;
+	margin: 2px;
+}
+    
+.delete:before
+{
+  content: "\2718";        
+}    
+.save:before
+{
+  content: "\2714";        
+}
+
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+/****** FIRST CREATE THE BUBBLE *****/
+p.thought {
+	position:relative; /*see the support section below for more info*/
+	top:320px;
+	left:140px;
+	width:110px; /*size of the bubble*/
+	padding:10px 20px;
+	margin:10px 10px 80px 40px;
+	/**give the bubble's background a gradient**/
+	background:#F8CD31; /*fallback colour for non-supporting browsers*/
+	/**give the corners a large curve**/
+	-webkit-border-radius:180px;
+	-moz-border-radius:180px;
+	border-radius:180px;
+	/**add a drop shadow to the bubble**/
+
+	/**style the text**/
+	color:#575544;
+	font-size:1em;
+	letter-spacing:.06em;
+}
+
+/******NOW CREATE THE THOUGHT CIRCLES*****/
+/****FIRST THE LARGE CIRCLE***/
+p.thought:before {
+	content:"";
+	position:absolute; /*see the support section below for more info*/
+	bottom:-40px; /*distance from the bottom of the bubble*/
+	left:20px; /*distance from the left edge of the bubble*/
+	background:#F8CD31;
+	width:30px; /*same as the height*/
+	height:30px; /*same as the width*/
+	/*add a curve to the corners the same size as the height and width*/
+	-webkit-border-radius:30px;
+	-moz-border-radius:30px;
+	border-radius:30px;
+	/*add a drop shadow*/
+}
+
+/*****NOW THE SMALL CIRCLE***/
+/**Created exactly the same way as the large circle, except with smaller width, height and border-radius**/
+p.thought:after {
+	content:"";
+	position:absolute;
+	bottom:-55px;
+	left:0;
+	width:15px;
+	height:15px;
+	background:#F8CD31;
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+	border-radius:15px;
+}
+
+/*** RIGHT PAGE ***/
+
+
+.create_picture{
+	background: url(../img/goals.png);
+	width:	294px;
+	height:	180px;
+	padding: 10px;
+	margin: 20px auto 10px auto;
+}
+
+.create_diary{
+	text-align: center;
+	font-size: 30px;
+	margin: 0 auto;
+}
+
+.create_diaryContent{ 
+	margin: 10px 10% 5% 10%;
+	padding:5px;
+	width: 80%;
+	height: 20%;
+	resize: none;
+}

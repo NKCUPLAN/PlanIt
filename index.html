@@ -33,8 +33,10 @@
 	src="Plugin_jQuery/jquery.animateImages.js"></script>
 
 <!-- Self-defined Settings -->
-<link rel="stylesheet" type="text/css" href="css/layout_index.css">
-<link rel="stylesheet" type="text/css" href="css/layout_book.css">
+<link rel="stylesheet" type="text/css" href="css/layout_index.css"/>
+<link rel="stylesheet" type="text/css" href="css/layout_book.css"/>
+<link rel="stylesheet" type="text/css" href="css/layout_page.css"/>
+<link rel="stylesheet" type="text/css" href="css/layout_page_create.css"/>
 
 <!-- For button style-->
 <link href="Plugin_css/style.css" rel="stylesheet" type="text/css" />
@@ -198,15 +200,11 @@
 		<!--BOOK CONTENT-->
 		<div id="book" class="bb-bookblock">
 			<div class="bb-item" id="page_create">
-				<div class="create_left">
-					<div class="create_title">
-						<h2>Create Plan</h2>
-					</div>
-					<div class="create_name" id="line">
-						計畫名稱 : 
-					</div>
-					<input class="create_name_text" type="text" maxlength="20" id="create_name">
-					<div class="create_target">設定目標:</div>
+				<div class="page_left">
+					<div class="create_title">Create Plan</div>
+					<div class="create_planName">計畫名稱：</div>
+						<input type="text" id="create_name"/>
+					<div class="create_goal">設定目標:</div>
 					<div class="create_flow">
 						<li>初始值</li>
 						<li>單位 </li>
@@ -218,71 +216,25 @@
 						<input type="number" id="create_end"/>
 					</div>
 					<div class="create_deadline">
-						結束日期：<input type="text" id="create_deadline"/><input type="text" id="create_deadtime" />
+						結束日期：<input type="text" id="create_deadDate"/><input type="text" id="create_deadTime" />
 					</div>
 					<img class="create_bug" src="img/bug.png" />
 					<p class="thought">
 						Kill me, don't you?<br>
 					</p>
-					<!--<div id="date_position" ><input type="text" id="datepicker" /></div>-->
-					
 				</div>
-				<div class="create_right">
+				
+				<div class="page_right">
 					<div class="create_picture"></div>
 					<div class="create_diary">給自己的話</div>
-					<div class="create_diaryContent" id="line">
-						<form>
-							<input type="text" maxlength="20" id="create_content"/> 
-							<input type="text" maxlength="20"/> 
-							<input type="text" maxlength="20"/>
-						</form>
-					</div>
+					<textarea type="text" class="create_diaryContent" id="create_content"></textarea>
 					<div id="button">
 						<a href="#" class="back" id="create_back">Back<span></span></a>
 						<a href="#" class="create" id="create_create">Create<span></span></a>
 					</div>
 				</div>
+				
 			</div>
-
-			<!--<div class="bb-item">
-					<div class="page_left">
-						<div class="page_title">
-							本日達成
-						</div>				
-			  
-						<div class="page_progress">
-							<input type="number">             
-							kg  /  20 kg                     
-						</div>
-						<button class="typein">輸入</button>				
-					</div>
-					<div class="page_right">					
-						<div class="page_diary">
-							日記
-						</div>
-						<div class ="page_diaryContent" id="line">
-							<form>
-								<input type=text maxlength="20">
-								<input type=text maxlength="20">
-								<input type=text maxlength="20" onfocus="this.value=''" value="Write your diary here!!!">
-								<input type=text maxlength="20">
-								<input type=text maxlength="20">						
-							</form>
-						</div>          
-					</div>	
-					<div class="page_top">
-						<div class="page_timer">
-							距離期限還有 2 日 2 時 30 分             
-						</div>
-						<div class="page_gameContent">
-							<img src="img/swords.png" width=50%;>
-							<img src="img/bug.png" width=8%;>
-						</div>
-						<div class="page_status">
-							已完成 50 %
-						</div>
-					</div>
-				</div>-->
 		</div>
 	</div>
 
@@ -308,10 +260,10 @@
 	<!--datepicker-->
 	<script>
 		$(function(){
-			$("#create_deadline").datepicker({dateFormat: 'yy-mm-dd'});
+			$("#create_deadDate").datepicker({dateFormat: 'yy-mm-dd'});
 		}); 
 		$(function(){
-			$("#create_deadtime").timepicker({timeFormat: 'HH:mm:ss'});
+			$("#create_deadTime").timepicker({timeFormat: 'HH:mm:ss'});
 		}); 
 	</script>
 

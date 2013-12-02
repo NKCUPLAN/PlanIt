@@ -155,10 +155,9 @@ $(document).ready(function(){
 					$('#loading').empty();
 					LoadPlans(secret);
 					
-					//if($('#rem').prop('checked'))
-						WriteCookie(secret);
-					//else
-					//	ClearCookie();
+					window.sessionStorage["secret"] = secret;
+					if($('#rem').prop('checked'))
+ 						WriteCookie(secret);
 
 					$('#cover_lock').animate({transform: 'rotate(1080deg)'}, 2000, function(){
 						$('.unauth').fadeOut(1000, function(){
@@ -294,6 +293,10 @@ $(document).ready(function(){
 	
 	$('#create_back').click(function(){
 		$('#page_create input').val('');
+	});
+	
+	$('#button.save').click(function(){
+		alert("XDD");
 	});
 });
 
@@ -481,15 +484,12 @@ var AddPage = function(data){
 	
 	page_left.append('<div class="page_title"><h3>' + data['name'] +'</h3></div>');			
 	page_left.append('<div class="page_progress">'
-						+'<input class="page_number" type="number" value="' + data['now'] + '"/> ' 
+						+'<input id="page_now" type="number" value="' + data['now'] + '"/> ' 
 						+ data['unit']+' / '+data['end']+ data['unit'] + '</div>');
-	page_left.append('<div id="button"><a href="" class="save">Save<span></span></a></div>');				  
+	page_left.append('<div id="button"><a href="#" class="save">Save<span></span></a></div>');				  
 
 	page_right.append('<div class="page_diary">日記</div>');
-	var a = $('<div class ="page_diaryContent" id="line"></div>').appendTo(page_right);
-	var form = $('<form></form>').appendTo(a);
-	for(var i = 0; i < 5; i++)
-		form.append('<input type="text" maxlength="20"/>');	
+	page_right.append('<textarea class="page_diaryContent">' + data['content'] + '</textarea>');	
 	
 	page_top.append('<div class="page_timer">距離期限還有 2 日 2 時 30 分</div>');
 	var game = $('<div class="page_gameContent"></div>').appendTo(page_top);
@@ -504,33 +504,40 @@ var TurnToPage = function(page){
 }
 
 var WriteCookie = function(secret){
+	/*
 	var cookie = "planit=" + secret;
     var date = new Date();
     date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
     var expirestr = date.toGMTString();
     cookie += "; expires=" + expirestr;
     document.cookie = cookie;
+	*/
+	window.localStorage["secret"] = secret;
 }
 
 var ClearCookie = function(){
+	/*
 	var cookie = "planit=;";
 	var date = new Date();
     date.setTime(date.getTime() - 1);
     var expirestr = date.toGMTString();
     cookie += "; expires=" + expirestr;
     document.cookie = cookie;
+	*/
+	window.localStorage["secret"] = "";
+	window.sessionStorage["secret"] = "";
 }
 
 var LoadCookie = function(){
-    if (document.cookie.length > 0){
+    /*if (document.cookie.length > 0){
         var c_list = document.cookie.split(";");
         for(i in c_list){
             var cook = c_list[i].split("=");
             if(cook[0] == "planit")
 				return cook[1];
         }
-    }
-    return;
+    }*/
+	return window.localStorage["secret"];
 }
 
 var Loading = function(){
