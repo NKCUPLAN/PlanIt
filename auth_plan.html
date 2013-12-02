@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js demo-1">
+<head>
+<title>Plan It! 不爛泥!</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="shortcut icon" href="img/favicon.ico" />
+<link rel="icon" type="image/gif" href="img/favicon_animated.gif" />
+
+<script type="text/javascript" src="Plugin_jQuery/jquery-2.0.3.js"></script>
+<script type="text/javascript"
+	src="Plugin_jQuery/jquery-ui-1.10.3.custom.min.js"></script>
+
+<!-- For effects (Book shadow) -->
+<script type="text/javascript"
+	src="Plugin_jQuery/jquery.animate-shadow.js"></script>
+<script type="text/javascript" src="Plugin_jQuery/jquery.transform2d.js"></script>
+<script type="text/javascript" src="Plugin_jQuery/jquery.transform3d.js"></script>
+
+<!-- For modal UI (Introduction) -->
+<link rel="stylesheet" type="text/css" href="Plugin_css/semantic.css">
+<script src="Plugin_jQuery/semantic.js"></script>
+
+<!-- For Create Book  -->
+<link rel="stylesheet" type="text/css"
+	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+<!-- For bookblock (turn pages) -->
+<link rel="stylesheet" type="text/css" href="Plugin_css/bookblock.css" />
+<script type="text/javascript" src="Plugin_jQuery/modernizr.custom.js"></script>
+
+<!-- For loading...-->
+<script type="text/javascript"
+	src="Plugin_jQuery/jquery.animateImages.js"></script>
+
+<!-- Self-defined Settings -->
+<link rel="stylesheet" type="text/css" href="css/layout_index.css"/>
+<link rel="stylesheet" type="text/css" href="css/layout_book.css"/>
+<link rel="stylesheet" type="text/css" href="css/layout_page.css"/>
+<link rel="stylesheet" type="text/css" href="css/layout_page_create.css"/>
+
+<!-- For button style-->
+<link href="Plugin_css/style.css" rel="stylesheet" type="text/css" />
+
+<!-- For time picker-->
+<link href="Plugin_css/jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="Plugin_jQuery/jquery-ui-timepicker-addon.js"></script>
+
+
+</head>
+<body onSelectStart="event.returnValue=false">
+
+	<!-- Menu -->
+	<header>
+		
+		<div class="ui inverted menu">
+			<a class="item" id="menu_introduction">Introduction</a> 
+			<a class="item" id="menu_aboutus">About Us</a>
+			<a class="item auth" id="menu_logout">Logout</a>
+			<a class="item auth" id="menu_user"></a>
+		</div>
+	</header>
+
+	<!-- About Us Dialog -->
+	<div class="ui small modal" id="dialog_aboutus">
+		<div class="header">About Us</div>
+		<div class="ui five connected items">
+			<div class="item">
+				<div class="image">
+					<img src="./img/minion.png">
+				</div>
+				<div class="content">
+					<div class="name">張家倫</div>
+					<p class="description">
+						<br /> 風向領導者<br /> <br /> 推坑同學<br /> 嘴砲同學<br /> 全力以赴<br /> 不遺餘力
+					</p>
+				</div>
+			</div>
+			<div class="item">
+				<div class="image">
+					<img src="./img/minion.png">
+				</div>
+				<div class="content">
+					<div class="name">張正穎</div>
+					<p class="description"><br>彈琴自唱者</p>
+				</div>
+			</div>
+			<div class="item">
+				<div class="image">
+					<img src="./img/minion_women.jpg">
+				</div>
+				<div class="content">
+					<div class="name">游婷怡</div>
+					<p class="description"><br>我不是忍者</p>
+				</div>
+			</div>
+			<div class="item">
+				<div class="image">
+					<img src="./img/minion.png">
+				</div>
+				<div class="content">
+					<div class="name">葉家瑋</div>
+					<p class="description">
+						<br /> 蟲蟲清除者<br />
+
+					</p>
+				</div>
+			</div>
+			<div class="item">
+				<div class="image">
+					<img src="./img/minion.png">
+				</div>
+				<div class="content">
+					<div class="name">黃得銓</div>
+					<p class="description"><br>打醬油尊者</p>
+				</div>
+			</div>
+		</div>
+		<div class="actions">
+			<div class="ui button">OK</div>
+		</div>
+	</div>
+
+	<!-- Introduction Dialog -->
+	<div class="ui small modal" id="dialog_introduction">
+		<div class="header">Introduction</div>
+		<div class="content">
+			<img src="img/introduction.jpg" height="100%" width="100%" />
+			<!--<div class="left">
+				
+			</div>-->
+		</div>
+		<div class="actions">
+			<div class="ui button">OK</div>
+		</div>
+	</div>
+
+	<!-- Main Content -->
+	<div id="unauth" class="unauth">
+		<div id="cover">
+			<div id="cover_lock"></div>
+		</div>
+
+		<div id="dialog_login">
+			<div class="hint" id="hint">請用 a / a 登入看看 感謝!!</div>
+			<div>
+				<input type="text" id="acc" maxlength="20" placeholder="帳號" />
+			</div>
+			<div>
+				<input type="password" id="pwd" placeholder="密碼" />
+			</div>
+
+			<div class="info_login">
+				<span class="loginButton checkBox"><input type="checkBox"
+					name="rem" id="rem" /> 記住我</span> <br /> <span class="loginButton"
+					id="login">登入</span>
+				<!--<span class="loginButton" id="reset">清除</span>-->
+			</div>
+
+			<div class="info_register">
+				<div>
+					<input type="password" id="check_pwd" placeholder="確認密碼" />
+				</div>
+				<br />
+				<div>
+					<input type="text" id="first_name" placeholder="姓氏" size="8" /> <input
+						type="text" id="last_name" placeholder="名字" size="8" />
+				</div>
+				<div>
+					<span class="loginButton radio"><input type="radio"
+						name="gender" value="male" checked="true" />男</span> <span
+						class="loginButton radio"><input type="radio" name="gender"
+						value="female" />女</span>
+				</div>
+				<div>
+					<input type="text" id="mail" size="25" placeholder="電子郵件" />
+				</div>
+				<span class="loginButton" id="register">確認</span> <span
+					class="loginButton" id="register_reset">清除</span><br />
+			</div>
+
+			<span class="loginButton" id="login_register">註冊</span>
+		</div>
+
+		<img id="bug" src="img/bug.png" />
+	</div>
+
+	<div id="auth" class="auth">
+		<!-- SideBar Menu -->
+		<aside>
+			<div id="aside_switch"></div>
+			<div id="aside_contents">
+				<ul id="list_plans">個人計畫
+				</ul>
+				<div id="new_plan">創建新計畫</div>
+			</div>
+		</aside>
+
+		<div id="book-base"></div>
+		<!--BOOK CONTENT-->
+		<div id="book" class="bb-bookblock">
+			<!--<div class="bb-item" id="page_create">
+				<div class="page_left">
+					<div class="create_title">Create Plan</div>
+					<div class="create_planName">計畫名稱：</div>
+						<input type="text" id="create_name"/>
+					<div class="create_goal">設定目標:</div>
+					<div class="create_flow">
+						<li>初始值</li>
+						<li>單位 </li>
+						<li>最終值</li>
+					</div>
+					<div class="value">
+						<input type="number" id="create_start"/>
+						<input type="text" id="create_unit"/>
+						<input type="number" id="create_end"/>
+					</div>
+					<div class="create_deadline">
+						結束日期：<input type="text" id="create_deadDate"/><input type="text" id="create_deadTime" />
+					</div>
+					<img class="create_bug" src="img/bug.png" />
+					<p class="thought">
+						Kill me, don't you?<br>
+					</p>
+				</div>
+				
+				<div class="page_right">
+					<div class="create_picture"></div>
+					<div class="create_diary">給自己的話</div>
+					<textarea type="text" class="create_diaryContent" id="create_content"></textarea>
+					<div id="button">
+						<a href="#" class="back" id="create_back">Back<span></span></a>
+						<a href="#" class="create" id="create_create">Create<span></span></a>
+					</div>
+				</div>
+				
+			</div>-->
+			
+			<div class="bb-item">
+				<div class="page_left">
+					<div class="page_title"><h3>計畫標提</h3></div>
+					<div class="page_progress">
+						<input id="page_now" type="number" value="0"/>kg / 20kg
+					</div>
+					<div id="button">
+						<a href="#" class="save">Save<span></span></a>
+					</div>	
+				</div>
+				
+				<div class="page_right">
+					<div class="page_diary">日記</div>
+					<textarea class="page_diaryContent">哈哈這裡是日記內容</textarea>
+				</div>
+				
+				<div class="page_top">
+					<div class="page_timer">距離期限還有 2 日 2 時 30 分</div>
+					<div class="page_gameContent">
+						<img src="img/swords.png" width="50%"/>
+						<img src="img/bug.png" width="8%"/>
+					</div>
+					<div class="page_status">已完成 50 %</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Unused Now -->
+	<div id="mask">
+		<div id="loading"></div>
+	</div>
+
+	<!-- For bookblock (turn pages) -->
+	<script type="text/javascript" src="Plugin_jQuery/jquerypp.custom.js"></script>
+	<script type="text/javascript" src="Plugin_jQuery/jquery.bookblock.js"></script>
+
+	<!-- For modal UI (Introduction) -->
+	<script type="text/javascript">
+		$('#menu_introduction').click(function(){
+			$('#dialog_introduction').modal('show');
+  		});
+		$('#menu_aboutus').click(function(){
+    		$('#dialog_aboutus').modal('show');
+  		});
+	</script>
+	<!--datepicker-->
+	<script>
+		$(function(){
+			$("#create_deadDate").datepicker({dateFormat: 'yy-mm-dd'});
+		}); 
+		$(function(){
+			$("#create_deadTime").timepicker({timeFormat: 'HH:mm:ss'});
+		}); 
+		$('#auth').show(1);
+		
+		var h = $(document).height();
+		var w = $(document).width();
+
+		if(w <= 1200){
+			$('#book').css('left', (w-$('#book').width())/2);
+			$('aside').css('right', -$('#aside_contents').width());
+			
+			hide_aside = false;
+		}
+		else{
+			$('#book').css('left', (w-$('#aside_contents').width()-$('#book').width())/2);
+			$('aside').css('right', 0);
+			hide_aside = true;
+		}
+		
+		$('#book-base').css('width',$('#book').width()+136);
+		$('#book-base').css('height',$('#book').height()+100);
+		$('#book-base').css('left',$('#book').position().left-76);
+		$('#book-base').css('top',$('#book').position().top);
+
+		$('#loading').css('top', (h - $('#loading').height())/2);
+		$('#loading').css('left', (w - $('#loading').width())/2);
+		
+		$('aside').css('height', (h - $('.ui.inverted.menu').height()) * 0.9);
+		$('aside').css('marginTop', h*0.05 + $('.ui.inverted.menu').height()*0.95); 
+		
+		$('#book').bookblock();
+	</script>
+
+</body>
+</html>
