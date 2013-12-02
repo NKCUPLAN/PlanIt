@@ -17,7 +17,7 @@ $(document).ready(function(){
 		dataType: 'html',
 		type:'POST',
 		data: { 
-			secret: LoadCookie()
+			secret: window.localStorage["secret"]
 		},
 		error: function(xhr) {
 			alert("網路出現問題，請稍候再試!!");
@@ -33,6 +33,7 @@ $(document).ready(function(){
 				last_name = data['last_name'];
 				secret = data['secret'];
 				$('#menu_user').text(first_name+last_name);
+				window.sessionStorage["secret"] = secret;
 				
 				LoadPlans(secret);
 				AdjustBookSize();
@@ -98,6 +99,9 @@ $(document).ready(function(){
 	
 	$('.loginButton.checkBox').each(function(i){
 		$(this).click(function(){
+			$(':checkBox').get(i).checked = !$(':checkBox').get(i).checked;
+		});
+		$(':checkBox').click(function(){
 			$(':checkBox').get(i).checked = !$(':checkBox').get(i).checked;
 		});
 	});
@@ -244,7 +248,7 @@ $(document).ready(function(){
 		var second=today.getSeconds();
 		
 		var pageData = { 
-			secret: LoadCookie(),
+			secret: window.sessionStorage["secret"],
 			name: $('#create_name').val(),
 			content: $('#create_content').val(),
 			start: $('#create_start').val(),
@@ -295,9 +299,7 @@ $(document).ready(function(){
 		$('#page_create input').val('');
 	});
 	
-	$('#button.save').click(function(){
-		alert("XDD");
-	});
+
 });
 
 var initialCSS = function(){
@@ -486,8 +488,9 @@ var AddPage = function(data){
 	page_left.append('<div class="page_progress">'
 						+'<input id="page_now" type="number" value="' + data['now'] + '"/> ' 
 						+ data['unit']+' / '+data['end']+ data['unit'] + '</div>');
-	page_left.append('<div id="button"><a href="#" class="save">Save<span></span></a></div>');				  
-
+	var div_button = $('<div id="button"></div>').appendTo(page_left);				  
+	var button_save = $('<a href="#" class="save">Save<span></span></a>').appendTo(div_button);
+	
 	page_right.append('<div class="page_diary">日記</div>');
 	page_right.append('<textarea class="page_diaryContent">' + data['content'] + '</textarea>');	
 	
@@ -496,6 +499,28 @@ var AddPage = function(data){
 	game.append('<img src="img/swords.png" width="50%"/>');
 	game.append('<img src="img/bug.png" width="8%"/>');
 	page_top.append('<div class="page_status">已完成 50 %</div>');
+	
+	button_save.click(function(){
+		var pageData = { 
+			id: data['id'],
+			now: $(this).parents('.page_left').children('.page_progress').children('input').val(),
+			content: $(this).parents('.bb-item').children('.page_right').children('textarea').val()
+		};
+		
+		$.ajax({
+			url: 'php/updatePlan.php',
+			cache: false,
+			dataType: 'html',
+			type:'POST',
+			data: pageData,
+			error: function(xhr) {
+				alert('網路連線錯誤，請稍後再試');
+			},
+			success: function(response) {
+				alert('資料已更新');
+			}
+		});
+	});
 	
 }
 

@@ -4,18 +4,11 @@
 	require_once('connect.php');
 	mysql_query("SET NAMES 'UTF8'");
 	
-	$secret = $_POST['secret'];
-	$name = $_POST['name'];
+	$id = $_POST['id'];
 	$now = $_POST['now'];
-	
-	date_default_timezone_set('Asia/Taipei');
-	$create_time = date("Y-m-d h:i:s");
-	
-	$query = "SELECT id FROM 2_member WHERE secret = '$secret'";
-	$re = mysql_fetch_assoc(mysql_query($query));
-	$user_id = $re['id'];
-	
-	$query = "UPDATE 2_plan SET now='$now' WHERE user_id = $user_id AND name = $name";
+	$content = $_POST['content'];
+
+	$query = "UPDATE 2_plan SET now='$now', content='$content' WHERE id = '$id'";
 	echo mysql_query($query) or die(mysql_error());
 	
 	mysql_close();
