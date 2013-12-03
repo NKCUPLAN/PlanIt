@@ -229,6 +229,10 @@ $(document).ready(function(){
 						alert('申請帳號成功! 請重新登入!');
 						$('#login_register').trigger('click');
 					}
+					else if(response.trim() == "used"){
+						$('#hint').css('color', '#00FA03');
+						$('#hint').text('此帳號已被申請');
+					}
 					else{
 						$('#hint').css('color', 'red');
 						$('#hint').text('申請帳號失敗! 請稍後再次嘗試!');
@@ -247,45 +251,47 @@ $(document).ready(function(){
 		var minute=today.getMinutes();
 		var second=today.getSeconds();
 		
-		var pageData = { 
-			secret: window.sessionStorage["secret"],
-			name: $('#create_name').val(),
-			content: $('#create_content').val(),
-			start: $('#create_start').val(),
-			end: $('#create_end').val(),
-			now: 0,
-			unit: $('#create_unit').val(),
-			deadline: $('#create_deadline').val() + ' ' + $('#create_deadtime').val()
-		};
-		
-		$.ajax({
-			url: 'php/createPlan.php',
-			cache: false,
-			dataType: 'html',
-			type:'POST',
-			data: pageData,
-			error: function(xhr) {
-				alert('網路連線錯誤，請稍後再試');
-			},
-			success: function(response) {
-				AddPage(pageData);
+		if(CheckPlanInfo()){
+			var pageData = { 
+				secret: window.sessionStorage["secret"],
+				name: $('#create_name').val(),
+				content: $('#create_content').val(),
+				start: $('#create_start').val(),
+				end: $('#create_end').val(),
+				now: 0,
+				unit: $('#create_unit').val(),
+				deadline: $('#create_deadDate').val() + ' ' + $('#create_deadTime').val()
+			};
+			
+			$.ajax({
+				url: 'php/createPlan.php',
+				cache: false,
+				dataType: 'html',
+				type:'POST',
+				data: pageData,
+				error: function(xhr) {
+					alert('網路連線錯誤，請稍後再試');
+				},
+				success: function(response) {
+					AddPage(pageData);
 
-				$('<li>' + pageData['name'] + '</li>').appendTo($('#list_plans')).bind({
-					mouseenter: function(){
-						$(this).css('color', 'yellow');
-						$(this).css('cursor', 'pointer');
-					},
-					mouseleave: function(){
-						$(this).css('color', 'brown');
-					}
-				}).click(function(){
-					TurnToPage($('#aside_contents li').size() + 1);
-				});
-				$('#page_create input').val('');
-				$('#book').bookblock();
-				$('#book').bookblock('last');
-			}
-		});
+					$('<li>' + pageData['name'] + '</li>').appendTo($('#list_plans')).bind({
+						mouseenter: function(){
+							$(this).css('color', 'yellow');
+							$(this).css('cursor', 'pointer');
+						},
+						mouseleave: function(){
+							$(this).css('color', 'brown');
+						}
+					}).click(function(){
+						TurnToPage($('#aside_contents li').size() + 1);
+					});
+					$('#page_create input').val('');
+					$('#book').bookblock();
+					$('#book').bookblock('last');
+				}
+			});
+		}
 	});
 	
 	$(document).ajaxStart(function(){
@@ -351,25 +357,7 @@ var CheckAcc = function(acc){
 		return false;
 	}
 	
-	return $.ajax({
-		url: 'php/checkAccount.php',
-		cache: false,
-		dataType: 'html',
-		type:'POST',
-		data: { 
-			acc: $('#acc').val()
-		},
-		error: function(xhr) {
-		},
-		success: function(response) {
-			if(response.trim() == "used"){
-				$('#hint').text('此帳號已被申請');
-				$('#hint').css('color', 'red');
-				return false;
-			}
-			return true;
-		}
-	});
+	return true;
 }
 
 var CheckPwd = function(pwd, chk_pwd){ 
@@ -494,7 +482,15 @@ var AddPage = function(data){
 	page_right.append('<div class="page_diary">日記</div>');
 	page_right.append('<textarea class="page_diaryContent">' + data['content'] + '</textarea>');	
 	
-	page_top.append('<div class="page_timer">距離期限還有 2 日 2 時 30 分</div>');
+	var now = new Date();
+	var expire = new Date(data['deadline']);
+	//alert(expire.valueOf() + " " +   now.valueOf() + " " );
+	if(expire.valueOf() < now.valueOf())
+		page_top.append('<div class="page_timer">已過期</div>');
+	else{
+		var diff = new Date(expire - now);
+		page_top.append('<div class="page_timer">距離期限還有 ' + ((diff.getDate())? diff.getDate() + ' 日 ':'') + diff.getUTCHours() + ' 時 ' + diff.getUTCMinutes() + ' 分</div>');
+	}
 	var game = $('<div class="page_gameContent"></div>').appendTo(page_top);
 	game.append('<img src="img/swords.png" width="50%"/>');
 	game.append('<img src="img/bug.png" width="8%"/>');
@@ -525,7 +521,7 @@ var AddPage = function(data){
 }
 
 var TurnToPage = function(page){
-	$('#book').bookblock('jump', page);
+	$('#book').bookblock('jump', page, 100);
 }
 
 var WriteCookie = function(secret){
@@ -578,4 +574,40 @@ var Loading = function(){
 var Loaded = function(){
 	$('#loading').empty();
 	$('#mask').hide();
+}
+
+var CheckPlanInfo = function(){
+	var msg = "";
+	if($('#create_name').val().trim() == ""){
+		msg += "\n計畫名稱";
+	}
+	if($('#create_unit').val().trim() == ""){
+		msg += "\n單位";
+	}
+	if($('#create_start').val().trim() == ""){
+		msg += "\n起始値(你現在的狀況)";
+	}
+	if($('#create_end').val().trim() == ""){
+		msg += "\n終點值(你的最終目標)";
+	}
+	if($('#create_deadDate').val().trim() == ""){
+		msg += "\n截止日期";
+	}
+	if($('#create_deadTime').val().trim() == ""){
+		msg += "\n截止時間";
+	}
+	if(msg != ""){
+		msg = "請設定\n" + msg;
+		alert(msg);
+		return false;
+	}
+	else{
+		var expire = new Date($('#create_deadDate').val().trim() + " " + $('#create_deadTime').val().trim());
+		var now = new Date();
+		if(expire.valueOf() < now.valueOf()){
+			alert("結束時間不可早於現在時間喔!!!!!");
+			return false;
+		}
+	}
+	return true;
 }
