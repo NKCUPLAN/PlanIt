@@ -406,33 +406,31 @@ var LoadPlans = function(secret){
 }
 
 var AddPage = function(data){
+	var s = data['start'], e = data['end'], n = data['now'], u = data['unit'];
+	
 	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
+	page = $('<form oninput="amount.value=parseInt(rangeInput.value);percentage.value=100*(parseInt(rangeInput.value)-'+s+')/('+e+'-'+s+')"></form>').appendTo(page);
 	
 	var page_left = $('<div class="page_left"></div>').appendTo(page);
 	var page_right = $('<div class="page_right"></div>').appendTo(page);
 	
 	page_left.append('<div class="page_title"><h3>' + data['name'] +'</h3></div>');
 	
-	var s = data['start'], e = data['end'], n = data['now'], u = data['unit'];
-	
+
 	if(s > e){
 		page_right.append(	'<div class="page_progressTitle">增進你的進度吧!</div>'+
 							'<div class="page_progress">'+
-								'<form oninput="amount.value='+s+'-parseInt(rangeInput.value)+'+e+'">'+
-									'<output id="page_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> / '+e+' '+u+
-									'<input type="range" class="rangeInput" name="rangeInput" min="'+s+'" max="'+e+'" value="'+n+'"/><br/>' +
-									s+'　　　　　　　　　　　'+e+
-								'</form>'+
+								'<output id="page_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> / '+e+' '+u+
+								'<input type="range" class="rangeInput" name="rangeInput" min="'+e+'" max="'+s+'" value="'+n+'"/><br/>' +
+								s+'　　　　　　　　　　　'+e+
 							'</div>');
 	}
 	else{
 		page_right.append(	'<div class="page_progressTitle">增進你的進度吧!</div>'+
 							'<div class="page_progress">'+
-								'<form oninput="amount.value=parseInt(rangeInput.value)">'+
-									'<output id="page_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> / '+e+' '+u+
-									'<input type="range" class="rangeInput" name="rangeInput" min="'+s+'" max="'+e+'" value="'+n+'"/><br/>' +
-									s+'　　　　　　　　　　　'+e+
-								'</form>'+
+								'<output id="page_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> / '+e+' '+u+
+								'<input type="range" class="rangeInput" name="rangeInput" min="'+s+'" max="'+e+'" value="'+n+'"/><br/>' +
+								s+'　　　　　　　　　　　'+e+
 							'</div>');
 	}
 	
@@ -454,14 +452,14 @@ var AddPage = function(data){
 	var game = $('<div class="page_gameContent"></div>').appendTo(page_left);
 
 	game.append('<img  src="img/bug.png" />');
-	page_left.append('<div class="page_status">進度 : 已完成 ' +100*(n-s)/(e-s)+ ' %</div>');
+	page_left.append('<div class="page_status">進度 : 已完成 '+/*'<output name="percentage">'+*/100*(n-s)/(e-s)+/*'</output>'+*/' %</div>');
 	page_right.append('<div class="page_bean"></div>');
 	
 	button_save.click(function(){
 		var pageData = { 
 			id: data['id'],
-			now: $(this).parents('.page_left').children('.page_progress').children('input').val(),
-			content: $(this).parents('.bb-item').children('.page_right').children('textarea').val()
+			now: $(this).parents('form').children('.page_right').children('.page_progress').children('#page_now').val(),
+			content: $(this).parents('form').children('.page_right').children('.page_diaryContent').val()
 		};
 		
 		$.ajax({
@@ -474,7 +472,8 @@ var AddPage = function(data){
 				alert('網路連線錯誤，請稍後再試');
 			},
 			success: function(response) {
-				alert(response + '資料已更新');
+				//alert(response + '資料已更新');
+				alert('資料已更新');
 			}
 		});
 	});

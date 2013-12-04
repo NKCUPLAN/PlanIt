@@ -7,7 +7,7 @@
 	$id = $_POST['id'];
 	$now = $_POST['now'];
 	$content = $_POST['content'];
-
+	echo $now.$content."\n";
 	$query = "UPDATE 2_plan SET now='$now', content='$content' WHERE id = '$id'";
 	echo mysql_query($query) or die(mysql_error());
 	
