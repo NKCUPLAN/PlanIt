@@ -411,18 +411,31 @@ var AddPage = function(data){
 	var page_left = $('<div class="page_left"></div>').appendTo(page);
 	var page_right = $('<div class="page_right"></div>').appendTo(page);
 	
-	page_left.append('<div class="page_title"><h3>' + data['name'] +'</h3></div>');			
+	page_left.append('<div class="page_title"><h3>' + data['name'] +'</h3></div>');
 	
-	var slider = $('<form oninput="amount.value=rangeInput.value" ></div>').appendTo(page_right);
+	var s = data['start'], e = data['end'], n = data['now'], u = data['unit'];
 	
-	slider.append('<input type="range" id="rangeInput" name="rangeInput" min="0" max="100" value="0">');
-	slider.append('<output name="amount" id="rangeOutput" for="rangeInput">0</output>')
+	if(s > e){
+		page_right.append(	'<div class="page_progressTitle">增進你的進度吧!</div>'+
+							'<div class="page_progress">'+
+								'<form oninput="amount.value='+s+'-parseInt(rangeInput.value)+'+e+'">'+
+									'<output id="page_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> / '+e+' '+u+
+									'<input type="range" class="rangeInput" name="rangeInput" min="'+s+'" max="'+e+'" value="'+n+'"/><br/>' +
+									s+'　　　　　　　　　　　'+e+
+								'</form>'+
+							'</div>');
+	}
+	else{
+		page_right.append(	'<div class="page_progressTitle">增進你的進度吧!</div>'+
+							'<div class="page_progress">'+
+								'<form oninput="amount.value=parseInt(rangeInput.value)">'+
+									'<output id="page_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> / '+e+' '+u+
+									'<input type="range" class="rangeInput" name="rangeInput" min="'+s+'" max="'+e+'" value="'+n+'"/><br/>' +
+									s+'　　　　　　　　　　　'+e+
+								'</form>'+
+							'</div>');
+	}
 	
-	
-	page_right.append('<div class="page_progressTitle">增進你的進度吧!</div>');
-	page_right.append('<div class="page_progress">'
-						+'<input id="page_now" type="number" value="' + data['now'] + '"/> ' 
-						+ data['unit']+' / '+data['end']+ data['unit'] + '</div>');
 	var div_button = $('<div id="button"></div>').appendTo(page_right);				  
 	var button_save = $('<a href="#" class="save">Save<span></span></a>').appendTo(div_button);
 	
@@ -441,7 +454,7 @@ var AddPage = function(data){
 	var game = $('<div class="page_gameContent"></div>').appendTo(page_left);
 
 	game.append('<img  src="img/bug.png" />');
-	page_left.append('<div class="page_status">進度 : 已完成 ' + (data['now'] - data['start'])*100 / (data['end'] - data['start']) + ' %</div>');
+	page_left.append('<div class="page_status">進度 : 已完成 ' +100*(n-s)/(e-s)+ ' %</div>');
 	page_right.append('<div class="page_bean"></div>');
 	
 	button_save.click(function(){
@@ -461,7 +474,7 @@ var AddPage = function(data){
 				alert('網路連線錯誤，請稍後再試');
 			},
 			success: function(response) {
-				alert('資料已更新');
+				alert(response + '資料已更新');
 			}
 		});
 	});

@@ -7,26 +7,6 @@
 	cursor: default; 
 }
 
-.page_progress{
-	margin: 5% 10%;
-	width: 80%;
-	text-align:center;
-	position:absolute;
-	top:70px;
-	left:-10px;
-	padding: 10px;
-	line-height: 30px;	
-	font-size: 20px;
-}
-
-.page_progressTitle{
-	position:absolute;
-	top:50px;
-	left:40px;
-	font-size:30px;
-	
-}
-
 #page_now{
 	position:relative;
 	width:60px;
@@ -37,39 +17,6 @@
 	background: #D0DDE9;
 	color: black;
 	text-align:center;
-}
-
-/*** PAGE RIGHT***/
-.page_diary{
-	position:relative;
-	top:200px;
-	left:40px;
-	font-size: 30px;
-	cursor: default; 
-	
-}
-
-.page_diaryContent{
-	position:relative;
-	top:210px;
-	width: 80%;
-	height: 30%;
-	margin: 0 10%;
-	border-width:0px;
-	background: #D0DDE9;
-	padding:5px;
-	resize: none;
-}
-
-/*** PAGE TOP***/
-.page_top{
-	position:absolute;
-	margin:5% 5% 0 5%;
-	  
-	background-color:#fed966;
-	height:37%;
-	width:90%;
-	text-align: center;
 }
 
 .page_timer{
@@ -98,6 +45,48 @@
 	left:55px;
 }
 
+/*** PAGE RIGHT***/
+.page_progress{
+	position: relative;
+	top: 60px;
+	
+	margin: 5% auto;
+	width: 80%;
+	text-align:center;
+	padding: 10px;
+	line-height: 30px;	
+	font-size: 20px;
+}
+
+.page_progressTitle{
+	position:absolute;
+	top:30px;
+	left:40px;
+	font-size:30px;
+	
+}
+
+.page_diary{
+	position:relative;
+	top:50px;
+	left:40px;
+	font-size: 30px;
+	cursor: default; 
+	
+}
+
+.page_diaryContent{
+	position:relative;
+	top:60px;
+	width: 80%;
+	height: 30%;
+	margin: 0 10%;
+	border-width:0px;
+	background: #D0DDE9;
+	padding:5px;
+	resize: none;
+}
+
 .page_bean{
 	position:absolute;
 	width:340px;
@@ -113,10 +102,7 @@
 	left:30px;
 }
 
-#rangeInput{
-	position:absolute;
-	top:150px;
-	left:90px;
+.rangeInput{
 	width: 250px; 
 	height: 20px; 
 	margin: 0; 
@@ -124,11 +110,9 @@
 	background:transparent;
 }
 
-#rangeOutput{
-	position:absolute;
-	top:150px;
-	left:40px;
+.rangeOutput{
 	background:white;
 	padding-left:10px;
 	padding-right:10px;
+	background:transparent;
 }
