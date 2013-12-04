@@ -9,7 +9,7 @@
 	position: absolute;
 	outline: none;
 }
-#button a:hover {
+#button a:hover {	
 	background-position: left top;
 }
 #button a:hover span{
@@ -34,7 +34,7 @@
 	height: 58px;
 	background: url(../img/button/save.png) no-repeat;
 	background-position: left bottom;
-	left: 110px;
+	left: 140px;
 	top: 410px;
 }
 #button .about {

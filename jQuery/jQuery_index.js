@@ -470,31 +470,33 @@ var AddPage = function(data){
 	
 	var page_left = $('<div class="page_left"></div>').appendTo(page);
 	var page_right = $('<div class="page_right"></div>').appendTo(page);
-	var page_top = $('<div class="page_top"></div>').appendTo(page);
+	//var page_top = $('<div class="page_top"></div>').appendTo(page);
 	
 	page_left.append('<div class="page_title"><h3>' + data['name'] +'</h3></div>');			
-	page_left.append('<div class="page_progress">'
+	page_right.append('<div class="page_progressTitle">今天你完成了多少呢？</div>');
+	page_right.append('<div class="page_progress">'
 						+'<input id="page_now" type="number" value="' + data['now'] + '"/> ' 
 						+ data['unit']+' / '+data['end']+ data['unit'] + '</div>');
-	var div_button = $('<div id="button"></div>').appendTo(page_left);				  
+	var div_button = $('<div id="button"></div>').appendTo(page_right);				  
 	var button_save = $('<a href="#" class="save">Save<span></span></a>').appendTo(div_button);
 	
-	page_right.append('<div class="page_diary">日記</div>');
+	page_right.append('<div class="page_diary">心情小記</div>');
 	page_right.append('<textarea class="page_diaryContent">' + data['content'] + '</textarea>');	
 	
 	var now = new Date();
 	var expire = new Date(data['deadline']);
 	//alert(expire.valueOf() + " " +   now.valueOf() + " " );
 	if(expire.valueOf() < now.valueOf())
-		page_top.append('<div class="page_timer">已過期</div>');
+		page_left.append('<div class="page_timer">Time : 已過期</div>');
 	else{
 		var diff = new Date(expire - now);
-		page_top.append('<div class="page_timer">距離期限還有 ' + ((diff.getDate())? diff.getDate() + ' 日 ':'') + diff.getUTCHours() + ' 時 ' + diff.getUTCMinutes() + ' 分</div>');
+		page_left.append('<div class="page_timer">距離期限還有 ' + ((diff.getDate())? diff.getDate() + ' 日 ':'') + diff.getUTCHours() + ' 時 ' + diff.getUTCMinutes() + ' 分</div>');
 	}
-	var game = $('<div class="page_gameContent"></div>').appendTo(page_top);
-	game.append('<img src="img/swords.png" width="50%"/>');
-	game.append('<img src="img/bug.png" width="8%"/>');
-	page_top.append('<div class="page_status">已完成 50 %</div>');
+	var game = $('<div class="page_gameContent"></div>').appendTo(page_left);
+
+	game.append('<img  src="img/bug.png" />');
+	page_left.append('<div class="page_status">進度 : 已完成 ' + (data['now'] -data['start']) / (data['end'] - data['start']) + ' %</div>');
+	page_right.append('<div class="page_bean"></div>');
 	
 	button_save.click(function(){
 		var pageData = { 
