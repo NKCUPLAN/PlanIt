@@ -412,7 +412,14 @@ var AddPage = function(data){
 	var page_right = $('<div class="page_right"></div>').appendTo(page);
 	
 	page_left.append('<div class="page_title"><h3>' + data['name'] +'</h3></div>');			
-	page_right.append('<div class="page_progressTitle">今天你完成了多少呢？</div>');
+	
+	var slider = $('<form oninput="amount.value=rangeInput.value" ></div>').appendTo(page_right);
+	
+	slider.append('<input type="range" id="rangeInput" name="rangeInput" min="0" max="100" value="0">');
+	slider.append('<output name="amount" id="rangeOutput" for="rangeInput">0</output>')
+	
+	
+	page_right.append('<div class="page_progressTitle">增進你的進度吧!</div>');
 	page_right.append('<div class="page_progress">'
 						+'<input id="page_now" type="number" value="' + data['now'] + '"/> ' 
 						+ data['unit']+' / '+data['end']+ data['unit'] + '</div>');
