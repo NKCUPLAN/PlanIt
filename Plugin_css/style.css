@@ -36,6 +36,7 @@
 	background-position: left bottom;
 	left: 140px;
 	top: 410px;
+	z-index:+3;
 }
 #button .about {
 	width: 131px;
