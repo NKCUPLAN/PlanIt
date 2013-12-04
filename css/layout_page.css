@@ -103,11 +103,20 @@
 }
 
 .rangeInput{
+	-webkit-appearance: none;
+	background:lightgreen;
+	
 	width: 250px; 
 	height: 20px; 
-	margin: 0; 
+	margin: 5px 0; 
 	padding: 0;
-	background:transparent;
+}
+
+.rangeInput::-webkit-slider-thumb{
+	-webkit-appearance: none;
+	background:green;	
+	width: 10px; 
+	height: 30px; 
 }
 
 .rangeOutput{

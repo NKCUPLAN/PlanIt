@@ -26,7 +26,7 @@
 	width: 50%;
 }
 
-.page_left input, .page_right input, .page_left textarea, .page_right textarea{
+.page_left input[type=text], .page_right input[type=text], .page_left textarea, .page_right textarea{
 	background: #D0DDE9;
 	color: black;
 	border-width:0px;
