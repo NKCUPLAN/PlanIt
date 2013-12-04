@@ -132,69 +132,9 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('#login').click(function(){
-		if($('#rem').prop('checked') && !navigator.cookieEnabled){
-			alert('需先開啟瀏覽器cookie功能');
-			return;
-		}
-		$.ajax({
-			url: 'php/login.php',
-			cache: false,
-			dataType: 'html',
-			type:'POST',
-			data: { 
-				acc: $('#acc').val(),
-				pwd: $('#pwd').val()
-			},
-			error: function(xhr) {
-				alert("網路出現問題，請稍候再試!!");
-			},
-			success: function(response) {
-				var data = $.parseJSON(response);
-				if(data['msg'] == "success"){
-					first_name = data['first_name'];
-					last_name = data['last_name'];
-					secret = data['secret'];
-					$('#menu_user').text(first_name+last_name);
-					$('#loading').empty();
-					LoadPlans(secret);
-					
-					window.sessionStorage["secret"] = secret;
-					if($('#rem').prop('checked'))
- 						WriteCookie(secret);
-
-					$('#cover_lock').animate({transform: 'rotate(1080deg)'}, 2000, function(){
-						$('.unauth').fadeOut(1000, function(){
-							$('#acc').val('');
-							$('#pwd').val('');
-							$(".auth").fadeIn(1000);
-							AdjustBookSize();
-							$('#cover_lock').animate({transform: 'rotate(0deg)'});
-						});
-					});
-				}
-				else{
-					$('#unauth').effect('shake');
-				}
-			}
-		});
-	});
+	$('#login').click(loginAction);
 	
-	$('#login_register').click(function(){
-		$('.info_login').slideToggle('slow');
-		$('.info_register').slideToggle('slow');
-		if(hide_register){
-			$(this).text('回登入畫面');
-			$('#hint').css('color', 'white');
-			$('#hint').text('請輸入以下資料');
-		}
-		else{
-			$(this).text('註冊');
-			$('#hint').css('color', 'white');
-			$('#hint').text('請輸入帳號密碼');
-		}
-		hide_register = !hide_register;
-	});
+	$('#login_register').click(loginRegisterAction);
 		
 	$('#register').click(function(){
 		if(CheckRegisterInfo(
@@ -258,7 +198,7 @@ $(document).ready(function(){
 				content: $('#create_content').val(),
 				start: $('#create_start').val(),
 				end: $('#create_end').val(),
-				now: 0,
+				now: $('#create_start').val(),
 				unit: $('#create_unit').val(),
 				deadline: $('#create_deadDate').val() + ' ' + $('#create_deadTime').val()
 			};
@@ -470,7 +410,6 @@ var AddPage = function(data){
 	
 	var page_left = $('<div class="page_left"></div>').appendTo(page);
 	var page_right = $('<div class="page_right"></div>').appendTo(page);
-	//var page_top = $('<div class="page_top"></div>').appendTo(page);
 	
 	page_left.append('<div class="page_title"><h3>' + data['name'] +'</h3></div>');			
 	page_right.append('<div class="page_progressTitle">今天你完成了多少呢？</div>');
@@ -485,7 +424,7 @@ var AddPage = function(data){
 	
 	var now = new Date();
 	var expire = new Date(data['deadline']);
-	//alert(expire.valueOf() + " " +   now.valueOf() + " " );
+	
 	if(expire.valueOf() < now.valueOf())
 		page_left.append('<div class="page_timer">Time : 已過期</div>');
 	else{
@@ -495,7 +434,7 @@ var AddPage = function(data){
 	var game = $('<div class="page_gameContent"></div>').appendTo(page_left);
 
 	game.append('<img  src="img/bug.png" />');
-	page_left.append('<div class="page_status">進度 : 已完成 ' + (data['now'] -data['start']) / (data['end'] - data['start']) + ' %</div>');
+	page_left.append('<div class="page_status">進度 : 已完成 ' + (data['now'] - data['start'])*100 / (data['end'] - data['start']) + ' %</div>');
 	page_right.append('<div class="page_bean"></div>');
 	
 	button_save.click(function(){
@@ -612,4 +551,76 @@ var CheckPlanInfo = function(){
 		}
 	}
 	return true;
+}
+
+var loginAction = function(){
+	if($('#rem').prop('checked') && !navigator.cookieEnabled){
+		alert('需先開啟瀏覽器cookie功能');
+		return;
+	}
+	$.ajax({
+		url: 'php/login.php',
+		cache: false,
+		dataType: 'html',
+		type:'POST',
+		data: { 
+			acc: $('#acc').val(),
+			pwd: $('#pwd').val()
+		},
+		error: function(xhr) {
+			alert("網路出現問題，請稍候再試!!");
+		},
+		success: function(response) {
+			var data = $.parseJSON(response);
+			if(data['msg'] == "success"){
+				$("#login").unbind("click");
+				$("#login_register").unbind("click");
+				
+				first_name = data['first_name'];
+				last_name = data['last_name'];
+				secret = data['secret'];
+				$('#menu_user').text(first_name+last_name);
+				
+				LoadPlans(secret);
+				
+				window.sessionStorage["secret"] = secret;
+				if($('#rem').prop('checked'))
+					WriteCookie(secret);
+
+				$('#cover_lock').animate({transform: 'rotate(1080deg)'}, 2000, function(){
+					$('.unauth').fadeOut(1000, function(){
+						
+						$("#login").bind("click", loginAction);
+						$('#login_register').bind("click", loginRegisterAction);
+						
+						$('#acc').val('');
+						$('#pwd').val('');
+						$(".auth").fadeIn(1000);
+						AdjustBookSize();
+						$('#cover_lock').animate({transform: 'rotate(0deg)'});
+						$('#mask').hide();
+					});
+				});
+			}
+			else{
+				$('#unauth').effect('shake');
+			}
+		}
+	});
+}
+
+var loginRegisterAction = function(){
+	$('.info_login').slideToggle('slow');
+	$('.info_register').slideToggle('slow');
+	if(hide_register){
+		$(this).text('回登入畫面');
+		$('#hint').css('color', 'white');
+		$('#hint').text('請輸入以下資料');
+	}
+	else{
+		$(this).text('註冊');
+		$('#hint').css('color', 'white');
+		$('#hint').text('請輸入帳號密碼');
+	}
+	hide_register = !hide_register;
 }
