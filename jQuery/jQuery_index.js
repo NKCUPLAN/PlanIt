@@ -406,10 +406,13 @@ var LoadPlans = function(secret){
 }
 
 var AddPage = function(data){
-	var s = data['start'], e = data['end'], n = data['now'], u = data['unit'];
+	var s = parseInt(data['start']), e = parseInt(data['end']), n = parseInt(data['now']), u = data['unit'];
 	
 	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
-	page = $('<form oninput="amount.value=parseInt(rangeInput.value);percentage.value=100*(parseInt(rangeInput.value)-'+s+')/('+e+'-'+s+')"></form>').appendTo(page);
+	if(s > e)
+		page = $('<form oninput="amount.value='+s+'-parseInt(rangeInput.value)+'+e+';"></form>').appendTo(page);
+	else
+		page = $('<form oninput="amount.value=parseInt(rangeInput.value);"></form>').appendTo(page);
 	
 	var page_left = $('<div class="page_left"></div>').appendTo(page);
 	var page_right = $('<div class="page_right"></div>').appendTo(page);
@@ -421,7 +424,7 @@ var AddPage = function(data){
 		page_right.append(	'<div class="page_progressTitle">增進你的進度吧!</div>'+
 							'<div class="page_progress">'+
 								'<output id="page_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> / '+e+' '+u+
-								'<input type="range" class="rangeInput" name="rangeInput" min="'+e+'" max="'+s+'" value="'+n+'"/><br/>' +
+								'<input type="range" class="rangeInput" name="rangeInput" min="'+e+'" max="'+s+'" value="'+(s-n+e)+'"/><br/>' +
 								s+'　　　　　　　　　　　'+e+
 							'</div>');
 	}
@@ -452,7 +455,7 @@ var AddPage = function(data){
 	var game = $('<div class="page_gameContent"></div>').appendTo(page_left);
 
 	game.append('<img  src="img/bug.png" />');
-	page_left.append('<div class="page_status">進度 : 已完成 '+/*'<output name="percentage">'+*/100*(n-s)/(e-s)+/*'</output>'+*/' %</div>');
+	page_left.append('<div class="page_status">進度 : 已完成 '+'<output name="percentage" class="page_percentage">'+100*(n-s)/(e-s)+'</output>'+' %</div>');
 	page_right.append('<div class="page_bean"></div>');
 	
 	button_save.click(function(){
@@ -474,6 +477,8 @@ var AddPage = function(data){
 			success: function(response) {
 				//alert(response + '資料已更新');
 				alert('資料已更新');
+				//alert($(this).text());
+				button_save.parents('form').children('.page_left').children('.page_status').children('.page_percentage').val(100*(pageData['now']-s)/(e-s));
 			}
 		});
 	});
