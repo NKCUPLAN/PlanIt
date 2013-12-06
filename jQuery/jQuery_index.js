@@ -481,7 +481,7 @@ var AddPage = function(data){
 			success: function(response) {
 				done = (pageData['now']-s)/(e-s);
 				//alert(response + '資料已更新');
-				alert('資料已更新');
+				//alert('資料已更新');
 				//alert($(this).text());
 				button_save.parents('form').children('.page_left').children('.page_status').children('.page_percentage').val(100*done);
 				moveBug(game, done);
