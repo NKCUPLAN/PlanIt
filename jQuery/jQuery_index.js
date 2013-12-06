@@ -455,6 +455,7 @@ var AddPage = function(data){
 	var game = $('<div class="page_gameContent"></div>').appendTo(page_left);
 
 	game.append('<img  src="img/bug.png" />');
+	game.append('<div class="bubble">廢物!</br>還不快趕進度!!</div>');
 	page_left.append('<div class="page_status">進度 : 已完成 '+'<output name="percentage" class="page_percentage">'+100*(n-s)/(e-s)+'</output>'+' %</div>');
 	page_right.append('<div class="page_bean"></div>');
 	
