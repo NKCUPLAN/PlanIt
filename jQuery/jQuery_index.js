@@ -406,7 +406,8 @@ var LoadPlans = function(secret){
 }
 
 var AddPage = function(data){
-	var s = parseInt(data['start']), e = parseInt(data['end']), n = parseInt(data['now']), u = data['unit'];
+	var s = parseInt(data['start']), e = parseInt(data['end']), n = parseInt(data['now']), u = data['unit'];	
+	var done = (n-s)/(e-s);
 	
 	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
 	if(s > e)
@@ -454,10 +455,12 @@ var AddPage = function(data){
 	}
 	var game = $('<div class="page_gameContent"></div>').appendTo(page_left);
 
-	game.append('<img  src="img/bug.png" />');
+	game.append('<img src="img/bug.png" />');
 	game.append('<div class="bubble">廢物!</br>還不快趕進度!!</div>');
 	page_left.append('<div class="page_status">進度 : 已完成 '+'<output name="percentage" class="page_percentage">'+100*(n-s)/(e-s)+'</output>'+' %</div>');
 	page_right.append('<div class="page_bean"></div>');
+
+	moveBug(game, done);
 	
 	button_save.click(function(){
 		var pageData = { 
@@ -476,10 +479,12 @@ var AddPage = function(data){
 				alert('網路連線錯誤，請稍後再試');
 			},
 			success: function(response) {
+				done = (pageData['now']-s)/(e-s);
 				//alert(response + '資料已更新');
 				alert('資料已更新');
 				//alert($(this).text());
-				button_save.parents('form').children('.page_left').children('.page_status').children('.page_percentage').val(100*(pageData['now']-s)/(e-s));
+				button_save.parents('form').children('.page_left').children('.page_status').children('.page_percentage').val(100*done);
+				moveBug(game, done);
 			}
 		});
 	});
@@ -491,39 +496,15 @@ var TurnToPage = function(page){
 }
 
 var WriteCookie = function(secret){
-	/*
-	var cookie = "planit=" + secret;
-    var date = new Date();
-    date.setTime(date.getTime() + 24 * 60 * 60 * 1000);
-    var expirestr = date.toGMTString();
-    cookie += "; expires=" + expirestr;
-    document.cookie = cookie;
-	*/
 	window.localStorage["secret"] = secret;
 }
 
 var ClearCookie = function(){
-	/*
-	var cookie = "planit=;";
-	var date = new Date();
-    date.setTime(date.getTime() - 1);
-    var expirestr = date.toGMTString();
-    cookie += "; expires=" + expirestr;
-    document.cookie = cookie;
-	*/
 	window.localStorage["secret"] = "";
 	window.sessionStorage["secret"] = "";
 }
 
 var LoadCookie = function(){
-    /*if (document.cookie.length > 0){
-        var c_list = document.cookie.split(";");
-        for(i in c_list){
-            var cook = c_list[i].split("=");
-            if(cook[0] == "planit")
-				return cook[1];
-        }
-    }*/
 	return window.localStorage["secret"];
 }
 
@@ -648,4 +629,18 @@ var loginRegisterAction = function(){
 		$('#hint').text('請輸入帳號密碼');
 	}
 	hide_register = !hide_register;
+}
+
+var moveBug = function(gameContent, done){
+	var bug = new Array(), bubble =  new Array();
+	bubble = [[-100, 210],[20, 10]];
+	bug = [[90, 240], [220, 20]];
+
+	var bubble_top = (bubble[1][0] - bubble[0][0])*done + bubble[0][0];
+	var bubble_left = (bubble[1][1] - bubble[0][1])*done + bubble[0][1];
+	var bug_top = (bug[1][0] - bug[0][0])*done + bug[0][0];
+	var bug_left = (bug[1][1] - bug[0][1])*done + bug[0][1];
+
+	gameContent.children('img').animate({top: bug_top, left: bug_left}, done*1000);
+	gameContent.children('.bubble').animate({top: bubble_top, left: bubble_left}*1000);
 }
