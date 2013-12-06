@@ -456,7 +456,7 @@ var AddPage = function(data){
 	var game = $('<div class="page_gameContent"></div>').appendTo(page_left);
 
 	game.append('<img src="img/bug.png" />');
-	game.append('<div class="bubble">廢物!</br>還不快趕進度!!</div>');
+	game.append('<div class="bubble"></div>');
 	page_left.append('<div class="page_status">進度 : 已完成 '+'<output name="percentage" class="page_percentage">'+100*(n-s)/(e-s)+'</output>'+' %</div>');
 	page_right.append('<div class="page_bean"></div>');
 
@@ -632,15 +632,27 @@ var loginRegisterAction = function(){
 }
 
 var moveBug = function(gameContent, done){
-	var bug = new Array(), bubble =  new Array();
-	bubble = [[-100, 210],[20, 10]];
-	bug = [[90, 240], [220, 20]];
-
+	var	bubble = [[-100, 210],[20, 10]];
+	var bug = [[90, 240], [220, 20]];
+	var talk = [	"快開始進度吧！",
+					"才完成10%左右，再加油一點好嗎?",
+					"才完成1/5，還有很大的進步空間!!", 
+					"30%了~~ 再接再厲 > <", 
+					"40%囉！快過半了～", 
+					"已經達成一半囉！加油加油～", 
+					"及格邊緣！～", 
+					"七成了喔！再加把勁～", 
+					"完成八成了！加倍努力完成它吧！", 
+					"九成囉～成功就在不遠處！", 
+					"恭喜你完成囉!!"];
+	var choice = parseInt(done * 10);
+	
 	var bubble_top = (bubble[1][0] - bubble[0][0])*done + bubble[0][0];
 	var bubble_left = (bubble[1][1] - bubble[0][1])*done + bubble[0][1];
 	var bug_top = (bug[1][0] - bug[0][0])*done + bug[0][0];
 	var bug_left = (bug[1][1] - bug[0][1])*done + bug[0][1];
 
-	gameContent.children('img').animate({top: bug_top, left: bug_left}, done*1000);
-	gameContent.children('.bubble').animate({top: bubble_top, left: bubble_left}*1000);
+	gameContent.children('img').animate({top: bug_top, left: bug_left}, 1000);
+	gameContent.children('.bubble').animate({top: bubble_top, left: bubble_left}, 1000);
+	gameContent.children('.bubble').text(talk[choice]);
 }
