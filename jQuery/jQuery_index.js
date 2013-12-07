@@ -457,8 +457,7 @@ var AddPage = function(data){
 
 	game.append('<img src="img/bug.png" />');
 	game.append('<div class="bubble"></div>');
-	game.append('<div class="WoodBoard"></div>');
-	page_left.append('<div class="page_status"><output name="percentage" class="page_percentage">'+100*(n-s)/(e-s)+'</output>'+' %</div>');
+	game.append('<div class="WoodBoard"><output name="percentage" class="page_percentage">'+Math.round(1000*(n-s)/(e-s))/10.0+'</output> %</div>');
 	page_right.append('<div class="page_bean"></div>');
 
 	moveBug(game, done);
@@ -484,7 +483,7 @@ var AddPage = function(data){
 				//alert(response + '資料已更新');
 				//alert('資料已更新');
 				//alert($(this).text());
-				button_save.parents('form').children('.page_left').children('.page_status').children('.page_percentage').val(100*done);
+				game.children('.WoodBoard').children('.page_percentage').val(Math.round(1000*done)/10.0);
 				moveBug(game, done);
 			}
 		});

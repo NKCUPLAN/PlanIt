@@ -143,12 +143,6 @@ left: 50px;
 	background: url(../img/bean.png);
 }
 
-.page_status{
-	position:absolute;
-	top:375px;
-	left:285px;
-}
-
 .rangeInput{
 	-webkit-appearance: none;
 	background:lightgreen;
@@ -182,4 +176,7 @@ left: 50px;
 	background-size:cover;
 	width:100px;
 	height:130px;
+	line-height: 100px;
+	text-align: center;
+	font-size: 22px;
 }
