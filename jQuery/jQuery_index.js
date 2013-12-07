@@ -457,7 +457,8 @@ var AddPage = function(data){
 
 	game.append('<img src="img/bug.png" />');
 	game.append('<div class="bubble"></div>');
-	page_left.append('<div class="page_status">進度 : 已完成 '+'<output name="percentage" class="page_percentage">'+100*(n-s)/(e-s)+'</output>'+' %</div>');
+	game.append('<div class="WoodBoard"></div>');
+	page_left.append('<div class="page_status"><output name="percentage" class="page_percentage">'+100*(n-s)/(e-s)+'</output>'+' %</div>');
 	page_right.append('<div class="page_bean"></div>');
 
 	moveBug(game, done);

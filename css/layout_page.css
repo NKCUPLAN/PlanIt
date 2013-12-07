@@ -145,8 +145,8 @@ left: 50px;
 
 .page_status{
 	position:absolute;
-	top:430px;
-	left:30px;
+	top:375px;
+	left:285px;
 }
 
 .rangeInput{
@@ -173,3 +173,13 @@ left: 50px;
 	background:transparent;
 }
 
+.WoodBoard{
+	position:relative;
+	top:50px;
+	left:230px;
+	background: url(../img/WoodBoard.png);
+	background-repeat:no-repeat;
+	background-size:cover;
+	width:100px;
+	height:130px;
+}
