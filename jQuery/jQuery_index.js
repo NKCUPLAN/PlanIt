@@ -420,26 +420,37 @@ var AddPage = function(data){
 	
 	page_left.append('<div class="page_title"><h3>' + data['name'] +'</h3></div>');
 	
+	var game = $('<div class="page_gameContent"></div>').appendTo(page_left);
 
+	game.append('<img src="img/bug.png" />');
+	game.append('<div class="bubble"></div>');
+	game.append('<div class="WoodBoard"><output name="percentage" class="page_percentage">'+Math.round(1000*(n-s)/(e-s))/10.0+'</output> %</div>');
+	page_right.append('<div class="page_bean"></div>');
+	moveBug(game, done);
+
+	
 	if(s > e){
 		page_right.append(	'<div class="page_progressTitle">增進你的進度吧!</div>'+
 							'<div class="page_progress">'+
-								'<output id="page_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> / '+e+' '+u+
+								'你的目標是 '+e+' '+u+'<br/>'+
+								'而你目前的狀況是 <output id="page_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> '+u+
 								'<input type="range" class="rangeInput" name="rangeInput" min="'+e+'" max="'+s+'" value="'+(s-n+e)+'"/><br/>' +
 								s+'　　　　　　　　　　　'+e+
+								'<br/><span style="font-size:14px">初始值</span>　　　　　　　　　　<span style="font-size:14px">目標值</span>'+
 							'</div>');
 	}
 	else{
 		page_right.append(	'<div class="page_progressTitle">增進你的進度吧!</div>'+
 							'<div class="page_progress">'+
-								'<output id="page_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> / '+e+' '+u+
+								'你的目標是 '+e+' '+u+'<br/>'+
+								'而你目前的狀況是 <output id="page_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> '+u+
 								'<input type="range" class="rangeInput" name="rangeInput" min="'+s+'" max="'+e+'" value="'+n+'"/><br/>' +
 								s+'　　　　　　　　　　　'+e+
+								'<br/><span style="font-size:14px">初始值</span>　　　　　　　　　　<span style="font-size:14px">目標值</span>'+
 							'</div>');
 	}
 	
-	var div_button = $('<div id="button"></div>').appendTo(page_right);				  
-	var button_save = $('<a href="#" class="save">Save<span></span></a>').appendTo(div_button);
+	var div_button = $('<div id="button"></div>').appendTo(page_right);	
 	
 	page_right.append('<div class="page_diary">心情小記</div>');
 	page_right.append('<textarea class="page_diaryContent">' + data['content'] + '</textarea>');	
@@ -447,21 +458,30 @@ var AddPage = function(data){
 	var now = new Date();
 	var expire = new Date(data['deadline']);
 	
-	if(expire.valueOf() < now.valueOf())
+	if(expire.valueOf() < now.valueOf()){
 		page_left.append('<div class="page_timer">Time : 已過期</div>');
-	else{
-		var diff = new Date(expire - now);
-		page_left.append('<div class="page_timer">距離期限還有 ' + ((diff.getDate())? diff.getDate() + ' 日 ':'') + diff.getUTCHours() + ' 時 ' + diff.getUTCMinutes() + ' 分</div>');
+		return;
 	}
-	var game = $('<div class="page_gameContent"></div>').appendTo(page_left);
 
-	game.append('<img src="img/bug.png" />');
-	game.append('<div class="bubble"></div>');
-	game.append('<div class="WoodBoard"><output name="percentage" class="page_percentage">'+Math.round(1000*(n-s)/(e-s))/10.0+'</output> %</div>');
-	page_right.append('<div class="page_bean"></div>');
-
-	moveBug(game, done);
+	var t1 = expire.getTime();
+	var t2 = now.getTime();
+	var dis = t1 - t2;
 	
+	var str = '';
+	dis = parseInt(dis/1000);
+	//if(dis)	str += (dis%60)+' 秒';
+	dis = parseInt(dis/60);
+	if(dis)	str = (dis%60)+' 分 ' + str;
+	dis = parseInt(dis/60);
+	if(dis)	str = (dis%24)+' 時 ' + str;
+	dis = parseInt(dis/24);
+	if(dis)	str = (dis%365)+' 天 ' + str;
+	dis = parseInt(dis/365);
+	if(dis)	str = (dis)+' 年 ' + str;
+		
+	page_left.append('<div class="page_timer">距離期限還有 ' + str +'</div>');
+	
+	var button_save = $('<a href="#" class="save">Save<span></span></a>').appendTo(div_button);
 	button_save.click(function(){
 		var pageData = { 
 			id: data['id'],
@@ -488,7 +508,6 @@ var AddPage = function(data){
 			}
 		});
 	});
-	
 }
 
 var TurnToPage = function(page){

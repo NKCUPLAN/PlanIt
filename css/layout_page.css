@@ -95,7 +95,7 @@ left: 50px;
 
 .page_progress{
 	position: relative;
-	top: 60px;
+	top: 45px;
 	
 	margin: 5% auto;
 	width: 80%;
@@ -115,7 +115,7 @@ left: 50px;
 
 .page_diary{
 	position:relative;
-	top:50px;
+	top:30px;
 	left:40px;
 	font-size: 30px;
 	cursor: default; 
@@ -124,9 +124,9 @@ left: 50px;
 
 .page_diaryContent{
 	position:relative;
-	top:60px;
+	top:35px;
 	width: 80%;
-	height: 30%;
+	height: 20%;
 	margin: 0 10%;
 	border-width:0px;
 	background: #D0DDE9;
