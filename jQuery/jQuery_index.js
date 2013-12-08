@@ -406,6 +406,12 @@ var LoadPlans = function(secret){
 }
 
 var AddPage = function(data){
+
+	var now = new Date();
+	var expire = new Date(data['deadline']);
+	var t1 = expire.getTime();
+	var t2 = now.getTime();
+	
 	var s = parseInt(data['start']), e = parseInt(data['end']), n = parseInt(data['now']), u = data['unit'];	
 	var done = (n-s)/(e-s);
 	
@@ -455,16 +461,13 @@ var AddPage = function(data){
 	page_right.append('<div class="page_diary">心情小記</div>');
 	page_right.append('<textarea class="page_diaryContent">' + data['content'] + '</textarea>');	
 	
-	var now = new Date();
-	var expire = new Date(data['deadline']);
-	
-	if(expire.valueOf() < now.valueOf()){
+	if(t1 < t2){
 		page_left.append('<div class="page_timer">Time : 已過期</div>');
+		page_right.find('input').attr('disabled', 'disabled');
+		page_right.find('textarea').attr('disabled', 'disabled');
 		return;
 	}
-
-	var t1 = expire.getTime();
-	var t2 = now.getTime();
+	
 	var dis = t1 - t2;
 	
 	var str = '';
