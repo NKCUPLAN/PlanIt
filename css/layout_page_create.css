@@ -160,17 +160,38 @@ p.thought:after {
 
 
 .create_picture{
-	background: url(../img/goals.png);
+	background: url(../img/blackboard.jpg);
+	background-size: contain;
 	width:	294px;
-	height:	180px;
+	height:	170px;
 	padding: 10px;
 	margin: 20px auto 10px auto;
+}
+
+.create_beans{
+	background:url(../img/beans2.png);
+	background-size: contain;
+	position:absolute;
+	top:50px;
+	left:72px;
+	width:260px;
+	height:133px;
 }
 
 .create_diary{
 	text-align: center;
 	font-size: 30px;
 	margin: 0 auto;
+}
+
+.create_go{
+	background:url(../img/beans3.png);
+	background-size: contain;
+	position:absolute;
+	top:320px;
+	left:275px;
+	width:100px;
+	height:80px;
 }
 
 .create_diaryContent{ 
