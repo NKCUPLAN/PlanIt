@@ -438,7 +438,7 @@ var AddPage = function(data){
 	if(s > e){
 		page_right.append(	'<div class="page_progressTitle">增進你的進度吧!</div>'+
 							'<div class="page_progress">'+
-								'你的目標是 '+e+' '+u+'<br/>'+
+								/*'你的目標是 '+e+' '+u+'<br/>'+*/'</br>'+
 								'而你目前的狀況是 <output id="page_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> '+u+
 								'<input type="range" class="rangeInput" name="rangeInput" min="'+e+'" max="'+s+'" value="'+(s-n+e)+'"/><br/>' +
 								s+'　　　　　　　　　　　'+e+
@@ -448,7 +448,7 @@ var AddPage = function(data){
 	else{
 		page_right.append(	'<div class="page_progressTitle">增進你的進度吧!</div>'+
 							'<div class="page_progress">'+
-								'你的目標是 '+e+' '+u+'<br/>'+
+								/*'你的目標是 '+e+' '+u+'<br/>'+*/'</br>'+
 								'而你目前的狀況是 <output id="page_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> '+u+
 								'<input type="range" class="rangeInput" name="rangeInput" min="'+s+'" max="'+e+'" value="'+n+'"/><br/>' +
 								s+'　　　　　　　　　　　'+e+
