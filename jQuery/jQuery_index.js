@@ -213,9 +213,11 @@ $(document).ready(function(){
 					alert('網路連線錯誤，請稍後再試');
 				},
 				success: function(response) {
+					pageData['id'] = response.trim();
 					AddPage(pageData);
 
-					$('<li>' + pageData['name'] + '</li>').appendTo($('#list_plans')).bind({
+					var tag = $('<li>' + pageData['name'] + '</li>').appendTo($('#list_plans'));
+					tag.bind({
 						mouseenter: function(){
 							$(this).css('color', 'yellow');
 							$(this).css('cursor', 'pointer');
@@ -223,7 +225,8 @@ $(document).ready(function(){
 						mouseleave: function(){
 							$(this).css('color', 'brown');
 						}
-					}).click(function(){
+					});
+					tag.click(function(){
 						TurnToPage($('#aside_contents li').size() + 1);
 					});
 					$('#page_create input').val('');
@@ -503,9 +506,7 @@ var AddPage = function(data){
 			},
 			success: function(response) {
 				done = (pageData['now']-s)/(e-s);
-				//alert(response + '資料已更新');
-				//alert('資料已更新');
-				//alert($(this).text());
+				//alert(response + '資料已更新'+$(this).text()+ ' ' + pageData['now']);
 				game.children('.WoodBoard').children('.page_percentage').val(Math.round(1000*done)/10.0);
 				moveBug(game, done);
 			}

@@ -21,7 +21,12 @@
 	$user_id = $re['id'];
 	
 	$query = "INSERT INTO 2_plan VALUES('', '$user_id', '$name', '$content', '$start', '$end', '$now', '$unit', '$deadline', '$create_time')";
-	echo mysql_query($query) or die(mysql_error());
+	$re = mysql_query($query);
 	
+	$query = "SELECT MAX(id) FROM 2_plan";
+	$re = mysql_fetch_array(mysql_query($query));
+	
+	echo $re[0];
+
 	mysql_close();
 ?>
