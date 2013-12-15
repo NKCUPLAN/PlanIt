@@ -1,0 +1,65 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: ·L³n¥¿¶ÂÅé;
+}
+body{
+	position: absolute;
+	background: url(../img/background_.jpg);
+	width:1024px;
+	height:768px;
+	background-size: cover;
+	background-repeat: no-repeat;  
+	overflow: hidden;
+
+}
+.menu{  
+	position: absolute; 
+	background: url(../img/button_upper.png) no-repeat;
+	height: 130px;
+	width: 150px;	
+	background-size: cover;	
+}
+.menu:hover{
+	background-position: 0% 97%;	
+}
+#menu_introduction{
+	left:750px;
+}
+#menu_aboutus{
+	left:880px;  
+}
+#word{
+    position: absolute; 
+    top:90px;
+    left:200px;   
+    background: url(../img/word.png) no-repeat;
+    height: 250px;
+	width: 900px;	
+    background-size: contain;	
+}
+#login{
+	position: absolute; 
+	top:350px;
+	left:380px; 
+	height: 130px;
+	width: 265px;	
+	background: url(../img/button_login.png) ;  
+	background-size: cover;	
+}
+#login:hover { 
+	background-position: 0% 99%;	  
+}
+#register{
+	position: absolute; 
+	top:480px;
+	left:385px; 
+	height:130px;
+	width: 265px;	
+	background: url(../img/button_register.png) ;  
+	background-size: cover;	
+}
+#register:hover { 
+ background-position: 0% 100%;	
+  
+}
