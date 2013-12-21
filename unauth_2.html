@@ -52,21 +52,9 @@
 <body onSelectStart="event.returnValue=false">
 
 	<!-- Menu -->
-	<header>
-		<div class ="menu" id ="menu_introduction"></div>
-		<div class ="menu" id ="menu_aboutus"></div>
-		<!--
-		<div class="ui inverted menu">
-			
-			
-			<a class="item" id="menu_introduction"></a> 
-			
-			<a class="item" id="menu_aboutus">About Us</a>
-			<a class="item auth" id="menu_logout">Logout</a>
-			<a class="item auth" id="menu_user"></a>
-			
-		</div>  
-		-->
+	<header>		
+			<div class ="menu" id ="menu_introduction"></div>
+			<div class ="menu" id ="menu_aboutus"></div>	
 	</header>	
 	<!-- About Us Dialog -->
 	<div class="ui small modal" id="dialog_aboutus">
@@ -131,17 +119,70 @@
 	<div class="ui small modal" id="dialog_introduction">
 		<div class="header">Introduction</div>
 		<div class="content">
-      <img src="./img/introduction.jpg"  width="100%" />			
+      <img src="./img/introduction.jpg"  width="100%" >			
 		</div>
 		<div class="actions">
 			<div class="ui button">OK</div>
 		</div>
 	</div>
+	<!-- Login-->
+	<div class ="ui small modal" id="dialog_login">		
+		<div>
+			<input type="text" id="acc" maxlength="20" placeholder="帳號" />
+		</div>
+		<div>
+			<input type="password" id="pwd" placeholder="密碼" />
+		</div>
+		<div class="info_login">
+			<span class="loginButton checkBox"><input type="checkBox"
+					name="rem" id="rem" /> 記住我</span> <br /> <div class="loginButton"
+					id="login"></div>
+				<!--<span class="loginButton" id="reset">清除</span>-->
+		</div>		
+	</div>
+	<!-- Register -->
+	<div class ="ui small modal" id="dialog_register">	
+		<div class="info_register">
+			<div>
+				<input type="text" id="acc" maxlength="20" placeholder="帳號" />
+			</div>
+				<br>
+			<div>
+				<input type="password" id="pwd" placeholder="密碼" />
+			</div>
+			<div>
+				<input type="password" id="check_pwd" placeholder="確認密碼" />
+			</div>
+				<br />
+			<div>
+				<input type="text" id="first_name" placeholder="姓氏" size="8" /> <input
+					type="text" id="last_name" placeholder="名字" size="8" />
+			</div>
+				<br />
+			<div>
+				<span class="loginButton radio"><input type="radio"
+					name="gender" value="male" checked="true" />男</span>
+				<span class="loginButton radio"><input type="radio" name="gender"
+					value="female" />女</span>
+			</div>
+				<br />
+			<div>
+				<input type="text" id="mail" size="25" placeholder="電子郵件" />
+			</div>
+				<br />
+			<div class="registerButton">
+				<div class="loginButton" id="register"></div> 			
+				<div class="loginButton" id="register_reset"></div>
+			</div>	
+				<div class="loginButton" id="login_back"></div>
+			
+		</div>
+	</div>	
 	<!-- Main Content -->
 	<div id="unauth" class="unauth">	
 		<div id="word" ></div>
-		<div id="login"></div>
-		<div id="register"></div>		
+		<div id="Button_login"></div>
+		<div id="Button_register"></div>		
 	</div>
 	<!-- For modal UI (Introduction) -->
 	<script type="text/javascript">
@@ -150,6 +191,12 @@
   		});
 		$('#menu_aboutus').click(function(){
     		$('#dialog_aboutus').modal('show');
+  		});
+		$('#Button_login').click(function(){
+    		$('#dialog_login').modal('show');
+  		});
+		$('#Button_register').click(function(){
+    		$('#dialog_register').modal('show');
   		});
 	</script>
 </body>
