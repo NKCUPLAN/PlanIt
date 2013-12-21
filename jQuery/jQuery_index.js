@@ -56,30 +56,23 @@ $(document).ready(function(){
 	
 	
 	//-----------------------------------------------------------aside
-    $('#aside_switch').click(function(){
+
+	
+	$('#aside_switch').click(function(){
     	if(hide_aside){
         	$('aside').animate(
-            	{'right':  -$('#aside_contents').width()},
+            	{'top':  '0px'},
                 600
             );
 		}
         else{
         	$('aside').animate(
-            	{'right': 0},
+            	{'top': '370px'},
                 600
             );
 		}
         hide_aside = !hide_aside;
     });
-    
-    $('#aside_switch').hover(
-    	function(){
-    		$(this).css('background', 'rgba(0, 0, 0, 0.5)');
-    	},
-        function(){
-    		$(this).css('background', 'rgba(0, 0, 0, 0.2)');
-    	}
-    );
 	
 	$(window).resize(function(){
 		AdjustBookSize();
@@ -265,14 +258,15 @@ var AdjustBookSize = function(){
 
     if(w <= 1200){
 		$('#book').css('left', (w-$('#book').width())/2);
-    	$('aside').css('right', -$('#aside_contents').width());
-		
-		hide_aside = false;
+    	$('aside').css('right', 0);
+		$('aside').css('top',370)
+		hide_aside = true;
     }
 	else{
 		$('#book').css('left', (w-$('#aside_contents').width()-$('#book').width())/2);
-		$('aside').css('right', 0);
-		hide_aside = true;
+		$('aside').css('right', 100);
+		$('aside').css('top',0);
+		hide_aside = false;
 	}
 	
 	$('#book-base').css('width',$('#book').width()+136);
@@ -437,6 +431,7 @@ var AddPage = function(data){
 	page_right.append('<div class="page_bean"></div>');
 	moveBug(game, done);
 
+	
 	
 	if(s > e){
 		page_right.append(	'<div class="page_progressTitle">增進你的進度吧!</div>'+

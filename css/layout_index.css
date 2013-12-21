@@ -9,22 +9,20 @@ aside{
 	//display: none;
 	position: absolute;
     right: 0;
-    background: rgba(0, 0, 0, 0.2);
 	
 	border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-	z-index: 200;
 	margin: 0;
 }
 
-aside #aside_switch{
-	float: left;
-    
-    position: relative;
-    background: rgba(0, 0, 0, 0.2);
-    height: 100%;
-    width: 15px;
 
+aside #aside_switch{
+    position: absolute;
+	top:100px;
+	left:60px;
+    height: 30px;
+    width: 15px;
+	z-index: 450;
 	border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 	
@@ -33,21 +31,27 @@ aside #aside_switch{
 
 aside #aside_contents{
 	float: left;
-    height: 100%;
-    width: 240px;
+    height: 580px;
+    width: 210px;
 	
 	position: relative;
 
-    background: url(../img/scroll2.png) no-repeat;
+    background: url(../img/stone.png) no-repeat;
+	z-index:400;
     background-size: 100% 100%;
+	
 }
 
 aside #aside_contents #list_plans{
 	list-style-type: none;
     
-    margin: 15px 22px 0px 22px;
-
-	position: relative; 
+    margin: 10px 22px 0px 22px;
+	
+	position: relative;
+	overflow-y:scroll;	
+	top:150px;
+	height:300px;
+	
 }
 
 aside #aside_contents #list_plans:not(li){
@@ -67,16 +71,20 @@ aside #aside_contents #list_plans li{
     font-family: 微軟正黑體;
     padding: 10px 10px 10px 15px;
     //border-top: 1px dotted purple;
+	
 }
 
-aside #aside_contents #new_plan{
+aside #new_plan{
 	position: absolute;
-	bottom: 0;
-	width: 100%;
-	
+	top:473px;
+	left:56px;
+	height:60px;
+	width:65px;
+	z-index:500;
 	text-align: center;
 	line-height: 22px;
-    
+    background: url(../img/add.png) no-repeat;
+	background-size:contain;
     font-size: 22px;
 	
 	margin: 27px 0px 27px 0px;
@@ -84,7 +92,7 @@ aside #aside_contents #new_plan{
 	cursor:pointer;
     color: brown;
 	font-weight: bold;
-}
+}*/
 
 #unauth, #auth{
 	position: fixed;
@@ -113,7 +121,7 @@ body{
 	position: absolute;
     left: 0;
     top: 0;
-    background: url(../img/table.jpg);
+    background: url(../img/background.png);
 	background-size: cover;
 	background-repeat: no-repeat;
     width: 100%;
