@@ -18,8 +18,10 @@
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
 <script type="text/javascript">
-
-	$(document).ready(function() {
+	 function checkboxToggle(label) {
+		 $(label).toggleClass("delete_text");
+	 }
+	 $(document).ready(function() {
 		$("button").click(function() {
 			$itemValue = $('#add_newItem').val();
 			$num = $('.ui.checkbox').length + 1;
@@ -27,32 +29,14 @@
 		 	if($itemValue != "") {
 				$("#items").append('<div class="ui checkbox">\
 						<input type="checkbox" id=' + $checkboxID + 
-							'> <label for=' + $checkboxID +
+							'> <label onclick="checkboxToggle(this)" for=' + $checkboxID +
 							  '>'+$itemValue+'</label>\
 							</div><br>'
 						);
 				$('#add_newItem').val("");
-				$("label").click(function() {
-					$(this).toggleClass("delete_text");
-				});
 			}  
 		});
-		$("label").click(function() {
-			$(this).toggleClass("delete_text");
-		});
-	});
-	$checkbox = 'checkbox';
-	/* $(document).ready(function() {
-		$("button").click(function() {
-			$("boddy").append('\
-				<div class="ui checkbox">\
-				<input type="checkbox" id=' + checkbox 
-				'> <label for=' + checkbox
-					'onclick="show()" id="check">This is goal 1!</label>\
-				</div>'
-			);
-		});
-	}); */
+	});  
 </script>
 <style>
 .ui.checkbox {
@@ -90,12 +74,12 @@
 	<br>
 	<br>
 	<div class="ui checkbox">
-		<input type="checkbox" id="checkbox1"> <label for="checkbox1">This
+		<input type="checkbox" id="checkbox1"> <label onclick="checkboxToggle(this)"for="checkbox1">This
 			is goal 1!</label>
 	</div>
 	<br>
 	<div class="ui checkbox">
-		<input type="checkbox" id="checkbox2"> <label for="checkbox2">This
+		<input type="checkbox" id="checkbox2"> <label onclick="checkboxToggle(this)"for="checkbox2">This
 			is goal 2!</label>
 	</div>
 	<br>
