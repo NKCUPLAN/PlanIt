@@ -1,5 +1,4 @@
-﻿
-// Description:  AnimateImages jQuery Plugin.
+﻿// Description:  AnimateImages jQuery Plugin.
 // Author:       Marcel Wijnands
 // Demo:         http://demo.shynet.nl/animatedimages/
 // Blog:         http://blog.shynet.nl/
