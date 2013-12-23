@@ -11,26 +11,26 @@ $(document).ready(function(){
 	
 	/*---Dialog---*/
 	$('#main_btn_login').click(function(){
-		$('#main_mask').show(1, function(){
+		$('#unauth').show(1, function(){
 			$('#dialog_login').show('bounce', {times: 1, distance: 30}, 500);
 		});
 	});
 	
 	$('#main_btn_register').click(function(){
-		$('#main_mask').show(1, function(){
+		$('#unauth').show(1, function(){
 			$('#dialog_register').show('bounce', {times: 1, distance: 30},  500);
 		});
 	});
 	
 	$('#login_back').click(function(){
 		$('#dialog_login').hide('bounce', {times: 1, distance: 30}, 500, function(){
-			$('#main_mask').hide(1);
+			$('#unauth').hide(1);
 		});
 	});
 	
 	$('#register_back').click(function(){
 		$('#dialog_register').hide('bounce', {times: 1, distance: 30}, 500, function(){
-			$('#main_mask').hide(1);
+			$('#unauth').hide(1);
 		});
 	});
 	

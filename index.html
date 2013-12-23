@@ -10,8 +10,8 @@
 		src="Plugin_jQuery/jquery-ui-1.10.3.custom.min.js"></script>
 
 	<!-- For modal UI (Introduction) -->
-	<link rel="stylesheet" type="text/css" href="Plugin_css/dialog.css">
-	<script src="Plugin_jQuery/dialog.js"></script>
+	<link rel="stylesheet" type="text/css" href="Plugin_css/semantic.css">
+	<script src="Plugin_jQuery/semantic.js"></script>
 
 	<!-- For loading...-->
 	<script type="text/javascript"
@@ -141,51 +141,48 @@
 	</div>
 	
 	
-	<!-- Main Content -->
-	<div id="unauth" class="unauth">		
-		<div id="main_mask">
-			<div id="dialog_login">
-				<!--Dialog Login-->
-				<div >
-					<input type="text" class="acc" maxlength="20" placeholder="帳號" />
-				</div>
-				<div>
-					<input type="password" class="pwd" placeholder="密碼" />
-				</div>
-				<div>
-					<span class="loginButton checkBox"><input type="checkBox"
-						name="rem" id="rem" /> 記住我</span> <br />
-					<div class="loginButton" id="login"></div>
-				</div>
-				<div class="loginButton" id="login_back"></div>
+	<!-- Main Content -->	
+	<div id="unauth" class="unauth">>
+		<div id="dialog_login">
+			<!--Dialog Login-->
+			<div >
+				<input type="text" class="acc" maxlength="20" placeholder="帳號" />
 			</div>
-					
-			<!------------------------------------------------------------------->
-			<!--Dialog Register-->	
-			<div id="dialog_register">
-				<div><input type="text" class="acc" maxlength="20" placeholder="帳號" /></div>
-				<div><input type="password" class="pwd" placeholder="密碼" /></div>
-				<div><input type="password" id="check_pwd" placeholder="確認密碼" /></div>
-				<div>
-					<input type="text" id="first_name" placeholder="姓氏" size="8" />
-					<input type="text" id="last_name" placeholder="名字" size="8" />
-				</div>
-				<div>
-					<span class="loginButton radio"><input type="radio"
-						name="gender" value="male" checked="true" />男</span> 
-					<span class="loginButton radio"><input type="radio" 
-						name="gender" value="female" />女</span>
-				</div>
-				<div><input type="text" id="mail" size="25" placeholder="電子郵件" /></div>
-				<div class="registerButton">
-					<div class="loginButton" id="register"></div> 			
-					<div class="loginButton" id="register_reset"></div>
-				</div>
-				<div class="loginButton" id="register_back"></div>
-				<div id="hint"></div>
+			<div>
+				<input type="password" class="pwd" placeholder="密碼" />
 			</div>
+			<div>
+				<span class="loginButton checkBox"><input type="checkBox"
+					name="rem" id="rem" /> 記住我</span> <br />
+				<div class="loginButton" id="login"></div>
+			</div>
+			<div class="loginButton" id="login_back"></div>
 		</div>
-
+				
+		<!------------------------------------------------------------------->
+		<!--Dialog Register-->	
+		<div id="dialog_register">
+			<div><input type="text" class="acc" maxlength="20" placeholder="帳號" /></div>
+			<div><input type="password" class="pwd" placeholder="密碼" /></div>
+			<div><input type="password" id="check_pwd" placeholder="確認密碼" /></div>
+			<div>
+				<input type="text" id="first_name" placeholder="姓氏" size="8" />
+				<input type="text" id="last_name" placeholder="名字" size="8" />
+			</div>
+			<div>
+				<span class="loginButton radio"><input type="radio"
+					name="gender" value="male" checked="true" />男</span> 
+				<span class="loginButton radio"><input type="radio" 
+					name="gender" value="female" />女</span>
+			</div>
+			<div><input type="text" id="mail" size="25" placeholder="電子郵件" /></div>
+			<div class="registerButton">
+				<div class="loginButton" id="register"></div> 			
+				<div class="loginButton" id="register_reset"></div>
+			</div>
+			<div class="loginButton" id="register_back"></div>
+			<div id="hint"></div>
+		</div>
 	</div>
 	
 	<div id="auth" class="auth">

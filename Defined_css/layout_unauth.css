@@ -55,7 +55,7 @@
 }
 
 /*------MASK------*/
-#main_mask{
+#unauth{
 	min-width: 640px;
 	min-height: 480px;
 	z-index: 1000;
