@@ -1,0 +1,288 @@
+/*------MAIN------*/
+#unauth{
+	height: 100%;
+	width: 100%;
+}
+
+#main_top{
+	width: 100%;
+	background: url(../img/sky.png) repeat;
+}
+
+#main_middle{
+	width: 100%;
+	background: url(../img/background_ext.png) repeat-x;
+}
+
+#main_bottom{
+	width: 100%;
+	background: url(../img/soil.png) repeat;
+}
+
+#main_logo{
+	position: relative;
+	margin: 0 auto;
+	background: url(../img/logo.png)  no-repeat;
+	background-size: 100% 100%;
+}
+
+#main_btn_login{
+	height: 95px;
+	width: 210px;
+	margin: 0 auto;
+	position: relative; 
+		
+	background: url(../img/button_login.png) ;  
+	background-size: cover;	
+}
+#main_btn_login:hover { 
+	background-position: 0% 97px;
+}
+
+#main_btn_register{
+	height: 95px;
+	width: 210px;
+	margin: 0 auto;
+	position: relative; 
+	left: 5px;
+	
+	background: url(../img/button_register.png) ;  
+	background-size: cover;	
+}
+
+#main_btn_register:hover { 
+	background-position: 0% 98px; 
+}
+
+/*------MASK------*/
+#main_mask{
+	min-width: 640px;
+	min-height: 480px;
+	z-index: 1000;
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+	height: 100%;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	display: none;
+}
+
+/*------INPUT SETTING------*/
+
+input::-webkit-input-placeholder{
+	color: #335a99;
+	font-weight: bold;
+	text-align: center;
+}
+input:focus::-webkit-input-placeholder{
+	color: white;
+	font-weight: bold;
+	text-align: center;
+}
+input:-moz-placeholder { /* Firefox 18- */
+	color: #335a99;
+	font-weight: bold;
+	text-align: center;
+}
+input:focus:-moz-placeholder { /* Firefox 18- */
+	color: white;
+	font-weight: bold;
+	text-align: center;
+}
+input::-moz-placeholder {  /* Firefox 19+ */
+	color: #335a99;
+	font-weight: bold; 
+	text-align: center;
+}
+input:focus::-moz-placeholder {  /* Firefox 19+ */
+	color: white;
+	font-weight: bold; 
+	text-align: center;
+}
+input:-ms-input-placeholder {  /* Internet Explorer 10 */
+	color: #335a99;
+	font-weight: bold;
+	text-align: center;	
+}
+input:focus:-ms-input-placeholder {  
+	color: white;
+	font-weight: bold;
+	text-align: center;	
+}
+
+/*------LOGIN------*/
+#dialog_login{	
+	display: none;
+	position: relative;
+
+	background: url(../img/dialog_login.png) no-repeat;
+	background-size: 100% 100%;
+	margin: 0 auto;
+    width:500px;
+	height:370px;
+	
+	text-align: center;
+	color: black;
+	font-weight: bold;
+	font-size: 23px;
+}
+
+#dialog_login input{
+	margin-bottom: 10px;
+	font-size: 22px;
+	background: url(../img/dialog_input.png) no-repeat;	
+	background-size: 100% 100;	
+	padding: 0 4px;	
+	text-align: center;
+	border: 0px solid;
+}
+
+#dialog_login .checkBox{
+	font-size: 32px;
+	line-height: 14px;
+	color: #303030;
+}
+
+#dialog_login input:focus{
+	background-position: 0% 100%;	
+	outline:0;
+	color: white;
+}
+
+#dialog_login span{
+	line-height: 40px;
+	margin: 0 10px;
+	cursor: pointer;
+	padding: 5px 8px;
+	border-radius: 8px;
+}
+
+#dialog_login .acc{
+	margin-top: 50px;
+	height:80px;
+}
+
+#dialog_login .acc, #dialog_login .pwd{
+	width:250px;
+	height:35px;
+	margin-bottom: 10px;
+}
+
+#rem{
+	height: 20px;
+	width: 20px;
+	font-size: 30px;	
+}
+
+#login{	
+	background: url(../img/btn_login.png) no-repeat;
+	background-size: cover;
+	margin: 20px auto;
+	width: 110px;
+	height: 50px;
+}
+
+#login:hover { 
+	background-position: 0% 87%;  
+}
+
+/*------REGISTER------*/
+#dialog_register{
+	position: relative;
+	margin: 0 auto;
+	width: 380px;	
+	height:480px;
+	background: url(../img/dialog_register.png) no-repeat;
+	background-size: cover;	
+	text-align: center;
+	color: #335a99;
+	font-weight: bold;
+	font-size: 23px;
+	
+	display: none;
+}
+
+#dialog_register input{
+	margin-bottom: 10px;
+	font-size: 22px;
+	background: url(../img/dialog_input.png) no-repeat;	
+	background-size: 100% 100;	
+	padding: 0 4px;	
+	text-align: center;
+	border: 0px solid;
+}
+
+#dialog_register input:focus{
+	background-position: 0% 100%;	
+	outline:0;
+	color: white;
+}
+
+#dialog_register .acc{
+	margin-top: 55px;
+}
+
+#dialog_register .acc, #dialog_register .pwd{
+	width:250px;
+	height:35px;
+}
+
+#check_pwd{
+	width:250px;
+	height:35px;
+}
+
+#first_name, #last_name{
+	height:34px;
+}
+
+#mail{
+	height:35px;
+	width:320px;
+	font-size: 14px;
+}
+
+#register{	
+	background: url(../img/btn_register.png) no-repeat;
+	background-size: cover;
+	width: 110px;
+	height: 65px;
+}
+
+#register:hover { 
+	background-position: 0 73%;	  
+}
+
+#register_reset{	
+	background: url(../img/btn_reset.png) no-repeat;
+	background-size: cover;
+	width: 110px;
+	height: 65px;
+}
+
+#register_reset:hover { 
+	background-position: 0% 73%;	  
+}
+
+.registerButton *{
+	display: inline-block;
+}
+
+.loginButton.radio{
+	margin: 0 5px 0 5px;
+}
+
+/*------SHARE------*/
+#login_back, #register_back{	
+	background: url(../img/btn_back.png) no-repeat;
+	background-size: cover;
+	margin: 0 auto;
+	width: 250px;
+	height: 89px;
+}
+
+#login_back:hover, #register_back:hover { 
+	background-position: 0% 80%; 
+}
