@@ -11,15 +11,17 @@ $(document).ready(function(){
 	
 	/*------aside------*/
 	$('#aside_switch').click(function(){
+		var h = $(window).height();
+		
     	if(hide_aside){
         	$('aside').animate(
-            	{'top':  '0px'},
+            	{'top':  '30px'},
                 600
             );
 		}
         else{
         	$('aside').animate(
-            	{'top': '370px'},
+            	{'top': '460px'},
                 600
             );
 		}
@@ -34,13 +36,13 @@ var display_auth = function(){
     if(w <= 1200){
 		$('#book').css('left', (w-$('#book').width())/2);
     	$('aside').css('right', 0);
-		$('aside').css('top',370)
+		$('aside').css('top',460)
 		hide_aside = true;
     }
 	else{
 		$('#book').css('left', (w-$('#aside_contents').width()-$('#book').width())/2);
 		$('aside').css('right', 100);
-		$('aside').css('top',0);
+		$('aside').css('top',30);
 		hide_aside = false;
 	}
 	
