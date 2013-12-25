@@ -1,4 +1,4 @@
-/*------Initialization------*/
+ï»¿/*------Initialization------*/
 $(document).ready(function(){	
 	display_auth();
 });
@@ -15,7 +15,7 @@ $(document).ready(function(){
 		
     	if(hide_aside){
         	$('aside').animate(
-            	{'top':  '30px'},
+            	{'top':  '50px'},
                 600
             );
 		}
@@ -27,6 +27,68 @@ $(document).ready(function(){
 		}
         hide_aside = !hide_aside;
     });
+	
+	/*------BOOK_CREATE-------*/
+	$('#create_create').click(function(){
+		var today=new Date()
+		var year=today.getYear();
+		var month=today.getMonth()+1;
+		var date=today.getDate();
+		var hour=today.getHours();
+		var minute=today.getMinutes();
+		var second=today.getSeconds();
+		
+		if(CheckPlanInfo()){
+			var pageData = { 
+				secret: window.sessionStorage["secret"],
+				name: $('#create_name').val(),
+				content: $('#create_content').val(),
+				start: $('#create_start').val(),
+				end: $('#create_end').val(),
+				now: $('#create_start').val(),
+				unit: $('#create_unit').val(),
+				deadline: $('#create_deadDate').val() + ' ' + $('#create_deadTime').val()
+			};
+			
+			$.ajax({
+				url: 'php/createPlan.php',
+				cache: false,
+				dataType: 'html',
+				type:'POST',
+				data: pageData,
+				error: function(xhr) {
+					alert('ç¶²è·¯é€£ç·šéŒ¯èª¤ï¼Œè«‹ç¨å¾Œå†è©¦');
+				},
+				success: function(response) {
+					pageData['id'] = response.trim();
+					AddPage(pageData);
+
+					var tag = $('<li>' + pageData['name'] + '</li>').appendTo($('#list_plans'));
+					tag.bind({
+						mouseenter: function(){
+							$(this).css('color', 'yellow');
+							$(this).css('cursor', 'pointer');
+						},
+						mouseleave: function(){
+							$(this).css('color', 'brown');
+						}
+					});
+					tag.click(function(){
+						TurnToPage($('#aside_contents li').size() + 1);
+					});
+					$('#page_create input').val('');
+					$('#book').bookblock();
+					$('#book').bookblock('last');
+				}
+			});
+		}
+	});
+	
+	$('#create_back').click(function(){
+		$('#page_create input').val('');
+	});
+	
+	
 });
 
 var display_auth = function(){
@@ -42,7 +104,7 @@ var display_auth = function(){
 	else{
 		$('#book').css('left', (w-$('#aside_contents').width()-$('#book').width())/2);
 		$('aside').css('right', 100);
-		$('aside').css('top',30);
+		$('aside').css('top',50);
 		hide_aside = false;
 	}
 	
@@ -240,7 +302,7 @@ var CheckPlanInfo = function(){
 		var expire = new Date($('#create_deadDate').val().trim() + " " + $('#create_deadTime').val().trim());
 		var now = new Date();
 		if(expire.valueOf() < now.valueOf()){
-			alert("µ²§ô®É¶¡¤£¥i¦­©ó²{¦b®É¶¡³á!!!!!");
+			alert("çµæŸæ™‚é–“ä¸å¯æ—©æ–¼ç¾åœ¨æ™‚é–“å–”!!!!!");
 			return false;
 		}
 	}

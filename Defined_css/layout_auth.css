@@ -6,7 +6,8 @@
 
 aside{
 	//display: none;
-	position: absolute;
+	position: fixed;
+	z-index: 1000;
     right: 0;
 	
 	border-top-left-radius: 15px;
@@ -57,7 +58,6 @@ aside #aside_contents #list_plans:not(li){
 	line-height: 60px;
     text-align:  center;
     font-size: 20px;
-    
 }
 
 aside #aside_contents #list_plans li{
