@@ -39,19 +39,19 @@ aside #aside_contents{
     background: url(../img/stone.png) no-repeat;
 	z-index:400;
     background-size: cover;
-	
+
 }
 
 aside #aside_contents #list_plans{
 	list-style-type: none;
     
-    margin: 10px 22px 0px 22px;
+    margin: 10px 5px 0px 22px;
 	
 	position: relative;
 	overflow-y:scroll;	
 	top:150px;
 	height:300px;
-	
+	width:210px;
 }
 
 aside #aside_contents #list_plans:not(li){
@@ -76,7 +76,7 @@ aside #aside_contents #list_plans li{
 aside #new_plan{
 	position: absolute;
 	top:473px;
-	left:56px;
+	left:60px;
 	height:60px;
 	width:65px;
 	z-index:500;
@@ -167,3 +167,23 @@ aside #new_plan{
 }
 
 html { font-size:100% } 
+
+/*Scrollbar*/
+
+::-webkit-scrollbar {
+      width: 70px;
+}
+::-webkit-scrollbar-track {
+      display:none;
+} 
+::-webkit-scrollbar-thumb {
+      background: url(../img/scroll.png) no-repeat;
+	  background-size: 70px 70px;
+	  cursor:pointer;
+}
+::-webkit-scrollbar-button {
+      display:none;
+}
+::-webkit-scrollbar-corner {
+      display:none;
+}
