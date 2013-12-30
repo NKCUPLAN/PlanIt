@@ -9,18 +9,20 @@
 
 .plan_timer{
 	position:absolute;
-	top:100px;
+	top:10px;
 	left:40px;
 	z-index:+1;
 	text-align:center;
 	margin:1% 0;
 }
-
+/*** Game Content ***/
 .plan_gameContent{
 	position:absolute;
-	top:80px;
-	background: url(../img/game_background.png) 60% 100%;
-	height:370px;
+	top:75px;
+	background: url(../img/game/gameBackground.png);
+	background-size:contain;
+	height:363px;
+	width:340px;
 	margin:1% 5%;
 	padding:3% 0%;
 	font-size: 40px;
@@ -33,6 +35,76 @@
 	left:55px;
 }
 
+.game_bean{
+	background: url(../img/game/bean_1.png);
+	background-size:contain;
+	position:absolute;
+	top:79.55px;
+	left:127px;
+	height:87.2px;
+	width:88px;
+}
+
+.game_ropeX{
+	background: url(../img/game/rope_x.png);
+	background-size:contain;
+	position:absolute;
+	top:129px;
+	left:125px;
+	height:4.5px;
+	width:0px;
+}
+
+.game_ropeY{
+	background: url(../img/game/rope_y.png) no-repeat;
+	background-size:cover;
+	position:absolute;
+	top:30px;
+	left:13px;
+	height:85px;
+	width:85px;
+}
+
+.game_beltSystem{
+	background: url(../img/game/beltSystem_1.png) no-repeat;
+	background-size:contain;
+	position:absolute;
+	top:165px;
+	left:119px;
+	height:150px;
+	width:225px;
+}
+
+.game_container{
+	background: url(../img/game/container.png) no-repeat;
+	background-size:contain;
+	position:absolute;
+	z-index:+1;
+	top:115px;
+	left:3px;
+	height:99px;
+	width:120px;
+}
+
+.game_bug{
+	background: url(../img/game/bugCry_1.png) no-repeat;
+	background-size:contain;
+	position:absolute;
+	top:192px;
+	left:21px;
+	height:102px;
+	width:90px;
+}
+
+.game_bicycle{
+	background: url(../img/game/bicycle_1.png) no-repeat;
+	background-size:contain;
+	position:absolute;
+	top:185px;
+	left:150px;
+	height:200px;
+	width:150px;
+}
 
 .bubble 
 {

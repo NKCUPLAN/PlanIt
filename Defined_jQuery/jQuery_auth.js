@@ -188,13 +188,17 @@ var AddPage = function(data){
 	
 	var game = $('<div class="plan_gameContent"></div>').appendTo(plan_left);
 
-	game.append('<img src="img/bug.png" />');
-	game.append('<div class="bubble"></div>');
-	game.append('<div class="WoodBoard"><output name="percentage" class="plan_percentage">'+Math.round(1000*(n-s)/(e-s))/10.0+'</output> %</div>');
+	game.append('<div class="game_bean"></div>');
+	game.append('<div class="game_ropeX"></div>');
+	game.append('<div class="game_beltSystem"></div>');
+	game.append('<div class="game_container"></div>');
+	game.append('<div class="game_ropeY"></div>');
+	game.append('<div class="game_bug"></div>');
+	game.append('<div class="game_bicycle"></div>');
+	//game.append('<div class="bubble"></div>');
+	//game.append('<div class="WoodBoard"><output name="percentage" class="plan_percentage">'+Math.round(1000*(n-s)/(e-s))/10.0+'</output> %</div>');
 	plan_right.append('<div class="plan_bean"></div>');
-	moveBug(game, done);
-
-	
+	//moveBug(game, done);
 	
 	if(s > e){
 		plan_right.append(	'<div class="plan_progressTitle">Update your plan any time!</div>'+
