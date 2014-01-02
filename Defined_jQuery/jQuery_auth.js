@@ -8,7 +8,7 @@ $(document).ready(function(){
 	$(window).resize(function(){
 		display_auth();
 	});
-	
+
 	/*------aside------*/
 	$('#aside_switch').click(function(){
 		var h = $(window).height();
@@ -198,7 +198,7 @@ var AddPage = function(data){
 	//game.append('<div class="bubble"></div>');
 	//game.append('<div class="WoodBoard"><output name="percentage" class="plan_percentage">'+Math.round(1000*(n-s)/(e-s))/10.0+'</output> %</div>');
 	plan_right.append('<div class="plan_bean"></div>');
-	//moveBug(game, done);
+	moveBug(game, done);
 	
 	if(s > e){
 		plan_right.append(	'<div class="plan_progressTitle">Update your plan any time!</div>'+

@@ -60,9 +60,9 @@
 	background-size:cover;
 	position:absolute;
 	top:30px;
-	left:13px;
-	height:85px;
-	width:85px;
+	left:53px;
+	height:96px;
+	width:5px;
 }
 
 .game_beltSystem{
@@ -80,7 +80,7 @@
 	background-size:contain;
 	position:absolute;
 	z-index:+1;
-	top:115px;
+	top:125px;
 	left:3px;
 	height:99px;
 	width:120px;
@@ -94,6 +94,22 @@
 	left:21px;
 	height:102px;
 	width:90px;
+	animation:bug_cry 2s infinite;
+	-webkit-animation:bug_cry 2s infinite; /* Safari and Chrome */
+}
+
+@keyframes bug_cry
+{
+0%   {background: url(../img/game/bugCry_1.png) no-repeat;}
+50%   {background: url(../img/game/bugCry_2.png) no-repeat;}
+100% {background: url(../img/game/bugCry_1.png) no-repeat;}
+}
+
+@-webkit-keyframes bug_cry /* Safari and Chrome */
+{
+0%   {background: url(../img/game/bugCry_1.png) no-repeat;}
+50%   {background: url(../img/game/bugCry_2.png) no-repeat;}
+100% {background: url(../img/game/bugCry_1.png) no-repeat;}
 }
 
 .game_bicycle{
@@ -104,6 +120,24 @@
 	left:150px;
 	height:200px;
 	width:150px;
+	animation:ride_bicycle 1s infinite;
+	-webkit-animation:ride_bicycle 1s infinite; /* Safari and Chrome */
+}
+
+@keyframes ride_bicycle
+{
+0%   {background: url(../img/game/bicycle_1.png) no-repeat;}
+33%   {background: url(../img/game/bicycle_2.png) no-repeat;}
+67%   {background: url(../img/game/bicycle_3.png) no-repeat;}
+100%   {background: url(../img/game/bicycle_1.png) no-repeat;}
+}
+
+@-webkit-keyframes ride_bicycle /* Safari and Chrome */
+{
+0%   {background: url(../img/game/bicycle_1.png) no-repeat;}
+33%   {background: url(../img/game/bicycle_2.png) no-repeat;}
+67%   {background: url(../img/game/bicycle_3.png) no-repeat;}
+100%   {background: url(../img/game/bicycle_1.png) no-repeat;}
 }
 
 .bubble 
