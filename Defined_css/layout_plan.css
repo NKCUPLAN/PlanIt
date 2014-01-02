@@ -127,16 +127,18 @@
 @keyframes ride_bicycle
 {
 0%   {background: url(../img/game/bicycle_1.png) no-repeat;}
-33%   {background: url(../img/game/bicycle_2.png) no-repeat;}
-67%   {background: url(../img/game/bicycle_3.png) no-repeat;}
+4%   {background: url(../img/game/bicycle_1.png) no-repeat;}
+36%   {background: url(../img/game/bicycle_2.png) no-repeat;}
+68%   {background: url(../img/game/bicycle_3.png) no-repeat;}
 100%   {background: url(../img/game/bicycle_1.png) no-repeat;}
 }
 
 @-webkit-keyframes ride_bicycle /* Safari and Chrome */
 {
 0%   {background: url(../img/game/bicycle_1.png) no-repeat;}
-33%   {background: url(../img/game/bicycle_2.png) no-repeat;}
-67%   {background: url(../img/game/bicycle_3.png) no-repeat;}
+4%   {background: url(../img/game/bicycle_1.png) no-repeat;}
+36%   {background: url(../img/game/bicycle_2.png) no-repeat;}
+68%   {background: url(../img/game/bicycle_3.png) no-repeat;}
 100%   {background: url(../img/game/bicycle_1.png) no-repeat;}
 }
 
