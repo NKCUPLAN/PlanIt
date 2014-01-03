@@ -12,6 +12,7 @@
 #main_middle{
 	width: 100%;
 	background: url(../img/background_ext.png) repeat-x;
+	text-align:center
 }
 
 #main_bottom{
@@ -27,10 +28,10 @@
 }
 
 #main_btn_login{
+	display: inline-block;
 	height: 95px;
 	width: 210px;
-	margin: 0 auto;
-	position: relative; 
+	margin: 200px auto 0 auto;
 		
 	background: url(../img/button_login.png) ;  
 	background-size: cover;	
@@ -40,12 +41,11 @@
 }
 
 #main_btn_register{
+	display: inline-block;
 	height: 95px;
 	width: 210px;
-	margin: 0 auto;
-	position: relative; 
-	left: 5px;
-	
+	margin: 200px auto 0 auto;
+
 	background: url(../img/button_register.png) ;  
 	background-size: cover;	
 }
