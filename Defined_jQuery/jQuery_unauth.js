@@ -143,7 +143,7 @@ var loginAction = function(){
 					$('#dialog_login .acc').val('');
 					$('#dialog_login .pwd').val('');
 					display_auth();
-					$('#auth').fadeIn(1000);
+					$('#auth, .auth').fadeIn(1000);
 				});
 			}
 			else{

@@ -26,11 +26,12 @@ header{
 	height: 80px;
 	width: 75px;	
 }
+
 #menu_friend{
 	float:left;
-	height:155px;
-	width: 200px;
-	background: url(../img/button_upper_friend.png) no-repeat bottom;
+	height:77px;
+	width: 100px;
+	background: url(../img/friend/button_upper_friend.png) no-repeat bottom;
 	background-size: cover;
 }
 

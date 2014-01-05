@@ -104,6 +104,10 @@ aside #new_plan{
 	display:none;
 }
 
+.auth{
+	display:none;
+}
+
 #book{
 	position: fixed; 
 	left: 2rem;
@@ -176,20 +180,21 @@ html { font-size:100% }
 
 /*Scrollbar*/
 
-::-webkit-scrollbar {
+#list_plans::-webkit-scrollbar {
       width: 70px;
 }
-::-webkit-scrollbar-track {
+#list_plans::-webkit-scrollbar-track {
       display:none;
 } 
-::-webkit-scrollbar-thumb {
+#list_plans::-webkit-scrollbar-thumb {
       background: url(../img/scroll.png) no-repeat;
 	  background-size: 70px 70px;
 	  cursor:pointer;
+	  background-position: center center;
 }
-::-webkit-scrollbar-button {
+#list_plans::-webkit-scrollbar-button {
       display:none;
 }
-::-webkit-scrollbar-corner {
+#list_plans::-webkit-scrollbar-corner {
       display:none;
 }
