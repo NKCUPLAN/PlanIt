@@ -26,7 +26,17 @@ header{
 	height: 80px;
 	width: 75px;	
 }
+#menu_friend{
+	float:left;
+	height:155px;
+	width: 200px;
+	background: url(../img/button_upper_friend.png) no-repeat bottom;
+	background-size: cover;
+}
 
+#menu_friend:hover{
+	background-position: 0% 0%;
+}
 #menu_introduction{
 	background: url(../img/button_upper_intro.png) no-repeat;
 	background-size: cover;

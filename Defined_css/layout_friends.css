@@ -1,0 +1,232 @@
+/*----------Friends------------*/
+*{
+	margin: 0;
+	padding: 0;
+	font-family:\5FAE\8EDF\6B63\9ED1\9AD4;
+}
+#dialog_friend{
+	
+	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/friend_background.png) no-repeat;
+	background-size: contain;	
+	width:537px;
+	height:602px;
+}
+#friend_search{
+  margin-top:9px;
+  margin-left:9px;
+   border: 0px solid; 
+  background-color:white;
+  width:184px;
+  height:43px;
+   border-top-left-radius: 10px;
+   border-bottom-left-radius: 10px;
+  text-align:center;
+  font-size:24px;
+}
+#friend_search:focus{
+  outline:0;
+  border: 0px solid;
+}
+#friend_search_background{	
+	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/friend_search.png) no-repeat;
+	background-size: cover;  
+	position:absolute;
+ top:40px;
+left:137px;
+	width:260px;
+	height:60px;
+ border: 0px solid; 
+}
+#friend_search_background:hover{
+	background-position: 0% 99%;
+  border: 0px solid;
+}
+#friend_search_background:focus{
+	  outline:0;
+  border: 0px solid;
+}
+#friend_text{
+  top:106px;
+  left:200px;
+  font-size:24px;
+  font-weight: bold;
+  position:absolute; 
+  display:inline;
+}
+#friend_number{
+  top:106px;
+  left:310px;
+  font-size:24px;
+  font-weight: bold;
+  position:absolute; 
+  display:inline;
+}
+#friend_list{  
+ 
+  position:absolute; 
+  top:140px;
+  left:65px;
+  height:440px;
+  width:450px;
+ overflow-y: scroll;
+}
+.friend_block{
+  	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/friend_block.png) no-repeat;
+  position:relative; 
+  margin-bottom:7px;
+  height:140px;  
+  list-style-type:none;
+}
+#profile_pic_boy{   
+   	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/profileBoy.png) no-repeat; 
+  width:90px;
+  position:absolute;
+  height:90px;
+  top:10px;
+  left:25px;
+}
+#profile_pic_girl{
+   	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/profileGirl.png) no-repeat;
+  position:absolute;
+  width:90px;
+  height:90px;
+  width:100px;
+  top:10px;
+  left:25px;
+}
+#profile_name{
+   width:100px;
+  position:absolute;
+  top:95px;
+  left:35px;
+  font-size:24px;
+  
+  	font-weight: bold;
+}
+#friend_ask{
+  
+  position:absolute;
+  	font-size: 24px;
+  	font-weight: bold;
+  top:50px;
+  left:180px;
+}
+.friend_text:hover{
+  color:#384033;
+}
+.friend_text:hover{
+  color:#f7a89a;  
+}
+#btn_friendConfirm{
+  position:absolute;
+  	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/btn_friendConfirm.png) no-repeat;
+  top:85px;
+  left:170px;
+  background-size:cover;
+  width:83px;
+  height:42px;
+}
+#btn_friendConfirm:hover{
+  	background-position: 0% 102%;
+}
+#btn_friendRefuse{
+  position:absolute;
+  	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/btn_friendRefuse.png) no-repeat;
+  top:85px;
+  left:280px;
+  background-size:cover;
+  width:83px;
+  height:42px;
+}
+#btn_friendRefuse:hover{
+  	background-position: 0% 102%;
+}
+#friend_recentUpdate{
+  position:absolute;
+  	font-size: 18px;
+  	font-weight: bolder;
+  top:30px;
+  left:130px; 
+}
+#friend_planName{
+  color:#2e446f;
+  position:absolute;
+  	font-size: 24px;
+  	font-weight: bolder;
+  top:55px;
+  left:130px; 
+}
+#friend_planName:hover{
+    color:#f7a89a;   
+}
+#btn_friendDelete{
+   position:absolute;
+  	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/btn_friendDelete.png) no-repeat;
+  top:85px;
+  left:250px;
+  background-size:cover;
+  width:117px;
+  height:42px;  
+}
+#btn_friendDelete:hover{
+  	background-position: 0% 102%;
+}
+#friend_search::-webkit-input-placeholder{
+	color: #a9c6ff;
+	font-weight: bold;
+	text-align: center;
+}
+#friend_search:focus::-webkit-input-placeholder{	
+	font-weight: bold;
+	text-align: center;
+}
+#friend_search:-moz-placeholder { /* Firefox 18- */
+	color: #a9c6ff;
+	font-weight: bold;
+	text-align: center;
+}
+#friend_search:focus:-moz-placeholder { /* Firefox 18- */
+
+	font-weight: bold;
+	text-align: center;
+}
+#friend_search::-moz-placeholder {  /* Firefox 19+ */
+	color: #a9c6ff;
+	font-weight: bold; 
+	text-align: center;
+}
+#friend_search:focus::-moz-placeholder {  /* Firefox 19+ */
+
+	font-weight: bold; 
+	text-align: center;
+}
+#friend_search:-ms-input-placeholder {  /* Internet Explorer 10 */
+	color: #d7e4ff;
+	font-weight: bold;
+	text-align: center;	
+}
+#friend_search:focus:-ms-input-placeholder {  
+
+	font-weight: bold;
+	text-align: center;	
+}
+/*scollbar*/
+::-webkit-scrollbar {
+    margin-left:20px;  
+    width: 36px;
+    height:10px;
+    
+}
+::-webkit-scrollbar-track {
+      display:none;    
+   
+} 
+::-webkit-scrollbar-thumb:vertical{ 
+      background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/friend_scroll.png) no-repeat;	 	 
+}
+::-webkit-scrollbar-button {
+      display:none;
+}
+::-webkit-scrollbar-corner {
+      display:none;
+}

@@ -46,6 +46,7 @@
 	<link rel="stylesheet" type="text/css" href="Defined_css/layout_book.css"/>
 	<link rel="stylesheet" type="text/css" href="Defined_css/layout_plan.css"/>
 	<link rel="stylesheet" type="text/css" href="Defined_css/layout_create.css"/>
+	<link rel="stylesheet" type="text/css" href="Defined_css/layout_friends.css"/>
 	
 	<script type="text/javascript" src="Defined_jQuery/jQuery_index.js"></script>
 	<script type="text/javascript" src="Defined_jQuery/jQuery_unauth.js"></script>
@@ -55,7 +56,8 @@
 <body onSelectStart="event.returnValue=false">
 
 	<!-- Menu -->
-	<header>		
+	<header>
+		<div class="menu_item" id ="menu_friend"></div>	
 		<div class="menu_item" id ="menu_introduction"></div>
 		<div class="menu_item" id ="menu_aboutus"></div>	
 	</header>	
@@ -68,7 +70,41 @@
 		<div id="main_btn_register" class="unauth"></div>
 	</div>
 	<div id="main_bottom"></div>
-	
+	<!-- Friend Dialog -->
+	<div class="ui small modal" id="dialog_friend">     
+		<div id="friend_search_background">
+			<input type="text" maxlength="20" id="friend_search" placeholder="搜尋朋友ID">
+		</div>
+		<div id="friend_text">朋友列表</div>       
+		<div id="friend_number">22</div>
+		<div id="friend_content">
+			<ul id="friend_list">
+				<li class="friend_block" id="friend_confirm">
+					<div id="profile_pic_boy"></div>
+					<div class="friend_text" id="profile_name">王小明</div>
+					<div id="friend_ask">想成為你的朋友</div>
+					<div id="btn_friendConfirm"></div>
+					<div id="btn_friendRefuse"></div>
+				</li>			
+				<li class="friend_block" id="friend_owned">
+					<div id="profile_pic_girl"></div>
+					<div class="friend_text" id="profile_name">孫小華</div>
+					<div id="friend_recentUpdate">最近更新計畫 :</div>
+					<div class="friend_text" id="friend_planName">減肥大作戰</div>
+					<div id="btn_friendDelete"></div>
+				</li>
+				<li class="friend_block">
+					<div id="profile_pic_boy"></div>
+					<div class="friend_text" id="profile_name">張宅倫</div>
+					<div id="friend_recentUpdate">最近更新計畫 :</div>
+					<div class="friend_text" id="friend_planName">神魔輪迴過關之大作戰</div>
+					<div id="btn_friendDelete"></div>
+				</li>
+				<li class="friend_block"></li>
+				<li class="friend_block"></li>       
+			</ul>      
+		</div>
+	</div>	
 	<!-- About Us Dialog -->
 	<div class="ui small modal" id="dialog_aboutus">
 		<div class="header">About Us</div>
@@ -252,6 +288,10 @@
 	$('#menu_aboutus').click(function(){
 		$('#dialog_aboutus').modal('show');
 	});
+	$('#menu_friend').click(function(){
+		$('#dialog_friend').modal('show');
+	});
+	
 </script>
 
 <!--datepicker-->
