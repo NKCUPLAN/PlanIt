@@ -6,7 +6,7 @@
 }
 #dialog_friend{
 	
-	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/friend_background.png) no-repeat;
+	background: url(../img/friend/friend_background.png) no-repeat;
 	background-size: contain;	
 	width:537px;
 	height:602px;
@@ -28,7 +28,7 @@
   border: 0px solid;
 }
 #friend_search_background{	
-	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/friend_search.png) no-repeat;
+	background: url(../img/friend/friend_search.png) no-repeat;
 	background-size: cover;  
 	position:absolute;
  top:40px;
@@ -71,14 +71,14 @@ left:137px;
  overflow-y: scroll;
 }
 .friend_block{
-  	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/friend_block.png) no-repeat;
+  	background: url(../img/friend/friend_block.png) no-repeat;
   position:relative; 
   margin-bottom:7px;
   height:140px;  
   list-style-type:none;
 }
 #profile_pic_boy{   
-   	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/profileBoy.png) no-repeat; 
+   	background: url(../img/friend/profileBoy.png) no-repeat; 
   width:90px;
   position:absolute;
   height:90px;
@@ -86,7 +86,7 @@ left:137px;
   left:25px;
 }
 #profile_pic_girl{
-   	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/profileGirl.png) no-repeat;
+   	background: url(../img/friend/profileGirl.png) no-repeat;
   position:absolute;
   width:90px;
   height:90px;
@@ -119,7 +119,7 @@ left:137px;
 }
 #btn_friendConfirm{
   position:absolute;
-  	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/btn_friendConfirm.png) no-repeat;
+  	background: url(../img/friend/btn_friendConfirm.png) no-repeat;
   top:85px;
   left:170px;
   background-size:cover;
@@ -131,7 +131,7 @@ left:137px;
 }
 #btn_friendRefuse{
   position:absolute;
-  	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/btn_friendRefuse.png) no-repeat;
+  	background: url(../img/friend/btn_friendRefuse.png) no-repeat;
   top:85px;
   left:280px;
   background-size:cover;
@@ -153,15 +153,23 @@ left:137px;
   position:absolute;
   	font-size: 24px;
   	font-weight: bolder;
-  top:55px;
+  top:55px; 
   left:130px; 
+  width: 270px;  
+  height:24px;
+  text-overflow:ellipsis;  
+  overflow: hidden;
+  white-space: nowrap;
 }
 #friend_planName:hover{
     color:#f7a89a;   
+	text-overflow:clip;
+	overflow:visible;
+	white-space: normal;
 }
 #btn_friendDelete{
    position:absolute;
-  	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/btn_friendDelete.png) no-repeat;
+  	background: url(../img/friend/btn_friendDelete.png) no-repeat;
   top:85px;
   left:250px;
   background-size:cover;
@@ -222,7 +230,7 @@ left:137px;
    
 } 
 ::-webkit-scrollbar-thumb:vertical{ 
-      background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/friend_scroll.png) no-repeat;	 	 
+      background: url(../img/friend/friend_scroll.png) no-repeat;	 	 
 }
 ::-webkit-scrollbar-button {
       display:none;
