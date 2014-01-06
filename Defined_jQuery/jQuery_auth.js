@@ -1,4 +1,6 @@
-﻿/*------Initialization------*/
+﻿var pages = new Array();
+
+/*------Initialization------*/
 $(document).ready(function(){	
 	display_auth();
 });
@@ -61,7 +63,7 @@ $(document).ready(function(){
 				},
 				success: function(response) {
 					pageData['id'] = response.trim();
-					AddPage(pageData);
+					pages.push(AddPlanPage1(pageData));
 
 					var tag = $('<li>' + pageData['name'] + '</li>').appendTo($('#list_plans'));
 					tag.bind({
@@ -133,11 +135,16 @@ var LoadPlans = function(secret){
 			return false;
 		},
 		success: function(response) {
+			if(pages.length)
+				pages = pages.slice(0, 1);
+			else 
+				pages.push($('#page_create'));
 			var data = $.parseJSON(response);
 
 			for(var k in data){
 				$('#list_plans').append('<li>' + data[k]['name'] + '</li>');
-				AddPage(data[k]);
+				pages.push(AddPlanPage1(data[k]));
+				pages.push(AddPlanPage2(data[k]));
 			}
 			
 			$('#aside_contents li, #new_plan').bind({
@@ -152,7 +159,7 @@ var LoadPlans = function(secret){
 			
 			$('#aside_contents li').each(function(i){
 				$(this).click(function(){
-					TurnToPage(i+2);
+					TurnToPage(2*i+2);
 				});
 			});
 			
@@ -165,7 +172,13 @@ var LoadPlans = function(secret){
 	});
 }
 
-var AddPage = function(data){
+var AddPlanPage2 = function(data){
+	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
+	
+	return page;
+}
+
+var AddPlanPage1 = function(data){
 
 	var now = new Date();
 	var expire = new Date(data['deadline']);
@@ -195,8 +208,6 @@ var AddPage = function(data){
 	game.append('<div class="game_ropeY"></div>');
 	game.append('<div class="game_bug"></div>');
 	game.append('<div class="game_bicycle"></div>');
-	//game.append('<div class="bubble"></div>');
-	//game.append('<div class="WoodBoard"><output name="percentage" class="plan_percentage">'+Math.round(1000*(n-s)/(e-s))/10.0+'</output> %</div>');
 	plan_right.append('<div class="plan_bean"></div>');
 	moveBug(game, done);
 	
@@ -271,6 +282,7 @@ var AddPage = function(data){
 			}
 		});
 	});
+	return page;
 }
 
 var TurnToPage = function(page){
