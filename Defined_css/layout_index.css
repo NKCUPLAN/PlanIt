@@ -25,6 +25,7 @@ header{
 	float: right; 	
 	height: 80px;
 	width: 75px;	
+	cursor: pointer;
 }
 
 #menu_friend{
