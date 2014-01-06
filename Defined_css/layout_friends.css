@@ -6,11 +6,12 @@
 }
 
 #dialog_friend{
-	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/friend_background.png) no-repeat;
+	background: url(../img/friend/friend_background.png) no-repeat;
 	background-size: 100% 100%;	
 	width:480px;
 	height:570px;
 	text-align: center;
+	margin-left: -250px;
 }
 
 #friend_search{
@@ -35,7 +36,7 @@
 #friend_search_background{	
 	text-align: left;
 	display: inline-block;
-	background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/friend_search.png) no-repeat;
+	background: url(../img/friend/friend_search.png) no-repeat;
 	background-size: cover;  
 	margin-top:25px;
 	width:234px;
@@ -114,10 +115,10 @@
 }
 
 .friend_text:hover{
-  color:#384033;
+	color:#384033;
 }
 .friend_text:hover{
-  color:#f7a89a;  
+	color:#f7a89a;  
 }
 
 #btn_friendConfirm{
@@ -161,9 +162,17 @@
   	font-weight: bolder;
 	top:-84px;
 	left:88px; 
+	width: 270px;  
+	height:24px;
+	text-overflow:ellipsis;  
+	overflow: hidden;
+	white-space: nowrap;
 }
 #friend_planName:hover{
     color:#f7a89a;   
+	text-overflow:clip;
+	overflow:visible;
+	white-space: normal;	
 }
 #btn_friendDelete{
 	position:relative;
@@ -225,20 +234,20 @@
 }
 
 #friend_list::-webkit-scrollbar-track {
-      display:none;
+    display:none;
 } 
 
 #friend_list::-webkit-scrollbar-thumb:vertical{ 
-    background: url(http://merry.ee.ncku.edu.tw/~htckenny/friend/friend_scroll.png) no-repeat;
+    background: url(../img/friend/friend_scroll.png) no-repeat;
 	background-size: 36px 100%;
 	background-position: center center;
 	cursor:pointer;	
 }
 
 #friend_list::-webkit-scrollbar-button {
-      display:none;
+    display:none;
 }
 
 #friend_list::-webkit-scrollbar-corner {
-      display:none;
+    display:none;
 }
