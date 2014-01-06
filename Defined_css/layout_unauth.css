@@ -27,11 +27,63 @@
 	background-size: 100% 100%;
 }
 
+#main_slogan{
+	position: relative;
+	margin: 0 auto;
+	height: 116px;
+	top: -20px;
+}
+
+#main_slogan *{
+	width: 116px;
+	height: 184px;
+	background-size: cover;
+	display:inline-block;
+	margin: 0 7px;
+}
+
+.slogan1{
+	background: url(../img/slogan/slogan1.png)  no-repeat;
+	background-position: 0 -140px;
+}
+
+.slogan2{
+	background: url(../img/slogan/slogan2.png)  no-repeat;
+	background-position: 0 -144px;
+}
+
+.slogan3{
+	background: url(../img/slogan/slogan3.png)  no-repeat;
+	background-position: 0 -114px;
+}
+
+.slogan4{
+	background: url(../img/slogan/slogan4.png)  no-repeat;
+	background-position: 0 -183px;
+}
+
+.slogan1:hover{
+	background-position: 0 52px;
+}
+
+.slogan2:hover{
+	background-position: 0 60px;
+}
+
+.slogan3:hover{
+	background-position: 0 90px;
+}
+
+.slogan4:hover{
+	background-position: 0 15px;
+}
+
+
 #main_btn_login{
 	display: inline-block;
 	height: 95px;
 	width: 210px;
-	margin: 200px auto 0 auto;
+	margin: 80px auto 0 auto;
 		
 	background: url(../img/button_login.png) ;  
 	background-size: cover;	
@@ -44,7 +96,7 @@
 	display: inline-block;
 	height: 95px;
 	width: 210px;
-	margin: 200px auto 0 auto;
+	margin: 80px auto 0 auto;
 
 	background: url(../img/button_register.png) ;  
 	background-size: cover;	
