@@ -9,30 +9,14 @@
 <!-- Site Properities -->
 <title>Comment</title>
 
-<link
-	href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700'
-	rel='stylesheet' type='text/css'>
+
 
 <link rel="stylesheet" type="text/css" href="../Plugin_css/semantic.css">
 
 <script
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
-<style>
-.ui.comments {
-	padding-left: 20px;
-}
+	
 
-.comment a {
-	color: #009FDA;
-	font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial",
-		sans-serif;
-}
-
-.comment .text {
-	font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial",
-		sans-serif;
-}
-</style>
 
 </head>
 <body id="home">
@@ -69,7 +53,7 @@
 <script type="text/javascript">
 function addComment(){
 	// user input
-	$comment = $("textarea#input").val();
+	$comment = $("textarea#input_comment").val();
 	// uer name
 	$username = "User";
 		if($comment != "") {

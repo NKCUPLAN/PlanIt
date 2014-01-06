@@ -143,8 +143,8 @@ var LoadPlans = function(secret){
 
 			for(var k in data){
 				$('#list_plans').append('<li>' + data[k]['name'] + '</li>');
-				pages.push(AddPlanPage1(data[k]));
 				pages.push(AddPlanPage2(data[k]));
+				pages.push(AddPlanPage1(data[k]));
 			}
 			
 			$('#aside_contents li, #new_plan').bind({
@@ -174,6 +174,66 @@ var LoadPlans = function(secret){
 
 var AddPlanPage2 = function(data){
 	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
+	var plan_left = $('<div class="page_left"></div>').appendTo(page);
+	var plan_right = $('<div class="page_right"></div>').appendTo(page);
+	plan_left.append('<div class="ui comments">\
+						<div id="comment_content" style="overflow-y: auto; height: 80%;">\
+							<div class="comment">\
+								<div class="content">\
+									<a class="author">Dog Doggington</a>\
+									<div class="text">I think this is a great idea and i am	voting on it XDDDDD</div>\
+								</div>\
+							</div>\
+							<div class="comment">\
+								<div class="content">\
+									<a class="author">Pawfin Dog</a>\
+									<div class="text">I think this is a great idea and i am	voting on it XDDDDDDD</div>\
+								</div>\
+							</div>\
+						</div>\
+						\
+						<form class="ui reply form" style="position:absolute; bottom:10px; width: 90%; margin: 0 auto;">\
+							<div class="field" syle="width: 90%;">\
+								<textarea id="input_comment" name="input_comment" style="overflow-y:visible; min-height:40px; height: 40px; padding: 5px;"></textarea>\
+							</div>\
+							<div class="ui button teal submit labeled icon" style="margin: 0 auto;" id="add_comment">\
+								<i class="icon edit"></i> Add Comment\
+							</div>\
+						</form>\
+					</div>');
+					
+	var form = plan_left.children().children('form');
+	var input = form.children('.field').children('#input_comment');
+	var content = form.parent().children("#comment_content");
+	form.children('#add_comment').click(function(){
+		var comment = input.val();
+		// uer name
+		var username = "User";
+		if(comment != "") {
+			content.append('<div class="comment">\
+				<div class="content">\
+					<a class="author">'
+					+ username +
+					'</a>\
+					<div class="text">'
+					+ comment+
+					'</div>\
+				</div>\
+			</div>');
+			content.scrollTop(content.prop("scrollHeight"));
+			input.val('').keydown();
+		} else {
+			alert("data = null");
+		}
+	});
+	
+	input.css("overflow","hidden").bind("keydown keyup", function(){  
+        $(this).height('0px').height($(this).prop("scrollHeight")+"px");
+		content.height((plan_left.height()*0.8 - $(this).height()) + "px");
+		content.scrollTop(content.prop("scrollHeight"));
+    }).keydown();
+	
+	content.height(356);
 	
 	return page;
 }

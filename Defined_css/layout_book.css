@@ -7,6 +7,7 @@
 	left: 0;
 	//background: url(../img/paper1.jpg) 0 0;
 	background:#e8f0fb;
+	
 	box-shadow: inset -1px -1px 6px -1px #5A8397;
 }
 
@@ -22,6 +23,7 @@
 .page_right, .page_left{
 	//text-align:center;
 	padding-top:0;
+
 	height: 100%;
 	width: 50%;
 }
