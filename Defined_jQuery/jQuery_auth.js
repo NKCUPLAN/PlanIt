@@ -64,7 +64,8 @@ $(document).ready(function(){
 				success: function(response) {
 					pageData['id'] = response.trim();
 					pages.push(AddPlanPage1(pageData));
-
+					pages.push(AddPlanPage2(pageData));
+					
 					var tag = $('<li>' + pageData['name'] + '</li>').appendTo($('#list_plans'));
 					tag.bind({
 						mouseenter: function(){
@@ -100,7 +101,7 @@ var display_auth = function(){
     if(w <= 1200){
 		$('#book').css('left', (w-$('#book').width())/2);
     	$('aside').css('right', 0);
-		$('aside').css('top',460)
+		$('aside').css('top',460);
 		hide_aside = true;
     }
 	else{
@@ -143,8 +144,8 @@ var LoadPlans = function(secret){
 
 			for(var k in data){
 				$('#list_plans').append('<li>' + data[k]['name'] + '</li>');
-				pages.push(AddPlanPage2(data[k]));
 				pages.push(AddPlanPage1(data[k]));
+				pages.push(AddPlanPage2(data[k]));
 			}
 			
 			$('#aside_contents li, #new_plan').bind({
@@ -269,6 +270,9 @@ var AddPlanPage1 = function(data){
 	game.append('<div class="game_bug"></div>');
 	game.append('<div class="game_bicycle"></div>');
 	plan_right.append('<div class="plan_bean"></div>');
+	plan_right.children('.plan_bean').click(function(){
+		$('#book').bookblock('next');
+	});
 	moveBug(game, done);
 	
 	if(s > e){

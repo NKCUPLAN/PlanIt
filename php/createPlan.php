@@ -20,7 +20,7 @@
 	$re = mysql_fetch_assoc(mysql_query($query));
 	$user_id = $re['id'];
 	
-	$query = "INSERT INTO 2_plan VALUES('', '$user_id', '$name', '$content', '$start', '$end', '$now', '$unit', '$deadline', '$create_time')";
+	$query = "INSERT INTO 2_plan VALUES('', '$user_id', '$name', '$content', '$start', '$end', '$now', '$unit', '$deadline', '$create_time', '$create_time')";
 	$re = mysql_query($query);
 	
 	$query = "SELECT MAX(id) FROM 2_plan";

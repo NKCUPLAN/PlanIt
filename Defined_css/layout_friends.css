@@ -81,16 +81,8 @@
 	padding: 10px;
 	text-align: left;
 }
-#profile_pic_boy{   
-   	background: url(../img/friend/profileBoy.png) no-repeat;
-	background-size: 100% 100%;
-	width:60px;
-	height:60px;
-	margin-left: 10px;
-	margin-top: 15px;
-}
-#profile_pic_girl{
-   	background: url(../img/friend/profileGirl.png) no-repeat;
+.profile_pic{   
+   	//background: url(../img/friend/profileBoy.png) no-repeat;
 	background-size: 100% 100%;
 	width:60px;
 	height:60px;
@@ -98,7 +90,7 @@
 	margin-top: 15px;
 }
 
-#profile_name{
+.profile_name{
 	margin-left: 10px;
 	margin-top: 10px;
 	font-size:22px;
@@ -106,7 +98,7 @@
 	width: 100px
 }
 
-#friend_ask{
+.friend_ask{
 	position:relative;
   	font-size: 24px;
   	font-weight: bold;
@@ -121,7 +113,7 @@
 	color:#f7a89a;  
 }
 
-#btn_friendConfirm{
+.btn_friendConfirm{
 	position:relative;
   	background: url(../img/friend/btn_friendConfirm.png) no-repeat;
 	top:-60px;
@@ -131,11 +123,11 @@
 	height:42px;
 	cursor: pointer;
 }
-#btn_friendConfirm:hover{
+.btn_friendConfirm:hover{
   	background-position: 0% 102%;
 }
 
-#btn_friendRefuse{
+.btn_friendRefuse{
 	position:relative;
   	background: url(../img/friend/btn_friendRefuse.png) no-repeat;
 	top:-102px;
@@ -145,17 +137,17 @@
 	height:42px;
 	cursor: pointer;
 }
-#btn_friendRefuse:hover{
+.btn_friendRefuse:hover{
   	background-position: 0% 102%;
 }
-#friend_recentUpdate{
+.friend_recentUpdate{
 	position:relative;
   	font-size: 18px;
   	font-weight: bolder;
 	top:-90px;
 	left:88px; 
 }
-#friend_planName{
+.friend_planName{
 	color:#2e446f;
 	position:relative;
   	font-size: 24px;
@@ -168,13 +160,13 @@
 	overflow: hidden;
 	white-space: nowrap;
 }
-#friend_planName:hover{
+.friend_planName:hover{
     color:#f7a89a;   
 	text-overflow:clip;
 	overflow:visible;
 	white-space: normal;	
 }
-#btn_friendDelete{
+.btn_friendDelete{
 	position:relative;
   	background: url(../img/friend/btn_friendDelete.png) no-repeat;
 	top:-77px;
@@ -184,7 +176,7 @@
 	height:42px; 
 	cursor: pointer;
 }
-#btn_friendDelete:hover{
+.btn_friendDelete:hover{
   	background-position: 0% 102%;
 }
 #friend_search::-webkit-input-placeholder{
