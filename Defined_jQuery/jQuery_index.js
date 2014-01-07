@@ -25,6 +25,8 @@ $(document).ready(function(){
 				alert('Wrong Network');
 			},
 			success: function(response) {
+				$('#friend_list').empty();
+			
 				var data = $.parseJSON(response);
 
 				var wait_for_sure = $.parseJSON(data[0]);
