@@ -123,6 +123,7 @@
 	height:42px;
 	cursor: pointer;
 }
+
 .btn_friendConfirm:hover{
   	background-position: 0% 102%;
 }
@@ -179,6 +180,35 @@
 .btn_friendDelete:hover{
   	background-position: 0% 102%;
 }
+
+.btn_friendCancel{
+	position:relative;
+  	background: url(../img/friend/btn_friendCancel.png) no-repeat;
+	top:-60px;
+	left:250px;
+	background-size:cover;
+	width:117px;
+	height:42px; 
+	cursor: pointer;
+}
+.btn_friendCancel:hover{
+  	background-position: 0% 102%;
+}
+
+.btn_friendInvite{
+	position:relative;
+  	background: url(../img/friend/btn_friendInvite.png) no-repeat;
+	top:-60px;
+	left:250px;
+	background-size:cover;
+	width:117px;
+	height:42px; 
+	cursor: pointer;
+}
+.btn_friendInvite:hover{
+  	background-position: 0% 102%;
+}
+
 #friend_search::-webkit-input-placeholder{
 	color: #a9c6ff;
 	font-weight: bold;
