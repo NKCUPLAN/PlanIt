@@ -51,26 +51,7 @@ $(document).ready(function(){
 							<div class="friend_ask">ID: '+friend['acc']+'<br/>尚未加入好友</div>\
 							<div class="btn_friendInvite"></div>\
 						</li>').appendTo($('#friend_list'));
-						
-					block.children('.btn_friendInvite').click(function(){
-						$.ajax({
-							url: 'php/updateFriend.php',
-							cache: false,
-							dataType: 'html',
-							type:'POST',
-							data: {
-								act: "invite",
-								secret: window.sessionStorage["secret"],
-								friend: friend['id']
-							},
-							error: function(xhr) {
-								alert('Wrong Network');
-							},
-							success: function(response){
-								loadFriends();
-							}
-						});
-					});
+					SetUpdateFriendButton('Invite', block, friend);
 				}
 				
 				for(var k in invited){
@@ -87,25 +68,7 @@ $(document).ready(function(){
 							<div class="btn_friendCancel"></div>\
 						</li>').appendTo($('#friend_list'));
 						
-					block.children('.btn_friendInvite').click(function(){
-						$.ajax({
-							url: 'php/updateFriend.php',
-							cache: false,
-							dataType: 'html',
-							type:'POST',
-							data: {
-								act: "invite",
-								secret: window.sessionStorage["secret"],
-								friend: friend['id']
-							},
-							error: function(xhr) {
-								alert('Wrong Network');
-							},
-							success: function(response){
-								loadFriends();
-							}
-						});
-					});
+					SetUpdateFriendButton('Cancel', block, friend);
 				}
 				$('#friend_text').text("未成為好友");
 				$('#friend_number').text(total);
@@ -152,45 +115,9 @@ var loadFriends = function(){
 						<div class="btn_friendConfirm"></div>\
 						<div class="btn_friendRefuse"></div>\
 					</li>').appendTo($('#friend_list'));
-				block.children('.btn_friendConfirm').click(function(){
-					$.ajax({
-						url: 'php/updateFriend.php',
-						cache: false,
-						dataType: 'html',
-						type:'POST',
-						data: {
-							act: "confirm",
-							secret: window.sessionStorage["secret"],
-							friend: friend['id']
-						},
-						error: function(xhr) {
-							alert('Wrong Network');
-						},
-						success: function(response){
-							loadFriends();
-						}
-					});
-				});
 				
-				block.children('.btn_friendRefuse').click(function(){
-					$.ajax({
-						url: 'php/updateFriend.php',
-						cache: false,
-						dataType: 'html',
-						type:'POST',
-						data: {
-							act: "refuse",
-							secret: window.sessionStorage["secret"],
-							friend: friend['id']
-						},
-						error: function(xhr) {
-							alert('Wrong Network');
-						},
-						success: function(response){
-							loadFriends();
-						}
-					});
-				});
+				SetUpdateFriendButton('Confirm', block, friend);
+				SetUpdateFriendButton('Refuse', block, friend);
 			}
 			
 			for(var k in sure){
@@ -208,25 +135,7 @@ var loadFriends = function(){
 						<div class="btn_friendDelete"></div>\
 					</li>').appendTo($('#friend_list'));
 					
-				block.children('.btn_friendDelete').click(function(){
-					$.ajax({
-						url: 'php/updateFriend.php',
-						cache: false,
-						dataType: 'html',
-						type:'POST',
-						data: {
-							act: "delete",
-							secret: window.sessionStorage["secret"],
-							friend: friend['id']
-						},
-						error: function(xhr) {
-							alert('Wrong Network');
-						},
-						success: function(response){
-							loadFriends();
-						}
-					});
-				});
+				SetUpdateFriendButton('Delete', block, friend);
 			}
 			
 			for(var k in unsure){
@@ -243,29 +152,33 @@ var loadFriends = function(){
 						<div class="btn_friendCancel"></div>\
 					</li>').appendTo($('#friend_list'));
 				
-				block.children('.btn_friendCancel').click(function(){
-					$.ajax({
-						url: 'php/updateFriend.php',
-						cache: false,
-						dataType: 'html',
-						type:'POST',
-						data: {
-							act: "delete",
-							secret: window.sessionStorage["secret"],
-							friend: friend['id']
-						},
-						error: function(xhr) {
-							alert('Wrong Network');
-						},
-						success: function(response){
-							loadFriends();
-						}
-					});
-				});
+				SetUpdateFriendButton('Cancel', block, friend);
 			}
 			$('#friend_text').text("好友(包括邀請)");
 			$('#friend_number').text(total);
 		}
+	});
+}
+
+var SetUpdateFriendButton = function(type, block, friendData){
+	block.children('.btn_friend' + type).click(function(){
+		$.ajax({
+			url: 'php/updateFriend.php',
+			cache: false,
+			dataType: 'html',
+			type:'POST',
+			data: {
+				act: type,
+				secret: window.sessionStorage["secret"],
+				friend: friendData['id']
+			},
+			error: function(xhr) {
+				alert('Wrong Network');
+			},
+			success: function(response){
+				loadFriends();
+			}
+		});
 	});
 }
 

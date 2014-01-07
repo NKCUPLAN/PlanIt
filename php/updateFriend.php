@@ -13,13 +13,13 @@
 	
 	$friend = $_POST['friend'];
 	
-	if($act == "confirm" || $act == "invite"){
+	if($act == "Confirm" || $act == "Invite"){
 		$query = "INSERT INTO 2_friend VALUES ('$user', '$friend')";
 	}
-	else if($act == "delete"){
+	else if($act == "Delete" || $act == "Cancel"){
 		$query = "DELETE FROM 2_friend WHERE id1 = '$user' AND id2 = '$friend'";
 	}
-	else if($act == "refuse"){
+	else if($act == "Refuse"){
 		$query = "DELETE FROM 2_friend WHERE id1 = '$friend' AND id2 = '$user'";
 	}
 	
