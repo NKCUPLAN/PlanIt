@@ -36,7 +36,7 @@ $(document).ready(function(){
 				var list = $.parseJSON(response);
 				
 				var uninvited = $.parseJSON(list[0]);
-				var invited = $.parseJSON(list[0]);
+				var invited = $.parseJSON(list[1]);
 				
 				for(var k in uninvited){
 					total++;
