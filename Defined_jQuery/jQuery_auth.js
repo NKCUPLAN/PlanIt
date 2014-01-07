@@ -140,12 +140,14 @@ var LoadPlans = function(secret){
 				pages = pages.slice(0, 1);
 			else 
 				pages.push($('#page_create'));
-			var data = $.parseJSON(response);
 
-			for(var k in data){
-				$('#list_plans').append('<li>' + data[k]['name'] + '</li>');
-				pages.push(AddPlanPage1(data[k]));
-				pages.push(AddPlanPage2(data[k]));
+			var planPacket = $.parseJSON(response);
+			var planData = new Array();
+			for(var i in planPacket){
+				var planData = $.parseJSON(planPacket[i]);
+				$('#list_plans').append('<li>' + planData['name'] + '</li>');
+				pages.push(AddPlanPage1(planData));
+				pages.push(AddPlanPage2(planData));
 			}
 			
 			$('#aside_contents li, #new_plan').bind({
@@ -178,20 +180,7 @@ var AddPlanPage2 = function(data){
 	var plan_left = $('<div class="page_left"></div>').appendTo(page);
 	var plan_right = $('<div class="page_right"></div>').appendTo(page);
 	plan_right.append('<div class="ui comments">\
-						<div id="comment_content" style="overflow-y: auto; height: 80%;">\
-							<div class="comment">\
-								<div class="content">\
-									<a class="author">Dog Doggington</a>\
-									<div class="text">I think this is a great idea and i am	voting on it XDDDDD</div>\
-								</div>\
-							</div>\
-							<div class="comment">\
-								<div class="content">\
-									<a class="author">Pawfin Dog</a>\
-									<div class="text">I think this is a great idea and i am	voting on it XDDDDDDD</div>\
-								</div>\
-							</div>\
-						</div>\
+						<div id="comment_content" style="overflow-y: auto; height: 80%;"></div>\
 						\
 						<form class="ui reply form" style="position:absolute; bottom:10px; width: 90%; margin: 0 auto;">\
 							<div class="field" syle="width: 90%;">\
@@ -202,10 +191,28 @@ var AddPlanPage2 = function(data){
 							</div>\
 						</form>\
 					</div>');
-					
 	var form = plan_right.children().children('form');
 	var input = form.children('.field').children('#input_comment');
-	var content = form.parent().children("#comment_content");
+	var content = form.parent().children("#comment_content");	
+	
+	var comment = $.parseJSON(data['comment']);
+	for(var i in comment){
+		if(comment[i]){
+			comData = $.parseJSON(comment[i]);
+			content.append(
+				'<div class="comment">\
+					<div class="content">\
+						<a class="author">'
+						+ comData['user_name'] +
+						'</a>\
+						<div class="text">'
+						+ comData['content']+
+						'</div>\
+					</div>\
+				</div>');
+		}
+	}			
+	
 	form.children('#add_comment').click(function(){
 		var comment = input.val();
 		// uer name
