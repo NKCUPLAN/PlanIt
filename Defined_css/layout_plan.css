@@ -249,6 +249,11 @@ left: 50px;
 	top:410px;
 	left:27px;
 	background: url(../img/bean.png);
+	
+	cursor: pointer;
+	text-align: center;
+	font-size: 36px;
+	font-weight: bold;
 }
 
 .rangeInput{

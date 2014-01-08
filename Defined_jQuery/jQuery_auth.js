@@ -186,7 +186,7 @@ var AddPlanPage2 = function(data){
 							<div class="field" syle="width: 90%;">\
 								<textarea id="input_comment" name="input_comment" style="min-height:40px; height: 40px; padding: 5px;"></textarea>\
 							</div>\
-							<div class="ui button teal submit labeled icon" style="margin: 0 auto;" id="add_comment">\
+							<div class="ui button teal submit labeled icon" style="float:right; margin-right: 20px;" id="add_comment">\
 								<i class="icon edit"></i> Add Comment\
 							</div>\
 						</form>\
@@ -216,25 +216,46 @@ var AddPlanPage2 = function(data){
 	form.children('#add_comment').click(function(){
 		var comment = input.val();
 		// uer name
-		var username = "User";
 		if(comment != "") {
-			content.append('<div class="comment">\
-				<div class="content">\
-					<a class="author">'
-					+ username +
-					'</a>\
-					<div class="text">'
-					+ comment+
-					'</div>\
-				</div>\
-			</div>');
-			content.scrollTop(content.prop("scrollHeight"));
-			input.val('').keydown();
+			var pageData = { 
+				plan_id: data['id'],
+				content: comment,
+				secret: window.sessionStorage["secret"]
+			};
+			
+			$.ajax({
+				url: 'php/updateComment.php',
+				cache: false,
+				dataType: 'html',
+				type:'POST',
+				data: pageData,
+				error: function(xhr) {
+					alert('Network is wrong');
+				},
+				success: function(response) {
+					var username = response.trim();
+					content.append(
+						'<div class="comment">\
+							<div class="content">\
+								<a class="author">'
+								+ username +
+								'</a>\
+								<div class="text">'
+								+ comment+
+								'</div>\
+							</div>\
+						</div>');
+						content.scrollTop(content.prop("scrollHeight"));
+						input.val('').keydown();
+				}
+			});
+		
+			
 		} else {
 			//alert("data = null");
 		}
 	});
-	
+
 	input.css("overflow","hidden").bind("keydown keyup", function(){  
         $(this).height('0px').height($(this).prop("scrollHeight")+"px");
 		content.height((plan_right.height()*0.8 - $(this).height()) + "px");
@@ -276,7 +297,7 @@ var AddPlanPage1 = function(data){
 	game.append('<div class="game_ropeY"></div>');
 	game.append('<div class="game_bug"></div>');
 	game.append('<div class="game_bicycle"></div>');
-	plan_right.append('<div class="plan_bean"></div>');
+	plan_right.append('<div class="plan_bean">前往留言</div>');
 	plan_right.children('.plan_bean').click(function(){
 		$('#book').bookblock('next');
 	});
