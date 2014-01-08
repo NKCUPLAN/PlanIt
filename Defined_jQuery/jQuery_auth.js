@@ -136,14 +136,13 @@ var LoadPlans = function(secret){
 			return false;
 		},
 		success: function(response) {
-			$('#book').children().not('#page_create').remove();
+			$('#book').children().remove();
 			$('#list_plans').empty();
 			
 			if(pages.length)
-				pages = pages.slice(0, 1);
-			else 
-				pages.push($('#page_create'));
-
+				pages.length = 0;
+			pages.push(AddCreatePage());
+			
 			var planPacket = $.parseJSON(response);
 
 			for(var i in planPacket){
@@ -176,6 +175,47 @@ var LoadPlans = function(secret){
 			$('#book').bookblock();
 		}
 	});
+}
+
+var AddCreatePage = function(){
+	var page = $('<div class="bb-item" id="page_create">\
+					<div class="page_left">\
+						<div class="create_title">Create Plan</div>\
+						<div class="create_planName">計畫名稱：</div>\
+							<input type="text" id="create_name"/>\
+						<div class="create_goal">設定目標:</div>\
+						<div class="create_flow">\
+							<li>初始值</li>\
+							<li>單位 </li>\
+							<li>最終值</li>\
+						</div>\
+						<div class="value">\
+							<input type="text" id="create_start"/>\
+							<input type="text" id="create_unit"/>\
+							<input type="text" id="create_end"/>\
+						</div>\
+						<div class="create_deadline">\
+							結束日期：<input type="text" id="create_deadDate"/><input type="text" id="create_deadTime" />\
+						</div>\
+						<img class="create_bug" src="img/bug.png" />\
+						<p class="thought">\
+							Make it done, don\'t you?<br>\
+						</p>\
+					</div>\
+					\
+					<div class="page_right">\
+						<div class="create_picture"></div>\
+						<div class="create_beans"></div>\
+						<div class="create_diary">給自己的話</div>\
+						<textarea type="text" class="create_diaryContent" id="create_content"></textarea>\
+						<div class="create_go"></div>\
+						<div id="button">\
+							<a href="#" class="back" id="create_back">Back<span></span></a>\
+							<a href="#" class="create" id="create_create">Create<span></span></a>\
+						</div>\
+					</div>\
+				</div>').appendTo($('#book'));
+	return page;
 }
 
 var AddPlanPage2 = function(data, personal){

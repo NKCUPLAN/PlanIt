@@ -219,13 +219,11 @@ var LoadFriendsPlans = function(friend_id){
 			return false;
 		},
 		success: function(response) {
-			$('#book').children().not('#page_create').remove();
+			$('#book').children().remove();
 			$('#list_plans').empty();
 			
 			if(pages.length)
-				pages = pages.slice(0, 1);
-			else 
-				pages.push($('#page_create'));
+				pages.length = 0;
 
 			var planPacket = $.parseJSON(response);
 
@@ -248,16 +246,15 @@ var LoadFriendsPlans = function(friend_id){
 			
 			$('#aside_contents li').each(function(i){
 				$(this).click(function(){
-					TurnToPage(2*i+2);
+					TurnToPage(2*i+1);
 				});
 			});
 			
-			$('#new_plan').click(function(){
-				TurnToPage(1);
-			});
-			
+			$('#new_plan').unbind();
 			$('#book').bookblock();
-			TurnToPage(2);
+			
+			$('#dialog_friend').modal();
+			$('#dialog_friend').modal('hide');
 		}
 	});
 }
