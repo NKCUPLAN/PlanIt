@@ -34,12 +34,13 @@ $(document).ready(function(){
 				$('#friend_list').empty();
 				var list = $.parseJSON(response);
 				
-				var uninvited = $.parseJSON(list[0]);
-				var invited = $.parseJSON(list[1]);
+				var friends = $.parseJSON(list['friend']);
+				var uninvited = $.parseJSON(list['uninvited']);
+				var invited = $.parseJSON(list['invited']);
 				
-				for(var k in uninvited){
+				for(var k in friends){
 					total++;
-					var friend = $.parseJSON(uninvited[k]);
+					var friend = $.parseJSON(friends[k]);
 
 					var block = $(
 						'<li class="friend_block" class="friend_owned">\
@@ -47,11 +48,13 @@ $(document).ready(function(){
 								style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
 								background-size: 100% 100%;">\
 							</div>\
-							<div class="friend_text profile_name">'+friend['name']+'</div>\
-							<div class="friend_ask">ID: '+friend['acc']+'<br/>尚未加入好友</div>\
-							<div class="btn_friendInvite"></div>\
+							<div class="friend_text profile_name" onclick="LoadFriendsPlans('+friend['id']+')">'+friend['name']+'</div>\
+							<div class="friend_recentUpdate" >最近更新計畫 :</div>\
+							<div class="friend_text friend_planName">'+friend['plan_name']+'</div>\
+							<div class="btn_friendDelete"></div>\
 						</li>').appendTo($('#friend_list'));
-					SetUpdateFriendButton('Invite', block, friend);
+						
+					SetUpdateFriendButton('Delete', block, friend);
 				}
 				
 				for(var k in invited){
@@ -70,6 +73,24 @@ $(document).ready(function(){
 						
 					SetUpdateFriendButton('Cancel', block, friend);
 				}
+				
+				for(var k in uninvited){
+					total++;
+					var friend = $.parseJSON(uninvited[k]);
+
+					var block = $(
+						'<li class="friend_block" class="friend_owned">\
+							<div class="profile_pic" \
+								style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
+								background-size: 100% 100%;">\
+							</div>\
+							<div class="friend_text profile_name">'+friend['name']+'</div>\
+							<div class="friend_ask">ID: '+friend['acc']+'<br/>尚未加入好友</div>\
+							<div class="btn_friendInvite"></div>\
+						</li>').appendTo($('#friend_list'));
+					SetUpdateFriendButton('Invite', block, friend);
+				}
+				
 				$('#friend_text').text("搜尋結果");
 				$('#friend_number').text(total);
 			}
