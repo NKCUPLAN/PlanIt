@@ -17,7 +17,6 @@ $(document).ready(function(){
 		event.stopPropagation();
 	});
 	$('#friend_search_background').click(function(){
-		
 		$.ajax({
 			url: 'php/searchFriends.php',
 			cache: false,
@@ -41,10 +40,11 @@ $(document).ready(function(){
 				for(var k in uninvited){
 					total++;
 					var friend = $.parseJSON(uninvited[k]);
+
 					var block = $(
 						'<li class="friend_block" class="friend_owned">\
 							<div class="profile_pic" \
-								style="background:url(img/friend/'+((friend['male'])? "profileBoy":"profileGirl") +'.png) no-repeat; \
+								style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
 								background-size: 100% 100%;">\
 							</div>\
 							<div class="friend_text profile_name">'+friend['name']+'</div>\
@@ -60,7 +60,7 @@ $(document).ready(function(){
 					var block = $(
 						'<li class="friend_block" class="friend_confirm">\
 							<div class="profile_pic" \
-								style="background:url(img/friend/'+((friend['male'])? "profileBoy":"profileGirl") +'.png) no-repeat; \
+								style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
 								background-size: 100% 100%;">\
 							</div>\
 							<div class="friend_text profile_name">'+friend['name']+'</div>\
@@ -70,7 +70,7 @@ $(document).ready(function(){
 						
 					SetUpdateFriendButton('Cancel', block, friend);
 				}
-				$('#friend_text').text("未成為好友");
+				$('#friend_text').text("搜尋結果");
 				$('#friend_number').text(total);
 			}
 		});
@@ -104,10 +104,11 @@ var loadFriends = function(){
 			for(var k in wait_for_sure){
 				total++;
 				var friend = $.parseJSON(wait_for_sure[k]);
+
 				var block = $(
 					'<li class="friend_block" class="friend_confirm">\
 						<div class="profile_pic" \
-							style="background:url(img/friend/'+((friend['male'])? "profileBoy":"profileGirl") +'.png) no-repeat; \
+							style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
 							background-size: 100% 100%;">\
 						</div>\
 						<div class="friend_text profile_name">'+friend['name']+'</div>\
@@ -123,10 +124,11 @@ var loadFriends = function(){
 			for(var k in sure){
 				total++;
 				var friend = $.parseJSON(sure[k]);
+
 				var block = $(
 					'<li class="friend_block" class="friend_owned">\
 						<div class="profile_pic" \
-							style="background:url(img/friend/'+((friend['male'])? "profileBoy":"profileGirl") +'.png) no-repeat; \
+							style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
 							background-size: 100% 100%;">\
 						</div>\
 						<div class="friend_text profile_name" onclick="LoadFriendsPlans('+friend['id']+')">'+friend['name']+'</div>\
@@ -141,10 +143,11 @@ var loadFriends = function(){
 			for(var k in unsure){
 				total++;
 				var friend = $.parseJSON(unsure[k]);
+
 				var block = $(
 					'<li class="friend_block" class="friend_confirm">\
 						<div class="profile_pic" \
-							style="background:url(img/friend/'+((friend['male'])? "profileBoy":"profileGirl") +'.png) no-repeat; \
+							style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
 							background-size: 100% 100%;">\
 						</div>\
 						<div class="friend_text profile_name">'+friend['name']+'</div>\
