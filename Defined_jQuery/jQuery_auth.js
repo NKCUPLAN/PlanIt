@@ -136,18 +136,21 @@ var LoadPlans = function(secret){
 			return false;
 		},
 		success: function(response) {
+			$('#book').children().not('#page_create').remove();
+			$('#list_plans').empty();
+			
 			if(pages.length)
 				pages = pages.slice(0, 1);
 			else 
 				pages.push($('#page_create'));
 
 			var planPacket = $.parseJSON(response);
-			var planData = new Array();
+
 			for(var i in planPacket){
 				var planData = $.parseJSON(planPacket[i]);
 				$('#list_plans').append('<li>' + planData['name'] + '</li>');
-				pages.push(AddPlanPage1(planData));
-				pages.push(AddPlanPage2(planData));
+				pages.push(AddPlanPage1(planData, true));
+				pages.push(AddPlanPage2(planData, true));
 			}
 			
 			$('#aside_contents li, #new_plan').bind({
@@ -175,7 +178,7 @@ var LoadPlans = function(secret){
 	});
 }
 
-var AddPlanPage2 = function(data){
+var AddPlanPage2 = function(data, personal){
 	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
 	var plan_left = $('<div class="page_left"></div>').appendTo(page);
 	var plan_right = $('<div class="page_right"></div>').appendTo(page);
@@ -267,7 +270,7 @@ var AddPlanPage2 = function(data){
 	return page;
 }
 
-var AddPlanPage1 = function(data){
+var AddPlanPage1 = function(data, personal){
 
 	var now = new Date();
 	var expire = new Date(data['deadline']);
@@ -297,7 +300,7 @@ var AddPlanPage1 = function(data){
 	game.append('<div class="game_ropeY"></div>');
 	game.append('<div class="game_bug"></div>');
 	game.append('<div class="game_bicycle"></div>');
-	plan_right.append('<div class="plan_bean">前往留言</div>');
+	plan_right.append('<div class="plan_bean"></div>');
 	plan_right.children('.plan_bean').click(function(){
 		$('#book').bookblock('next');
 	});
@@ -322,10 +325,17 @@ var AddPlanPage1 = function(data){
 							'</div>');
 	}
 	
-	var div_button = $('<div id="button"></div>').appendTo(plan_right);	
-	
 	plan_right.append('<div class="plan_diary">Diary</div>');
-	plan_right.append('<textarea class="plan_diaryContent">' + data['content'] + '</textarea>');	
+	plan_right.append('<textarea class="plan_diaryContent">' + data['content'] + '</textarea>');
+	var div_button;
+
+	if(personal){
+		div_button = $('<div id="button"></div>').appendTo(plan_right);		
+	}
+	else{
+		plan_right.find('input').attr('disabled', 'disabled');
+		plan_right.find('textarea').attr('disabled', 'disabled');
+	}
 	
 	if(t1 < t2){
 		plan_left.append('<div class="plan_timer">Time is up</div>');
@@ -333,6 +343,7 @@ var AddPlanPage1 = function(data){
 		plan_right.find('textarea').attr('disabled', 'disabled');
 		return;
 	}
+	
 	
 	var dis = t1 - t2;
 	

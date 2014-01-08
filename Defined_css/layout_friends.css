@@ -95,7 +95,9 @@
 	margin-top: 10px;
 	font-size:22px;
   	font-weight: bold;
-	width: 100px
+	width: 100px;
+	
+	cursor: pointer;
 }
 
 .friend_ask{
@@ -147,6 +149,7 @@
   	font-weight: bolder;
 	top:-90px;
 	left:88px; 
+
 }
 .friend_planName{
 	color:#2e446f;

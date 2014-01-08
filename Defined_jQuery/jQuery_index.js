@@ -129,8 +129,8 @@ var loadFriends = function(){
 							style="background:url(img/friend/'+((friend['male'])? "profileBoy":"profileGirl") +'.png) no-repeat; \
 							background-size: 100% 100%;">\
 						</div>\
-						<div class="friend_text profile_name">'+friend['name']+'</div>\
-						<div class="friend_recentUpdate">最近更新計畫 :</div>\
+						<div class="friend_text profile_name" onclick="LoadFriendsPlans('+friend['id']+')">'+friend['name']+'</div>\
+						<div class="friend_recentUpdate" >最近更新計畫 :</div>\
 						<div class="friend_text friend_planName">'+friend['plan_name']+'</div>\
 						<div class="btn_friendDelete"></div>\
 					</li>').appendTo($('#friend_list'));
@@ -179,6 +179,62 @@ var SetUpdateFriendButton = function(type, block, friendData){
 				loadFriends();
 			}
 		});
+	});
+}
+
+var LoadFriendsPlans = function(friend_id){
+	$.ajax({
+		url: 'php/loadFriendPlans.php',
+		cache: false,
+		dataType: 'html',
+		type:'POST',
+		data: { 
+			id: friend_id
+		},
+		error: function(xhr) {
+			return false;
+		},
+		success: function(response) {
+			$('#book').children().not('#page_create').remove();
+			$('#list_plans').empty();
+			
+			if(pages.length)
+				pages = pages.slice(0, 1);
+			else 
+				pages.push($('#page_create'));
+
+			var planPacket = $.parseJSON(response);
+
+			for(var i in planPacket){
+				var planData = $.parseJSON(planPacket[i]);
+				$('#list_plans').append('<li>' + planData['name'] + '</li>');
+				pages.push(AddPlanPage1(planData, false));
+				pages.push(AddPlanPage2(planData, false));
+			}
+			
+			$('#aside_contents li, #new_plan').bind({
+				mouseenter: function(){
+					$(this).css('color', 'yellow');
+					$(this).css('cursor', 'pointer');
+				},
+				mouseleave: function(){
+					$(this).css('color', 'brown');
+				}
+			});
+			
+			$('#aside_contents li').each(function(i){
+				$(this).click(function(){
+					TurnToPage(2*i+2);
+				});
+			});
+			
+			$('#new_plan').click(function(){
+				TurnToPage(1);
+			});
+			
+			$('#book').bookblock();
+			TurnToPage(2);
+		}
 	});
 }
 
