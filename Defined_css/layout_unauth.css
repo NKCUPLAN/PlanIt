@@ -12,7 +12,7 @@
 #main_middle{
 	width: 100%;
 	background: url(../img/background_shadow.png) repeat-x;
-	text-align:center
+	text-align:center;
 }
 
 #main_bottom{
@@ -28,56 +28,81 @@
 }
 
 #main_slogan{
+	display: inline-block;
 	position: relative;
 	margin: 0 auto;
-	height: 116px;
-	top: -20px;
+	height: 320px;
+	width: 600px;
+	top: -160px;
 }
 
 #main_slogan *{
-	width: 116px;
-	height: 184px;
 	background-size: cover;
-	display:inline-block;
+	position: absolute;
+	bottom: 0;
 	margin: 0 7px;
 }
 
 .slogan1{
+	display:inline-block;
+	width:441px;
+	height:311px;
 	background: url(../img/slogan/slogan1.png)  no-repeat;
-	background-position: 0 -140px;
+	background-position: 0 223px;
+	z-index: 2;
+	left: 10px;
 }
 
 .slogan2{
+	display:inline-block;
+	width:300px;
+	height:318px;
 	background: url(../img/slogan/slogan2.png)  no-repeat;
-	background-position: 0 -144px;
+	background-position: 0 232px;
+	z-index: 4;
+	left: 162px;
 }
 
 .slogan3{
+	display:inline-block;
+	width:114px;
+	height:182px;
 	background: url(../img/slogan/slogan3.png)  no-repeat;
-	background-position: 0 -114px;
+	background-position: 0 102px;
+	z-index: 5;
+	right: 162px;
 }
 
 .slogan4{
+	display:inline-block;
+	width:364px;
+	height:295px;
 	background: url(../img/slogan/slogan4.png)  no-repeat;
-	background-position: 0 -183px;
+	background-position: 0 206px;
+	z-index: 3;
+	right: 10px;
 }
 
 .slogan1:hover{
-	background-position: 0 52px;
+	background-position: 0 -138px;
 }
 
 .slogan2:hover{
-	background-position: 0 60px;
+	background-position: 0 -109px;
 }
 
 .slogan3:hover{
-	background-position: 0 90px;
+	background-position: 0 -98px;
 }
 
 .slogan4:hover{
-	background-position: 0 15px;
+	background-position: 0 -138px;
 }
 
+#main_btn{
+	position: relative;
+	top: -180px;
+}
 
 #main_btn_login{
 	display: inline-block;

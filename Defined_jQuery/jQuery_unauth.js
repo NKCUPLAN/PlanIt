@@ -102,8 +102,8 @@ var display_unauth = function(){
 	$('#main_logo').css('width', w_bg * 0.78);
 	$('#main_logo').css('top', h_bg * 0.1);
 	
-	$('#main_btn_login').css('top', h_bg * 0.13);
-	$('#main_btn_register').css('top', h_bg * 0.15);
+	//$('#main_btn_login').css('top', h_bg * 0.13);
+	//$('#main_btn_register').css('top', h_bg * 0.15);
 	
 	$('#dialog_login').css('top', 0.5 * (h_window - $('#dialog_login').height()));
 	$('#dialog_register').css('top', 0.5 * (h_window - $('#dialog_register').height()));
