@@ -156,7 +156,7 @@
 }
 .friend_planName{
 	color:#2e446f;
-	position:absolute;
+	position:relative;
   	font-size: 24px;
   	font-weight: bolder;
 	top:-84px;
