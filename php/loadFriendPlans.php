@@ -5,14 +5,21 @@
 	mysql_query("SET NAMES 'UTF8'");
 	
 	$id = $_POST['id'];
-
-	$re = mysql_query("SELECT * FROM 2_plan WHERE user_id = '$id'");
+	
+	$recent = mysql_fetch_array(mysql_query("SELECT id FROM 2_plan WHERE user_id = '$id' ORDER BY update_time DESC LIMIT 1"));
+	$recent = $recent[0];
+	
+	$re = mysql_query("SELECT * FROM 2_plan WHERE user_id = '$id'");	
 	
 	while($k = mysql_fetch_assoc($re)){
 		$data = null;
 		$data = $k;
 		
 		$plan_id = $k['id'];
+		if($plan_id == $recent)
+			$data['isRecent'] = 1;
+		else 
+			$data['isRecent'] = 0;
 		$res = mysql_query("SELECT * FROM 2_comment WHERE plan_id = '$plan_id'");
 		
 		$comment = null;

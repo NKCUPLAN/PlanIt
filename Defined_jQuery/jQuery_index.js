@@ -19,7 +19,6 @@ $(document).ready(function(){
 	
 	$('#btn_dialog_friend_prev').click(function(){
 		loadFriends();
-		$(this).hide(1);
 	});
 	
 	$('#menu_friend').click(loadFriends);
@@ -59,9 +58,9 @@ $(document).ready(function(){
 								style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
 								background-size: 100% 100%;">\
 							</div>\
-							<div class="friend_text profile_name" onclick="LoadFriendsPlans('+friend['id']+')">'+friend['name']+'</div>\
-							<div class="friend_recentUpdate">最近更新計畫 :</div>\
-							<div class="friend_text friend_planName">'+friend['plan_name']+'</div>\
+							<div class="friend_text profile_name">'+friend['name']+'</div>\
+							<div class="friend_recentUpdate"">最近更新計畫 :</div>\
+							<div class="friend_text friend_planName" onclick="LoadFriendsPlans('+friend['id']+',true)">'+friend['plan_name']+'</div>\
 							<div class="friend_sure"></div>\
 							<div class="btn_friendDelete"></div>\
 						</li>').appendTo($('#friend_list'));
@@ -129,6 +128,7 @@ var loadFriends = function(){
 		},
 		success: function(response) {
 			$('#friend_list').empty();
+			$('#friend_search').val('');
 		
 			var data = $.parseJSON(response);
 
@@ -170,9 +170,9 @@ var loadFriends = function(){
 							style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
 							background-size: 100% 100%;">\
 						</div>\
-						<div class="friend_text profile_name" onclick="LoadFriendsPlans('+friend['id']+')">'+friend['name']+'</div>\
+						<div class="friend_text profile_name">'+friend['name']+'</div>\
 						<div class="friend_recentUpdate" >最近更新計畫 :</div>\
-						<div class="friend_text friend_planName">'+friend['plan_name']+'</div>\
+						<div class="friend_text friend_planName" onclick="LoadFriendsPlans('+friend['id']+',true)">'+friend['plan_name']+'</div>\
 						<div class="friend_sure"></div>\
 						<div class="btn_friendDelete"></div>\
 					</li>').appendTo($('#friend_list'));
@@ -200,6 +200,7 @@ var loadFriends = function(){
 			}
 			$('#friend_text').text("好友(包括邀請)");
 			$('#friend_number').text(total);
+			$('#btn_dialog_friend_prev').hide(1);
 		}
 	});
 }
@@ -226,7 +227,7 @@ var SetUpdateFriendButton = function(type, block, friendData){
 	});
 }
 
-var LoadFriendsPlans = function(friend_id){
+var LoadFriendsPlans = function(friend_id, go_recent){
 	$.ajax({
 		url: 'php/loadFriendPlans.php',
 		cache: false,
@@ -246,12 +247,16 @@ var LoadFriendsPlans = function(friend_id){
 				pages.length = 0;
 
 			var planPacket = $.parseJSON(response);
-
+			var most_recent = 1;
+			
 			for(var i in planPacket){
 				var planData = $.parseJSON(planPacket[i]);
 				$('#list_plans').append('<li>' + planData['name'] + '</li>');
 				pages.push(AddPlanPage1(planData, false));
 				pages.push(AddPlanPage2(planData, false));
+				if(go_recent && parseInt(planData['isRecent'])){
+					most_recent = pages.length - 1;
+				}
 			}
 			
 			$('#aside_contents li, #new_plan').bind({
@@ -272,6 +277,7 @@ var LoadFriendsPlans = function(friend_id){
 			
 			$('#new_plan').unbind();
 			$('#book').bookblock();
+			TurnToPage(most_recent);
 			
 			$('#dialog_friend').modal();
 			$('#dialog_friend').modal('hide');

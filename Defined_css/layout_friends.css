@@ -155,13 +155,6 @@
 	display: inline-block;
 }
 
-.friend_text:hover{
-	color:#384033;
-}
-.friend_text:hover{
-	color:#f7a89a;  
-}
-
 .btn_friendConfirm{
 	position:relative;
   	background: url(../img/friend/btn_friendConfirm.png) no-repeat;
@@ -215,9 +208,10 @@
 	overflow: hidden;
 	white-space: nowrap;
 	display: inline-block;
+	cursor: pointer;
 }
 .friend_planName:hover{
-    color:#f7a89a;   
+    color:#f7a89a;  
 	text-overflow:clip;
 	overflow:visible;
 	white-space: normal;	
