@@ -80,6 +80,7 @@
 	<header>
 		<div class="menu_item" id ="menu_introduction"></div>
 		<div class="menu_item" id ="menu_aboutus"></div>	
+		<div class="menu_item auth" id ="menu_logout"></div>
 		<div class="menu_item auth" id ="menu_friend"></div>	
 	</header>	
 	
@@ -109,33 +110,7 @@
 			<span id="friend_number"></span>
 		</div>
 		<div id="friend_content">
-			<ul id="friend_list">
-				<!--
-				<li class="friend_block" class="friend_confirm">
-					<div class="profile_pic"></div>
-					<div class="friend_text profile_name">王小明</div>
-					<div class="friend_ask">想成為你的朋友</div>
-					<div class="btn_friendConfirm"></div>
-					<div class="btn_friendRefuse"></div>
-				</li>			
-				<li class="friend_block" class="friend_owned">
-					<div class="profile_pic"></div>
-					<div class="friend_text profile_name">孫小華</div>
-					<div class="friend_recentUpdate">最近更新計畫 :</div>
-					<div class="friend_text friend_planName">減肥大作戰</div>
-					<div class="btn_friendDelete"></div>
-				</li>
-				<li class="friend_block">
-					<div class="profile_pic"></div>
-					<div class="friend_text profile_name">張宅倫</div>
-					<div class="friend_recentUpdate">最近更新計畫 :</div>
-					<div class="friend_text friend_planName">神魔輪迴過關之大作戰</div>
-					<div class="btn_friendDelete"></div>
-				</li>
-				<li class="friend_block"></li>
-				<li class="friend_block"></li>
-				-->
-			</ul>      
+			<ul id="friend_list"></ul>      
 		</div>
 		<div id="btn_dialog_friend_close"></div>
 		<div id="btn_dialog_friend_prev"></div>
@@ -294,11 +269,6 @@
 
 <!--datepicker-->
 <script>
-	$(function(){
-		$("#create_deadDate").datepicker({dateFormat: 'yy-mm-dd'});
-	}); 
-	$(function(){
-		$("#create_deadTime").timepicker({timeFormat: 'HH:mm:ss'});
-	}); 
+	
 </script>
 </html>

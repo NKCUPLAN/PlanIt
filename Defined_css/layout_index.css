@@ -28,12 +28,22 @@ header{
 	cursor: pointer;
 }
 
+#menu_logout{
+	background: url(../img/button_upper_logout.png) no-repeat;
+	background-size: cover;
+}
+
+#menu_logout:hover{
+	background-position: 0% 97%;
+}
+
 #menu_friend{
 	float:left;
-	height:77px;
-	width: 100px;
+	height:95px;
+	width: 120px;
 	background: url(../img/friend/button_upper_friend.png) no-repeat bottom;
 	background-size: cover;
+	margin: 3px 0 0 3px;
 }
 
 #menu_friend:hover{

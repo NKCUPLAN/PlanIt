@@ -1,84 +1,71 @@
 .create_title{  
-	position:absolute;
-	top:10px;
-	left:5px;
 	font-size: 30px;
 	padding:10px;
 	cursor: default; 
-	font: bold 1.4em 'Lucida sans', 'Trebuchet MS', Tahoma, Arial;
+	font: bold 1.4em;
 	color: #555;
 	font-size: 40px;
+	text-align: center;
 }
 
-.create_planName{
-	position:absolute;
-	top:80px;
-	left:30px;
-	text-align:center;
-	font-size:25px;
+.create_profile_pic{
+	width: 100px;
+	height: 100px;
+	margin: 15px;
+	background: url(../img/create/picture_boy.png);
+	background-size: 100% 100%;
+	
+	display: inline-block;
 }
 
 #create_name{
-	position:absolute;
-	top:120px;
-	width:313px;
-	left:30px;
-	height:25px;
+	display: inline-block;
+	position: relative;
+	top: -60px;
+	
+	height: 60px;
+	width: 200px;
+	padding: 5px 5px 5px 15px;
+	background: url('../img/create/plan_name.png');
+	font-size: 23px;
+	background-size: 100% 100%;
 }
 
-.create_goal{
-	position:absolute;
-	top:160px;
-	left:30px;
-	font-size: 25px;    
+.create_goal_text, .create_deadline_text{
+	font-size: 25px;  
+	font-weight: bold;
+	margin: 10px;
 }
 
-.create_flow{
-	position:absolute;
-	top:200px;
-	left:30px;
-	font-size: 20px; 
+.create_goal, .create_deadline{
+	margin: 0 auto 20px auto;
+	text-align:center;
 }
 
-.create_flow li{  
-	display:inline;
-	margin-right:55px;
-}
-
-.value{
-	position:absolute;
-	top:230px;
-	left:30px;
-}
-
-.value input{
+.create_goal input{
 	display:inline;
 	width:90px;
-	margin-right:13px;
-	height:25px;
+	height:40px;
+	margin: 0 10px;
+	font-size: 25px;
 }
 
-.create_bug{
-	position: absolute;
-	bottom: 0;
-	left: 13%;
-	height: 150px;
-	width: 100px;
-}
-
-.create_deadline{
-	position:absolute;
-	top:280px;
-	left:30px;
-	font-size:25px;
-	font-weight:normal;
-}
-
-#create_deadDate, #create_deadTime{
+.create_deadline input{
+	display:inline;
 	text-align: center;
-	height:25px;
-	width: 25%;
-	margin: 2px;
+
+	margin: 0 20px;
+	font-size: 25px;
+}
+
+#create_deadDate{
+	height: 40px;
+	width: 160px;
+}
+
+#create_deadTime{
+	height: 40px;
+	width: 120px;
 }
     
 .delete:before

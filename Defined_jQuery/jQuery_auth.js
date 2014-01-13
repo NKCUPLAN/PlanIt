@@ -30,67 +30,6 @@ $(document).ready(function(){
         hide_aside = !hide_aside;
     });
 	
-	/*------BOOK_CREATE-------*/
-	$('#create_create').click(function(){
-		var today=new Date()
-		var year=today.getYear();
-		var month=today.getMonth()+1;
-		var date=today.getDate();
-		var hour=today.getHours();
-		var minute=today.getMinutes();
-		var second=today.getSeconds();
-		
-		if(CheckPlanInfo()){
-			var pageData = { 
-				secret: window.sessionStorage["secret"],
-				name: $('#create_name').val(),
-				content: $('#create_content').val(),
-				start: $('#create_start').val(),
-				end: $('#create_end').val(),
-				now: $('#create_start').val(),
-				unit: $('#create_unit').val(),
-				deadline: $('#create_deadDate').val() + ' ' + $('#create_deadTime').val()
-			};
-			
-			$.ajax({
-				url: 'php/createPlan.php',
-				cache: false,
-				dataType: 'html',
-				type:'POST',
-				data: pageData,
-				error: function(xhr) {
-					alert('網路連線錯誤，請稍後再試');
-				},
-				success: function(response) {
-					pageData['id'] = response.trim();
-					pages.push(AddPlanPage1(pageData));
-					pages.push(AddPlanPage2(pageData));
-					
-					var tag = $('<li>' + pageData['name'] + '</li>').appendTo($('#list_plans'));
-					tag.bind({
-						mouseenter: function(){
-							$(this).css('color', 'yellow');
-							$(this).css('cursor', 'pointer');
-						},
-						mouseleave: function(){
-							$(this).css('color', 'brown');
-						}
-					});
-					tag.click(function(){
-						TurnToPage($('#aside_contents li').size() + 1);
-					});
-					$('#page_create input').val('');
-					$('#book').bookblock();
-					$('#book').bookblock('last');
-				}
-			});
-		}
-	});
-	
-	$('#create_back').click(function(){
-		$('#page_create input').val('');
-	});
-	
 	
 });
 
@@ -180,41 +119,96 @@ var LoadPlans = function(secret){
 var AddCreatePage = function(){
 	var page = $('<div class="bb-item" id="page_create">\
 					<div class="page_left">\
-						<div class="create_title">Create Plan</div>\
-						<div class="create_planName">計畫名稱：</div>\
-							<input type="text" id="create_name"/>\
-						<div class="create_goal">設定目標:</div>\
-						<div class="create_flow">\
-							<li>初始值</li>\
-							<li>單位 </li>\
-							<li>最終值</li>\
-						</div>\
-						<div class="value">\
-							<input type="text" id="create_start"/>\
-							<input type="text" id="create_unit"/>\
-							<input type="text" id="create_end"/>\
+						<div class="create_title">創建新計畫</div>\
+						<div class="create_profile_pic"></div>\
+						<input type="text" id="create_name" placeholder="輸入計畫名稱"/>\
+						<div class="create_goal">\
+							<div class="create_goal_text">設定目標</div>\
+							<input type="text" id="create_start" placeholder="初始値"/>\
+							<input type="text" id="create_unit" placeholder="單位"/>\
+							<input type="text" id="create_end" placeholder="目標値"/>\
 						</div>\
 						<div class="create_deadline">\
-							結束日期：<input type="text" id="create_deadDate"/><input type="text" id="create_deadTime" />\
+							<div class="create_goal_text">設定期限</div>\
+							<input type="text" id="create_deadDate" placeholder="日期"/><input type="text" id="create_deadTime" placeholder="時間" />\
 						</div>\
-						<img class="create_bug" src="img/bug.png" />\
-						<p class="thought">\
-							Make it done, don\'t you?<br>\
-						</p>\
 					</div>\
 					\
 					<div class="page_right">\
-						<div class="create_picture"></div>\
-						<div class="create_beans"></div>\
-						<div class="create_diary">給自己的話</div>\
-						<textarea type="text" class="create_diaryContent" id="create_content"></textarea>\
-						<div class="create_go"></div>\
 						<div id="button">\
 							<a href="#" class="back" id="create_back">Back<span></span></a>\
 							<a href="#" class="create" id="create_create">Create<span></span></a>\
 						</div>\
 					</div>\
 				</div>').appendTo($('#book'));
+	$(function(){
+		$("#create_deadDate").datepicker({dateFormat: 'yy-mm-dd'});
+	}); 
+	$(function(){
+		$("#create_deadTime").timepicker({timeFormat: 'HH:mm:ss'});
+	}); 
+	
+	/*------BOOK_CREATE-------*/
+	$('#create_create').click(function(){
+		var today=new Date()
+		var year=today.getYear();
+		var month=today.getMonth()+1;
+		var date=today.getDate();
+		var hour=today.getHours();
+		var minute=today.getMinutes();
+		var second=today.getSeconds();
+		
+		if(CheckPlanInfo()){
+			var pageData = { 
+				secret: window.sessionStorage["secret"],
+				name: $('#create_name').val(),
+				content: $('#create_content').val(),
+				start: $('#create_start').val(),
+				end: $('#create_end').val(),
+				now: $('#create_start').val(),
+				unit: $('#create_unit').val(),
+				deadline: $('#create_deadDate').val() + ' ' + $('#create_deadTime').val()
+			};
+			
+			$.ajax({
+				url: 'php/createPlan.php',
+				cache: false,
+				dataType: 'html',
+				type:'POST',
+				data: pageData,
+				error: function(xhr) {
+					alert('網路連線錯誤，請稍後再試');
+				},
+				success: function(response) {
+					pageData['id'] = response.trim();
+					pages.push(AddPlanPage1(pageData));
+					pages.push(AddPlanPage2(pageData));
+					
+					var tag = $('<li>' + pageData['name'] + '</li>').appendTo($('#list_plans'));
+					tag.bind({
+						mouseenter: function(){
+							$(this).css('color', 'yellow');
+							$(this).css('cursor', 'pointer');
+						},
+						mouseleave: function(){
+							$(this).css('color', 'brown');
+						}
+					});
+					tag.click(function(){
+						TurnToPage($('#aside_contents li').size() + 1);
+					});
+					$('#page_create input').val('');
+					$('#book').bookblock();
+					$('#book').bookblock('last');
+				}
+			});
+		}
+	});
+	
+	$('#create_back').click(function(){
+		$('#page_create input').val('');
+	});
+	
 	return page;
 }
 

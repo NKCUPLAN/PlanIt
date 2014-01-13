@@ -165,11 +165,6 @@ aside #new_plan{
 	z-index: 1000;
 	width: 100%;
 }
-
-#menu_logout, #menu_user{
-	display: none;
-	float: right;
-}
 /* ^^^^^^^^ ABOVE IS THE CODE FOR THE MENU ^^^^^^^^^^ */
 
 #hint{
