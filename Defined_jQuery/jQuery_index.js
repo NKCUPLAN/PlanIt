@@ -12,6 +12,16 @@ $(document).ready(function(){
 		Loaded();
 	});
 	
+	$('#btn_dialog_friend_close').click(function(){
+		$('#dialog_friend').modal();
+		$('#dialog_friend').modal('hide');
+	});
+	
+	$('#btn_dialog_friend_prev').click(function(){
+		loadFriends();
+		$(this).hide(1);
+	});
+	
 	$('#menu_friend').click(loadFriends);
 	$('#friend_search').click(function(){
 		event.stopPropagation();
@@ -97,6 +107,8 @@ $(document).ready(function(){
 				
 				$('#friend_text').text("搜尋結果");
 				$('#friend_number').text(total);
+				
+				$('#btn_dialog_friend_prev').show(1);
 			}
 		});
 	});
@@ -208,7 +220,7 @@ var SetUpdateFriendButton = function(type, block, friendData){
 				alert('Wrong Network');
 			},
 			success: function(response){
-				loadFriends();
+				//loadFriends();
 			}
 		});
 	});

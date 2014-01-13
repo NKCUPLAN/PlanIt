@@ -12,7 +12,42 @@
 	height:600px;
 	text-align: center;
 	margin-left: -250px;
+	border: none;
 }
+
+#btn_dialog_friend_close{
+	background: url(../img/friend/btn_dialog_friend_close.png) no-repeat;
+	background-size: cover;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 40px;
+	right: 40px;
+	cursor: pointer;
+}
+
+#btn_dialog_friend_close:hover{
+	background-position: 80px;
+	background-position: 0  -44px;
+}
+
+#btn_dialog_friend_prev{
+	background: url(../img/friend/btn_dialog_friend_prev.png) no-repeat;
+	background-size: cover;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 40px;
+	left: 40px;
+	cursor: pointer;
+	display: none;
+}
+
+#btn_dialog_friend_prev:hover{
+	background-position: 80px;
+	background-position: 0  -40px;
+}
+
 
 #friend_search{
 	margin-top:7px;
@@ -38,7 +73,7 @@
 	display: inline-block;
 	background: url(../img/friend/friend_search.png) no-repeat;
 	background-size: cover;  
-	margin-top:25px;
+	margin-top:35px;
 	width:234px;
 	height:55px;
 	border: 0px solid; 
@@ -53,10 +88,15 @@
     border: 0px solid;
 }
 
+#friend_count{
+	margin-top: 22px;
+}
+
 #friend_text{
 	font-size:24px;
 	font-weight: bold;
 	margin-top: 5px;
+	margin-right: 10px;
 	//display:inline-block;
 }
 #friend_number{
@@ -104,8 +144,6 @@
 	font-size:22px;
   	font-weight: bold;
 	width: 100px;
-	
-	cursor: pointer;
 }
 
 .friend_ask{
@@ -234,6 +272,7 @@
 .btn_friendInvite:hover{
   	background-position: 0% 102%;
 }
+
 
 #friend_search::-webkit-input-placeholder{
 	color: #a9c6ff;
