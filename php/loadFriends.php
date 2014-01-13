@@ -16,9 +16,10 @@
 		$friend = $k['id1'];
 		if(isFriend($user, $friend)){
 			$data = NULL;
-			$res = mysql_fetch_array(mysql_query("SELECT first_name, last_name, male FROM 2_member WHERE id = '$friend'"));
+			$res = mysql_fetch_array(mysql_query("SELECT first_name, last_name, male, acc FROM 2_member WHERE id = '$friend'"));
 			$data['name'] = $res[0].$res[1];
 			$data['male'] = $res[2];
+			$data['acc'] = $res[3];
 			$data['id'] = $friend;
 			$res = mysql_fetch_array(mysql_query("SELECT name FROM 2_plan WHERE user_id = '$friend' ORDER BY update_time DESC LIMIT 1"));
 			$data['plan_name'] = $res[0];
@@ -27,9 +28,10 @@
 		}
 		else{
 			$data = NULL;
-			$res = mysql_fetch_array(mysql_query("SELECT first_name, last_name, male FROM 2_member WHERE id = '$friend'"));
+			$res = mysql_fetch_array(mysql_query("SELECT first_name, last_name, male, acc FROM 2_member WHERE id = '$friend'"));
 			$data['name'] = $res[0].$res[1];
 			$data['male'] = $res[2];
+			$data['acc'] = $res[3];
 			$data['id'] = $friend;
 			
 			$wait_for_sure[] = json_encode($data);
@@ -43,9 +45,10 @@
 		$friend = $k['id2'];
 		if(!isFriend($user, $friend)){
 			$data = NULL;
-			$res = mysql_fetch_array(mysql_query("SELECT first_name, last_name, male FROM 2_member WHERE id = '$friend'"));
+			$res = mysql_fetch_array(mysql_query("SELECT first_name, last_name, male, acc FROM 2_member WHERE id = '$friend'"));
 			$data['name'] = $res[0].$res[1];
 			$data['male'] = $res[2];
+			$data['acc'] = $res[3];
 			$data['id'] = $friend;
 			
 			$unsure[] = json_encode($data);

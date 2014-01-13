@@ -66,7 +66,7 @@
 }
 #friend_list{
 	display: in-line;
-	padding: 0 20px 0 25px;
+	padding: 10px 25px 0 25px;
 	margin-right: 20px;
 	height: 420px;
 	overflow-y: scroll;
@@ -75,25 +75,32 @@
 .friend_block{
   	background: url(../img/friend/friend_block.png) no-repeat;
 	background-size: 100% 100%;
-	margin-bottom: 7px;
-	height:120px; 
+	margin-top: 10px;
+	height:140px; 
 	width: 100%;
 	list-style-type:none;
-	padding: 10px;
+	padding: 0 10px;
 	text-align: left;
 }
 .profile_pic{   
    	//background: url(../img/friend/profileBoy.png) no-repeat;
 	background-size: 100% 100%;
-	width:60px;
-	height:60px;
+	width:80px;
+	height:80px;
 	margin-left: 10px;
-	margin-top: 15px;
+	position: relative;
+	top: -10px;
+}
+.profile_id{
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	position: relative;
+	top: -5px;
 }
 
 .profile_name{
 	margin-left: 10px;
-	margin-top: 10px;
 	font-size:22px;
   	font-weight: bold;
 	width: 100px;
@@ -105,8 +112,9 @@
 	position:relative;
   	font-size: 24px;
   	font-weight: bold;
-	top:-70px;
+	top:-75px;
 	left:150px;
+	display: inline-block;
 }
 
 .friend_text:hover{
@@ -125,7 +133,6 @@
 	width:83px;
 	height:42px;
 	cursor: pointer;
-	display:inline-block;
 }
 
 .btn_friendConfirm:hover{
@@ -146,13 +153,16 @@
 .btn_friendRefuse:hover{
   	background-position: 0% 102%;
 }
+
+
+
 .friend_recentUpdate{
 	position:relative;
   	font-size: 18px;
   	font-weight: bolder;
 	top:-90px;
-	left:88px; 
-	
+	left:100px; 
+	display: inline-block;
 }
 .friend_planName{
 	color:#2e446f;
@@ -160,12 +170,13 @@
   	font-size: 24px;
   	font-weight: bolder;
 	top:-84px;
-	left:88px; 
+	left:100px; 
 	width: 270px;  
 	height:24px;
 	text-overflow:ellipsis;  
 	overflow: hidden;
 	white-space: nowrap;
+	display: inline-block;
 }
 .friend_planName:hover{
     color:#f7a89a;   
@@ -173,16 +184,24 @@
 	overflow:visible;
 	white-space: normal;	
 }
+.friend_sure{
+	background: url(../img/friend/btn_friendSure.png) no-repeat;
+	background-size: cover;
+	width: 100px;
+	height: 30px;
+	position: relative;
+	top: -78px;
+	left: 160px;
+}
 .btn_friendDelete{
 	position:relative;
   	background: url(../img/friend/btn_friendDelete.png) no-repeat;
-	top:-77px;
-	left:250px;
+	top:-110px;
+	left:280px;
 	background-size:cover;
-	width:117px;
-	height:42px; 
+	width:100px;
+	height:36px; 
 	cursor: pointer;
-	display:inline-block;
 }
 .btn_friendDelete:hover{
   	background-position: 0% 102%;
@@ -191,13 +210,12 @@
 .btn_friendCancel{
 	position:relative;
   	background: url(../img/friend/btn_friendCancel.png) no-repeat;
-	top:-60px;
-	left:250px;
+	top:-65px;
+	left:280px;
 	background-size:cover;
-	width:117px;
-	height:42px; 
+	width:100px;
+	height:39px; 
 	cursor: pointer;
-	display:inline-block;
 }
 .btn_friendCancel:hover{
   	background-position: 0% 102%;
@@ -207,12 +225,11 @@
 	position:relative;
   	background: url(../img/friend/btn_friendInvite.png) no-repeat;
 	top:-60px;
-	left:250px;
+	left:280px;
 	background-size:cover;
-	width:117px;
-	height:42px; 
+	width:100px;
+	height:38px; 
 	cursor: pointer;
-	display:inline-block;
 }
 .btn_friendInvite:hover{
   	background-position: 0% 102%;

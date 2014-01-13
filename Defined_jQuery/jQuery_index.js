@@ -44,13 +44,15 @@ $(document).ready(function(){
 
 					var block = $(
 						'<li class="friend_block" class="friend_owned">\
+							<div class="profile_id">ID: '+friend['acc']+'</div>\
 							<div class="profile_pic" \
 								style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
 								background-size: 100% 100%;">\
 							</div>\
 							<div class="friend_text profile_name" onclick="LoadFriendsPlans('+friend['id']+')">'+friend['name']+'</div>\
-							<div class="friend_recentUpdate" >最近更新計畫 :</div>\
+							<div class="friend_recentUpdate">最近更新計畫 :</div>\
 							<div class="friend_text friend_planName">'+friend['plan_name']+'</div>\
+							<div class="friend_sure"></div>\
 							<div class="btn_friendDelete"></div>\
 						</li>').appendTo($('#friend_list'));
 						
@@ -62,12 +64,13 @@ $(document).ready(function(){
 					var friend = $.parseJSON(invited[k]);
 					var block = $(
 						'<li class="friend_block" class="friend_confirm">\
+							<div class="profile_id">ID: '+friend['acc']+'</div>\
 							<div class="profile_pic" \
 								style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
 								background-size: 100% 100%;">\
 							</div>\
 							<div class="friend_text profile_name">'+friend['name']+'</div>\
-							<div class="friend_ask">已送出好友邀請</div>\
+							<div class="friend_ask">已送出邀請</div>\
 							<div class="btn_friendCancel"></div>\
 						</li>').appendTo($('#friend_list'));
 						
@@ -80,12 +83,13 @@ $(document).ready(function(){
 
 					var block = $(
 						'<li class="friend_block" class="friend_owned">\
+							<div class="profile_id">ID: '+friend['acc']+'</div>\
 							<div class="profile_pic" \
 								style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
 								background-size: 100% 100%;">\
 							</div>\
 							<div class="friend_text profile_name">'+friend['name']+'</div>\
-							<div class="friend_ask">ID: '+friend['acc']+'<br/>尚未加入好友</div>\
+							<div class="friend_ask">你們還不是朋友</div>\
 							<div class="btn_friendInvite"></div>\
 						</li>').appendTo($('#friend_list'));
 					SetUpdateFriendButton('Invite', block, friend);
@@ -128,6 +132,7 @@ var loadFriends = function(){
 
 				var block = $(
 					'<li class="friend_block" class="friend_confirm">\
+						<div class="profile_id">ID: '+friend['acc']+'</div>\
 						<div class="profile_pic" \
 							style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
 							background-size: 100% 100%;">\
@@ -148,6 +153,7 @@ var loadFriends = function(){
 
 				var block = $(
 					'<li class="friend_block" class="friend_owned">\
+						<div class="profile_id">ID: '+friend['acc']+'</div>\
 						<div class="profile_pic" \
 							style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
 							background-size: 100% 100%;">\
@@ -155,6 +161,7 @@ var loadFriends = function(){
 						<div class="friend_text profile_name" onclick="LoadFriendsPlans('+friend['id']+')">'+friend['name']+'</div>\
 						<div class="friend_recentUpdate" >最近更新計畫 :</div>\
 						<div class="friend_text friend_planName">'+friend['plan_name']+'</div>\
+						<div class="friend_sure"></div>\
 						<div class="btn_friendDelete"></div>\
 					</li>').appendTo($('#friend_list'));
 					
@@ -167,12 +174,13 @@ var loadFriends = function(){
 
 				var block = $(
 					'<li class="friend_block" class="friend_confirm">\
+						<div class="profile_id">ID: '+friend['acc']+'</div>\
 						<div class="profile_pic" \
 							style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
 							background-size: 100% 100%;">\
 						</div>\
 						<div class="friend_text profile_name">'+friend['name']+'</div>\
-						<div class="friend_ask">已送出好友邀請</div>\
+						<div class="friend_ask">已送出邀請</div>\
 						<div class="btn_friendCancel"></div>\
 					</li>').appendTo($('#friend_list'));
 				
