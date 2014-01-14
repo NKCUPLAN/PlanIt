@@ -141,17 +141,9 @@ var AddCreatePage = function(){
 					</div>\
 					<div class="page_right">\
 						<div id="create_task">\
-							<input type="text" id="create_newTask" placeholder="輸入待辦事項">\
-							<div id="create_addNewTask"></div>\
-							<div id="create_task_list">\
-								<label onclick="checkboxToggle(this)" class="create_task_item">\
-									<input type="checkbox" class="checkbox"/>\
-									<span></span><div class="task_content">This is goal 1!</div>\
-								</label>\
-								<label onclick="checkboxToggle(this)" class="create_task_item">\
-									<input type="checkbox" class="checkbox"/>\
-									<span></span><div class="task_content">This is goal 1!</div>\
-								</label>\
+							<input type="text" class="newTask" placeholder="輸入待辦事項">\
+							<div class="addNewTask"></div>\
+							<div class="task_list">\
 							</div>\
 						</div>\
 						<div class="button">\
@@ -228,18 +220,18 @@ var AddCreatePage = function(){
 		$('#page_create input').val('');
 	});
 	
-	$("#create_addNewTask").click(function() {
-		$itemValue = $('#create_newTask').val();
+	$(".addNewTask").click(function() {
+		$itemValue = $('.newTask').val();
 		$num = $('.ui.checkbox').length + 1;
 		$checkboxID = 'checkbox'.concat($num.toString());
 		if($itemValue != "") {
-			$("#create_task_list").append(
-					'<label onclick="checkboxToggle(this)" class="create_task_item">\
+			$('.task_list').append(
+					'<label onclick="checkboxToggle(this)" class="task_item">\
 						<input type="checkbox" class="checkbox"/>\
 						<span></span><div class="task_content">'+$itemValue+'</div>\
 					</label>');
-			$('#create_newTask').val("");
-			$("#create_task_list").scrollTop($("#create_task_list").prop("scrollHeight"));
+			$('.newTask').val("");
+			$('.task_list').scrollTop($(".task_list").prop("scrollHeight"));
 		}  
 
 	}); 
