@@ -30,6 +30,11 @@ $(document).ready(function(){
         hide_aside = !hide_aside;
     });
 	
+		
+	$('#menu_logout').click(function(){
+		ClearCookie();
+		location.reload();
+	});
 	
 });
 

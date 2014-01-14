@@ -9,6 +9,8 @@ $(document).ready(function(){
 		display_unauth();
 	});
 	
+	
+	
 	/*---Dialog---*/
 	$('#main_btn_login').click(function(){
 		$('#unauth').show(1, function(){
