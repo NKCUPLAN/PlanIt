@@ -232,10 +232,10 @@ var AddCreatePage = function(){
 		$checkboxID = 'checkbox'.concat($num.toString());
 		if($itemValue != "") {
 			$("#create_task").append(
-					'<div class="ui checkbox create_task_item">\
-						<input type="checkbox" id=' + $checkboxID + '>\
-						<label onclick="checkboxToggle(this)" for=' + $checkboxID +'>'+$itemValue+'</label>\
-					</div>');
+					'<label onclick="checkboxToggle(this)" class="create_task_item">\
+						<input type="checkbox" class="checkbox"/>\
+						<span></span><div class="task_content">This is goal 1!</div>\
+					</label>');
 			$('#create_newTask').val("");
 		}  
 	}); 
