@@ -117,6 +117,7 @@ var LoadPlans = function(secret){
 			});
 			
 			$('#book').bookblock();
+			display_auth();
 		}
 	});
 }
@@ -138,9 +139,20 @@ var AddCreatePage = function(){
 							<input type="text" id="create_deadDate" placeholder="日期"/><input type="text" id="create_deadTime" placeholder="時間" />\
 						</div>\
 					</div>\
-					\
 					<div class="page_right">\
-						<div id="button">\
+						<div id="create_task">\
+							<input type="text" id="create_newTask">\
+							<div id="create_addNewTask"></div>\
+							<label onclick="checkboxToggle(this)" class="create_task_item">\
+								<input type="checkbox" class="checkbox"/>\
+								<span></span><div class="task_content">This is goal 1!</div>\
+							</label>\
+							<label onclick="checkboxToggle(this)" class="create_task_item">\
+								<input type="checkbox" class="checkbox"/>\
+								<span></span><div class="task_content">This is goal 1!</div>\
+							</label>\
+						</div>\
+						<div class="button">\
 							<a href="#" class="back" id="create_back">Back<span></span></a>\
 							<a href="#" class="create" id="create_create">Create<span></span></a>\
 						</div>\
@@ -214,6 +226,20 @@ var AddCreatePage = function(){
 		$('#page_create input').val('');
 	});
 	
+	$("#create_addNewTask").click(function() {
+		$itemValue = $('#create_newTask').val();
+		$num = $('.ui.checkbox').length + 1;
+		$checkboxID = 'checkbox'.concat($num.toString());
+		if($itemValue != "") {
+			$("#create_task").append(
+					'<div class="ui checkbox create_task_item">\
+						<input type="checkbox" id=' + $checkboxID + '>\
+						<label onclick="checkboxToggle(this)" for=' + $checkboxID +'>'+$itemValue+'</label>\
+					</div>');
+			$('#create_newTask').val("");
+		}  
+	}); 
+	
 	return page;
 }
 
@@ -223,7 +249,6 @@ var AddPlanPage2 = function(data, personal){
 	var plan_right = $('<div class="page_right"></div>').appendTo(page);
 	plan_right.append('<div class="ui comments">\
 						<div id="comment_content" style="overflow-y: auto; height: 80%;"></div>\
-						\
 						<form class="ui reply form" style="position:absolute; bottom:10px; width: 90%; margin: 0 auto;">\
 							<div class="field" syle="width: 90%;">\
 								<textarea id="input_comment" name="input_comment" style="min-height:40px; height: 40px; padding: 5px;"></textarea>\

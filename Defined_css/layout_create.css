@@ -145,30 +145,89 @@ p.thought:after {
 
 /*** RIGHT PAGE ***/
 
-
-.create_picture{
-	background: url(../img/blackboard.jpg);
-	background-size: contain;
-	width:	294px;
-	height:	170px;
-	padding: 10px;
-	margin: 20px auto 10px auto;
+.ui.checkbox {
+	display: block;
 }
 
-.create_beans{
-	background:url(../img/beans2.png);
-	background-size: contain;
-	position:absolute;
-	top:50px;
-	left:72px;
-	width:260px;
-	height:133px;
+.delete_text {
+	text-decoration: line-through;
 }
 
-.create_diary{
-	text-align: center;
-	font-size: 30px;
-	margin: 0 auto;
+#create_task{
+	padding:10px;
+	height: 370px;
+}
+
+#create_newTask{
+	width: 270px;
+	height: 48px;
+	background: url('../img/create/txt_newTask.png');
+	background-size: cover;
+	background-position: 0 48px;
+	padding: 0 10px;
+	display: inline-block;
+	margin: 0 0 20px 20px;
+	font-size: 25px;
+	color: black;
+}
+
+#create_newTask:focus{
+	background-position: 0 0px;
+}
+
+#create_addNewTask{
+	background: url('../img/create/btn_addNewTask.png');
+	background-size: cover;
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	position: absolute;
+	top: 12px;
+	right: 15px;
+}
+
+#create_addNewTask:hover{
+	background-position: 0 40px;
+}
+
+.create_task_item{
+	display: block;
+	width: 280px;
+	height: 70px;
+	margin: 0 0 10px 20px;
+}
+
+.create_task_item .checkbox{
+	display: none;
+}
+
+.create_task_item .checkbox + span{
+	margin: 15px 13px;
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	vertical-align: middle;
+}
+
+.create_task_item .checkbox:checked + span{
+	background: url('../img/create/done.png');
+	background-size: 100% 100%;
+}
+
+.create_task_item .task_content{
+	display: inline-block;
+	width: 190px;
+	font-size: 18px;
+}
+
+.create_task_item:nth-child(odd){
+	background: url('../img/create/task_item_1.png');
+	background-size: 100% 100%;
+}
+
+.create_task_item:nth-child(even){
+	background: url('../img/create/task_item_2.png');
+	background-size: 100% 100%;
 }
 
 .create_go{
@@ -181,10 +240,3 @@ p.thought:after {
 	height:80px;
 }
 
-.create_diaryContent{ 
-	margin: 10px 10% 5% 10%;
-	padding:5px;
-	width: 80%;
-	height: 20%;
-	resize: none;
-}

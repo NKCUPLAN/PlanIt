@@ -12128,7 +12128,7 @@ a.ui.teal.label:hover:before {
   position: relative;
   display: inline-block;
   min-width: 1em;
-  height: 1.25em;
+  //height: 1.25em;
   line-height: 1em;
   outline: none;
   vertical-align: middle;

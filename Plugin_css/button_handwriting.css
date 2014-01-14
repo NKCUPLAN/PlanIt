@@ -1,35 +1,35 @@
 
-#button span {
+.button span {
 	display: none;
 	position: absolute;
 }
-#button a {
+.button a {
 	display: block;
 	text-indent: -900%;
 	position: absolute;
 	outline: none;
 }
-#button a:hover {	
+.button a:hover {	
 	background-position: left top;
 }
-#button a:hover span{
+.button a:hover span{
 	display: block;
 }
-#button .home {
+.button .home {
 	width: 144px;
 	height: 58px;
 	background: url(../img/button/home.gif) no-repeat;
 	left: 96px;
 	top: 73px;
 }
-#button .home span {
+.button .home span {
 	width: 86px;
 	height: 14px;
 	background: url(../img/button/home-over.gif) no-repeat;
 	left: 28px;
 	top: -20px;
 }
-#button .save {
+.button .save {
 	width: 144px;
 	height: 58px;
 	background: url(../img/button/save.png) no-repeat;
@@ -38,21 +38,21 @@
 	top: 410px;
 	z-index:+3;
 }
-#button .about {
+.button .about {
 	width: 131px;
 	height: 51px;
 	background: url(../img/button/about.gif) no-repeat;
 	left: 338px;
 	top: 97px;
 }
-#button .about span {
+.button .about span {
 	width: 40px;
 	height: 12px;
 	background: url(../img/button/about-over.gif) no-repeat;
 	left: 44px;
 	top: 54px;
 }
-#button .create {
+.button .create {
 	width: 131px;
 	height: 51px;
 	background: url(../img/button/create.png) no-repeat;
@@ -60,7 +60,7 @@
 	left: 220px;
 	top: 400px;
 }
-#button .back {
+.button .back {
 	width: 131px;
 	height: 51px;
 	background: url(../img/button/back.png) no-repeat;
@@ -68,14 +68,14 @@
 	left: 35px;
 	top: 400px;
 }
-#button .rss {
+.button .rss {
 	width: 112px;
 	height: 47px;
 	background: url(../img/button/rss.gif) no-repeat;
 	left: 588px;
 	top: 94px;
 }
-#button .rss span {
+.button .rss span {
 	width: 92px;
 	height: 20px;
 	background: url(../img/button/rss-over.gif) no-repeat;

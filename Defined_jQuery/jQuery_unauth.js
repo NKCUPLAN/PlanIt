@@ -141,7 +141,7 @@ var loginAction = function(){
 				if($('#rem').prop('checked'))
 					WriteCookie(secret);
 
-				$('.unauth').fadeOut(1000, function(){
+				$('.unauth, #unauth').fadeOut(1000, function(){
 					$('#dialog_login .acc').val('');
 					$('#dialog_login .pwd').val('');
 					display_auth();
