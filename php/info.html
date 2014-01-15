@@ -1,0 +1,142 @@
+<style>
+#id_card {
+	position: absolute;
+	top: 18px;
+	left: 10px;
+	width: 300px;
+	height: 350px;
+	background: url('../img/info/id_card.png');
+	background-size: 100% 100%;
+	z-index: 1;
+}
+
+#paper_clip {
+	position: absolute;
+	top: 0px;
+	left: 10px;
+	width: 50px;
+	height: 100px;
+	background: url('../img/info/paper_clip.png');
+	background-size: 100% 100%;
+	z-index: 2;
+}
+
+#plan_doing {
+	position: absolute;
+	top: 10px;
+	left: 400px;
+}
+
+#plan_done {
+	position: absolute;
+	top: 140px;
+	left: 400px;
+}
+
+#plan_undo {
+	position: absolute;
+	top: 260px;
+	left: 400px;
+}
+
+#id_card_img {
+	position: absolute;
+	top: 50px;
+	left: 45px;
+}
+.content{
+	color: #3c396c;
+	font-family: 微軟正黑體;
+}
+.content li:hover{
+	color:#5694ff;
+}
+.IDCard_content {
+	-webkit-transform:rotate(-5deg);
+	-o-transform:rotate(-5deg);
+	-moz-transform: rotate(-5deg);
+	font-family: 微軟正黑體;
+	font-weight: bolder;
+	margin: 2px;
+}
+#name{
+	position:absolute;
+	top: 35px;
+	left: 150px;
+}
+#id{
+	position:absolute;
+	top: 60px;
+	left: 151px;
+}
+#gender{
+	position:absolute;
+	top: 85px;
+	left: 152px;
+}
+#plan_count{
+position:absolute;
+	top: 110px;
+	left: 153px;
+}
+#mail{
+position:absolute;
+	top: 200px;
+	left: 30px;
+}
+</style>
+<div id="paper_clip"></div>
+<div id="id_card">
+	<img id="id_card_img" src="../img/info/thumbnail_male.png"
+		alt="plan_doing" height="110" width="105">
+	<div id="name" class="IDCard_content">
+		<label>姓名:</label> 小豆豆
+	</div>
+	<div id="id" class="IDCard_content">
+		<label>ID:</label>Mr. bean
+	</div>
+	<div id="gender" class="IDCard_content">
+		<label>性別:</label>男
+	</div>
+	<div id="plan_count" class="IDCard_content">
+		<label>完成計畫:</label>
+		1 <label>項</label>
+	</div>
+	<div id="mail" class="IDCard_content">
+		<label>電子郵件:</label>
+		bean@yahoo.com.tw
+	</div>
+</div>
+<div id="plan_doing">
+	<img src="../img/info/plan_doing.png" alt="plan_doing" height="30"
+		width="120">
+	<div class="content">
+		<ol>
+			<li>存錢</li>
+			<li>減肥</li>
+			<li>擺脫單身</li>
+		</ol>
+	</div>
+</div>
+<div id="plan_done">
+	<img src="../img/info/plan_done.png" alt="plan_done" height="30"
+		width="120">
+	<div class="content">
+		<ol>
+			<li>存錢</li>
+			<li>減肥</li>
+			<li>擺脫單身</li>
+		</ol>
+	</div>
+</div>
+<div id="plan_undo">
+	<img src="../img/info/plan_undo.png" alt="plan_undo" height="30"
+		width="120">
+	<div class="content">
+		<ol>
+			<li>存錢</li>
+			<li>減肥</li>
+			<li>擺脫單身</li>
+		</ol>
+	</div>
+</div>
