@@ -194,10 +194,11 @@ p.thought:after {
 }
 
 .create_task_item{
+	position: relative;
 	display: block;
-	width: 80%;
+	width: 85%;
 	height: 70px;
-	margin: 0 0 10px 20px;
+	margin: 10px 0 0 20px;
 }
 
 .create_task_item .checkbox{
@@ -254,4 +255,17 @@ p.thought:after {
 
 #create_task_list::-webkit-scrollbar-corner {
     display:none;
+}
+
+.create_task_delete{
+	width: 25px;
+	height: 25px;
+	background: url('../img/create/delete.png');
+	background-size: 100% 100%;
+
+	display: block;
+	position: absolute;
+	top: -5px;
+	right: -5px;
+	cursor: pointer;
 }
