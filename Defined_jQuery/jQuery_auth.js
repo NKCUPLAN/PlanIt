@@ -143,8 +143,7 @@ var AddCreatePage = function(){
 						<div id="create_task">\
 							<input type="text" class="newTask" placeholder="輸入待辦事項">\
 							<div class="addNewTask"></div>\
-							<div class="task_list">\
-							</div>\
+							<div class="task_list"></div>\
 						</div>\
 						<div class="button">\
 							<a href="#" class="back" id="create_back">Back<span></span></a>\
@@ -192,8 +191,8 @@ var AddCreatePage = function(){
 				},
 				success: function(response) {
 					pageData['id'] = response.trim();
-					pages.push(AddPlanPage1(pageData));
-					pages.push(AddPlanPage2(pageData));
+					pages.push(AddPlanPage1(pageData, true));
+					pages.push(AddPlanPage2(pageData, true));
 					
 					var tag = $('<li>' + pageData['name'] + '</li>').appendTo($('#list_plans'));
 					tag.bind({
@@ -206,11 +205,11 @@ var AddCreatePage = function(){
 						}
 					});
 					tag.click(function(){
-						TurnToPage($('#aside_contents li').size() + 1);
+						TurnToPage(pages.length - 1);
 					});
 					$('#page_create input').val('');
 					$('#book').bookblock();
-					$('#book').bookblock('last');
+					TurnToPage(pages.length - 1);
 				}
 			});
 		}
@@ -257,25 +256,25 @@ var AddPlanPage2 = function(data, personal){
 	var form = plan_right.children().children('form');
 	var input = form.children('.field').children('#input_comment');
 	var content = form.parent().children("#comment_content");	
-	
-	var comment = $.parseJSON(data['comment']);
-	for(var i in comment){
-		if(comment[i]){
-			comData = $.parseJSON(comment[i]);
-			content.append(
-				'<div class="comment">\
-					<div class="content">\
-						<a class="author">'
-						+ comData['user_name'] +
-						'</a>\
-						<div class="text">'
-						+ comData['content']+
-						'</div>\
-					</div>\
-				</div>');
-		}
-	}			
-	
+	if(data['comment']){
+		var comment = $.parseJSON(data['comment']);
+		for(var i in comment){
+			if(comment[i]){
+				comData = $.parseJSON(comment[i]);
+				content.append(
+					'<div class="comment">\
+						<div class="content">\
+							<a class="author">'
+							+ comData['user_name'] +
+							'</a>\
+							<div class="text">'
+							+ comData['content']+
+							'</div>\
+						</div>\
+					</div>');
+			}
+		}			
+	}
 	form.children('#add_comment').click(function(){
 		var comment = input.val();
 		// uer name
@@ -356,16 +355,13 @@ var AddPlanPage1 = function(data, personal){
 	game.append('<div class="game_bean"></div>');
 	game.append('<div class="game_ropeX"></div>');
 	game.append('<div class="game_beltSystem"></div>');
-	game.append('<div class="game_container"></div>');
 	game.append('<div class="game_ropeY"></div>');
 	game.append('<div class="game_bug"></div>');
 	game.append('<div class="game_bicycle"></div>');
-	plan_right.append('<div class="plan_bean"></div>');
-	plan_right.children('.plan_bean').click(function(){
-		$('#book').bookblock('next');
-	});
-	moveBug(game, done);
+	game.append('<div class="game_container"></div>');
 	
+	//moveBug(game, done);
+	/*
 	if(s > e){
 		plan_right.append(	'<div class="plan_progressTitle">Update your plan any time!</div>'+
 							'<div class="plan_progress"></br>'+
@@ -384,13 +380,23 @@ var AddPlanPage1 = function(data, personal){
 								'<br/><span style="font-size:14px">start</span>　　　　　　　　　　　　<span style="font-size:14px">end</span>'+
 							'</div>');
 	}
+	*/
+	//plan_right.append('<div class="plan_diary">Diary</div>');
+	//plan_right.append('<textarea class="plan_diaryContent">' + data['content'] + '</textarea>');
+	plan_right.append(	'<div class="plan_task">\
+							<input type="text" class="newTask" placeholder="輸入待辦事項">\
+							<div class="addNewTask"></div>\
+							<div class="task_list"></div>\
+						</div>');
 	
-	plan_right.append('<div class="plan_diary">Diary</div>');
-	plan_right.append('<textarea class="plan_diaryContent">' + data['content'] + '</textarea>');
+	plan_right.append('<div class="plan_next"></div>');
+	plan_right.children('.plan_next').click(function(){
+		$('#book').bookblock('next');
+	});
 	var div_button;
 
 	if(personal){
-		div_button = $('<div id="button"></div>').appendTo(plan_right);		
+		div_button = $('<div class="button"></div>').appendTo(plan_right);		
 	}
 	else{
 		plan_right.find('input').attr('disabled', 'disabled');
@@ -487,7 +493,7 @@ var CheckPlanInfo = function(){
 	}
 	return true;
 }
-
+/*
 var moveBug = function(gameContent, done){
 	var	bubble = [[-100, 210],[20, 10]];
 	var bug = [[90, 240], [220, 20]];
@@ -512,4 +518,4 @@ var moveBug = function(gameContent, done){
 	gameContent.children('img').animate({top: bug_top, left: bug_left}, 1000);
 	gameContent.children('.bubble').animate({top: bubble_top, left: bubble_left}, 1000);
 	gameContent.children('.bubble').text(talk[choice]);
-}
+}*/

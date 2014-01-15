@@ -48,10 +48,11 @@ aside #aside_contents #list_plans{
     margin: 10px 5px 0px 22px;
 	
 	position: relative;
-	overflow-y:scroll;	
+	overflow-y:scroll;
+	overflow-x:hidden;	
 	top:150px;
 	height:300px;
-	width:210px;
+	width:200px;
 	-webkit-transform: matrix(1, 0.15, 0, 1, 0, 0);
          -o-transform: matrix(1, 0.15, 0, 1, 0, 0);
             transform: matrix(1, 0.15, 0, 1, 0, 0);
