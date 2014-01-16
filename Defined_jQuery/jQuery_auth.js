@@ -400,11 +400,29 @@ var AddPlanPage1 = function(data, personal){
 	*/
 	//plan_right.append('<div class="plan_diary">Diary</div>');
 	//plan_right.append('<textarea class="plan_diaryContent">' + data['content'] + '</textarea>');
-	plan_right.append(	'<div class="plan_task">\
-							<input type="text" class="newTask" placeholder="輸入待辦事項">\
-							<div class="addNewTask"></div>\
-							<div class="task_list"></div>\
-						</div>');
+	var task_frame = $(	'<div class="plan_task"></div>').appendTo(plan_right);
+	task_frame.append('<input type="text" class="plan_newTask" placeholder="輸入待辦事項">');
+	task_frame.append('<div class="plan_addNewTask"></div>');
+	task_frame.append('<div class="plan_task_list"></div>');
+						
+						
+	task_frame.children('.plan_addNewTask').click(function(){
+		var itemValue = task_frame.children('.plan_newTask').val();
+		var num = task_frame.children('.plan_task_item').length + 1;
+		var checkboxID = 'checkbox'.concat(num.toString());
+		if(itemValue != "") {
+			var task = $('<label onclick="checkboxToggle(this)" class="plan_task_item">\
+							<input type="checkbox" class="checkbox"/>\
+							<span></span><div class="plan_task_content">'+itemValue+'</div>\
+						</label>').appendTo(task_frame.children('.plan_task_list'));
+			var btn_delete = $('<div class="plan_task_delete"></div>').appendTo(task);
+			btn_delete.click(function(){
+				$(this).parent().remove();
+			});
+			task_frame.children('.plan_newTask').val('');
+			task_frame.children('.plan_task_list').scrollTop($(this).children(".plan_task_list").prop("scrollHeight"));
+		}
+	}); 
 	
 	plan_right.append('<div class="plan_next"></div>');
 	plan_right.children('.plan_next').click(function(){

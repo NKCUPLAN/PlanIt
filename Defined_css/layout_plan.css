@@ -282,11 +282,6 @@ left: 50px;
 	background-position: 0 49px;
 }
 
-.plan_task{
-	width: 70%;
-	height: 370px;
-}
-
 .rangeInput{
 	-webkit-appearance: none;
 	background:lightgreen;
@@ -323,4 +318,127 @@ left: 50px;
 	line-height: 100px;
 	text-align: center;
 	font-size: 22px;
+}
+
+
+/*** RIGHT PAGE ***/
+
+.plan_task{
+	padding:10px;
+	height: 370px;
+}
+
+.plan_newTask{
+	border: none;
+	width: 270px;
+	height: 48px;
+	background: url('../img/plan/txt_newTask.png');
+	background-size: cover;
+	background-position: 0 0;
+	padding: 0 10px;
+	display: inline-block;
+	margin: 0 0 20px 20px;
+	font-size: 25px;
+	color: black;
+}
+
+.plan_addNewTask{
+	background: url('../img/plan/btn_addNewTask.png');
+	background-size: cover;
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	position: absolute;
+	top: 12px;
+	right: 15px;
+	
+	cursor: pointer;
+}
+
+.plan_task_list{
+	width: 100%;
+	height: 300px;
+	overflow-y: scroll;
+}
+
+.plan_addNewTask:hover{
+	background-position: 0 40px;
+}
+
+.plan_task_item{
+	position: relative;
+	display: block;
+	width: 85%;
+	height: 70px;
+	margin: 10px 0 0 20px;
+	cursor: pointer;
+}
+
+.plan_task_item .checkbox{
+	display: none;
+}
+
+.plan_task_item .checkbox + span{
+	margin: 15px 13px;
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	vertical-align: middle;
+}
+
+.plan_task_item .checkbox:checked + span{
+	background: url('../img/plan/done.png');
+	background-size: 100% 100%;
+}
+
+.plan_task_item .plan_task_content{
+	display: inline-block;
+	font-size: 18px;
+}
+
+.plan_task_item:nth-child(odd){
+	background: url('../img/plan/task_item_1.png');
+	background-size: 100% 100%;
+}
+
+.plan_task_item:nth-child(even){
+	background: url('../img/plan/task_item_2.png');
+	background-size: 100% 100%;
+}
+
+.plan_task_list::-webkit-scrollbar {
+    margin-left:20px;  
+    width: 25px;
+}
+
+.plan_task_list::-webkit-scrollbar-track {
+    display:none;
+} 
+
+.plan_task_list::-webkit-scrollbar-thumb:vertical{ 
+	background: white;
+	border: #6A8ABF 5px solid;
+	border-radius: 10px;
+	cursor:pointer;	
+}
+
+.plan_task_list::-webkit-scrollbar-button {
+    display:none;
+}
+
+.plan_task_list::-webkit-scrollbar-corner {
+    display:none;
+}
+
+.plan_task_delete{
+	width: 25px;
+	height: 25px;
+	background: url('../img/plan/delete.png');
+	background-size: 100% 100%;
+
+	display: block;
+	position: absolute;
+	top: -5px;
+	right: -5px;
+	cursor: pointer;
 }

@@ -145,14 +145,6 @@ p.thought:after {
 
 /*** RIGHT PAGE ***/
 
-.ui.checkbox {
-	display: block;
-}
-
-.delete_text {
-	text-decoration: line-through;
-}
-
 #create_task{
 	padding:10px;
 	height: 370px;
@@ -181,6 +173,7 @@ p.thought:after {
 	position: absolute;
 	top: 12px;
 	right: 15px;
+	cursor: pointer;
 }
 
 #create_task_list{
