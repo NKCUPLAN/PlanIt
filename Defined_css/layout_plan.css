@@ -396,6 +396,10 @@ left: 50px;
 .plan_task_item .plan_task_content{
 	display: inline-block;
 	font-size: 18px;
+	width: 70%;
+	overflow: hidden;
+	text-overflow:ellipsis; 
+	vertical-align: middle;
 }
 
 .plan_task_item:nth-child(odd){

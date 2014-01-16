@@ -215,6 +215,10 @@ p.thought:after {
 .create_task_item .create_task_content{
 	display: inline-block;
 	font-size: 18px;
+	width: 70%;
+	overflow: hidden;
+	text-overflow:ellipsis; 
+	vertical-align: middle;
 }
 
 .create_task_item:nth-child(odd){
