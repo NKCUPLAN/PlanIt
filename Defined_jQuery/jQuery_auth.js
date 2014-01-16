@@ -157,6 +157,9 @@ var AddCreatePage = function(){
 						</div>\
 					</div>\
 				</div>').appendTo($('#book'));
+				$('.create_task_delete').click(function(){
+					$(this).parent().remove();
+				});
 	$(function(){
 		$("#create_deadDate").datepicker({dateFormat: 'yy-mm-dd'});
 	}); 
@@ -250,6 +253,12 @@ var AddPlanPage2 = function(data, personal){
 	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
 	var plan_left = $('<div class="page_left"></div>').appendTo(page);
 	var plan_right = $('<div class="page_right"></div>').appendTo(page);
+	
+	plan_left.append('<div class="plan_prev"></div>');
+	plan_left.children('.plan_prev').click(function(){
+		$('#book').bookblock('prev');
+	});
+	
 	plan_right.append('<div class="ui comments">\
 						<div id="comment_content" style="overflow-y: auto; height: 80%;"></div>\
 						<form class="ui reply form" style="position:absolute; bottom:10px; width: 90%; margin: 0 auto;">\

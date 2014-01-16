@@ -199,6 +199,7 @@ p.thought:after {
 	width: 85%;
 	height: 70px;
 	margin: 10px 0 0 20px;
+	cursor: pointer;
 }
 
 .create_task_item .checkbox{

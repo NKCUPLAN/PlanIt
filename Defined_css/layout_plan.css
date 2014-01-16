@@ -262,6 +262,26 @@ left: 50px;
 	background-position: 0 49px;
 }
 
+.plan_prev{
+	position:absolute;
+	width:40px;
+	height:49px;
+	top:420px;
+	left:40px;
+	background: url(../img/plan/btn_prevPage.png);
+	background-size: cover;
+	background-position: 0 0;
+	
+	cursor: pointer;
+	text-align: center;
+	font-size: 36px;
+	font-weight: bold;
+}
+
+.plan_prev:hover{
+	background-position: 0 49px;
+}
+
 .plan_task{
 	width: 70%;
 	height: 370px;
