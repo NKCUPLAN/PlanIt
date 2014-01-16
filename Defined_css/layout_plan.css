@@ -200,48 +200,6 @@ left: 50px;
 	text-align:center;
 }
 
-
-.plan_progress{
-	position: relative;
-	top: 45px;
-	
-	margin: 5% auto;
-	width: 80%;
-	text-align:center;
-	padding: 10px;
-	line-height: 30px;	
-	font-size: 20px;
-}
-
-.plan_progressTitle{
-	position:absolute;
-	top:30px;
-	left:40px;
-	font-size:30px;
-	
-}
-
-.plan_diary{
-	position:relative;
-	top:30px;
-	left:40px;
-	font-size: 30px;
-	cursor: default; 
-	
-}
-
-.plan_diaryContent{
-	position:relative;
-	top:35px;
-	width: 80%;
-	height: 20%;
-	margin: 0 10%;
-	border-width:0px;
-	background: #D0DDE9;
-	padding:5px;
-	resize: none;
-}
-
 .plan_next{
 	position:absolute;
 	width:40px;
@@ -282,64 +240,30 @@ left: 50px;
 	background-position: 0 49px;
 }
 
-.rangeInput{
-	-webkit-appearance: none;
-	background:lightgreen;
-	
-	width: 250px; 
-	height: 20px; 
-	margin: 5px 0; 
-	padding: 0;
-}
-
-.rangeInput::-webkit-slider-thumb{
-	-webkit-appearance: none;
-	background:green;	
-	width: 10px; 
-	height: 30px; 
-}
-
-.rangeOutput{
-	background:white;
-	padding-left:10px;
-	padding-right:10px;
-	background:transparent;
-}
-
-.WoodBoard{
-	position:relative;
-	top:50px;
-	left:230px;
-	background: url(../img/WoodBoard.png);
-	background-repeat:no-repeat;
-	background-size:cover;
-	width:100px;
-	height:130px;
-	line-height: 100px;
-	text-align: center;
-	font-size: 22px;
-}
 
 
 /*** RIGHT PAGE ***/
 
 .plan_task{
-	padding: 10px;
+	position:relative;
+	vertical-align: top;
+	padding: 2%;
 	height: 370px;
-	width: 70%;
+	width: 66%;
 	margin: 0 0 0 auto;
+	display: inline-block;
 }
 
 .plan_newTask{
 	border: none;
-	width: 72%;
+	width: 73%;
 	height: 48px;
 	background: url('../img/plan/txt_newTask.png');
 	background-size: 100% 100%;
 	background-position: 0 0;
 	padding: 0 10px;
 	display: inline-block;
-	margin: 0 0 20px 20px;
+	margin: 0 10px 20px 10px;
 	font-size: 25px;
 	color: black;
 }
@@ -447,4 +371,84 @@ left: 50px;
 	top: -5px;
 	right: -5px;
 	cursor: pointer;
+}
+
+.plan_clock{
+	background: url('../img/plan/clock.png');
+	background-size: cover;
+	height: 51px;
+	width: 50px;
+	margin: 5px auto;
+}
+
+.plan_clock:hover{
+	background-position: 0 50px;
+}
+
+.plan_progress{
+	vertical-align: top;
+	margin: 0 auto;
+	width: 30%;
+	display: inline-block;
+}
+
+.plan_progressbar{
+	-webkit-appearance: none;
+	margin: 0 auto;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	background: transparent;
+	height: 10px;
+	width: 330px;
+	position: absolute;
+	bottom: 240px;
+	left: -108px;
+}
+
+.plan_progressbar::-webkit-slider-thumb{
+	-webkit-appearance: none;
+	background: url('../img/plan/bar_leaf.png');
+	width: 100px;
+	height: 40px; 
+	-webkit-transform:rotate(-90deg);       
+    -moz-transform:rotate(-90deg);
+    -o-transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg);
+	background-size: 100% 100%;
+	cursor: pointer;
+}
+
+.plan_progressscale{
+	margin: 0 auto;
+	width: 40px;
+	height: 245px;
+	background: url('../img/plan/bar_scale.png');
+	background-size: 100% 100%;
+	position: absolute;
+	bottom: 114px;
+	left: 39px;
+}
+
+.plan_progressstem{
+	margin: 0 auto;
+	width: 24px;
+	height: 245px;
+	background: url('../img/plan/bar_stem.png');
+	background-size: 100% 100%;
+	position: absolute;
+	bottom: 114px;
+	left: 47px;
+}
+
+.plan_progressbean{
+	margin: 0 auto;
+	width: 110px;
+	height: 95px;
+	background: url('../img/plan/bar_bean.png');
+	background-size: 100% 100%;
+	position: absolute;
+	bottom: 20px;
+	left: 5px;
 }

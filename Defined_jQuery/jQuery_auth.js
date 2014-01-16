@@ -400,11 +400,23 @@ var AddPlanPage1 = function(data, personal){
 	*/
 	//plan_right.append('<div class="plan_diary">Diary</div>');
 	//plan_right.append('<textarea class="plan_diaryContent">' + data['content'] + '</textarea>');
-	var task_frame = $(	'<div class="plan_task"></div>').appendTo(plan_right);
-	task_frame.append('<input type="text" class="plan_newTask" placeholder="輸入待辦事項">');
-	task_frame.append('<div class="plan_addNewTask"></div>');
-	task_frame.append('<div class="plan_task_list"></div>');
-						
+	
+	
+	var progress_frame = $('<div class="plan_progress"></div>').appendTo(plan_right);
+	var clock = $('<div class="plan_clock"></div>').appendTo(progress_frame);
+	progress_frame.append('<div class="plan_progressscale"></div>');
+	progress_frame.append('<div class="plan_progressstem"></div>');
+	var bar = $(
+		'<input type="range" class="plan_progressbar" name="plan_progressbar"\
+			min="'+s+'" max="'+e+'" value="'+n+'"/>').appendTo(progress_frame);
+	progress_frame.append('<div class="plan_progressbean"></div>');
+	
+	var task_frame = $(	
+		'<div class="plan_task">\
+			<input type="text" class="plan_newTask" placeholder="輸入待辦事項">\
+			<div class="plan_addNewTask"></div>\
+			<div class="plan_task_list"></div>\
+		</div>').appendTo(plan_right);				
 						
 	task_frame.children('.plan_addNewTask').click(function(){
 		var itemValue = task_frame.children('.plan_newTask').val();
