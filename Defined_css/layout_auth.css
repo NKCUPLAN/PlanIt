@@ -177,16 +177,16 @@ html { font-size:100% }
 /*Scrollbar*/
 
 #list_plans::-webkit-scrollbar {
-      width: 70px;
+      width: 60px;
 }
 #list_plans::-webkit-scrollbar-track {
       display:none;
 } 
 #list_plans::-webkit-scrollbar-thumb {
       background: url(../img/scroll.png) no-repeat;
-	  background-size: 70px 70px;
+	  background-size: contain;
 	  cursor:pointer;
-	  background-position: center center;
+	  background-position: 0 0;
 }
 #list_plans::-webkit-scrollbar-button {
       display:none;

@@ -324,16 +324,18 @@ left: 50px;
 /*** RIGHT PAGE ***/
 
 .plan_task{
-	padding:10px;
+	padding: 10px;
 	height: 370px;
+	width: 70%;
+	margin: 0 0 0 auto;
 }
 
 .plan_newTask{
 	border: none;
-	width: 270px;
+	width: 72%;
 	height: 48px;
 	background: url('../img/plan/txt_newTask.png');
-	background-size: cover;
+	background-size: 100% 100%;
 	background-position: 0 0;
 	padding: 0 10px;
 	display: inline-block;
@@ -379,10 +381,10 @@ left: 50px;
 }
 
 .plan_task_item .checkbox + span{
-	margin: 15px 13px;
+	margin: 19px 12px;
 	display: inline-block;
-	height: 40px;
-	width: 40px;
+	height: 30px;
+	width: 30px;
 	vertical-align: middle;
 }
 

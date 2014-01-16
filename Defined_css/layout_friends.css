@@ -193,8 +193,10 @@
   	font-weight: bolder;
 	top:-90px;
 	left:100px; 
-	display: inline-block;
+	display: block;
+	width: 140px;
 }
+
 .friend_planName{
 	color:#2e446f;
 	position:relative;

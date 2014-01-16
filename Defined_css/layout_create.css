@@ -152,10 +152,10 @@ p.thought:after {
 
 #create_newTask{
 	border: none;
-	width: 270px;
+	width: 72%;
 	height: 48px;
 	background: url('../img/create/txt_newTask.png');
-	background-size: cover;
+	background-size: 100% 100%;
 	background-position: 0 0;
 	padding: 0 10px;
 	display: inline-block;
@@ -200,10 +200,10 @@ p.thought:after {
 }
 
 .create_task_item .checkbox + span{
-	margin: 15px 13px;
+	margin: 18px 17px;
 	display: inline-block;
-	height: 40px;
-	width: 40px;
+	height: 34px;
+	width: 34px;
 	vertical-align: middle;
 }
 
