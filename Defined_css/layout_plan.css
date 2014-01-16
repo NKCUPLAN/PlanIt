@@ -296,7 +296,7 @@ left: 50px;
 	display: block;
 	width: 85%;
 	height: 70px;
-	margin: 10px 0 0 20px;
+	margin: 10px 0 0 10px;
 	cursor: pointer;
 }
 
@@ -305,7 +305,7 @@ left: 50px;
 }
 
 .plan_task_item .checkbox + span{
-	margin: 19px 12px;
+	margin: 19px 9px;
 	display: inline-block;
 	height: 30px;
 	width: 30px;
@@ -395,27 +395,27 @@ left: 50px;
 .plan_progressbar{
 	-webkit-appearance: none;
 	margin: 0 auto;
-	-webkit-transform: rotate(90deg);
-	-moz-transform: rotate(90deg);
-	-o-transform: rotate(90deg);
-	-ms-transform: rotate(90deg);
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	-o-transform: rotate(-90deg);
+	-ms-transform: rotate(-90deg);
 	background: transparent;
 	height: 10px;
-	width: 330px;
+	width: 310px;
 	position: absolute;
 	bottom: 240px;
-	left: -108px;
+	left: -98px;
 }
 
 .plan_progressbar::-webkit-slider-thumb{
 	-webkit-appearance: none;
 	background: url('../img/plan/bar_leaf.png');
-	width: 100px;
-	height: 40px; 
-	-webkit-transform:rotate(-90deg);       
-    -moz-transform:rotate(-90deg);
-    -o-transform:rotate(-90deg);
-    -ms-transform:rotate(-90deg);
+	width: 72px;
+	height: 28px; 
+	-webkit-transform:rotate(90deg);       
+    -moz-transform:rotate(90deg);
+    -o-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
 	background-size: 100% 100%;
 	cursor: pointer;
 }
@@ -427,19 +427,19 @@ left: 50px;
 	background: url('../img/plan/bar_scale.png');
 	background-size: 100% 100%;
 	position: absolute;
-	bottom: 114px;
+	bottom: 120px;
 	left: 39px;
 }
 
 .plan_progressstem{
 	margin: 0 auto;
-	width: 24px;
+	width: 17px;
 	height: 245px;
 	background: url('../img/plan/bar_stem.png');
 	background-size: 100% 100%;
 	position: absolute;
 	bottom: 114px;
-	left: 47px;
+	left: 50px;
 }
 
 .plan_progressbean{
@@ -449,6 +449,6 @@ left: 50px;
 	background: url('../img/plan/bar_bean.png');
 	background-size: 100% 100%;
 	position: absolute;
-	bottom: 20px;
+	bottom: 22px;
 	left: 5px;
 }

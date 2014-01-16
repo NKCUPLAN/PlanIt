@@ -357,11 +357,11 @@ var AddPlanPage1 = function(data, personal){
 	var done = (n-s)/(e-s);
 	
 	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
-	if(s > e)
+	/*if(s > e)
 		page = $('<form oninput="amount.value='+s+'-parseInt(rangeInput.value)+'+e+';"></form>').appendTo(page);
 	else
-		page = $('<form oninput="amount.value=parseInt(rangeInput.value);"></form>').appendTo(page);
-	
+		page = $('<form"></form>').appendTo(page);
+	*/
 	var plan_left = $('<div class="page_left"></div>').appendTo(page);
 	var plan_right = $('<div class="page_right"></div>').appendTo(page);
 	
@@ -409,7 +409,19 @@ var AddPlanPage1 = function(data, personal){
 	var bar = $(
 		'<input type="range" class="plan_progressbar" name="plan_progressbar"\
 			min="'+s+'" max="'+e+'" value="'+n+'"/>').appendTo(progress_frame);
+	bar.change(function(){
+		progress_frame.children('.plan_progressstem').css(
+			'height',
+			245*($(this).val()-s)/(e-s)
+		);
+	});
+	
+	progress_frame.children('.plan_progressstem').css(
+		'height',
+		245*done-3
+	);
 	progress_frame.append('<div class="plan_progressbean"></div>');
+	
 	
 	var task_frame = $(	
 		'<div class="plan_task">\
