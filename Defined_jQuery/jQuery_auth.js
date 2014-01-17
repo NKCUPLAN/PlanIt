@@ -242,7 +242,7 @@ var AddCreatePage = function(){
 				$(this).parent().remove();
 			});
 			$('#create_newTask').val("");
-			$('#create_task_list').scrollTop($("#create_task_list").prop("scrollHeight"));
+			$('#create_task_list').scrollTop($('#create_task_list').prop('scrollHeight'));
 		}
 	}); 
 	
@@ -348,11 +348,6 @@ var AddPlanPage2 = function(data, personal){
 
 var AddPlanPage1 = function(data, personal){
 
-	var now = new Date();
-	var expire = new Date(data['deadline']);
-	var t1 = expire.getTime();
-	var t2 = now.getTime();
-	
 	var s = parseInt(data['start']), e = parseInt(data['end']), n = parseInt(data['now']), u = data['unit'];	
 	var done = (n-s)/(e-s);
 	
@@ -400,10 +395,41 @@ var AddPlanPage1 = function(data, personal){
 	*/
 	//plan_right.append('<div class="plan_diary">Diary</div>');
 	//plan_right.append('<textarea class="plan_diaryContent">' + data['content'] + '</textarea>');
-	
-	
+
 	var progress_frame = $('<div class="plan_progress"></div>').appendTo(plan_right);
 	var clock = $('<div class="plan_clock"></div>').appendTo(progress_frame);
+	
+	clock.hover(
+		function(){
+			var now = new Date();
+			var t1 = expire.getTime();
+			var t2 = now.getTime();
+			var str = '';
+			
+			if(t1 > t2){
+				var dis = t1 - t2;
+				dis = parseInt(dis/1000);
+				if(dis)	str = (dis%60)+' 秒 ';
+				dis = parseInt(dis/60);
+				if(dis)	str = (dis%60)+' 分 ' + str;
+				dis = parseInt(dis/60);
+				if(dis)	str = (dis%24)+' 小時 ' + str;
+				dis = parseInt(dis/24);
+				if(dis)	str = (dis%365)+' 日 ' + str;
+				dis = parseInt(dis/365);
+				if(dis)	str = (dis)+' 年 ' + str;
+			}
+			else{
+				str = '已過期';
+			}
+			plan_right.children('.plan_time').text(str);
+			plan_right.children('.plan_time').css('display', 'block');
+		},
+		function(){
+			plan_right.children('.plan_time').css('display', 'none');
+		}
+	);
+	
 	progress_frame.append('<div class="plan_progressscale"></div>');
 	progress_frame.append('<div class="plan_progressstem"></div>');
 	var bar = $(
@@ -462,29 +488,32 @@ var AddPlanPage1 = function(data, personal){
 		plan_right.find('textarea').attr('disabled', 'disabled');
 	}
 	
+	var now = new Date();
+	var expire = new Date(data['deadline']);
+	var t1 = expire.getTime();
+	var t2 = now.getTime();
+	
 	if(t1 < t2){
-		plan_left.append('<div class="plan_timer">Time is up</div>');
+		plan_right.prepend('<div class="plan_time">已過期</div>');
 		plan_right.find('input').attr('disabled', 'disabled');
 		plan_right.find('textarea').attr('disabled', 'disabled');
 		return;
 	}
 	
-	
 	var dis = t1 - t2;
 	
 	var str = '';
 	dis = parseInt(dis/1000);
-	//if(dis)	str += (dis%60)+' sec ';
+	if(dis)	str = (dis%60)+' 秒 ';
 	dis = parseInt(dis/60);
-	if(dis)	str = (dis%60)+' min ' + str;
+	if(dis)	str = (dis%60)+' 分 ' + str;
 	dis = parseInt(dis/60);
-	if(dis)	str = (dis%24)+' hour ' + str;
+	if(dis)	str = (dis%24)+' 小時 ' + str;
 	dis = parseInt(dis/24);
-	if(dis)	str = (dis%365)+' day ' + str;
+	if(dis)	str = (dis%365)+' 日 ' + str;
 	dis = parseInt(dis/365);
-	if(dis)	str = (dis)+' year ' + str;
-		
-	plan_left.append('<div class="plan_timer">You have ' + str +' left!</div>');
+	if(dis)	str = (dis)+' 年 ' + str;
+	plan_right.prepend('<div class="plan_time">剩餘 '+str+'</div>');
 	
 	var button_save = $('<a href="#" class="save">Save<span></span></a>').appendTo(div_button);
 	button_save.click(function(){

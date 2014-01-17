@@ -7,14 +7,6 @@
 	cursor: default; 
 }
 
-.plan_timer{
-	position:absolute;
-	top:10px;
-	left:40px;
-	//z-index:+1;
-	text-align:center;
-	margin:1% 0;
-}
 /*** Game Content ***/
 .plan_gameContent{
 	position:absolute;
@@ -198,6 +190,19 @@ left: 50px;
 	background: #D0DDE9;
 	color: black;
 	text-align:center;
+}
+
+.plan_time{
+	position: absolute;
+	width: 370px;
+	height: 40px;
+	cursor: default;
+	top: -40px;
+	left: -130px;
+	font-size: 21px;
+	text-align: center;
+	font-weight: bold;
+	display: none;
 }
 
 .plan_next{
