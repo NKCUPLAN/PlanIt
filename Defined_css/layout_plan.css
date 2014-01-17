@@ -205,6 +205,36 @@ left: 50px;
 	display: none;
 }
 
+.plan_min{
+	position: absolute;
+	cursor: default;
+	top: 345px;
+	right: 340px;
+	font-size: 21px;
+	text-align: right;
+	font-weight: bold;
+}
+
+.plan_max{
+	position: absolute;
+	cursor: default;
+	top: 105px;
+	right: 340px;
+	font-size: 21px;
+	text-align: right;
+	font-weight: bold;
+}
+
+.plan_progressnow{
+	position: absolute;
+	cursor: default;
+	text-align: center;
+	font-weight: bold;
+	color: red;
+	right: 300px;
+	font-size: 23px;
+}
+
 .plan_next{
 	position:absolute;
 	width:40px;

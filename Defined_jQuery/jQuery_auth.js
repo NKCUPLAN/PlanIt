@@ -349,14 +349,14 @@ var AddPlanPage2 = function(data, personal){
 var AddPlanPage1 = function(data, personal){
 
 	var s = parseInt(data['start']), e = parseInt(data['end']), n = parseInt(data['now']), u = data['unit'];	
+	if(s > e){
+		var temp = s;
+		s = e;
+		e = temp;
+	}
 	var done = (n-s)/(e-s);
 	
 	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
-	/*if(s > e)
-		page = $('<form oninput="amount.value='+s+'-parseInt(rangeInput.value)+'+e+';"></form>').appendTo(page);
-	else
-		page = $('<form"></form>').appendTo(page);
-	*/
 	var plan_left = $('<div class="page_left"></div>').appendTo(page);
 	var plan_right = $('<div class="page_right"></div>').appendTo(page);
 	
@@ -371,30 +371,6 @@ var AddPlanPage1 = function(data, personal){
 	game.append('<div class="game_bug"></div>');
 	game.append('<div class="game_bicycle"></div>');
 	game.append('<div class="game_container"></div>');
-	
-	//moveBug(game, done);
-	/*
-	if(s > e){
-		plan_right.append(	'<div class="plan_progressTitle">Update your plan any time!</div>'+
-							'<div class="plan_progress"></br>'+
-								'You are now <output id="plan_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> '+u+
-								'<input type="range" class="rangeInput" name="rangeInput" min="'+e+'" max="'+s+'" value="'+(s-n+e)+'"/><br/>' +
-								s+'　　　　　　　　　　　　'+e+
-								'<br/><span style="font-size:14px">start</span>　　　　　　　　　　　　<span style="font-size:14px">end</span>'+
-							'</div>');
-	}
-	else{
-		plan_right.append(	'<div class="plan_progressTitle">Update your plan any time!</div>'+
-							'<div class="plan_progress"></br>'+
-								'You are now <output id="plan_now" name="amount" class="rangeOutput" for="rangeInput">'+n+'</output> '+u+
-								'<input type="range" class="rangeInput" name="rangeInput" min="'+s+'" max="'+e+'" value="'+n+'"/><br/>' +
-								s+'　　　　　　　　　　　　'+e+
-								'<br/><span style="font-size:14px">start</span>　　　　　　　　　　　　<span style="font-size:14px">end</span>'+
-							'</div>');
-	}
-	*/
-	//plan_right.append('<div class="plan_diary">Diary</div>');
-	//plan_right.append('<textarea class="plan_diaryContent">' + data['content'] + '</textarea>');
 
 	var progress_frame = $('<div class="plan_progress"></div>').appendTo(plan_right);
 	var clock = $('<div class="plan_clock"></div>').appendTo(progress_frame);
@@ -429,13 +405,21 @@ var AddPlanPage1 = function(data, personal){
 			plan_right.children('.plan_time').css('display', 'none');
 		}
 	);
-	
+
 	progress_frame.append('<div class="plan_progressscale"></div>');
+	progress_frame.append('<div class="plan_max">'+data['end']+'<br/>'+data['unit']+'</div>');
+	progress_frame.append('<div class="plan_min">'+data['start']+'<br/>'+data['unit']+'</div>');
 	progress_frame.append('<div class="plan_progressstem"></div>');
+	progress_frame.append('<div class="plan_progressnow">'+n+'</div>');
 	var bar = $(
 		'<input type="range" class="plan_progressbar" name="plan_progressbar"\
 			min="'+s+'" max="'+e+'" value="'+n+'"/>').appendTo(progress_frame);
 	bar.change(function(){
+		progress_frame.children('.plan_progressnow').css(
+			'bottom',
+			245*($(this).val()-s)/(e-s)+140
+		);
+		progress_frame.children('.plan_progressnow').text($(this).val());
 		progress_frame.children('.plan_progressstem').css(
 			'height',
 			245*($(this).val()-s)/(e-s)
