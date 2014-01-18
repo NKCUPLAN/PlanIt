@@ -92,7 +92,7 @@
 		// easing for the flip transition
 		easing : 'ease-in-out',
 		// if set to true, both the flipping page and the sides will have an overlay to simulate shadows
-		shadows : true,
+		shadows : false,
 		// opacity value for the "shadow" on both sides (when the flipping page is over it)
 		// value : 0.1 - 1
 		shadowSides : 0.2,
