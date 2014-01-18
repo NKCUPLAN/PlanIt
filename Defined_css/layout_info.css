@@ -20,19 +20,19 @@
 	//z-index: 2;
 }
 
-#plan_doing {
+#label_doing {
 	position: absolute;
 	top: 20px;
 	left: 50px;
 }
 
-#plan_done {
+#label_done{
 	position: absolute;
 	top: 177px;
 	left: 50px;
 }
 
-#plan_undo {
+#label_undo {
 	position: absolute;
 	top: 330px;
 	left: 50px;
@@ -88,12 +88,12 @@
 	left: 194px;
 }
 #plan_count{
-position:absolute;
+	position:absolute;
 	top: 141px;
 	left: 197px;
 }
 #info_mail{
-position:absolute;
+	position:absolute;
 	top: 240px;
 	left: 55px;
 }

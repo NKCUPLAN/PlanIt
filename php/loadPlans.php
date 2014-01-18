@@ -34,6 +34,9 @@
 		else
 			$done[] = json_encode($data);
 	}
+	
+	$user_data = mysql_fetch_assoc(mysql_query("SELECT * FROM 2_member WHERE secret = '$secret'"));
+	$result['user_info'] = json_encode($user_data);
 	$result['done'] = json_encode($done);
 	$result['undone'] = json_encode($undone);
 	echo json_encode($result);

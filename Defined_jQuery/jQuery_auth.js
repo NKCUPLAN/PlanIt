@@ -88,12 +88,14 @@ var LoadPlans = function(secret){
 
 			if(pages.length)
 				pages.length = 0;
-			pages.push(AddPersonalPage(0, true));
-			pages.push(AddCreatePage());
+
 			var planPacket = $.parseJSON(response);
-			
 			var undone = $.parseJSON(planPacket['undone']);
 			var done = $.parseJSON(planPacket['done']);
+			var user_info = $.parseJSON(planPacket['user_info']);
+			
+			pages.push(AddPersonalPage(user_info, true));
+			pages.push(AddCreatePage());
 			
 			for(var i in undone){
 				var planData = $.parseJSON(undone[i]);
@@ -265,37 +267,27 @@ var AddCreatePage = function(){
 	
 	return page;
 }
-/*
-var page = $(
-		'<div class="bb-item" id="page_personal">\
-			<div class="page_left">\
-			</div>\
-			<div class="page_right">\
-			</div>\
-		</div>'
-	).appendTo($('#book'));*/
 
 var AddPersonalPage = function(data, personal){
 	var page = $('<div class="bb-item" id="page_personal"></div>').appendTo($('#book'));
 	var page_left = $('<div class="page_left"></div>').appendTo(page);
 	var page_right = $('<div class="page_right"></div>').appendTo(page);
-	
-	$('.create_task_delete').click(function(){
-		$(this).parent().remove();
-	});
+
 	//YOUR ADDED ITEM
 	
-	var id_card = $('<div id="id_card"></div>').appendTo(page_left);
-	id_card.append('<div id="paper_clip"></div>');
-	id_card.append('<div id="id_card_img"></div>');
-	id_card.append('<div id="info_name" class="IDCard_content"><label>姓名:</label> 小豆豆</div>');
-	id_card.append('<div id="info_id" class="IDCard_content"><label>ID:</label>Mr. bean</div>');
-	id_card.append('<div id="info_gender" class="IDCard_content"><label>性別:</label>男</div>');
-	id_card.append('<div id="plan_count" class="IDCard_content"><label>完成計畫:</label><label>項</label></div>');
-	id_card.append('<div id="info_mail" class="IDCard_content"><label>電子郵件:</label>bean@yahoo.com.tw</div>');
+	var id_card = $(
+		'<div id="id_card"></div>\
+		<div id="paper_clip"></div>\
+		<div id="id_card_img"></div>\
+		<div id="info_name" class="IDCard_content"><label>姓名: </label>'+data['first_name']+data['last_name']+'</div>\
+		<div id="info_id" class="IDCard_content"><label>ID: </label>'+data['acc']+'</div>\
+		<div id="info_gender" class="IDCard_content"><label>性別: </label>'+((parseInt(data['male']))? '男':'女')+'</div>\
+		<div id="plan_count" class="IDCard_content"><label>完成計畫: </label><label>項</label></div>\
+		<div id="info_mail" class="IDCard_content"><label>電子郵件: </label><br/>'+data['mail']+'</div>'
+	).appendTo(page_left);
 	
 	page_right.append(
-		'<div id="plan_doing">\
+		'<div id="label_doing">\
 			<img src="../PlanIt/img/info/plan_doing.png" alt="plan_doing" height="40" width="160">\
 			<div class="content">\
 				<ol>\
@@ -305,7 +297,7 @@ var AddPersonalPage = function(data, personal){
 				</ol>\
 			</div>\
 		</div>\
-		<div id="plan_done">\
+		<div id="label_done">\
 			<img src="../PlanIt/img/info/plan_done.png" alt="plan_done" height="40" width="160">\
 			<div class="content">\
 				<ol>\
@@ -315,7 +307,7 @@ var AddPersonalPage = function(data, personal){
 				</ol>\
 			</div>\
 		</div>\
-		<div id="plan_undo">\
+		<div id="label_undo">\
 			<img src="../PlanIt/img/info/plan_undo.png" alt="plan_undo" height="40" width="160">\
 			<div class="content">\
 				<ol>\
