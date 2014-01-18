@@ -219,11 +219,6 @@ input:focus:-ms-input-placeholder {
 	border: 0px solid;
 }
 
-#dialog_login .checkBox{
-	font-size: 32px;
-	line-height: 14px;
-	color: #303030;
-}
 
 #dialog_login input:focus{
 	background-position: 0% 100%;	
@@ -231,12 +226,15 @@ input:focus:-ms-input-placeholder {
 	color: white;
 }
 
-#dialog_login span{
-	line-height: 40px;
+#dialog_login label{
 	margin: 0 10px;
 	cursor: pointer;
 	padding: 5px 8px;
 	border-radius: 8px;
+	font-size: 18px;
+	line-height: 40px;
+	color: #303030;
+	vertical-align: bottom;
 }
 
 #dialog_login .acc{

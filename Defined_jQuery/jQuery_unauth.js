@@ -43,21 +43,12 @@ $(document).ready(function(){
 		});
 	});
 	
-	$('.loginButton.checkBox').each(function(i){
-		$(this).click(function(){
-			$(':checkBox').get(i).checked = !$(':checkBox').get(i).checked;
-		});
-		$(':checkBox').click(function(){
-			$(':checkBox').get(i).checked = !$(':checkBox').get(i).checked;
-		});
-	});
-	
 	$('#register_reset').click(function(){
 		$('#dialog_register input').val('');
 	});
 	
 	$('#dialog_login').keypress(function(e){
-		code = (e.keyCode ? e.keyCode : e.which);
+		var code = (e.keyCode ? e.keyCode : e.which);
 		if (code == 13)
 		{
 			$('#login').focus();
@@ -66,7 +57,7 @@ $(document).ready(function(){
 	});
 	
 	$('#dialog_register').keypress(function(e){
-		code = (e.keyCode ? e.keyCode : e.which);
+		var code = (e.keyCode ? e.keyCode : e.which);
 		if (code == 13)
 		{
 			$('#register').focus();
