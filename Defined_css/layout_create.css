@@ -29,6 +29,7 @@
 	background: url('../img/create/plan_name.png');
 	font-size: 23px;
 	background-size: 100% 100%;
+	text-align: center;
 }
 
 .create_goal_text, .create_deadline_text{
@@ -47,7 +48,8 @@
 	width:90px;
 	height:40px;
 	margin: 0 10px;
-	font-size: 25px;
+	font-size: 20px;
+	text-align: center;
 }
 
 .create_deadline input{
@@ -55,7 +57,7 @@
 	text-align: center;
 
 	margin: 0 20px;
-	font-size: 25px;
+	font-size: 22px;
 }
 
 #create_deadDate{
