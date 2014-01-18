@@ -259,6 +259,7 @@ var LoadFriendsPlans = function(friend_id, go_recent){
 			
 			if(pages.length)
 				pages.length = 0;
+			pages.push(AddPersonalPage(0, false));
 
 			var planPacket = $.parseJSON(response);
 			var most_recent = 1;
@@ -285,7 +286,7 @@ var LoadFriendsPlans = function(friend_id, go_recent){
 			
 			$('#aside_contents li').each(function(i){
 				$(this).click(function(){
-					TurnToPage(2*i+1);
+					TurnToPage(2*i+2);
 				});
 			});
 			

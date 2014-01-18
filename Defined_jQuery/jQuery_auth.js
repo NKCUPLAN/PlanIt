@@ -85,6 +85,7 @@ var LoadPlans = function(secret){
 			
 			if(pages.length)
 				pages.length = 0;
+			pages.push(AddPersonalPage(0, true));
 			pages.push(AddCreatePage());
 			
 			var planPacket = $.parseJSON(response);
@@ -108,12 +109,12 @@ var LoadPlans = function(secret){
 			
 			$('#aside_contents li').each(function(i){
 				$(this).click(function(){
-					TurnToPage(2*i+2);
+					TurnToPage(2*i+3);
 				});
 			});
 			
 			$('#new_plan').click(function(){
-				TurnToPage(1);
+				TurnToPage(2);
 			});
 			
 			$('#book').bookblock();
@@ -249,105 +250,26 @@ var AddCreatePage = function(){
 	return page;
 }
 
-var AddPlanPage2 = function(data, personal){
-	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
-	var plan_left = $('<div class="page_left"></div>').appendTo(page);
-	var plan_right = $('<div class="page_right"></div>').appendTo(page);
+var AddPersonalPage = function(data, personal){
+	var page = $(
+		'<div class="bb-item" id="page_personal">\
+			<div class="page_left">\
+			</div>\
+			<div class="page_right">\
+			</div>\
+		</div>'
+	).appendTo($('#book'));
 	
-	plan_left.append('<div class="plan_prev"></div>');
-	plan_left.children('.plan_prev').click(function(){
-		$('#book').bookblock('prev');
+	$('.create_task_delete').click(function(){
+		$(this).parent().remove();
 	});
+	//YOUR ADDED ITEM
 	
-	plan_right.append('<div class="ui comments">\
-						<div id="comment_content" style="overflow-y: auto; height: 80%;"></div>\
-						<form class="ui reply form" style="position:absolute; bottom:10px; width: 90%; margin: 0 auto;">\
-							<div class="field" syle="width: 90%;">\
-								<textarea id="input_comment" name="input_comment" style="min-height:40px; height: 40px; padding: 5px;"></textarea>\
-							</div>\
-							<div class="ui button teal submit labeled icon" style="float:right; margin-right: 20px;" id="add_comment">\
-								<i class="icon edit"></i> Add Comment\
-							</div>\
-						</form>\
-					</div>');
-	var form = plan_right.children().children('form');
-	var input = form.children('.field').children('#input_comment');
-	var content = form.parent().children("#comment_content");	
-	if(data['comment']){
-		var comment = $.parseJSON(data['comment']);
-		for(var i in comment){
-			if(comment[i]){
-				comData = $.parseJSON(comment[i]);
-				content.append(
-					'<div class="comment">\
-						<div class="content">\
-							<a class="author">'
-							+ comData['user_name'] +
-							'</a>\
-							<div class="text">'
-							+ comData['content']+
-							'</div>\
-						</div>\
-					</div>');
-			}
-		}			
-	}
-	form.children('#add_comment').click(function(){
-		var comment = input.val();
-		// uer name
-		if(comment != "") {
-			var pageData = { 
-				plan_id: data['id'],
-				content: comment,
-				secret: window.sessionStorage["secret"]
-			};
-			
-			$.ajax({
-				url: 'php/updateComment.php',
-				cache: false,
-				dataType: 'html',
-				type:'POST',
-				data: pageData,
-				error: function(xhr) {
-					alert('Network is wrong');
-				},
-				success: function(response) {
-					var username = response.trim();
-					content.append(
-						'<div class="comment">\
-							<div class="content">\
-								<a class="author">'
-								+ username +
-								'</a>\
-								<div class="text">'
-								+ comment+
-								'</div>\
-							</div>\
-						</div>');
-						content.scrollTop(content.prop("scrollHeight"));
-						input.val('').keydown();
-				}
-			});
-		
-			
-		} else {
-			//alert("data = null");
-		}
-	});
-
-	input.css("overflow","hidden").bind("keydown keyup", function(){  
-        $(this).height('0px').height($(this).prop("scrollHeight")+"px");
-		content.height((plan_right.height()*0.8 - $(this).height()) + "px");
-		content.scrollTop(content.prop("scrollHeight"));
-    }).keydown();
-	
-	content.height(356);
-	
+	//-----------------------------
 	return page;
 }
 
 var AddPlanPage1 = function(data, personal){
-
 	var s = parseInt(data['start']), e = parseInt(data['end']), n = parseInt(data['now']), u = data['unit'];	
 	if(s > e){
 		var temp = s;
@@ -522,6 +444,103 @@ var AddPlanPage1 = function(data, personal){
 	return page;
 }
 
+var AddPlanPage2 = function(data, personal){
+	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
+	var plan_left = $('<div class="page_left"></div>').appendTo(page);
+	var plan_right = $('<div class="page_right"></div>').appendTo(page);
+	
+	plan_left.append('<div class="plan_prev"></div>');
+	plan_left.children('.plan_prev').click(function(){
+		$('#book').bookblock('prev');
+	});
+	
+	plan_right.append('<div class="ui comments">\
+						<div id="comment_content" style="overflow-y: auto; height: 80%;"></div>\
+						<form class="ui reply form" style="position:absolute; bottom:10px; width: 90%; margin: 0 auto;">\
+							<div class="field" syle="width: 90%;">\
+								<textarea id="input_comment" name="input_comment" style="min-height:40px; height: 40px; padding: 5px;"></textarea>\
+							</div>\
+							<div class="ui button teal submit labeled icon" style="float:right; margin-right: 20px;" id="add_comment">\
+								<i class="icon edit"></i> Add Comment\
+							</div>\
+						</form>\
+					</div>');
+	var form = plan_right.children().children('form');
+	var input = form.children('.field').children('#input_comment');
+	var content = form.parent().children("#comment_content");	
+	if(data['comment']){
+		var comment = $.parseJSON(data['comment']);
+		for(var i in comment){
+			if(comment[i]){
+				comData = $.parseJSON(comment[i]);
+				content.append(
+					'<div class="comment">\
+						<div class="content">\
+							<a class="author">'
+							+ comData['user_name'] +
+							'</a>\
+							<div class="text">'
+							+ comData['content']+
+							'</div>\
+						</div>\
+					</div>');
+			}
+		}			
+	}
+	form.children('#add_comment').click(function(){
+		var comment = input.val();
+		// uer name
+		if(comment != "") {
+			var pageData = { 
+				plan_id: data['id'],
+				content: comment,
+				secret: window.sessionStorage["secret"]
+			};
+			
+			$.ajax({
+				url: 'php/updateComment.php',
+				cache: false,
+				dataType: 'html',
+				type:'POST',
+				data: pageData,
+				error: function(xhr) {
+					alert('Network is wrong');
+				},
+				success: function(response) {
+					var username = response.trim();
+					content.append(
+						'<div class="comment">\
+							<div class="content">\
+								<a class="author">'
+								+ username +
+								'</a>\
+								<div class="text">'
+								+ comment+
+								'</div>\
+							</div>\
+						</div>');
+						content.scrollTop(content.prop("scrollHeight"));
+						input.val('').keydown();
+				}
+			});
+		
+			
+		} else {
+			//alert("data = null");
+		}
+	});
+
+	input.css("overflow","hidden").bind("keydown keyup", function(){  
+        $(this).height('0px').height($(this).prop("scrollHeight")+"px");
+		content.height((plan_right.height()*0.8 - $(this).height()) + "px");
+		content.scrollTop(content.prop("scrollHeight"));
+    }).keydown();
+	
+	content.height(356);
+	
+	return page;
+}
+
 var TurnToPage = function(page){
 	$('#book').bookblock('jump', page, 100);
 }
@@ -561,29 +580,3 @@ var CheckPlanInfo = function(){
 	}
 	return true;
 }
-/*
-var moveBug = function(gameContent, done){
-	var	bubble = [[-100, 210],[20, 10]];
-	var bug = [[90, 240], [220, 20]];
-	var talk = [	"快開始進度吧！",
-					"才完成10%左右，再加油一點好嗎?",
-					"才完成1/5，還有很大的進步空間!!", 
-					"30%了~~ 再接再厲 > <", 
-					"40%囉！快過半了～", 
-					"已經達成一半囉！加油加油～", 
-					"及格邊緣！～", 
-					"七成了喔！再加把勁～", 
-					"完成八成了！加倍努力完成它吧！", 
-					"九成囉～成功就在不遠處！", 
-					"恭喜你完成囉!!"];
-	var choice = parseInt(done * 10);
-	
-	var bubble_top = (bubble[1][0] - bubble[0][0])*done + bubble[0][0];
-	var bubble_left = (bubble[1][1] - bubble[0][1])*done + bubble[0][1];
-	var bug_top = (bug[1][0] - bug[0][0])*done + bug[0][0];
-	var bug_left = (bug[1][1] - bug[0][1])*done + bug[0][1];
-
-	gameContent.children('img').animate({top: bug_top, left: bug_left}, 1000);
-	gameContent.children('.bubble').animate({top: bubble_top, left: bubble_left}, 1000);
-	gameContent.children('.bubble').text(talk[choice]);
-}*/
