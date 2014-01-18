@@ -1,7 +1,7 @@
 /*** PAGE LEFT***/
 .plan_title{
 	position:absolute;
-	margin-top: 30px;
+	margin-top: 10px;
 	padding-left: 20px;
 	font-size: 30px;
 	cursor: default; 
@@ -226,13 +226,13 @@ left: 50px;
 }
 
 .plan_progressnow{
-	position: absolute;
+	position: relative;
 	cursor: default;
 	text-align: center;
 	font-weight: bold;
 	color: red;
-	right: 300px;
 	font-size: 23px;
+	margin: 0px auto;
 }
 
 .plan_next{

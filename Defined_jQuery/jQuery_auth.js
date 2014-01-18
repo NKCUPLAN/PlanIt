@@ -414,10 +414,12 @@ var AddPlanPage1 = function(data, personal){
 	var bar = $(
 		'<input type="range" class="plan_progressbar" name="plan_progressbar"\
 			min="'+s+'" max="'+e+'" value="'+n+'"/>').appendTo(progress_frame);
+	progress_frame.append('<div class="plan_progressbean"></div>');
+	
 	bar.change(function(){
 		progress_frame.children('.plan_progressnow').css(
 			'bottom',
-			245*($(this).val()-s)/(e-s)+140
+			240*($(this).val()-s)/(e-s)-250
 		);
 		progress_frame.children('.plan_progressnow').text($(this).val());
 		progress_frame.children('.plan_progressstem').css(
@@ -425,14 +427,8 @@ var AddPlanPage1 = function(data, personal){
 			245*($(this).val()-s)/(e-s)
 		);
 	});
-	
-	progress_frame.children('.plan_progressstem').css(
-		'height',
-		245*done-3
-	);
-	progress_frame.append('<div class="plan_progressbean"></div>');
-	
-	
+	bar.trigger('change');
+
 	var task_frame = $(	
 		'<div class="plan_task">\
 			<input type="text" class="plan_newTask" placeholder="輸入待辦事項">\
