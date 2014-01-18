@@ -49,103 +49,77 @@ $(document).ready(function(){
 	});
 	
 	$('#btn_dialog_friend_prev').click(function(){
-		loadFriends();
+		LoadFriends();
 	});
 	
-	$('#menu_friend').click(loadFriends);
+	$('#menu_friend').click(LoadFriends);
 	$('#friend_search').click(function(){
 		event.stopPropagation();
 	});
-	$('#friend_search_background').click(function(){
-		$.ajax({
-			url: 'php/searchFriends.php',
-			cache: false,
-			dataType: 'html',
-			type:'POST',
-			data: {
-				keyword: $('#friend_search').val().trim(),
-				secret: window.sessionStorage["secret"]
-			},
-			error: function(xhr) {
-				alert('Wrong Network');
-			},
-			success: function(response) {
-				var total = 0;
-				$('#friend_list').empty();
-				var list = $.parseJSON(response);
-				
-				var friends = $.parseJSON(list['friend']);
-				var uninvited = $.parseJSON(list['uninvited']);
-				var invited = $.parseJSON(list['invited']);
-				
-				for(var k in friends){
-					total++;
-					var friend = $.parseJSON(friends[k]);
-
-					var block = $(
-						'<li class="friend_block" class="friend_owned">\
-							<div class="profile_id">ID: '+friend['acc']+'</div>\
-							<div class="profile_pic" \
-								style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
-								background-size: 100% 100%;">\
-							</div>\
-							<div class="friend_text profile_name">'+friend['name']+'</div>\
-							<div class="friend_recentUpdate"">最近更新計畫 :</div>\
-							<div class="friend_text friend_planName" onclick="LoadFriendsPlans('+friend['id']+',true)">'+friend['plan_name']+'</div>\
-							<div class="friend_sure"></div>\
-							<div class="btn_friendDelete"></div>\
-						</li>').appendTo($('#friend_list'));
-						
-					SetUpdateFriendButton('Delete', block, friend);
-				}
-				
-				for(var k in invited){
-					total++;
-					var friend = $.parseJSON(invited[k]);
-					var block = $(
-						'<li class="friend_block" class="friend_confirm">\
-							<div class="profile_id">ID: '+friend['acc']+'</div>\
-							<div class="profile_pic" \
-								style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
-								background-size: 100% 100%;">\
-							</div>\
-							<div class="friend_text profile_name">'+friend['name']+'</div>\
-							<div class="friend_ask">已送出邀請</div>\
-							<div class="btn_friendCancel"></div>\
-						</li>').appendTo($('#friend_list'));
-						
-					SetUpdateFriendButton('Cancel', block, friend);
-				}
-				
-				for(var k in uninvited){
-					total++;
-					var friend = $.parseJSON(uninvited[k]);
-
-					var block = $(
-						'<li class="friend_block" class="friend_owned">\
-							<div class="profile_id">ID: '+friend['acc']+'</div>\
-							<div class="profile_pic" \
-								style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
-								background-size: 100% 100%;">\
-							</div>\
-							<div class="friend_text profile_name">'+friend['name']+'</div>\
-							<div class="friend_ask">你們還不是朋友</div>\
-							<div class="btn_friendInvite"></div>\
-						</li>').appendTo($('#friend_list'));
-					SetUpdateFriendButton('Invite', block, friend);
-				}
-				
-				$('#friend_text').text("搜尋結果");
-				$('#friend_number').text(total);
-				
-				$('#btn_dialog_friend_prev').show(1);
-			}
-		});
-	});
+	$('#friend_search_background').click(SearchFriends);
 	
 });
 
-var loadFriends = function(){
+var SearchFriends = function(){
+	$.ajax({
+		url: 'php/searchFriends.php',
+		cache: false,
+		dataType: 'html',
+		type:'POST',
+		data: {
+			keyword: $('#friend_search').val().trim(),
+			secret: window.sessionStorage["secret"]
+		},
+		error: function(xhr) {
+			alert('Wrong Network');
+		},
+		success: function(response) {
+			var total = 0;
+			$('#friend_list').empty();
+			var list = $.parseJSON(response);
+
+			var friends = $.parseJSON(list['friend']);
+			var stranger = $.parseJSON(list['stranger']);
+			var invited = $.parseJSON(list['invited']);
+			var invite = $.parseJSON(list['invite']);
+
+			for(var k in friends){
+				total++;
+				var friend = $.parseJSON(friends[k]);
+
+				SetFriend('Friend', friend);
+			}
+
+			for(var k in invite){
+				total++;
+				var friend = $.parseJSON(invite[k]);
+				
+				SetFriend('Invite', friend);	
+			}
+
+			for(var k in invited){
+				total++;
+				var friend = $.parseJSON(invited[k]);
+				
+				SetFriend('Invited', friend);	
+			}
+
+			for(var k in stranger){
+				total++;
+				var friend = $.parseJSON(stranger[k]);
+
+				SetFriend('Stranger', friend);
+			}
+			
+			$('#friend_text').text("搜尋結果");
+			$('#friend_number').text(total);
+			
+			$('#btn_dialog_friend_prev').show(1);
+		}
+	});
+}
+
+var LoadFriends = function(){
 	$.ajax({
 		url: 'php/loadFriends.php',
 		cache: false,
@@ -173,67 +147,95 @@ var loadFriends = function(){
 				total++;
 				var friend = $.parseJSON(wait_for_sure[k]);
 
-				var block = $(
-					'<li class="friend_block" class="friend_confirm">\
-						<div class="profile_id">ID: '+friend['acc']+'</div>\
-						<div class="profile_pic" \
-							style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
-							background-size: 100% 100%;">\
-						</div>\
-						<div class="friend_text profile_name">'+friend['name']+'</div>\
-						<div class="friend_ask">想成為你的朋友</div>\
-						<div class="btn_friendConfirm"></div>\
-						<div class="btn_friendRefuse"></div>\
-					</li>').appendTo($('#friend_list'));
-				
-				SetUpdateFriendButton('Confirm', block, friend);
-				SetUpdateFriendButton('Refuse', block, friend);
+				SetFriend('Invited', friend);
 			}
-			
+
 			for(var k in sure){
 				total++;
 				var friend = $.parseJSON(sure[k]);
 
-				var block = $(
-					'<li class="friend_block" class="friend_owned">\
-						<div class="profile_id">ID: '+friend['acc']+'</div>\
-						<div class="profile_pic" \
-							style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
-							background-size: 100% 100%;">\
-						</div>\
-						<div class="friend_text profile_name">'+friend['name']+'</div>\
-						<div class="friend_recentUpdate" >最近更新計畫 :</div>\
-						<div class="friend_text friend_planName" onclick="LoadFriendsPlans('+friend['id']+',true)">'+friend['plan_name']+'</div>\
-						<div class="friend_sure"></div>\
-						<div class="btn_friendDelete"></div>\
-					</li>').appendTo($('#friend_list'));
-					
-				SetUpdateFriendButton('Delete', block, friend);
+				SetFriend('Friend', friend);
 			}
-			
+
 			for(var k in unsure){
 				total++;
 				var friend = $.parseJSON(unsure[k]);
 
-				var block = $(
-					'<li class="friend_block" class="friend_confirm">\
-						<div class="profile_id">ID: '+friend['acc']+'</div>\
-						<div class="profile_pic" \
-							style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
-							background-size: 100% 100%;">\
-						</div>\
-						<div class="friend_text profile_name">'+friend['name']+'</div>\
-						<div class="friend_ask">已送出邀請</div>\
-						<div class="btn_friendCancel"></div>\
-					</li>').appendTo($('#friend_list'));
-				
-				SetUpdateFriendButton('Cancel', block, friend);
+				SetFriend('Invite', friend);
 			}
+
 			$('#friend_text').text("好友(包括邀請)");
 			$('#friend_number').text(total);
 			$('#btn_dialog_friend_prev').hide(1);
 		}
 	});
+}
+
+var SetFriend = function(type, friend){
+	if(type == 'Invite'){
+		var block = $(
+			'<li class="friend_block" class="friend_Invite">\
+				<div class="profile_id">ID: '+friend['acc']+'</div>\
+				<div class="profile_pic" \
+					style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
+					background-size: 100% 100%;">\
+				</div>\
+				<div class="friend_text profile_name">'+friend['name']+'</div>\
+				<div class="friend_ask">已送出邀請</div>\
+				<div class="btn_friendCancel"></div>\
+			</li>').appendTo($('#friend_list'));
+		SetUpdateFriendButton('Cancel', block, friend);
+		return block;
+	}
+	else if(type == 'Friend'){
+		var block = $(
+			'<li class="friend_block" class="friend_Friend">\
+				<div class="profile_id">ID: '+friend['acc']+'</div>\
+				<div class="profile_pic" \
+					style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
+					background-size: 100% 100%;">\
+				</div>\
+				<div class="friend_text profile_name">'+friend['name']+'</div>\
+				<div class="friend_recentUpdate" >最近更新計畫 :</div>\
+				<div class="friend_text friend_planName" onclick="LoadFriendsPlans('+friend['id']+',true)">'+friend['plan_name']+'</div>\
+				<div class="friend_sure"></div>\
+				<div class="btn_friendDelete"></div>\
+			</li>').appendTo($('#friend_list'));
+		SetUpdateFriendButton('Delete', block, friend);
+		return block;
+	}
+	else if(type == 'Invited'){
+		var block = $(
+			'<li class="friend_block" class="friend_Invited">\
+				<div class="profile_id">ID: '+friend['acc']+'</div>\
+				<div class="profile_pic" \
+					style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
+					background-size: 100% 100%;">\
+				</div>\
+				<div class="friend_text profile_name">'+friend['name']+'</div>\
+				<div class="friend_ask">想成為你的朋友</div>\
+				<div class="btn_friendConfirm"></div>\
+				<div class="btn_friendRefuse"></div>\
+			</li>').appendTo($('#friend_list'));
+		SetUpdateFriendButton('Confirm', block, friend);
+		SetUpdateFriendButton('Refuse', block, friend);
+		return block;
+	}
+	else if(type == 'Stranger'){
+		var block = $(
+			'<li class="friend_block" class="friend_Stranger">\
+				<div class="profile_id">ID: '+friend['acc']+'</div>\
+				<div class="profile_pic" \
+					style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
+					background-size: 100% 100%;">\
+				</div>\
+				<div class="friend_text profile_name">'+friend['name']+'</div>\
+				<div class="friend_ask">你們還不是朋友</div>\
+				<div class="btn_friendInvite"></div>\
+			</li>').appendTo($('#friend_list'));
+		SetUpdateFriendButton('Invite', block, friend);
+		return block;
+	}
 }
 
 var SetUpdateFriendButton = function(type, block, friendData){
@@ -252,7 +254,12 @@ var SetUpdateFriendButton = function(type, block, friendData){
 				alert('Wrong Network');
 			},
 			success: function(response){
-				//loadFriends();
+				block.children('.btn_friend' + type).unbind('click');
+				block.slideToggle(300);
+				
+				var data = $.parseJSON(response);
+				
+				$('.friend_'+data['relation']+':last-child').after(SetFriend(data['relation'],data));
 			}
 		});
 	});
