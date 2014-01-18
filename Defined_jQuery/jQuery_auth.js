@@ -55,10 +55,10 @@ var display_auth = function(){
 		hide_aside = false;
 	}
 	
-	$('#book-base').css('width',$('#book').width()+136);
-	$('#book-base').css('height',$('#book').height()+100);
-	$('#book-base').css('left',$('#book').position().left-76);
-	$('#book-base').css('top',$('#book').position().top);
+	$('#book-base').css('width',$('#book').width()+115);
+	$('#book-base').css('height',$('#book').height()+120);
+	$('#book-base').css('left',$('#book').position().left-46);
+	$('#book-base').css('top',$('#book').position().top-20);
 
 	$('#loading').css('top', (h - $('#loading').height())/2);
 	$('#loading').css('left', (w - $('#loading').width())/2);
