@@ -3,7 +3,8 @@
 	position:absolute;
 	margin-top: 10px;
 	padding-left: 20px;
-	font-size: 30px;
+	font-size: 25px;
+	line-height: 25px;
 	cursor: default; 
 }
 
