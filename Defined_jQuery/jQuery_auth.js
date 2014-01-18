@@ -429,6 +429,14 @@ var AddPlanPage1 = function(data, personal){
 		}
 	}); 
 	
+	task_frame.keypress(function(e){
+		var code = (e.keyCode ? e.keyCode : e.which);
+		if (code == 13)
+		{
+			task_frame.children('.plan_addNewTask').trigger('click');
+		}
+	});
+	
 	plan_right.append('<div class="plan_next"></div>');
 	plan_right.children('.plan_next').click(function(){
 		$('#book').bookblock('next');
