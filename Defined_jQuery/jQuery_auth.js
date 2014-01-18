@@ -82,20 +82,36 @@ var LoadPlans = function(secret){
 		success: function(response) {
 			$('#book').children().remove();
 			$('#list_plans').empty();
-			
+			$('#list_plans').append('<label><input type="checkbox"/>只顯示進行中計畫</label>');
+			$('#list_plans').append('<div id="list_undone"></div>');
+			$('#list_plans').append('<div id="list_done"></div>');
+
 			if(pages.length)
 				pages.length = 0;
 			pages.push(AddPersonalPage(0, true));
 			pages.push(AddCreatePage());
-			
 			var planPacket = $.parseJSON(response);
-
-			for(var i in planPacket){
-				var planData = $.parseJSON(planPacket[i]);
-				$('#list_plans').append('<li>' + planData['name'] + '</li>');
+			
+			var undone = $.parseJSON(planPacket['undone']);
+			var done = $.parseJSON(planPacket['done']);
+			
+			for(var i in undone){
+				var planData = $.parseJSON(undone[i]);
+				$('#list_undone').append('<li>' + planData['name'] + '</li>');
 				pages.push(AddPlanPage1(planData, true));
 				pages.push(AddPlanPage2(planData, true));
 			}
+			
+			for(var i in done){
+				var planData = $.parseJSON(done[i]);
+				$('#list_done').append('<li>' + planData['name'] + '</li>');
+				pages.push(AddPlanPage1(planData, true));
+				pages.push(AddPlanPage2(planData, true));
+			}
+			
+			$('#list_plans input[type=checkbox]').change(function(){
+				$('#list_done').toggle(1);
+			});
 			
 			$('#aside_contents li, #new_plan').bind({
 				mouseenter: function(){

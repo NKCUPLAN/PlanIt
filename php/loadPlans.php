@@ -23,13 +23,20 @@
 
 			$comment[] = json_encode($m);
 		}
-		
 		$data['comment'] = json_encode($comment);
-		
-		$result[] = json_encode($data);
-	}
 
+		//$result[] = json_encode($data);
+		date_default_timezone_set('Asia/Taipei');
+		$current_time = date("Y-m-d h:i:s");		
+
+		if(strtotime($current_time) < strtotime($k['deadline']))
+			$undone[] = json_encode($data);
+		else
+			$done[] = json_encode($data);
+	}
+	$result['done'] = json_encode($done);
+	$result['undone'] = json_encode($undone);
 	echo json_encode($result);
-	
+
 	mysql_close();
 ?>
