@@ -76,6 +76,12 @@ var SearchFriends = function(){
 		success: function(response) {
 			var total = 0;
 			$('#friend_list').empty();
+			$('#friend_list').append(
+				'<li class="friend_block friend_Friend" style="diplay:none;">\
+				<li class="friend_block friend_Invite" style="diplay:none;">\
+				<li class="friend_block friend_Invited" style="diplay:none;">\
+				<li class="friend_block friend_Stranger" style="diplay:none;">'
+			);
 			var list = $.parseJSON(response);
 
 			var friends = $.parseJSON(list['friend']);
@@ -87,28 +93,32 @@ var SearchFriends = function(){
 				total++;
 				var friend = $.parseJSON(friends[k]);
 
-				SetFriend('Friend', friend);
+				var block = SetFriend('Friend', friend).insertAfter($('.friend_Friend:last-child'));
+				block.slideToggle(500);
 			}
 
 			for(var k in invite){
 				total++;
 				var friend = $.parseJSON(invite[k]);
 				
-				SetFriend('Invite', friend);	
+				var block = SetFriend('Invite', friend).insertAfter($('.friend_Invite:last-child'));	
+				block.slideToggle(500);
 			}
 
 			for(var k in invited){
 				total++;
 				var friend = $.parseJSON(invited[k]);
 				
-				SetFriend('Invited', friend);	
+				var block = SetFriend('Invited', friend).insertAfter($('.friend_Invited:last-child'));	
+				block.slideToggle(500);
 			}
 
 			for(var k in stranger){
 				total++;
 				var friend = $.parseJSON(stranger[k]);
 
-				SetFriend('Stranger', friend);
+				var block = SetFriend('Stranger', friend).insertAfter($('.friend_Stranger:last-child'));
+				block.slideToggle(500);
 			}
 			
 			$('#friend_text').text("搜尋結果");
@@ -134,7 +144,11 @@ var LoadFriends = function(){
 		success: function(response) {
 			$('#friend_list').empty();
 			$('#friend_search').val('');
-		
+			$('#friend_list').append(
+				'<li class="friend_block friend_Friend" style="diplay:none;"></li>\
+				<li class="friend_block friend_Invite" style="diplay:none;"></li>\
+				<li class="friend_block friend_Invited" style="diplay:none;"></li>'
+			);
 			var data = $.parseJSON(response);
 
 			var wait_for_sure = $.parseJSON(data[0]);
@@ -147,21 +161,24 @@ var LoadFriends = function(){
 				total++;
 				var friend = $.parseJSON(wait_for_sure[k]);
 
-				SetFriend('Invited', friend);
+				var block = SetFriend('Invited', friend).insertAfter($('.friend_Invited:last-child'));	
+				block.slideToggle(500);
 			}
 
 			for(var k in sure){
 				total++;
 				var friend = $.parseJSON(sure[k]);
 
-				SetFriend('Friend', friend);
+				var block = SetFriend('Friend', friend).insertAfter($('.friend_Friend:last-child'));
+				block.slideToggle(500);
 			}
 
 			for(var k in unsure){
 				total++;
 				var friend = $.parseJSON(unsure[k]);
 
-				SetFriend('Invite', friend);
+				var block = SetFriend('Invite', friend).insertAfter($('.friend_Invite:last-child'));
+				block.slideToggle(500);
 			}
 
 			$('#friend_text').text("好友(包括邀請)");
@@ -174,7 +191,7 @@ var LoadFriends = function(){
 var SetFriend = function(type, friend){
 	if(type == 'Invite'){
 		var block = $(
-			'<li class="friend_block" class="friend_Invite">\
+			'<li class="friend_block friend_Invite">\
 				<div class="profile_id">ID: '+friend['acc']+'</div>\
 				<div class="profile_pic" \
 					style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
@@ -183,13 +200,13 @@ var SetFriend = function(type, friend){
 				<div class="friend_text profile_name">'+friend['name']+'</div>\
 				<div class="friend_ask">已送出邀請</div>\
 				<div class="btn_friendCancel"></div>\
-			</li>').appendTo($('#friend_list'));
+			</li>');
 		SetUpdateFriendButton('Cancel', block, friend);
 		return block;
 	}
 	else if(type == 'Friend'){
 		var block = $(
-			'<li class="friend_block" class="friend_Friend">\
+			'<li class="friend_block friend_Friend">\
 				<div class="profile_id">ID: '+friend['acc']+'</div>\
 				<div class="profile_pic" \
 					style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
@@ -200,13 +217,13 @@ var SetFriend = function(type, friend){
 				<div class="friend_text friend_planName" onclick="LoadFriendsPlans('+friend['id']+',true)">'+friend['plan_name']+'</div>\
 				<div class="friend_sure"></div>\
 				<div class="btn_friendDelete"></div>\
-			</li>').appendTo($('#friend_list'));
+			</li>');
 		SetUpdateFriendButton('Delete', block, friend);
 		return block;
 	}
 	else if(type == 'Invited'){
 		var block = $(
-			'<li class="friend_block" class="friend_Invited">\
+			'<li class="friend_block friend_Invited">\
 				<div class="profile_id">ID: '+friend['acc']+'</div>\
 				<div class="profile_pic" \
 					style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
@@ -216,14 +233,14 @@ var SetFriend = function(type, friend){
 				<div class="friend_ask">想成為你的朋友</div>\
 				<div class="btn_friendConfirm"></div>\
 				<div class="btn_friendRefuse"></div>\
-			</li>').appendTo($('#friend_list'));
+			</li>');
 		SetUpdateFriendButton('Confirm', block, friend);
 		SetUpdateFriendButton('Refuse', block, friend);
 		return block;
 	}
 	else if(type == 'Stranger'){
 		var block = $(
-			'<li class="friend_block" class="friend_Stranger">\
+			'<li class="friend_block friend_Stranger">\
 				<div class="profile_id">ID: '+friend['acc']+'</div>\
 				<div class="profile_pic" \
 					style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
@@ -232,7 +249,7 @@ var SetFriend = function(type, friend){
 				<div class="friend_text profile_name">'+friend['name']+'</div>\
 				<div class="friend_ask">你們還不是朋友</div>\
 				<div class="btn_friendInvite"></div>\
-			</li>').appendTo($('#friend_list'));
+			</li>');
 		SetUpdateFriendButton('Invite', block, friend);
 		return block;
 	}
@@ -255,11 +272,13 @@ var SetUpdateFriendButton = function(type, block, friendData){
 			},
 			success: function(response){
 				block.children('.btn_friend' + type).unbind('click');
-				block.slideToggle(300);
+				block.slideToggle(500);
+				block.remove();
 				
 				var data = $.parseJSON(response);
-				
-				$('.friend_'+data['relation']+':last-child').after(SetFriend(data['relation'],data));
+				block = SetFriend(data['relation'],data);
+				$('.friend_'+data['relation']+':last-child').after(block);
+				block.slideToggle(500);
 			}
 		});
 	});

@@ -121,6 +121,7 @@
 	list-style-type:none;
 	padding: 0 10px;
 	text-align: left;
+	display: none;
 }
 .profile_pic{   
    	//background: url(../img/friend/profileBoy.png) no-repeat;
