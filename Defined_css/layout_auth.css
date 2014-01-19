@@ -29,6 +29,16 @@ aside #aside_switch{
 	cursor: pointer;
 }
 
+aside #aside_arrow{
+	position:absolute;
+	background:url(../img/aside/arrow.png) no-repeat;
+	background-size:contain;
+	width:66px;
+	height:80px;
+	left:58px;
+	top:-51px;
+}
+
 aside #aside_bug{
 	position:absolute;
 	background:url(../img/aside/personal_bug.png) no-repeat;

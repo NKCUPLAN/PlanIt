@@ -10,9 +10,13 @@ $(document).ready(function(){
 	$(window).resize(function(){
 		display_auth();
 	});
-
+	
+	$('aside').append('<div id="aside_arrow"></div>');
+	
 	/*------aside------*/
 	$('#aside_switch').click(function(){
+		
+		$('#aside_arrow').remove();
 		var h = $(window).height();
 		
     	if(hide_aside){
@@ -20,17 +24,18 @@ $(document).ready(function(){
             	{'bottom':  '70px'},
                 600
             );
+			$('#aside_arrow').remove();
 		}
         else{
         	$('aside').animate(
             	{'bottom': '-300px'},
                 600
             );
+			$('aside').append('<div id="aside_arrow"></div>');
 		}
         hide_aside = !hide_aside;
     });
 	
-		
 	$('#menu_logout').click(function(){
 		ClearCookie();
 		location.reload();
