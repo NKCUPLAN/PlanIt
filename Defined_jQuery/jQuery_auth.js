@@ -264,7 +264,7 @@ var AddCreatePage = function(){
 		$('#page_create input').val('');
 	});
 	
-	$('#create_task_list').sortable();
+	$('#create_task_list').sortable({ cursor: "move" });
 	$('#create_task_list').disableSelection();
 	
 	$("#create_addNewTask").click(function() {
@@ -479,7 +479,7 @@ var AddPlanPage1 = function(data, personal){
 		}
 	});
 	
-	task_frame.children('.plan_task_list').sortable();
+	task_frame.children('.plan_task_list').sortable({ cursor: "move" });
 	task_frame.children('.plan_task_list').disableSelection();
 	
 	if(data['task']){
