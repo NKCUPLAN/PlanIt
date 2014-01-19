@@ -254,6 +254,7 @@ var AddCreatePage = function(){
 					$('#page_create input').val('');
 					$('#book').bookblock();
 					TurnToPage(pages.length - 1);
+					$('#create_task_list').empty();
 				}
 			});
 		}
@@ -262,6 +263,9 @@ var AddCreatePage = function(){
 	$('#create_back').click(function(){
 		$('#page_create input').val('');
 	});
+	
+	$('#create_task_list').sortable();
+	$('#create_task_list').disableSelection();
 	
 	$("#create_addNewTask").click(function() {
 		$itemValue = $('#create_newTask').val();
@@ -276,6 +280,7 @@ var AddCreatePage = function(){
 			btn_delete.click(function(){
 				$(this).parent().remove();
 			});
+			
 			$('#create_newTask').val("");
 			$('#create_task_list').scrollTop($('#create_task_list').prop('scrollHeight'));
 		}
@@ -473,7 +478,10 @@ var AddPlanPage1 = function(data, personal){
 			task_frame.children('.plan_addNewTask').trigger('click');
 		}
 	});
-
+	
+	task_frame.children('.plan_task_list').sortable();
+	task_frame.children('.plan_task_list').disableSelection();
+	
 	if(data['task']){
 		var tasks = $.parseJSON(data['task']);
 		for(var i in tasks){
@@ -535,7 +543,7 @@ var AddPlanPage1 = function(data, personal){
 	var button_save = $('<a href="#" class="save">Save<span></span></a>').appendTo(div_button);
 	button_save.click(function(){
 		var taskData = new Array();
-		$('.plan_task_item').each(function(){
+		task_frame.children('.plan_task_list').children('.plan_task_item').each(function(){
 			taskData.push({
 				content: $(this).children('.plan_task_content').text(),
 				done: $(this).children('input').prop('checked')
