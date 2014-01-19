@@ -323,13 +323,8 @@ var AddPersonalPage = function(data, personal){
 }
 
 var AddPlanPage1 = function(data, personal){
-	var s = parseInt(data['start']), e = parseInt(data['end']), n = parseInt(data['now']), u = data['unit'];	
-	if(s > e){
-		var temp = s;
-		s = e;
-		e = temp;
-	}
-	var done = (n-s)/(e-s);
+	var s = parseInt(data['start']), e = parseInt(data['end']), n = parseInt(data['now']), u = data['unit'];
+	var reverse = (s > e);
 	
 	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
 	var plan_left = $('<div class="page_left"></div>').appendTo(page);
@@ -387,9 +382,20 @@ var AddPlanPage1 = function(data, personal){
 	progress_frame.append('<div class="plan_progressstem"></div>');
 	progress_frame.append('<div class="plan_progressnow">'+n+'</div>');
 	progress_frame.append('<div class="plan_progressleaf"></div>');
-	var bar = $(
-		'<input type="range" class="plan_progressbar" name="plan_progressbar"\
-			min="'+s+'" max="'+e+'" value="'+n+'"/>').appendTo(progress_frame);
+	
+	if(!reverse){
+		var bar = $(
+			'<input type="range" class="plan_progressbar" name="plan_progressbar"\
+				min="'+s+'" max="'+e+'" value="'+n+'"/>'
+		).appendTo(progress_frame);
+	}
+	else{
+		var bar = $(
+			'<input type="range" class="plan_progressbar" name="plan_progressbar"\
+				min="'+e+'" max="'+s+'" value="'+n+'"/>'
+		).appendTo(progress_frame);
+		bar.css('transform', 'rotate(90deg)');
+	}
 	progress_frame.append('<div class="plan_progressbean"></div>');
 	
 	bar.change(function(){
@@ -501,9 +507,8 @@ var AddPlanPage1 = function(data, personal){
 				alert('Network is wrong');
 			},
 			success: function(response) {
-				done = (pageData['now']-s)/(e-s);
+				var done = (pageData['now']-s)/(e-s);
 				game.children('.WoodBoard').children('.plan_percentage').val(Math.round(1000*done)/10.0);
-				moveBug(game, done);
 			}
 		});
 	});
