@@ -23,7 +23,7 @@ $(document).ready(function(){
 		}
         else{
         	$('aside').animate(
-            	{'top': '460px'},
+            	{'top': '420px'},
                 600
             );
 		}
@@ -45,7 +45,7 @@ var display_auth = function(){
     if(w <= 1200){
 		$('#book').css('left', (w-$('#book').width())/2);
     	$('aside').css('right', 0);
-		$('aside').css('top',460);
+		$('aside').css('top',420);
 		hide_aside = true;
     }
 	else{

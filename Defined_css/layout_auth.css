@@ -18,27 +18,39 @@ aside{
 
 aside #aside_switch{
     position: absolute;
-	top:100px;
-	left:60px;
-    height: 30px;
-    width: 15px;
-	z-index: 450;
+	top:42px;
+	left:51px;
+    height: 62px;
+    width: 80px;
+	z-index: 950;
 	border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 	
 	cursor: pointer;
 }
 
+aside #aside_bug{
+	position:absolute;
+	background:url(../img/aside/personal_bug.png) no-repeat;
+	background-size:contain;
+	width:184px;
+	height:165px;
+	top:33px;
+	left:-52px;
+	z-index:+500;
+}
+
 aside #aside_contents{
 	float: left;
-    height: 580px;
-    width: 210px;
+	top:131px;
+    height: 487px;
+    width: 186px;
 	
 	position: relative;
 
-    background: url(../img/stone.png) no-repeat;
+    background: url(../img/aside/stone_1.png) no-repeat;
 	z-index:400;
-    background-size: cover;
+    background-size: contain;
 
 }
 
@@ -50,9 +62,10 @@ aside #aside_contents #list_plans{
 	position: relative;
 	overflow-y:scroll;
 	overflow-x:hidden;	
-	top:150px;
-	height:300px;
-	width:200px;
+	top:41px;
+	left:-4px;
+	height:262px;
+	width:195px;
 	-webkit-transform: matrix(1, 0.15, 0, 1, 0, 0);
          -o-transform: matrix(1, 0.15, 0, 1, 0, 0);
             transform: matrix(1, 0.15, 0, 1, 0, 0);
@@ -81,14 +94,14 @@ aside #aside_contents #list_plans li{
 
 aside #new_plan{
 	position: absolute;
-	top:473px;
-	left:60px;
-	height:60px;
+	top:458px;
+	left:51px;
+	height:59px;
 	width:65px;
 	z-index:500;
 	text-align: center;
 	line-height: 22px;
-    background: url(../img/add.png) no-repeat;
+    background: url(../img/aside/add.png) no-repeat;
 	background-size:contain;
     font-size: 22px;
 	
@@ -182,7 +195,7 @@ html { font-size:100% }
       display:none;
 } 
 #list_plans::-webkit-scrollbar-thumb {
-      background: url(../img/scroll.png) no-repeat;
+      background: url(../img/aside/scroll.png) no-repeat;
 	  background-size: contain;
 	  cursor:pointer;
 	  background-position: 0 0;
