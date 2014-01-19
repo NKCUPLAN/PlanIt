@@ -198,7 +198,7 @@ left: 50px;
 	width: 370px;
 	height: 40px;
 	cursor: default;
-	top: -40px;
+	top: -50px;
 	left: -130px;
 	font-size: 21px;
 	text-align: center;
@@ -300,7 +300,8 @@ left: 50px;
 	padding: 0 10px;
 	display: inline-block;
 	margin: 0 10px 20px 10px;
-	font-size: 25px;
+	font-size: 20px;
+	vertical-align:middle;
 	color: black;
 }
 

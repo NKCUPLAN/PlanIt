@@ -162,7 +162,8 @@ p.thought:after {
 	padding: 0 10px;
 	display: inline-block;
 	margin: 0 0 20px 20px;
-	font-size: 25px;
+	font-size: 20px;
+	vertical-align:middle;
 	color: black;
 }
 
