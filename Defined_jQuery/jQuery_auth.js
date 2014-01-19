@@ -477,10 +477,14 @@ var AddPlanPage1 = function(data, personal){
 		for(var i in tasks){
 			if(tasks[i]){
 				taskData = $.parseJSON(tasks[i]);
-				$('<label onclick="checkboxToggle(this)" class="plan_task_item">\
+				var task = $('<label onclick="checkboxToggle(this)" class="plan_task_item">\
 					<input type="checkbox" class="checkbox"'+((parseInt(taskData['done']))? 'checked="checked':'')+'"/>\
 					<span></span><div class="plan_task_content">'+taskData['content']+'</div>\
 				</label>').appendTo(task_frame.children('.plan_task_list'));
+				var btn_delete = $('<div class="plan_task_delete"></div>').appendTo(task);
+				btn_delete.click(function(){
+					$(this).parent().remove();
+				});
 			}
 		}			
 	}
