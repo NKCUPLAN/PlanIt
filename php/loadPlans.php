@@ -13,6 +13,9 @@
 		$data = $k;
 		
 		$plan_id = $k['id'];
+		
+		
+		//Comment
 		$res = mysql_query("SELECT * FROM 2_comment WHERE plan_id = '$plan_id'");
 		
 		$comment = null;
@@ -24,6 +27,15 @@
 			$comment[] = json_encode($m);
 		}
 		$data['comment'] = json_encode($comment);
+		
+		//Task
+		$res = mysql_query("SELECT * FROM 2_task WHERE plan_id = '$plan_id'");
+		
+		$task = null;
+		while($m = mysql_fetch_assoc($res)){
+			$task[] = json_encode($m);
+		}
+		$data['task'] = json_encode($task);
 
 		//$result[] = json_encode($data);
 		date_default_timezone_set('Asia/Taipei');
@@ -39,6 +51,7 @@
 	$result['user_info'] = json_encode($user_data);
 	$result['done'] = json_encode($done);
 	$result['undone'] = json_encode($undone);
+	
 	echo json_encode($result);
 
 	mysql_close();

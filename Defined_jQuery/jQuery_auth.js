@@ -197,6 +197,14 @@ var AddCreatePage = function(){
 		var second=today.getSeconds();
 		
 		if(CheckPlanInfo()){
+			var taskData = new Array();
+			$('.create_task_item').each(function(){
+				taskData.push({
+					content: $(this).children('.create_task_content').text(),
+					done: $(this).children('input').prop('checked')
+				});
+			});
+
 			var pageData = { 
 				secret: window.sessionStorage["secret"],
 				name: $('#create_name').val(),
@@ -205,7 +213,8 @@ var AddCreatePage = function(){
 				end: $('#create_end').val(),
 				now: $('#create_start').val(),
 				unit: $('#create_unit').val(),
-				deadline: $('#create_deadDate').val() + ' ' + $('#create_deadTime').val()
+				deadline: $('#create_deadDate').val() + ' ' + $('#create_deadTime').val(),
+				taskData: taskData
 			};
 			
 			$.ajax({
@@ -218,7 +227,9 @@ var AddCreatePage = function(){
 					alert('網路連線錯誤，請稍後再試');
 				},
 				success: function(response) {
-					pageData['id'] = response.trim();
+					var data = $.parseJSON(response);
+					pageData['id'] = data['plan_id'];
+					pageData['task'] = data['task'];
 					pages.push(AddPlanPage1(pageData, true));
 					pages.push(AddPlanPage2(pageData, true));
 					
@@ -264,6 +275,14 @@ var AddCreatePage = function(){
 			$('#create_task_list').scrollTop($('#create_task_list').prop('scrollHeight'));
 		}
 	}); 
+	
+	$('#create_task').keypress(function(e){
+		var code = (e.keyCode ? e.keyCode : e.which);
+		if (code == 13)
+		{
+			$('#create_addNewTask').trigger('click');
+		}
+	});
 	
 	return page;
 }
@@ -447,6 +466,19 @@ var AddPlanPage1 = function(data, personal){
 			task_frame.children('.plan_addNewTask').trigger('click');
 		}
 	});
+
+	if(data['task']){
+		var tasks = $.parseJSON(data['task']);
+		for(var i in tasks){
+			if(tasks[i]){
+				taskData = $.parseJSON(tasks[i]);
+				$('<label onclick="checkboxToggle(this)" class="plan_task_item">\
+					<input type="checkbox" class="checkbox"'+((parseInt(taskData['done']))? 'checked="checked':'')+'"/>\
+					<span></span><div class="plan_task_content">'+taskData['content']+'</div>\
+				</label>').appendTo(task_frame.children('.plan_task_list'));
+			}
+		}			
+	}
 	
 	plan_right.append('<div class="plan_next"></div>');
 	plan_right.children('.plan_next').click(function(){
@@ -491,10 +523,17 @@ var AddPlanPage1 = function(data, personal){
 	
 	var button_save = $('<a href="#" class="save">Save<span></span></a>').appendTo(div_button);
 	button_save.click(function(){
+		var taskData = new Array();
+		$('.plan_task_item').each(function(){
+			taskData.push({
+				content: $(this).children('.plan_task_content').text(),
+				done: $(this).children('input').prop('checked')
+			});
+		});
 		var pageData = { 
 			id: data['id'],
-			now: $(this).parents('form').children('.plan_right').children('.plan_progress').children('#plan_now').val(),
-			content: $(this).parents('form').children('.plan_right').children('.plan_diaryContent').val()
+			now: bar.val(),
+			taskData: taskData
 		};
 		
 		$.ajax({
@@ -507,8 +546,7 @@ var AddPlanPage1 = function(data, personal){
 				alert('Network is wrong');
 			},
 			success: function(response) {
-				var done = (pageData['now']-s)/(e-s);
-				game.children('.WoodBoard').children('.plan_percentage').val(Math.round(1000*done)/10.0);
+				//var done = (pageData['now']-s)/(e-s);
 			}
 		});
 	});
@@ -618,29 +656,38 @@ var TurnToPage = function(page){
 
 var CheckPlanInfo = function(){
 	var msg = "";
+	var msg2 = "";
 	if($('#create_name').val().trim() == ""){
-		msg += "\nPlan Name";
+		msg += "\n計畫名稱";
 	}
 	if($('#create_unit').val().trim() == ""){
-		msg += "\nCalculating unit";
+		msg += "\n單位";
 	}
 	if($('#create_start').val().trim() == ""){
-		msg += "\nStart value";
+		msg += "\n初始値";
+	}
+	else if(isNaN($('#create_start').val().trim())){
+		msg2 += "初始値應為數字\n";
 	}
 	if($('#create_end').val().trim() == ""){
-		msg += "\nEnd value";
+		msg += "\n目標値";
+	}
+	else if(isNaN($('#create_end').val().trim())){
+		msg2 += "目標値應為數字\n";
 	}
 	if($('#create_deadDate').val().trim() == ""){
-		msg += "\nThe Deadline Date";
+		msg += "\n結束日期";
 	}
 	if($('#create_deadTime').val().trim() == ""){
-		msg += "\nThe Deadline Time";
+		msg += "\n結束時間";
 	}
-	if(msg != ""){
-		msg = "Please enter\n" + msg;
-		alert(msg);
+	
+	if(msg != "" || msg2 != ""){
+		msg = "請正確輸入" + msg + '\n\n';
+		alert(msg+msg2);
 		return false;
 	}
+	
 	else{
 		var expire = new Date($('#create_deadDate').val().trim() + " " + $('#create_deadTime').val().trim());
 		var now = new Date();

@@ -12,6 +12,7 @@
 	$now = $_POST['now'];
 	$unit = $_POST['unit'];
 	$deadline = $_POST['deadline'];
+	$tasks = $_POST['taskData'];
 	
 	date_default_timezone_set('Asia/Taipei');
 	$create_time = date("Y-m-d h:i:s");
@@ -26,7 +27,28 @@
 	$query = "SELECT MAX(id) FROM 2_plan";
 	$re = mysql_fetch_array(mysql_query($query));
 	
-	echo $re[0];
+	$plan_id = $re[0];
+
+	foreach($tasks as $task){
+		$task_content = $task['content'];
+		$task_done = ($task['done'] == "true")? 1:0;
+		mysql_query("INSERT INTO 2_task VALUES('', '$plan_id', '$task_content', '$task_done')");
+	}
+	
+	$data = null;
+	//Task
+	$res = mysql_query("SELECT * FROM 2_task WHERE plan_id = '$plan_id'");
+	
+	$task = null;
+	while($m = mysql_fetch_assoc($res)){
+		$task[] = json_encode($m);
+	}
+	$data['task'] = json_encode($task);
+	
+	
+	$data['plan_id'] = $plan_id;
+	echo json_encode($data);
+	
 
 	mysql_close();
 ?>
