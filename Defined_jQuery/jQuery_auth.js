@@ -17,7 +17,7 @@ $(document).ready(function(){
 		
     	if(hide_aside){
         	$('aside').animate(
-            	{'bottom':  '50px'},
+            	{'bottom':  '70px'},
                 600
             );
 		}

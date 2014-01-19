@@ -84,7 +84,7 @@ var display_unauth = function(){
 	$('#main_middle').css('background-size', w_bg + 'px 100%');
 	if(h_window > h_bg){	
 		$('#main_top').css('height', parseInt((h_window-h_bg)*0.3));
-		$('#main_bottom').css('height', parseInt((h_window-h_bg)*0.7));
+		$('#main_bottom').css('height', parseInt((h_window-h_bg)*0.7) + 1);
 	}
 	else{
 		$('#main_top').css('height', 0);
