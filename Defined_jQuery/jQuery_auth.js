@@ -386,6 +386,7 @@ var AddPlanPage1 = function(data, personal){
 	progress_frame.append('<div class="plan_min">'+data['start']+'<br/>'+data['unit']+'</div>');
 	progress_frame.append('<div class="plan_progressstem"></div>');
 	progress_frame.append('<div class="plan_progressnow">'+n+'</div>');
+	progress_frame.append('<div class="plan_progressleaf"></div>');
 	var bar = $(
 		'<input type="range" class="plan_progressbar" name="plan_progressbar"\
 			min="'+s+'" max="'+e+'" value="'+n+'"/>').appendTo(progress_frame);
@@ -394,9 +395,13 @@ var AddPlanPage1 = function(data, personal){
 	bar.change(function(){
 		progress_frame.children('.plan_progressnow').css(
 			'bottom',
-			240*($(this).val()-s)/(e-s)-250
+			238*($(this).val()-s)/(e-s)-250
 		);
 		progress_frame.children('.plan_progressnow').text($(this).val());
+		progress_frame.children('.plan_progressleaf').css(
+			'bottom',
+			238*($(this).val()-s)/(e-s)-250
+		);
 		progress_frame.children('.plan_progressstem').css(
 			'height',
 			245*($(this).val()-s)/(e-s)

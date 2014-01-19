@@ -445,16 +445,29 @@ left: 50px;
 
 .plan_progressbar::-webkit-slider-thumb{
 	-webkit-appearance: none;
-	background: url('../img/plan/bar_leaf.png');
-	width: 72px;
-	height: 28px; 
 	-webkit-transform:rotate(90deg);       
     -moz-transform:rotate(90deg);
     -o-transform:rotate(90deg);
     -ms-transform:rotate(90deg);
+	//background: url('../img/plan/bar_leaf.png');
+	background: transparent;
+	width: 72px;
+	height: 28px; 
 	background-size: 100% 100%;
 	cursor: pointer;
 }
+
+.plan_progressleaf{
+	background: url('../img/plan/bar_leaf.png');
+	width: 72px;
+	height: 28px; 
+	background-size: 100% 100%;
+	cursor: pointer;
+	margin: 0 auto;
+	position: relative;
+	bottom: -250;
+}
+
 
 .plan_progressscale{
 	margin: 0 auto;
