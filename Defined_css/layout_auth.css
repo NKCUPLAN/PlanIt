@@ -60,7 +60,7 @@ aside #aside_bug{
 	background:url(../img/aside/personal_bug.png) no-repeat;
 	background-size:contain;
 	width:184px;
-	height:165px;
+	height: 140px;
 	top:33px;
 	left:-52px;
 	z-index:+500;

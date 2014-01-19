@@ -441,10 +441,10 @@ var AddPlanPage1 = function(data, personal){
 
 	var task_frame = $(	
 		'<div class="plan_task">\
-			<input type="text" class="plan_newTask" placeholder="輸入待辦事項">\
-			<div class="plan_addNewTask"></div>\
-			<div class="plan_task_list"></div>\
-		</div>').appendTo(plan_right);				
+			<input type="text" class="plan_newTask" placeholder="輸入待辦事項">'
+			+((personal)? '<div class="plan_addNewTask"></div>':'')
+			+'<div class="plan_task_list"></div>\
+		</div>').appendTo(plan_right);			
 						
 	task_frame.children('.plan_addNewTask').click(function(){
 		var itemValue = task_frame.children('.plan_newTask').val();
@@ -455,10 +455,12 @@ var AddPlanPage1 = function(data, personal){
 							<input type="checkbox" class="checkbox"/>\
 							<span></span><div class="plan_task_content">'+itemValue+'</div>\
 						</label>').appendTo(task_frame.children('.plan_task_list'));
-			var btn_delete = $('<div class="plan_task_delete"></div>').appendTo(task);
-			btn_delete.click(function(){
-				$(this).parent().remove();
-			});
+			if(personal){
+				var btn_delete = $('<div class="plan_task_delete"></div>').appendTo(task);
+				btn_delete.click(function(){
+					$(this).parent().remove();
+				});
+			}
 			task_frame.children('.plan_newTask').val('');
 			task_frame.children('.plan_task_list').scrollTop($(this).children(".plan_task_list").prop("scrollHeight"));
 		}
