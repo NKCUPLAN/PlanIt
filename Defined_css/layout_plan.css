@@ -28,24 +28,14 @@
 	left:55px;
 }
 
-.game_bean{
-	background: url(../img/game/bean_1.png);
-	background-size:contain;
-	position:absolute;
-	top:79.55px;
-	left:127px;
-	height:87.2px;
-	width:88px;
-}
-
 .game_ropeX{
 	background: url(../img/game/rope_x.png);
 	background-size:contain;
 	position:absolute;
 	top:129px;
 	left:125px;
-	height:4.5px;
-	width:0px;
+	height:5.5px;
+	width:14px;
 }
 
 .game_ropeY{
@@ -77,6 +67,42 @@
 	left:3px;
 	height:99px;
 	width:120px;
+}
+
+.game_bean{
+	background: url(../img/game/bean_1.png) no-repeat;
+	background-size:cover;
+	position:absolute;
+	top:78px;
+	left:138px;
+	height:87.2px;
+	width:74px;
+	animation:bean_move 1s infinite;
+	-webkit-animation:bean_move 1s infinite; /* Safari and Chrome */
+}
+
+@keyframes bean_move
+{
+0%   {background: url(../img/game/bean_1.png) no-repeat;}
+40%   {background: url(../img/game/bean_2.png) no-repeat;
+	  top:81px;
+	  width:80px;}
+70%   {background: url(../img/game/bean_2.png) no-repeat;
+	  top:81px;
+	  width:80px;}
+100% {background: url(../img/game/bean_1.png) no-repeat;}
+}
+
+@-webkit-keyframes bean_move /* Safari and Chrome */
+{
+0%   {background: url(../img/game/bean_1.png) no-repeat;}
+40%   {background: url(../img/game/bean_2.png) no-repeat;
+	  top:81px;
+	  width:80px;}
+70%   {background: url(../img/game/bean_2.png) no-repeat;
+	  top:81px;
+	  width:80px;}
+100% {background: url(../img/game/bean_1.png) no-repeat;}
 }
 
 .game_bug{
