@@ -583,12 +583,14 @@ var AddPlanPage2 = function(data, personal){
 	
 	plan_right.append('<div class="ui comments">\
 						<form class="ui reply form" style="width: 90%; margin: 0 auto;">\
-							<div class="field" syle="width: 90%;">\
-								<textarea class="input_comment" name="input_comment" style="min-height:40px; height: 40px; padding: 5px;"></textarea>\
+							<div class="field" style="width: 90%;" >\
+								<textarea class="input_comment" name="input_comment"\
+									style="min-height: 40px; height: 76px; padding: 5px;\
+											overflow: hidden; margin-top: 0px; border: 5px solid #7794BF;\
+											resize: none; margin-bottom: 0px; width: 80%; border-radius: 15px;"></textarea>\
 							</div>\
-							<div class="ui button teal submit labeled icon add_comment">\
-								<i class="icon edit"></i> Add Comment\
-							</div>\
+							<div class="comment_talk"></div>\
+							<div class="add_comment '+((parseInt(data['male']))? 'boy':'girl')+'"></div>\
 						</form>\
 						<div class="comment_content" style="overflow-y: auto; height: 80%;"></div>\
 					</div>');
@@ -652,10 +654,11 @@ var AddPlanPage2 = function(data, personal){
 			//alert("data = null");
 		}
 	});
-
+	
+	content.scrollTop(content.prop("scrollHeight"));
 	input.css("overflow","hidden").bind("keydown keyup", function(){  
         $(this).height('0px').height($(this).prop("scrollHeight")+"px");
-		content.height((plan_right.height()*0.8 - $(this).height()) + "px");
+		content.height((plan_right.height()*0.85 - $(this).height()) + "px");
 		content.scrollTop(content.prop("scrollHeight"));
     }).keydown();
 	

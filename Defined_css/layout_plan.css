@@ -241,7 +241,7 @@ left: 50px;
 	width:40px;
 	height:49px;
 	top:420px;
-	right:40px;
+	right:20px;
 	background: url(../img/plan/btn_nextPage.png);
 	background-size: cover;
 	background-position: 0 0;
@@ -261,7 +261,7 @@ left: 50px;
 	width:40px;
 	height:49px;
 	top:420px;
-	left:40px;
+	left:20px;
 	background: url(../img/plan/btn_prevPage.png);
 	background-size: cover;
 	background-position: 0 0;
@@ -527,5 +527,35 @@ left: 50px;
 }
 
 .comment_content{
-	margin: 0 10px 0 10px;
+	margin: 40px 0 0 10px;
+}
+
+.add_comment{
+	height: 70px;
+	width: 70px;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.add_comment.boy{
+	background: url('../img/plan/picture_boy.png');
+	background-size: 100% 100%;
+}
+
+.add_comment.girl{
+	background: url('../img/plan/picture_girl.png');
+	background-size: 100% 100%;
+}
+
+.comment_talk{
+	background: url('../img/plan/say.png');
+	background-size: 100% 100%;
+	width: 22px;
+	height: 26px;
+	display: inline-block;
+	position: absolute;
+	top: 7px;
+	right: 74px;
 }

@@ -28,7 +28,7 @@
 	width: 50%;
 }
 
-.page_left input[type=text], .page_right textarea{
+.page_left input[type=text]{
 	background: #7794BF;
 	color: white;
 	border-width:0px;
