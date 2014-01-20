@@ -318,7 +318,7 @@ var AddPersonalPage = function(data, personal){
 	page_right.append(
 		'<div id="label_doing">\
 			<img src="../PlanIt/img/info/plan_doing.png" alt="plan_doing" height="40" width="160">\
-			<div class="content">\
+			<div class="ex_plan">\
 				<ol>\
 					<li>存錢</li>\
 					<li>減肥</li>\
@@ -328,7 +328,7 @@ var AddPersonalPage = function(data, personal){
 		</div>\
 		<div id="label_done">\
 			<img src="../PlanIt/img/info/plan_done.png" alt="plan_done" height="40" width="160">\
-			<div class="content">\
+			<div class="ex_plan">\
 				<ol>\
 					<li>存錢</li>\
 					<li>減肥</li>\
@@ -338,7 +338,7 @@ var AddPersonalPage = function(data, personal){
 		</div>\
 		<div id="label_undo">\
 			<img src="../PlanIt/img/info/plan_undo.png" alt="plan_undo" height="40" width="160">\
-			<div class="content">\
+			<div class="ex_plan">\
 				<ol>\
 					<li>存錢</li>\
 					<li>減肥</li>\
@@ -503,10 +503,9 @@ var AddPlanPage1 = function(data, personal){
 	plan_right.children('.plan_next').click(function(){
 		$('#book').bookblock('next');
 	});
-	var div_button;
-
+	
 	if(personal){
-		div_button = $('<div class="button"></div>').appendTo(plan_right);		
+		SetSaveButton(plan_right);
 	}
 	else{
 		plan_right.find('input').attr('disabled', 'disabled');
@@ -540,6 +539,113 @@ var AddPlanPage1 = function(data, personal){
 	if(dis)	str = (dis)+' 年 ' + str;
 	plan_right.prepend('<div class="plan_time">剩餘 '+str+'</div>');
 	
+	return page;
+}
+
+var AddPlanPage2 = function(data, personal){
+	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
+	var plan_left = $('<div class="page_left"></div>').appendTo(page);
+	var plan_right = $('<div class="page_right"></div>').appendTo(page);
+	
+	plan_left.append('<div class="plan_memo_bg"><textarea class="plan_memo"></textarea>');
+	plan_left.append('<div class="plan_prev"></div>');
+	plan_left.children('.plan_prev').click(function(){
+		$('#book').bookblock('prev');
+	});
+	
+	plan_right.append('<div class="ui comments">\
+						<form class="ui reply form" style="width: 90%; margin: 0 auto;">\
+							<div class="field" syle="width: 90%;">\
+								<textarea class="input_comment" name="input_comment" style="min-height:40px; height: 40px; padding: 5px;"></textarea>\
+							</div>\
+							<div class="ui button teal submit labeled icon add_comment">\
+								<i class="icon edit"></i> Add Comment\
+							</div>\
+						</form>\
+						<div class="comment_content" style="overflow-y: auto; height: 80%;"></div>\
+					</div>');
+	var form = plan_right.children().children('form');
+	var input = form.children('.field').children('.input_comment');
+	var content = form.parent().children(".comment_content");	
+	if(data['comment']){
+		var comment = $.parseJSON(data['comment']);
+		for(var i in comment){
+			if(comment[i]){
+				comData = $.parseJSON(comment[i]);
+				content.append(
+					'<div class="comment">\
+						<a class="author">'
+						+ comData['user_name'] +
+						'</a>\
+						<div class="text">'
+						+ comData['content']+
+						'</div>\
+					</div>');
+			}
+		}			
+	}
+	form.children('.add_comment').click(function(){
+		var comment = input.val();
+		// uer name
+		if(comment != "") {
+			var pageData = { 
+				plan_id: data['id'],
+				content: comment,
+				secret: window.sessionStorage["secret"]
+			};
+			
+			$.ajax({
+				url: 'php/updateComment.php',
+				cache: false,
+				dataType: 'html',
+				type:'POST',
+				data: pageData,
+				error: function(xhr) {
+					alert('Network is wrong');
+				},
+				success: function(response) {
+					var username = response.trim();
+					content.append(
+						'<div class="comment">\
+							<a class="author">'
+							+ username +
+							'</a>\
+							<div class="text">'
+							+ comment+
+							'</div>\
+						</div>');
+					content.scrollTop(content.prop("scrollHeight"));
+					input.val('').keydown();
+				}
+			});
+		
+			
+		} else {
+			//alert("data = null");
+		}
+	});
+
+	input.css("overflow","hidden").bind("keydown keyup", function(){  
+        $(this).height('0px').height($(this).prop("scrollHeight")+"px");
+		content.height((plan_right.height()*0.8 - $(this).height()) + "px");
+		content.scrollTop(content.prop("scrollHeight"));
+    }).keydown();
+	
+	content.height(356);
+	
+	if(personal){
+		SetSaveButton(plan_left);		
+	}
+	else{
+		plan_left.find('input').attr('disabled', 'disabled');
+		plan_left.find('textarea').attr('disabled', 'disabled');
+	}
+	
+	return page;
+}
+
+var SetSaveButton = function(page){
+	var div_button = $('<div class="button"></div>').appendTo(page);	
 	var button_save = $('<a href="#" class="save">Save<span></span></a>').appendTo(div_button);
 	button_save.click(function(){
 		var taskData = new Array();
@@ -569,104 +675,6 @@ var AddPlanPage1 = function(data, personal){
 			}
 		});
 	});
-	return page;
-}
-
-var AddPlanPage2 = function(data, personal){
-	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
-	var plan_left = $('<div class="page_left"></div>').appendTo(page);
-	var plan_right = $('<div class="page_right"></div>').appendTo(page);
-	
-	plan_left.append('<div class="plan_prev"></div>');
-	plan_left.children('.plan_prev').click(function(){
-		$('#book').bookblock('prev');
-	});
-	
-	plan_right.append('<div class="ui comments">\
-						<div id="comment_content" style="overflow-y: auto; height: 80%;"></div>\
-						<form class="ui reply form" style="position:absolute; bottom:10px; width: 90%; margin: 0 auto;">\
-							<div class="field" syle="width: 90%;">\
-								<textarea id="input_comment" name="input_comment" style="min-height:40px; height: 40px; padding: 5px;"></textarea>\
-							</div>\
-							<div class="ui button teal submit labeled icon" style="float:right; margin-right: 20px;" id="add_comment">\
-								<i class="icon edit"></i> Add Comment\
-							</div>\
-						</form>\
-					</div>');
-	var form = plan_right.children().children('form');
-	var input = form.children('.field').children('#input_comment');
-	var content = form.parent().children("#comment_content");	
-	if(data['comment']){
-		var comment = $.parseJSON(data['comment']);
-		for(var i in comment){
-			if(comment[i]){
-				comData = $.parseJSON(comment[i]);
-				content.append(
-					'<div class="comment">\
-						<div class="content">\
-							<a class="author">'
-							+ comData['user_name'] +
-							'</a>\
-							<div class="text">'
-							+ comData['content']+
-							'</div>\
-						</div>\
-					</div>');
-			}
-		}			
-	}
-	form.children('#add_comment').click(function(){
-		var comment = input.val();
-		// uer name
-		if(comment != "") {
-			var pageData = { 
-				plan_id: data['id'],
-				content: comment,
-				secret: window.sessionStorage["secret"]
-			};
-			
-			$.ajax({
-				url: 'php/updateComment.php',
-				cache: false,
-				dataType: 'html',
-				type:'POST',
-				data: pageData,
-				error: function(xhr) {
-					alert('Network is wrong');
-				},
-				success: function(response) {
-					var username = response.trim();
-					content.append(
-						'<div class="comment">\
-							<div class="content">\
-								<a class="author">'
-								+ username +
-								'</a>\
-								<div class="text">'
-								+ comment+
-								'</div>\
-							</div>\
-						</div>');
-						content.scrollTop(content.prop("scrollHeight"));
-						input.val('').keydown();
-				}
-			});
-		
-			
-		} else {
-			//alert("data = null");
-		}
-	});
-
-	input.css("overflow","hidden").bind("keydown keyup", function(){  
-        $(this).height('0px').height($(this).prop("scrollHeight")+"px");
-		content.height((plan_right.height()*0.8 - $(this).height()) + "px");
-		content.scrollTop(content.prop("scrollHeight"));
-    }).keydown();
-	
-	content.height(356);
-	
-	return page;
 }
 
 var TurnToPage = function(page){

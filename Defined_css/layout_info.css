@@ -47,7 +47,7 @@
 	background:url(../img/info/thumbnail_male.png);
 	background-size:cover;
 }
-.content{
+.ex_plan{
 	color: #3c396c;
 	font-family: 微軟正黑體;
 	font-size: 20px;
@@ -56,11 +56,11 @@
 	margin-left:40px;
 }
 
-.content li{
+.ex_plan li{
 	margin:5px;
 }
 
-.content li:hover{
+.ex_plan li:hover{
 	color:#5694ff;
 }
 .IDCard_content {
