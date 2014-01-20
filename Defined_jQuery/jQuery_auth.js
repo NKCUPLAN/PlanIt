@@ -113,7 +113,7 @@ var LoadPlans = function(secret){
 			
 			for(var i in done){
 				var planData = $.parseJSON(done[i]);
-				$('#list_done').append('<li>' + planData['name'] + '</li>');
+				$('#list_done').append('<li><div class="aside_murmur"></div>' + planData['name'] + '</li>');
 				pages.push(AddPlanPage1(planData, true));
 				pages.push(AddPlanPage2(planData, true));
 			}
