@@ -260,6 +260,13 @@ var LoadFriendsPlans = function(friend_id, go_recent){
 			$('#list_plans').append('<div id="list_undone"></div>');
 			$('#list_plans').append('<div id="list_done"></div>');
 			
+			$('#menu_friend_back').show(1);
+			$('#menu_friend_back').click(function(){
+				$('#menu_friend_back').unbind('click');
+				$('#menu_friend_back').hide(1);
+				LoadPlans();
+			});
+			
 			if(pages.length)
 				pages.length = 0;
 			pages.push(AddPersonalPage(0, false));
