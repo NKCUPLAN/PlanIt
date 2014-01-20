@@ -1,5 +1,5 @@
 ﻿var pages = new Array();
-
+var bottom;
 /*------Initialization------*/
 $(document).ready(function(){	
 	display_auth();
@@ -21,7 +21,7 @@ $(document).ready(function(){
 		
     	if(hide_aside){
         	$('aside').animate(
-            	{'bottom':  '70px'},
+            	{'bottom':  bottom+'px'},
                 600
             );
 			$('#aside_arrow').remove();
@@ -54,6 +54,7 @@ var display_auth = function(){
 		$('#book').css('left', (w-$('#aside_contents').width()-$('#book').width())/2);
 		$('#book').css('top', (h-$('#book').height())/2);
 		$('aside').css('bottom', (h-$('#aside_contents').height())/2);
+		bottom = (h-$('#aside_contents').height())/2;
 		hide_aside = false;
 	}
 	else{
@@ -61,6 +62,7 @@ var display_auth = function(){
 		$('#book').css('left', (w-$('#book').width())/2);
 		$('#book').css('top', (book_h>100)? book_h: 100);
 		$('aside').css('bottom', -300);
+		bottom = 70;
 		hide_aside = true;
     }
 	
@@ -588,7 +590,7 @@ var AddPlanPage2 = function(data, personal){
 									style="min-height: 40px; height: 76px; padding: 5px;\
 											overflow: hidden; margin-top: 0px; border: 5px solid #7794BF;\
 											resize: none; margin-bottom: 0px; width: 80%; border-radius: 15px;"\
-									placeholder="來留個言吧..."></textarea>\
+									placeholder="來留個言吧!!!!!!"></textarea>\
 							</div>\
 							<div class="comment_talk"></div>\
 							<div class="add_comment '+((parseInt(data['male']))? 'boy':'girl')+'"></div>\
