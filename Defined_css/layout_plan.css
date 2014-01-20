@@ -318,14 +318,14 @@ left: 50px;
 
 .plan_newTask{
 	border: none;
-	width: 73%;
+	width: 78%;
 	height: 48px;
 	background: url('../img/plan/txt_newTask.png');
 	background-size: 100% 100%;
 	background-position: 0 0;
 	padding: 0 10px;
 	display: inline-block;
-	margin: 0 10px 20px 10px;
+	margin: 0 10px 20px 2px;
 	font-size: 20px;
 	vertical-align:middle;
 	color: black;
@@ -339,13 +339,13 @@ left: 50px;
 	display: inline-block;
 	position: absolute;
 	top: 12px;
-	right: 15px;
+	right: 9px;
 	
 	cursor: pointer;
 }
 
 .plan_task_list{
-	width: 100%;
+	width: 97%;
 	height: 300px;
 	overflow-y: scroll;
 }
@@ -357,9 +357,9 @@ left: 50px;
 .plan_task_item{
 	position: relative;
 	display: block;
-	width: 85%;
+	width: 87%;
 	height: 70px;
-	margin: 10px 0 0 10px;
+	margin: 10px 0 0 4px;
 	cursor: pointer;
 }
 
@@ -442,6 +442,7 @@ left: 50px;
 	height: 51px;
 	width: 50px;
 	margin: 5px auto;
+	margin-left:33px;
 }
 
 .plan_clock:hover{

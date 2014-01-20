@@ -1,11 +1,11 @@
 .create_title{  
-	font-size: 30px;
 	padding:10px;
 	cursor: default; 
 	font: bold 1.4em;
-	color: #555;
-	font-size: 40px;
+	color: black;
+	font-size: 35px;
 	text-align: center;
+	font-weight:bolder;
 }
 
 .create_profile_pic{
@@ -35,7 +35,8 @@
 .create_goal_text, .create_deadline_text{
 	font-size: 25px;  
 	font-weight: bold;
-	margin: 10px;
+	color:#4D4D4D;
+	margin: 10px 243px 15px 0;
 }
 
 .create_goal, .create_deadline{
@@ -161,7 +162,7 @@ p.thought:after {
 	background-position: 0 0;
 	padding: 0 10px;
 	display: inline-block;
-	margin: 0 0 20px 20px;
+	margin: 4px 0 20px 32px;
 	font-size: 20px;
 	vertical-align:middle;
 	color: black;
@@ -175,7 +176,7 @@ p.thought:after {
 	display: inline-block;
 	position: absolute;
 	top: 12px;
-	right: 15px;
+	right: 10px;
 	cursor: pointer;
 }
 
@@ -194,7 +195,7 @@ p.thought:after {
 	display: block;
 	width: 85%;
 	height: 70px;
-	margin: 10px 0 0 20px;
+	margin: 10px 0 0 25px;
 	cursor: pointer;
 }
 
@@ -217,7 +218,8 @@ p.thought:after {
 
 .create_task_item .create_task_content{
 	display: inline-block;
-	font-size: 18px;
+	font-size: 22px;
+	font-weight:bolder;
 	width: 70%;
 	overflow: hidden;
 	text-overflow:ellipsis; 

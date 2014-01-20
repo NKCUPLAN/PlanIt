@@ -28,7 +28,7 @@ $(document).ready(function(){
 		}
         else{
         	$('aside').animate(
-            	{'bottom': '-300px'},
+            	{'bottom': '-315px'},
                 600
             );
 			$('aside').append('<div id="aside_arrow"></div>');
@@ -61,7 +61,7 @@ var display_auth = function(){
 		var book_h = (h-$('#book-base').height())/2 + 40;
 		$('#book').css('left', (w-$('#book').width())/2);
 		$('#book').css('top', (book_h>100)? book_h: 100);
-		$('aside').css('bottom', -300);
+		$('aside').css('bottom', -315);
 		bottom = 70;
 		hide_aside = true;
     }
@@ -172,7 +172,7 @@ var AddCreatePage = function(){
 							<div id="create_task_list">\
 								<label onclick="checkboxToggle(this)" class="create_task_item">\
 									<input type="checkbox" class="checkbox"/>\
-									<span></span><div class="create_task_content">範例</div>\
+									<span></span><div class="create_task_content">範例 : 記得先...</div>\
 									<div class="create_task_delete"></div>\
 								</label>\
 							</div>\
