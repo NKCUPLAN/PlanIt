@@ -43,16 +43,16 @@ aside #aside_arrow{
 
 @keyframes arrow_flash
 {
-0%   {background: url(../img/aside/arrow.png) no-repeat}
+0%   {background: url(../img/aside/arrow.png) no-repeat;}
 50%   {background: no-repeat;}
 100% {background: url(../img/aside/arrow.png) no-repeat;}
 }
 
 @-webkit-keyframes arrow_flash /* Safari and Chrome */
 {
-0%   {background: url(../img/aside/arrow.png) no-repeat}
+0%   {background: url(../img/aside/arrow.png) no-repeat;}
 50%   {background: no-repeat;}
-100% {background: url(../img/aside/arrow.png) no-repeat}
+100% {background: url(../img/aside/arrow.png) no-repeat;}
 }
 
 aside #aside_bug{
@@ -74,7 +74,7 @@ aside #aside_contents{
 	
 	position: relative;
 
-    background: url(../img/aside/stone_1.png) no-repeat;
+    background: url(../img/aside/stone.png) no-repeat;
 	z-index:400;
     background-size: contain;
 
@@ -118,6 +118,10 @@ aside #aside_contents #list_plans li{
     //border-top: 1px dotted purple;
 }
 
+aside #new_plan:active{
+	background-image: url(../img/aside/add_trigger.png);
+}
+
 aside #new_plan{
 	position: absolute;
 	top:458px;
@@ -127,7 +131,9 @@ aside #new_plan{
 	z-index:500;
 	text-align: center;
 	line-height: 22px;
-    background: url(../img/aside/add.png) no-repeat;
+	background-image: url(../img/aside/add_trigger.png);
+    background-image: url(../img/aside/add.png);
+	background-repeat:no-repeat;
 	background-size:contain;
     font-size: 22px;
 	
@@ -136,6 +142,7 @@ aside #new_plan{
 	cursor:pointer;
     color: brown;
 	font-weight: bold;
+	
 }
 
 #auth{
