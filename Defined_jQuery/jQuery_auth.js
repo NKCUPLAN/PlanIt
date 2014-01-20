@@ -505,7 +505,35 @@ var AddPlanPage1 = function(data, personal){
 	});
 	
 	if(personal){
-		SetSaveButton(plan_right);
+		var button_save = SetSaveButton(plan_right);
+		button_save.click(function(){
+			var taskData = new Array();
+			task_frame.children('.plan_task_list').children('.plan_task_item').each(function(){
+				taskData.push({
+					content: $(this).children('.plan_task_content').text(),
+					done: $(this).children('input').prop('checked')
+				});
+			});
+			var pageData = { 
+				id: data['id'],
+				now: bar.val(),
+				taskData: taskData
+			};
+			
+			$.ajax({
+				url: 'php/updatePlan.php',
+				cache: false,
+				dataType: 'html',
+				type:'POST',
+				data: pageData,
+				error: function(xhr) {
+					alert('Network is wrong');
+				},
+				success: function(response) {
+					//var done = (pageData['now']-s)/(e-s);
+				}
+			});
+		});
 	}
 	else{
 		plan_right.find('input').attr('disabled', 'disabled');
@@ -547,7 +575,7 @@ var AddPlanPage2 = function(data, personal){
 	var plan_left = $('<div class="page_left"></div>').appendTo(page);
 	var plan_right = $('<div class="page_right"></div>').appendTo(page);
 	
-	plan_left.append('<div class="plan_memo_bg"><textarea class="plan_memo"></textarea>');
+	plan_left.append('<div class="plan_memo_bg"><textarea class="plan_memo"></textarea></div>');
 	plan_left.append('<div class="plan_prev"></div>');
 	plan_left.children('.plan_prev').click(function(){
 		$('#book').bookblock('prev');
@@ -634,9 +662,40 @@ var AddPlanPage2 = function(data, personal){
 	content.height(356);
 	
 	if(personal){
-		SetSaveButton(plan_left);		
+		plan_left.children('.plan_memo_bg').children('.plan_memo').val(data['memo']);
+		var button_save = SetSaveButton(plan_left);
+		button_save.click(function(){
+			var pageData = { 
+				id: data['id'],
+				content: plan_left.children('.plan_memo_bg').children('.plan_memo').val()
+			};
+			
+			$.ajax({
+				url: 'php/updateMemo.php',
+				cache: false,
+				dataType: 'html',
+				type:'POST',
+				data: pageData,
+				error: function(xhr) {
+					alert('Network is wrong');
+				},
+				success: function(response) {
+					//var done = (pageData['now']-s)/(e-s);
+				}
+			});
+		});	
 	}
 	else{
+		plan_left.children('.plan_memo_bg').children('.plan_memo').remove();
+		plan_left.children('.plan_memo_bg').append(
+			'<div style="width: 100%;\
+				height: 100%;\
+				vertical-align: bottom;\
+				text-align: center;\
+				font-size: 24px;\
+				margin: 190px auto 0 auto;\
+				font-weight: bold;\
+				color: gray;">你沒辦法看見好友的筆記喔！</div>');
 		plan_left.find('input').attr('disabled', 'disabled');
 		plan_left.find('textarea').attr('disabled', 'disabled');
 	}
@@ -647,34 +706,7 @@ var AddPlanPage2 = function(data, personal){
 var SetSaveButton = function(page){
 	var div_button = $('<div class="button"></div>').appendTo(page);	
 	var button_save = $('<a href="#" class="save">Save<span></span></a>').appendTo(div_button);
-	button_save.click(function(){
-		var taskData = new Array();
-		task_frame.children('.plan_task_list').children('.plan_task_item').each(function(){
-			taskData.push({
-				content: $(this).children('.plan_task_content').text(),
-				done: $(this).children('input').prop('checked')
-			});
-		});
-		var pageData = { 
-			id: data['id'],
-			now: bar.val(),
-			taskData: taskData
-		};
-		
-		$.ajax({
-			url: 'php/updatePlan.php',
-			cache: false,
-			dataType: 'html',
-			type:'POST',
-			data: pageData,
-			error: function(xhr) {
-				alert('Network is wrong');
-			},
-			success: function(response) {
-				//var done = (pageData['now']-s)/(e-s);
-			}
-		});
-	});
+	return button_save;
 }
 
 var TurnToPage = function(page){

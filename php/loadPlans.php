@@ -14,7 +14,6 @@
 		
 		$plan_id = $k['id'];
 		
-		
 		//Comment
 		$res = mysql_query("SELECT * FROM 2_comment WHERE plan_id = '$plan_id'");
 		
