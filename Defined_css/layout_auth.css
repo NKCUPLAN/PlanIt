@@ -8,7 +8,7 @@ aside{
 	//display: none;
 	position: fixed;
 	z-index: 1000;
-    right: 30px;
+    right: 15px;
 	
 	border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -27,6 +27,20 @@ aside #aside_switch{
     border-bottom-left-radius: 15px;
 	
 	cursor: pointer;
+}
+
+#aside_picture{
+	position:absolute;
+	width:50px;
+	height:50px;
+	bottom:23px;
+	left:107px;
+	
+	background:url(../img/aside/love.jpg) no-repeat;
+	background-size:cover;
+	-webkit-transform: matrix(1, 0.15, -0.15, 1, 0, 0);
+         -o-transform: matrix(1, 0.15, -0.15, 1, 0, 0);
+            transform: matrix(1, 0.15, -0.15, 1, 0, 0);
 }
 
 aside #aside_arrow{
@@ -59,8 +73,8 @@ aside #aside_bug{
 	position:absolute;
 	background:url(../img/aside/personal_bug.png) no-repeat;
 	background-size:contain;
-	width:184px;
-	height: 140px;
+	width:187px;
+	height: 149px;
 	top:33px;
 	left:-52px;
 	z-index:+500;
@@ -70,11 +84,11 @@ aside #aside_contents{
 	float: left;
 	top:131px;
     height: 487px;
-    width: 186px;
+    width: 223px;
 	
 	position: relative;
 
-    background: url(../img/aside/stone.png) no-repeat;
+    background: url(../img/aside/stone_2.png) no-repeat;
 	z-index:400;
     background-size: contain;
 
@@ -91,7 +105,7 @@ aside #aside_contents #list_plans{
 	top:41px;
 	left:-4px;
 	height:262px;
-	width:195px;
+	width:224px;
 	-webkit-transform: matrix(1, 0.15, 0, 1, 0, 0);
          -o-transform: matrix(1, 0.15, 0, 1, 0, 0);
             transform: matrix(1, 0.15, 0, 1, 0, 0);
@@ -111,11 +125,30 @@ aside #aside_contents #list_plans li{
 	line-height: 20px;
     font-family: Buxton Sketch;
     font-size: 20px;
-    
+    width:72%;
+	margin-left:5px;
     color: brown;
     font-family: 微軟正黑體;
     padding: 10px 10px 10px 15px;
-    //border-top: 1px dotted purple;
+	//background-image:url(../img/aside/murmur.png);
+	//background-repeat:no-repeat;
+	//background-position:right top;
+}
+
+.aside_murmur{
+	position:absolute;
+	width:30px;
+	height:32px;
+	right:10px;
+	margin-top:-3px;
+	background-image:url(../img/aside/murmur.png);
+	background-repeat:no-repeat;
+	background-position:right top;
+	background-size:30px;
+}
+
+.aside_murmur:hover{
+	background-position:right bottom;
 }
 
 aside #new_plan:active{
@@ -124,9 +157,9 @@ aside #new_plan:active{
 
 aside #new_plan{
 	position: absolute;
-	top:458px;
-	left:51px;
-	height:59px;
+	top:461px;
+	left:61px;
+	height:62px;
 	width:65px;
 	z-index:500;
 	text-align: center;
