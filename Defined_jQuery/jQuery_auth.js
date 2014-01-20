@@ -99,8 +99,8 @@ var LoadPlans = function(secret){
 			var done = $.parseJSON(planPacket['done']);
 			var user_info = $.parseJSON(planPacket['user_info']);
 			
-			pages.push(AddPersonalPage(user_info, true));
 			pages.push(AddCreatePage());
+			pages.push(AddPersonalPage(user_info, true));
 			
 			for(var i in undone){
 				var planData = $.parseJSON(undone[i]);
@@ -238,7 +238,7 @@ var AddCreatePage = function(){
 					pages.push(AddPlanPage1(pageData, true));
 					pages.push(AddPlanPage2(pageData, true));
 					
-					var tag = $('<li>' + pageData['name'] + '</li>').appendTo($('#list_plans'));
+					var tag = $('<li>' + pageData['name'] + '</li>').appendTo($('#list_undone'));
 					tag.bind({
 						mouseenter: function(){
 							$(this).css('color', 'yellow');
@@ -587,11 +587,13 @@ var AddPlanPage2 = function(data, personal){
 								<textarea class="input_comment" name="input_comment"\
 									style="min-height: 40px; height: 76px; padding: 5px;\
 											overflow: hidden; margin-top: 0px; border: 5px solid #7794BF;\
-											resize: none; margin-bottom: 0px; width: 80%; border-radius: 15px;"></textarea>\
+											resize: none; margin-bottom: 0px; width: 80%; border-radius: 15px;"\
+									placeholder="來留個言吧..."></textarea>\
 							</div>\
 							<div class="comment_talk"></div>\
 							<div class="add_comment '+((parseInt(data['male']))? 'boy':'girl')+'"></div>\
 						</form>\
+						<span style="color:gray; font-size: 10px; margin-left: 20px;">按Enter送出留言，按Shift+Enter換行。</span>\
 						<div class="comment_content" style="overflow-y: auto; height: 80%;"></div>\
 					</div>');
 	var form = plan_right.children().children('form');
@@ -608,57 +610,57 @@ var AddPlanPage2 = function(data, personal){
 						+ comData['user_name'] +
 						'</a>\
 						<div class="text">'
-						+ comData['content']+
+						+ comData['content'].replace(/\n/g, "<br/>")+
 						'</div>\
 					</div>');
 			}
 		}			
 	}
-	form.children('.add_comment').click(function(){
-		var comment = input.val();
-		// uer name
-		if(comment != "") {
-			var pageData = { 
-				plan_id: data['id'],
-				content: comment,
-				secret: window.sessionStorage["secret"]
-			};
-			
-			$.ajax({
-				url: 'php/updateComment.php',
-				cache: false,
-				dataType: 'html',
-				type:'POST',
-				data: pageData,
-				error: function(xhr) {
-					alert('Network is wrong');
-				},
-				success: function(response) {
-					var username = response.trim();
-					content.append(
-						'<div class="comment">\
-							<a class="author">'
-							+ username +
-							'</a>\
-							<div class="text">'
-							+ comment+
-							'</div>\
-						</div>');
-					content.scrollTop(content.prop("scrollHeight"));
-					input.val('').keydown();
+	
+	form.keypress(function(e){
+		var code = (e.keyCode ? e.keyCode : e.which);
+		if (code == 13)
+		{
+			if(!e.shiftKey){
+				var comment = input.val();
+				// uer name
+				if(comment != "") {
+					alert(comment);
+					var pageData = { 
+						plan_id: data['id'],
+						content: comment,
+						secret: window.sessionStorage["secret"]
+					};
+					
+					$.ajax({
+						url: 'php/updateComment.php',
+						cache: false,
+						dataType: 'html',
+						type:'POST',
+						data: pageData,
+						error: function(xhr) {
+							alert('Network is wrong');
+						},
+						success: function(response) {
+							var username = response.trim();
+							$('<div class="comment">\
+									<a class="author">'+ username +'</a>\
+									<div class="text">'+ comment.replace(/\n/g, "<br/>") +'</div>\
+								</div>').appendTo(content);
+							content.scrollTop(content.prop("scrollHeight"));
+							input.val('').keydown();
+						}
+					});
 				}
-			});
-		
+			}
 			
-		} else {
-			//alert("data = null");
 		}
 	});
 	
 	content.scrollTop(content.prop("scrollHeight"));
 	input.css("overflow","hidden").bind("keydown keyup", function(){  
         $(this).height('0px').height($(this).prop("scrollHeight")+"px");
-		content.height((plan_right.height()*0.85 - $(this).height()) + "px");
+		content.height((plan_right.height()*0.82 - $(this).height()) + "px");
 		content.scrollTop(content.prop("scrollHeight"));
     }).keydown();
 	
