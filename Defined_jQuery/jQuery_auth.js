@@ -106,7 +106,7 @@ var LoadPlans = function(secret){
 			
 			if(pages.length)
 				pages.length = 0;
-
+			alert(response);
 			var planPacket = $.parseJSON(response);
 			var undone = $.parseJSON(planPacket['undone']);
 			var done = $.parseJSON(planPacket['done']);
@@ -238,7 +238,7 @@ var AddCreatePage = function(){
 				name: $('#create_name').val(),
 				content: $('#create_content').val(),
 				start: $('#create_start').val(),
-				end: $('#create_end').val(),
+				goal: $('#create_end').val(),
 				now: $('#create_start').val(),
 				unit: $('#create_unit').val(),
 				deadline: $('#create_deadDate').val() + ' ' + $('#create_deadTime').val(),
@@ -334,18 +334,15 @@ var AddPersonalPage = function(data, personal){
 		<div id="info_name" class="IDCard_content"><label>姓名： </label>'+data['first_name']+data['last_name']+'</div>\
 		<div id="info_id" class="IDCard_content"><label>ID: </label>'+data['acc']+'</div>\
 		<div id="info_gender" class="IDCard_content"><label>性別： </label>'+((parseInt(data['male']))? '男':'女')+'</div>\
-		<div id="plan_count" class="IDCard_content"><label>完成計畫： </label><label>'+data['done']+'項</label></div>\
+		<div id="plan_count" class="IDCard_content"><label>完成計畫： </label><label>'+data['total_done']+'項</label></div>\
 		<div id="info_mail" class="IDCard_content"><label>電子郵件：</label><br/>'+data['mail']+'</div>'
 	).appendTo(page_left);
 	
 	page_right.append(
-		'<div id="label_doing">\
-			<img src="../PlanIt/img/info/plan_doing.png" alt="plan_doing" height="40" width="160">\
+		'<div id="label_undone">\
+			<img src="../PlanIt/img/info/plan_undone.png" alt="plan_undone" height="40" width="160">\
 			<div class="ex_plan">\
 				<ol>\
-					<li>存錢</li>\
-					<li>減肥</li>\
-					<li>擺脫單身</li>\
 				</ol>\
 			</div>\
 		</div>\
@@ -353,29 +350,64 @@ var AddPersonalPage = function(data, personal){
 			<img src="../PlanIt/img/info/plan_done.png" alt="plan_done" height="40" width="160">\
 			<div class="ex_plan">\
 				<ol>\
-					<li>存錢</li>\
-					<li>減肥</li>\
-					<li>擺脫單身</li>\
 				</ol>\
 			</div>\
 		</div>\
-		<div id="label_undo">\
-			<img src="../PlanIt/img/info/plan_undo.png" alt="plan_undo" height="40" width="160">\
+		<div id="label_expired">\
+			<img src="../PlanIt/img/info/plan_expired.png" alt="plan_expired" height="40" width="160">\
 			<div class="ex_plan">\
 				<ol>\
-					<li>存錢</li>\
-					<li>減肥</li>\
-					<li>擺脫單身</li>\
 				</ol>\
 			</div>\
 		</div>');
+	alert("XD");
+	var recent_expired = $.parseJSON(data['expired']);
+	var recent_done = $.parseJSON(data['done']);
+	var recent_undone = $.parseJSON(data['undone']);
 	
+	for(var i in recent_expired){
+		var recent_item = $.parseJSON(recent_expired[i]);
+		page_right.children('#label_expired').children('.ex_plan').children('ol').append(
+		'<li>'+recent_item['name']+'</li>');
+	}
+	
+	for(var i in recent_undone){
+		var recent_item = $.parseJSON(recent_undone[i]);
+		page_right.children('#label_undone').children('.ex_plan').children('ol').append(
+		'<li>'+recent_item['name']+'</li>');
+	}
+	
+	for(var i in recent_done){
+		var recent_item = $.parseJSON(recent_done[i]);
+		page_right.children('#label_done').children('.ex_plan').children('ol').append(
+		'<li>'+recent_item['name']+'</li>');
+	}
+	/*page_right.children('#label_expired').children('ex_plan').children('ol').append(
+		'<li>'+recent_undone[0]['name']+'</li>\
+		<li>'+recent_undone[1]['name']+'</li>\
+		<li>'+recent_undone[2]['name']+'</li>'+
+	);*/
+	
+	
+	/*
+	var recent_done = $.parseJSON(data['done']);
+	alert(recent_done);
+	
+	var recent_undone = $.parseJSON(data['undone']);
+	alert(recent_undone);
+	
+	page_right.children('#label_undone').children('ex_plan').children('ol').append(
+		'<li>'+recent_undone[0]+'</li>\
+		<li>'+recent_undone[1]+'</li>\
+		<li>'+recent_undone[2]+'</li>'+
+	);
+	*/
 	//-----------------------------
 	return page;
 }
 
 var AddPlanPage1 = function(data, personal){
-	var s = parseInt(data['start']), e = parseInt(data['end']), n = parseInt(data['now']), u = data['unit'];
+	var s = parseInt(data['start']), e = parseInt(data['goal']), n = parseInt(data['now']), u = data['unit'];
 	var reverse = (s > e);
 	
 	var page = $('<div class="bb-item"></div>').appendTo($('#book'));
@@ -429,7 +461,7 @@ var AddPlanPage1 = function(data, personal){
 	);
 
 	progress_frame.append('<div class="plan_progressscale"></div>');
-	progress_frame.append('<div class="plan_max">'+data['end']+'<br/>'+data['unit']+'</div>');
+	progress_frame.append('<div class="plan_max">'+data['goal']+'<br/>'+data['unit']+'</div>');
 	progress_frame.append('<div class="plan_min">'+data['start']+'<br/>'+data['unit']+'</div>');
 	progress_frame.append('<div class="plan_progressstem"></div>');
 	progress_frame.append('<div class="plan_progressnow">'+n+'</div>');
