@@ -35,6 +35,7 @@ $(document).ready(function(){
 				secret = data['secret'];
 				window.sessionStorage["secret"] = secret;
 				
+				$('#aside_picture').addClass(((parseInt(data['male']))? 'boy':'girl'));
 				LoadPlans(secret);
 			}
 			else{

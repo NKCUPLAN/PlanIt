@@ -14,6 +14,7 @@
 		$result['first_name'] = $re['first_name'];
 		$result['last_name'] = $re['last_name'];
 		$result['secret'] = $re['secret'];
+		$result['male'] = $re['male'];
 	}
 	else{
 		$result['msg'] = "fail";

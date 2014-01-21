@@ -56,14 +56,22 @@ aside #aside_switch{
 	position:absolute;
 	width:50px;
 	height:50px;
-	bottom:23px;
-	left:107px;
+	bottom: 21px;
+	left: 105px;
 	
 	background:url(../img/aside/love.jpg) no-repeat;
 	background-size:cover;
-	-webkit-transform: matrix(1, 0.15, -0.15, 1, 0, 0);
-         -o-transform: matrix(1, 0.15, -0.15, 1, 0, 0);
-            transform: matrix(1, 0.15, -0.15, 1, 0, 0);
+	-webkit-transform: matrix(1, 0.1, -0.1, 1, 0, 0);
+         -o-transform: matrix(1, 0.1, -0.1, 1, 0, 0);
+            transform: matrix(1, 0.1, -0.1, 1, 0, 0);
+}
+#aside_picture.boy{
+	background:url(../img/aside/pic_boy.png) no-repeat;
+	background-size:cover;
+}
+#aside_picture.girl{
+	background:url(../img/aside/pic_girl.png) no-repeat;
+	background-size:cover;
 }
 
 aside #aside_arrow{

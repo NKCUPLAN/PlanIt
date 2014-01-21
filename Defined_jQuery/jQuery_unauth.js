@@ -137,6 +137,7 @@ var loginAction = function(){
 					$('#dialog_login .pwd').val('');
 					display_auth();
 					$('#auth, .auth').fadeIn(1000);
+					$('#aside_picture').addClass(((parseInt(data['male']))? 'boy':'girl'));
 				});
 			}
 			else{
