@@ -224,6 +224,7 @@ p.thought:after {
 	overflow: hidden;
 	text-overflow:ellipsis; 
 	vertical-align: middle;
+	color:#402d29;
 }
 
 .create_task_item:nth-child(odd){

@@ -438,10 +438,10 @@ var AddPlanPage1 = function(data, personal){
 
 	progress_frame.append('<div class="plan_progressscale"></div>');
 	progress_frame.append('<div class="plan_max">'+data['goal']+'<br/>'+data['unit']+'</div>');
-	progress_frame.append('<div class="plan_min">'+data['start']+'<br/>'+data['unit']+'</div>');
 	progress_frame.append('<div class="plan_progressstem"></div>');
 	progress_frame.append('<div class="plan_progressnow">'+n+'</div>');
 	progress_frame.append('<div class="plan_progressleaf"></div>');
+	progress_frame.append('<div class="plan_min">'+data['start']+'<br/>'+data['unit']+'</div>');
 	
 	if(!reverse){
 		var bar = $(
