@@ -801,6 +801,12 @@ var CheckPlanInfo = function(){
 	else if(isNaN($('#create_end').val().trim())){
 		msg2 += "目標値應為數字\n";
 	}
+	if(!isNaN($('#create_start').val().trim()) && !isNaN($('#create_end').val().trim())){
+		if(parseInt($('#create_start').val().trim()) == parseInt($('#create_end').val().trim())){
+			msg2 += "初始值和目標值不可相同\n";
+		}
+	}
+	
 	if($('#create_deadDate').val().trim() == ""){
 		msg += "\n結束日期";
 	}
