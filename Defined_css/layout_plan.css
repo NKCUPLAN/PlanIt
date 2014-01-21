@@ -270,9 +270,10 @@ left: 50px;
 	cursor: default;
 	text-align: center;
 	font-weight: bold;
-	color: red;
-	font-size: 23px;
+	color: #FE3F5C;
+	font-size: 28px;
 	margin: 0px auto;
+	margin-bottom:-11px;
 }
 
 .plan_next{
