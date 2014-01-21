@@ -463,6 +463,8 @@ var AddPlanPage1 = function(data, personal){
 	}
 	progress_frame.append('<div class="plan_progressbean"></div>');
 	
+	move_bean(s,e, bar.val(),game);
+	
 	bar.change(function(){
 		progress_frame.children('.plan_progressnow').css(
 			'bottom',
@@ -806,13 +808,20 @@ var CheckPlanInfo = function(){
 var move_bean = function(start,goal,now,game){
 	var progress = (now-start)/(goal-start)*100;
 	var bean_original = game.children('.game_bean').position().left;
+	var container_original = game.children('.game_container').position().top;
+	
+	if(bean_original == 0){
+		bean_original = 136;
+		container_original = 129;
+	}
+	
+	
 	var bean_move = 136+progress-bean_original;
 	var bean_next = 136+progress;
 	
 	game.children('.game_bean').animate({'left':bean_next+'px'},1000);
 	game.children('.game_ropeX').animate({'width':game.children('.game_ropeX').width()+bean_move+'px'},1000);
 	game.children('.game_ropeY').animate({'height':game.children('.game_ropeY').height()-bean_move+'px'},1000);
-	game.children('.game_container').animate(
-				{'top':game.children('.game_container').position().top-bean_move+'px'},1000);
+	game.children('.game_container').animate({'top':container_original-bean_move+'px'},1000);
 }
 
