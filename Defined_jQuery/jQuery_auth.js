@@ -208,9 +208,17 @@ var AddCreatePage = function(){
 				});
 	$(function(){
 		$("#create_deadDate").datepicker({dateFormat: 'yy-mm-dd'});
+		$("#create_deadDate").focus(function(){
+			if(!$("#create_deadDate").val())
+				$("#create_deadDate").datepicker("setDate", new Date());
+		});
 	}); 
 	$(function(){
 		$("#create_deadTime").timepicker({timeFormat: 'HH:mm:ss'});
+		$("#create_deadTime").focus(function(){
+			if(!$("#create_deadTime").val())
+				$("#create_deadTime").timepicker("setTime", new Date());
+		});
 	}); 
 	
 	/*------BOOK_CREATE-------*/
@@ -259,7 +267,7 @@ var AddCreatePage = function(){
 					pageData['task'] = data['task'];
 					AddPlanPage(pageData, true, $('#list_undone'));
 
-					$('#page_create input').val('');
+					$('#create_back').trigger('click');
 					$('#book').bookblock();
 					TurnToPage(pages.length - 1);
 					$('#create_task_list').empty();
