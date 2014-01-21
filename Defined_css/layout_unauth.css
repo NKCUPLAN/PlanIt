@@ -150,42 +150,42 @@
 
 /*------INPUT SETTING------*/
 
-input::-webkit-input-placeholder{
+#unauth input::-webkit-input-placeholder{
 	color: #335a99;
 	font-weight: bold;
 	text-align: center;
 }
-input:focus::-webkit-input-placeholder{
+#unauth input:focus::-webkit-input-placeholder{
 	color: white;
 	font-weight: bold;
 	text-align: center;
 }
-input:-moz-placeholder { /* Firefox 18- */
+#unauth input:-moz-placeholder { /* Firefox 18- */
 	color: #335a99;
 	font-weight: bold;
 	text-align: center;
 }
-input:focus:-moz-placeholder { /* Firefox 18- */
+#unauth input:focus:-moz-placeholder { /* Firefox 18- */
 	color: white;
 	font-weight: bold;
 	text-align: center;
 }
-input::-moz-placeholder {  /* Firefox 19+ */
+#unauth input::-moz-placeholder {  /* Firefox 19+ */
 	color: #335a99;
 	font-weight: bold; 
 	text-align: center;
 }
-input:focus::-moz-placeholder {  /* Firefox 19+ */
+#unauth input:focus::-moz-placeholder {  /* Firefox 19+ */
 	color: white;
 	font-weight: bold; 
 	text-align: center;
 }
-input:-ms-input-placeholder {  /* Internet Explorer 10 */
+#unauth input:-ms-input-placeholder {  /* Internet Explorer 10 */
 	color: #335a99;
 	font-weight: bold;
 	text-align: center;	
 }
-input:focus:-ms-input-placeholder {  
+#unauth input:focus:-ms-input-placeholder {  
 	color: white;
 	font-weight: bold;
 	text-align: center;	

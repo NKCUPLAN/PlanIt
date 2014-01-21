@@ -567,6 +567,19 @@ var AddPlanPage1 = function(data, personal){
 							plan_right.find('textarea').attr('disabled', 'disabled');
 							
 							if(bar.val() == e){
+								var dialog_finish = $(	
+									'<div class="ui small modal" id="dialog_finish">\
+										<div id="finish_bling">\
+											<div id="finish_bean"></div>\
+										</div>\
+										<div id="finish_button"></div>\
+									</div>'
+								).appendTo($('body')).modal('show');
+								$('#finish_button').click(function(){
+									dialog_finish.modal('hide', function(){
+										dialog_finish.remove();
+									});
+								});
 								game.empty();
 								game.addClass('done');
 								clock.addClass('done');
