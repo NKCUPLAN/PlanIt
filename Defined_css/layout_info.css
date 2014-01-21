@@ -44,7 +44,15 @@
 	left: 50px;
 	height:140px;
 	width:137px;
+}
+
+#id_card_img.boy {
 	background:url(../img/info/thumbnail_male.png);
+	background-size:cover;
+}
+
+#id_card_img.girl {
+	background:url(../img/info/thumbnail_female.png);
 	background-size:cover;
 }
 .ex_plan{

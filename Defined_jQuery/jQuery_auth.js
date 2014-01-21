@@ -323,7 +323,7 @@ var AddPersonalPage = function(data, personal){
 	var id_card = $(
 		'<div id="id_card"></div>\
 		<div id="paper_clip"></div>\
-		<div id="id_card_img"></div>\
+		<div id="id_card_img" class="'+((parseInt(data['male']))? 'boy':'girl')+'"></div>\
 		<div id="info_name" class="IDCard_content"><label>姓名： </label>'+data['first_name']+data['last_name']+'</div>\
 		<div id="info_id" class="IDCard_content"><label>ID: </label>'+data['acc']+'</div>\
 		<div id="info_gender" class="IDCard_content"><label>性別： </label>'+((parseInt(data['male']))? '男':'女')+'</div>\
