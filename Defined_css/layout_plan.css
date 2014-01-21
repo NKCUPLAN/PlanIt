@@ -1,11 +1,12 @@
 /*** PAGE LEFT***/
 .plan_title{
 	position:absolute;
-	margin-top: 10px;
+	margin-top: 15px;
 	padding-left: 20px;
 	font-size: 25px;
 	line-height: 25px;
 	cursor: default; 
+	color:#5d7899;
 }
 
 /*** Game Content ***/
@@ -278,7 +279,7 @@ left: 50px;
 	width:40px;
 	height:49px;
 	top:420px;
-	right:20px;
+	right:12px;
 	background: url(../img/plan/btn_nextPage.png);
 	background-size: cover;
 	background-position: 0 0;
