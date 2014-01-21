@@ -20,6 +20,7 @@
 	margin:1% 5%;
 	padding:3% 0%;
 	font-size: 40px;
+	filter: brightness(0.5);
 }
 
 .plan_gameContent.done{
