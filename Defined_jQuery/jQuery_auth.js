@@ -331,11 +331,11 @@ var AddPersonalPage = function(data, personal){
 		'<div id="id_card"></div>\
 		<div id="paper_clip"></div>\
 		<div id="id_card_img"></div>\
-		<div id="info_name" class="IDCard_content"><label>姓名: </label>'+data['first_name']+data['last_name']+'</div>\
+		<div id="info_name" class="IDCard_content"><label>姓名： </label>'+data['first_name']+data['last_name']+'</div>\
 		<div id="info_id" class="IDCard_content"><label>ID: </label>'+data['acc']+'</div>\
-		<div id="info_gender" class="IDCard_content"><label>性別: </label>'+((parseInt(data['male']))? '男':'女')+'</div>\
-		<div id="plan_count" class="IDCard_content"><label>完成計畫: </label><label>項</label></div>\
-		<div id="info_mail" class="IDCard_content"><label>電子郵件: </label><br/>'+data['mail']+'</div>'
+		<div id="info_gender" class="IDCard_content"><label>性別： </label>'+((parseInt(data['male']))? '男':'女')+'</div>\
+		<div id="plan_count" class="IDCard_content"><label>完成計畫： </label><label>'+data['done']+'項</label></div>\
+		<div id="info_mail" class="IDCard_content"><label>電子郵件：</label><br/>'+data['mail']+'</div>'
 	).appendTo(page_left);
 	
 	page_right.append(

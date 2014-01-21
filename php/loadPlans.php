@@ -7,7 +7,7 @@
 	$secret = $_POST['secret'];
 
 	$re = mysql_query("SELECT * FROM 2_plan WHERE user_id = (SELECT id FROM 2_member WHERE secret = '$secret')");
-	
+	$total = 0;
 	while($k = mysql_fetch_assoc($re)){
 		$data = null;
 		$data = $k;
@@ -40,8 +40,10 @@
 		date_default_timezone_set('Asia/Taipei');
 		$current_time = date("Y-m-d h:i:s");		
 		
-		if($k['end'] == $k['now'])
+		if($k['end'] == $k['now']){
 			$done[] = json_encode($data);
+			$total++;
+		}
 		else if(strtotime($current_time) < strtotime($k['deadline']))
 			$undone[] = json_encode($data);
 		else
@@ -49,6 +51,13 @@
 	}
 	
 	$user_data = mysql_fetch_assoc(mysql_query("SELECT * FROM 2_member WHERE secret = '$secret'"));
+	$user_data['done'] = $total;
+	/*
+	$re = mysql_query("SELECT * FROM 2_plan WHERE user_id = (SELECT id FROM 2_member WHERE secret = '$secret')");
+	while($k = mysql_fetch_assoc($re)){
+		$res = mysql_query("SELECT * FROM 2_comment WHERE plan_id = '$plan_id'");
+	}
+	*/
 	$result['user_info'] = json_encode($user_data);
 	$result['done'] = json_encode($done);
 	$result['undone'] = json_encode($undone);
