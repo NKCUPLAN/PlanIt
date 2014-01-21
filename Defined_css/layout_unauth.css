@@ -107,21 +107,20 @@
 
 #main_btn_login{
 	display: inline-block;
-	height: 95px;
+	height: 91px;
 	width: 210px;
 	margin: 80px auto 0 auto;
 	cursor: pointer;
-		
-	background: url(../img/button_login.png) ;  
-	background-size: cover;	
+	background: url(../img/button_login.png);
+	background-size: cover;
 }
 #main_btn_login:hover { 
-	background-position: 0% 97px;
+	background-position: 0% 91px;
 }
 
 #main_btn_register{
 	display: inline-block;
-	height: 95px;
+	height: 91px;
 	width: 210px;
 	margin: 80px auto 0 auto;
 	cursor: pointer;
@@ -131,7 +130,7 @@
 }
 
 #main_btn_register:hover { 
-	background-position: 0% 98px; 
+	background-position: 0% 91px; 
 }
 
 /*------MASK------*/

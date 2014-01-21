@@ -38,8 +38,8 @@
 
 		//$result[] = json_encode($data);
 		date_default_timezone_set('Asia/Taipei');
-		$current_time = date("Y-m-d h:i:s");		
-		
+		$current_time = date("Y-m-d H:i:s");		
+		//echo $current_time." ".strtotime($current_time)." ".strtotime($k['deadline'])."\n";
 		if($k['goal'] == $k['now']){
 			$done[] = json_encode($data);
 			$total++;

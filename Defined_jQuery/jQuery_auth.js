@@ -412,13 +412,13 @@ var AddPlanPage1 = function(data, personal){
 	
 	clock.hover(
 		function(){
-			var now = new Date();
-			var t1 = expire.getTime();
-			var t2 = now.getTime();
-			var str = '';
+			var cur = (new Date()).getTime();
+			var expired = (new Date(data['deadline'])).getTime();
+			plan_right.prepend('<div class="plan_time"></div>');
 			
-			if(t1 > t2){
-				var dis = t1 - t2;
+			var str = '';
+			if(expired > cur){
+				var dis = expired - cur;
 				dis = parseInt(dis/1000);
 				if(dis)	str = (dis%60)+' 秒 ';
 				dis = parseInt(dis/60);
@@ -429,11 +429,13 @@ var AddPlanPage1 = function(data, personal){
 				if(dis)	str = (dis%365)+' 日 ' + str;
 				dis = parseInt(dis/365);
 				if(dis)	str = (dis)+' 年 ' + str;
+				str = '剩餘 '+str;
 			}
 			else{
 				str = '已過期';
 			}
-			plan_right.children('.plan_time').text(str);
+			str = '計畫期限：'+data['deadline'] +'<br/>'+ str;
+			plan_right.children('.plan_time').html(str);
 			plan_right.children('.plan_time').css('display', 'block');
 		},
 		function(){
@@ -541,9 +543,10 @@ var AddPlanPage1 = function(data, personal){
 	plan_right.children('.plan_next').click(function(){
 		$('#book').bookblock('next');
 	});
-	
+
+	var button_save;
 	if(personal){
-		var button_save = SetSaveButton(plan_right);
+		button_save = SetSaveButton(plan_right);
 		button_save.click(function(){
 			var taskData = new Array();
 			task_frame.children('.plan_task_list').children('.plan_task_item').each(function(){
@@ -570,6 +573,27 @@ var AddPlanPage1 = function(data, personal){
 				success: function(response) {
 					//var done = (pageData['now']-s)/(e-s);
 					move_bean(s,e, bar.val(),game);
+					setTimeout(function(){
+						var cur = (new Date()).getTime();
+						var expired = (new Date(data['deadline'])).getTime();
+						if(cur >= expired || bar.val() == e){
+							if(button_save) button_save.remove();
+							plan_right.find('input').attr('disabled', 'disabled');
+							plan_right.find('textarea').attr('disabled', 'disabled');
+							
+							if(bar.val() == e){
+								game.empty();
+								game.addClass('done');
+								clock.addClass('done');
+							}
+							else if(cur >= expired){
+								game.empty();
+								game.addClass('expired');
+								clock.addClass('expired');
+							}
+							return;
+						}					
+					}, 1000);
 				}
 			});
 			
@@ -580,33 +604,25 @@ var AddPlanPage1 = function(data, personal){
 		plan_right.find('textarea').attr('disabled', 'disabled');
 	}
 	
-	var now = new Date();
-	var expire = new Date(data['deadline']);
-	var t1 = expire.getTime();
-	var t2 = now.getTime();
+	var cur = (new Date()).getTime();
+	var expired = (new Date(data['deadline'])).getTime();
 	
-	if(t1 < t2){
-		plan_right.prepend('<div class="plan_time">已過期</div>');
+	if(cur >= expired || bar.val() == e){
+		if(button_save) button_save.remove();
 		plan_right.find('input').attr('disabled', 'disabled');
 		plan_right.find('textarea').attr('disabled', 'disabled');
+		if(bar.val() == e){
+			game.empty();
+			game.addClass('done');
+			clock.addClass('done');
+		}
+		else if(cur >= expired){
+			game.empty();
+			game.addClass('expired');
+			clock.addClass('expired');
+		}
 		return;
 	}
-	
-	var dis = t1 - t2;
-	
-	var str = '';
-	dis = parseInt(dis/1000);
-	if(dis)	str = (dis%60)+' 秒 ';
-	dis = parseInt(dis/60);
-	if(dis)	str = (dis%60)+' 分 ' + str;
-	dis = parseInt(dis/60);
-	if(dis)	str = (dis%24)+' 小時 ' + str;
-	dis = parseInt(dis/24);
-	if(dis)	str = (dis%365)+' 日 ' + str;
-	dis = parseInt(dis/365);
-	if(dis)	str = (dis)+' 年 ' + str;
-	plan_right.prepend('<div class="plan_time">剩餘 '+str+'</div>');
-	
 	return page;
 }
 

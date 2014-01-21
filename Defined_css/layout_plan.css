@@ -21,6 +21,17 @@
 	font-size: 40px;
 }
 
+.plan_gameContent.done{
+	background: url(../img/game/game_done.png);
+	background-size:contain;
+}
+
+.plan_gameContent.expired{
+	background: url(../img/game/game_expired.png);
+	background-size:contain;
+}
+
+
 .plan_gameContent img{
 	width:25%;
 	position:relative;
@@ -224,7 +235,7 @@ left: 50px;
 	width: 370px;
 	height: 40px;
 	cursor: default;
-	top: -50px;
+	top: -80px;
 	left: -130px;
 	font-size: 21px;
 	text-align: center;
@@ -445,6 +456,24 @@ left: 50px;
 	margin-left:33px;
 }
 
+.plan_clock.expired{
+	background: url('../img/plan/clock_expired.png');
+	background-size: cover;
+	height: 51px;
+	width: 50px;
+	margin: 5px auto;
+	margin-left:33px;
+}
+
+.plan_clock.done{
+	background: url('../img/plan/clock_done.png');
+	background-size: cover;
+	height: 51px;
+	width: 50px;
+	margin: 5px auto;
+	margin-left:33px;
+}
+
 .plan_clock:hover{
 	background-position: 0 50px;
 }
@@ -553,8 +582,49 @@ left: 50px;
 	height: 310px;
 }
 
+.plan_memo::-webkit-scrollbar {
+      width: 10px;
+}
+.plan_memo::-webkit-scrollbar-track {
+      display:none;
+} 
+.plan_memo::-webkit-scrollbar-thumb {
+      background: f0e030;
+	  cursor:pointer;
+	  background-position: 0 0;
+}
+.plan_memo::-webkit-scrollbar-button {
+      display:none;
+}
+.plan_memo::-webkit-scrollbar-corner {
+      display:none;
+}
+
 .comment_content{
 	margin: 15px 0 0 10px;
+}
+
+.comment_content::-webkit-scrollbar {
+    width: 25px;
+}
+
+.comment_content::-webkit-scrollbar-track {
+    display:none;
+} 
+
+.comment_content::-webkit-scrollbar-thumb:vertical{ 
+	background: white;
+	border: #6A8ABF 3px solid;
+	border-radius: 10px;
+	cursor:pointer;	
+}
+
+.comment_content::-webkit-scrollbar-button {
+    display:none;
+}
+
+.comment_content::-webkit-scrollbar-corner {
+    display:none;
 }
 
 .add_comment{
