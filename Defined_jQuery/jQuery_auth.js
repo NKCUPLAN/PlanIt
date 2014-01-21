@@ -567,8 +567,10 @@ var AddPlanPage1 = function(data, personal){
 				},
 				success: function(response) {
 					//var done = (pageData['now']-s)/(e-s);
+					move_bean(s,e, bar.val(),game);
 				}
 			});
+			
 		});
 	}
 	else{
@@ -798,3 +800,14 @@ var CheckPlanInfo = function(){
 	}
 	return true;
 }
+
+//data['now']
+
+var move_bean = function(start,goal,now,game){
+	alert('fuck'+now);
+	var progress = (now-start)/(goal-start)*100;
+	var bean_move = 136+progress;
+	
+	game.children('.game_bean').animate({'left':bean_move+'px'},1000);
+}
+
