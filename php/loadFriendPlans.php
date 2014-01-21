@@ -11,6 +11,7 @@
 	
 	$re = mysql_query("SELECT * FROM 2_plan WHERE user_id = '$id'");	
 	
+	$total = 0;
 	while($k = mysql_fetch_assoc($re)){
 		$data = null;
 		$data = $k;
@@ -37,13 +38,44 @@
 		date_default_timezone_set('Asia/Taipei');
 		$current_time = date("Y-m-d h:i:s");		
 
-		if($k['end'] == $k['now'])
+		if($k['goal'] == $k['now']){
 			$done[] = json_encode($data);
+			$total++;
+		}
 		else if(strtotime($current_time) < strtotime($k['deadline']))
 			$undone[] = json_encode($data);
 		else
 			$expired[] = json_encode($data);
 	}
+	
+	$user_data = mysql_fetch_assoc(mysql_query("SELECT * FROM 2_member WHERE id = '$id'"));
+	$user_data['total_done'] = $total;
+	
+	date_default_timezone_set('Asia/Taipei');
+	$current_time = date("Y-m-d h:i:s");
+	
+	$re = mysql_query("SELECT id, name FROM 2_plan WHERE user_id = (SELECT id FROM 2_member WHERE id = '$id') AND deadline <= '$current_time' AND goal != now ORDER BY deadline DESC LIMIT 3");
+	$recent_expired = null;
+	while($k = mysql_fetch_assoc($re)){
+		$recent_expired[] = json_encode($k);
+	}
+	$user_data['expired'] = json_encode($recent_expired);
+	
+	$re = mysql_query("SELECT id, name FROM 2_plan WHERE user_id = (SELECT id FROM 2_member WHERE id = '$id') AND goal = now ORDER BY update_time DESC LIMIT 3");
+	$recent_done = null;
+	while($k = mysql_fetch_assoc($re)){
+		$recent_done[] = json_encode($k);
+	}
+	$user_data['done'] = json_encode($recent_done);
+	
+	$re = mysql_query("SELECT id, name FROM 2_plan WHERE user_id = (SELECT id FROM 2_member WHERE id = '$id') AND deadline > '$current_time' AND goal != now ORDER BY update_time DESC LIMIT 3");
+	$recent_undone = null;
+	while($k = mysql_fetch_assoc($re)){
+		$recent_undone[] = json_encode($k);
+	}
+	$user_data['undone'] = json_encode($recent_undone);
+	
+	$result['user_info'] = json_encode($user_data);
 	$result['done'] = json_encode($done);
 	$result['undone'] = json_encode($undone);
 	$result['expired'] = json_encode($expired);

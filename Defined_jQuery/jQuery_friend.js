@@ -168,7 +168,9 @@ var SetFriend = function(type, friend){
 				<div class="profile_id">ID: '+friend['acc']+'</div>\
 				<div class="profile_pic" \
 					style="background:url(img/friend/'+((parseInt(friend['male']))? "profileBoy":"profileGirl") +'.png) no-repeat; \
-					background-size: 100% 100%;">\
+					background-size: 100% 100%; cursor: pointer;"\
+					onclick="LoadFriendsPlans('+friend['id']+',false)"\
+				>\
 				</div>\
 				<div class="friend_text profile_name">'+friend['name']+'</div>\
 				<div class="friend_recentUpdate" >最近更新計畫 :</div>\
@@ -268,10 +270,9 @@ var LoadFriendsPlans = function(friend_id, go_recent){
 				$('#menu_friend_back').hide(1);
 				LoadPlans(secret);
 			});
-			
+
 			if(pages.length)
 				pages.length = 0;
-			pages.push(AddPersonalPage(0, false));
 
 			var planPacket = $.parseJSON(response);
 			var most_recent = 1;
@@ -279,6 +280,10 @@ var LoadFriendsPlans = function(friend_id, go_recent){
 			var undone = $.parseJSON(planPacket['undone']);
 			var done = $.parseJSON(planPacket['done']);
 			var expired = $.parseJSON(planPacket['expired']);
+			var user_info = $.parseJSON(planPacket['user_info']);
+			
+			pages.push(AddPersonalPage(user_info, false));
+			
 			
 			for(var i in undone){
 				var planData = $.parseJSON(undone[i]);
@@ -318,6 +323,12 @@ var LoadFriendsPlans = function(friend_id, go_recent){
 				$(this).click(function(){
 					TurnToPage(2*i+2);
 				});
+			});
+			
+			$('#new_plan').unbind('click');
+			
+			$('#aside_personalinfo').unbind('click').click(function(){	
+				TurnToPage(1);
 			});
 			
 			$('#new_plan').unbind();

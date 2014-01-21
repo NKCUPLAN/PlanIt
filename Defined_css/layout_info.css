@@ -20,7 +20,7 @@
 	//z-index: 2;
 }
 
-#label_doing {
+#label_undone {
 	position: absolute;
 	top: 20px;
 	left: 50px;
@@ -32,7 +32,7 @@
 	left: 50px;
 }
 
-#label_undo {
+#label_expired {
 	position: absolute;
 	top: 330px;
 	left: 50px;

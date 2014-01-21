@@ -106,7 +106,7 @@ var LoadPlans = function(secret){
 			
 			if(pages.length)
 				pages.length = 0;
-			alert(response);
+
 			var planPacket = $.parseJSON(response);
 			var undone = $.parseJSON(planPacket['undone']);
 			var done = $.parseJSON(planPacket['done']);
@@ -141,11 +141,11 @@ var LoadPlans = function(secret){
 				}
 			});
 			
-			$('#new_plan').click(function(){
+			$('#new_plan').unbind('click').click(function(){
 				TurnToPage(1);
 			});
 			
-			$('#aside_personalinfo').click(function(){	
+			$('#aside_personalinfo').unbind('click').click(function(){	
 				TurnToPage(2);
 			});
 			
@@ -360,7 +360,7 @@ var AddPersonalPage = function(data, personal){
 				</ol>\
 			</div>\
 		</div>');
-	alert("XD");
+		
 	var recent_expired = $.parseJSON(data['expired']);
 	var recent_done = $.parseJSON(data['done']);
 	var recent_undone = $.parseJSON(data['undone']);
@@ -382,26 +382,7 @@ var AddPersonalPage = function(data, personal){
 		page_right.children('#label_done').children('.ex_plan').children('ol').append(
 		'<li>'+recent_item['name']+'</li>');
 	}
-	/*page_right.children('#label_expired').children('ex_plan').children('ol').append(
-		'<li>'+recent_undone[0]['name']+'</li>\
-		<li>'+recent_undone[1]['name']+'</li>\
-		<li>'+recent_undone[2]['name']+'</li>'+
-	);*/
-	
-	
-	/*
-	var recent_done = $.parseJSON(data['done']);
-	alert(recent_done);
-	
-	var recent_undone = $.parseJSON(data['undone']);
-	alert(recent_undone);
-	
-	page_right.children('#label_undone').children('ex_plan').children('ol').append(
-		'<li>'+recent_undone[0]+'</li>\
-		<li>'+recent_undone[1]+'</li>\
-		<li>'+recent_undone[2]+'</li>'+
-	);
-	*/
+
 	//-----------------------------
 	return page;
 }
