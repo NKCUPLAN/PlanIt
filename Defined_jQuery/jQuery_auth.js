@@ -131,16 +131,6 @@ var LoadPlans = function(secret){
 				AddPlanPage(planData, true, $('#list_expired'));
 			}
 			
-			$('#aside_contents li').bind({
-				mouseenter: function(){
-					$(this).css('color', 'yellow');
-					$(this).css('cursor', 'pointer');
-				},
-				mouseleave: function(){
-					$(this).css('color', 'brown');
-				}
-			});
-			
 			$('#new_plan').unbind('click').click(function(){
 				TurnToPage(1);
 			});
@@ -166,6 +156,15 @@ var AddPlanPage = function(planData, personal, list){
 	list_item.children('.aside_murmur').click(function(e){
 		e.stopPropagation();
 		TurnToPage(page_num);
+	});
+	list_item.bind({
+		mouseenter: function(){
+			$(this).css('color', 'yellow');
+			$(this).css('cursor', 'pointer');
+		},
+		mouseleave: function(){
+			$(this).css('color', 'brown');
+		}
 	});
 }
 
@@ -258,22 +257,8 @@ var AddCreatePage = function(){
 					var data = $.parseJSON(response);
 					pageData['id'] = data['plan_id'];
 					pageData['task'] = data['task'];
-					pages.push(AddPlanPage1(pageData, true));
-					pages.push(AddPlanPage2(pageData, true));
-					
-					var tag = $('<li>' + pageData['name'] + '</li>').appendTo($('#list_undone'));
-					tag.bind({
-						mouseenter: function(){
-							$(this).css('color', 'yellow');
-							$(this).css('cursor', 'pointer');
-						},
-						mouseleave: function(){
-							$(this).css('color', 'brown');
-						}
-					});
-					tag.click(function(){
-						TurnToPage(pages.length - 1);
-					});
+					AddPlanPage(pageData, true, $('#list_undone'));
+
 					$('#page_create input').val('');
 					$('#book').bookblock();
 					TurnToPage(pages.length - 1);
