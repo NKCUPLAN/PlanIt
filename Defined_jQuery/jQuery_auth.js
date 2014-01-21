@@ -463,16 +463,16 @@ var AddPlanPage1 = function(data, personal){
 	bar.change(function(){
 		progress_frame.children('.plan_progressnow').css(
 			'bottom',
-			238*($(this).val()-s)/(e-s)-250
+			238*($(this).val()-s)/(e-s)-245
 		);
 		progress_frame.children('.plan_progressnow').text($(this).val());
 		progress_frame.children('.plan_progressleaf').css(
 			'bottom',
-			238*($(this).val()-s)/(e-s)-250
+			238*($(this).val()-s)/(e-s)-255
 		);
 		progress_frame.children('.plan_progressstem').css(
 			'height',
-			245*($(this).val()-s)/(e-s)
+			238*($(this).val()-s)/(e-s)
 		);
 	});
 	bar.trigger('change');
