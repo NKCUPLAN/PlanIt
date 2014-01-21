@@ -34,7 +34,7 @@
 	position:absolute;
 	top:129px;
 	left:125px;
-	height:5.5px;
+	height:4.5px;
 	width:14px;
 }
 
@@ -44,7 +44,7 @@
 	position:absolute;
 	top:30px;
 	left:53px;
-	height:96px;
+	height:100px;
 	width:5px;
 }
 
@@ -63,7 +63,7 @@
 	background-size:contain;
 	position:absolute;
 	//z-index:+1;
-	top:125px;
+	top:129px;
 	left:3px;
 	height:99px;
 	width:120px;

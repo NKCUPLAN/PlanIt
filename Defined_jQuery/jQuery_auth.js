@@ -804,10 +804,15 @@ var CheckPlanInfo = function(){
 //data['now']
 
 var move_bean = function(start,goal,now,game){
-	alert('fuck'+now);
 	var progress = (now-start)/(goal-start)*100;
-	var bean_move = 136+progress;
+	var bean_original = game.children('.game_bean').position().left;
+	var bean_move = 136+progress-bean_original;
+	var bean_next = 136+progress;
 	
-	game.children('.game_bean').animate({'left':bean_move+'px'},1000);
+	game.children('.game_bean').animate({'left':bean_next+'px'},1000);
+	game.children('.game_ropeX').animate({'width':game.children('.game_ropeX').width()+bean_move+'px'},1000);
+	game.children('.game_ropeY').animate({'height':game.children('.game_ropeY').height()-bean_move+'px'},1000);
+	game.children('.game_container').animate(
+				{'top':game.children('.game_container').position().top-bean_move+'px'},1000);
 }
 
