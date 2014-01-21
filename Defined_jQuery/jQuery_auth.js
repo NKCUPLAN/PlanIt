@@ -11,15 +11,14 @@ $(document).ready(function(){
 		display_auth();
 	});
 	
-	$('aside').append('<div id="aside_arrow"></div>');
+	if(hide_aside) 
+		$('aside').append('<div id="aside_arrow"></div>');
 	
 	/*------aside------*/
 	$('#aside_switch').click(function(){
-		
-		$('#aside_arrow').remove();
 		var h = $(window).height();
-		
     	if(hide_aside){
+			$('#aside_arrow').remove();
         	$('aside').animate(
             	{'bottom':  bottom+'px'},
                 600
@@ -35,6 +34,16 @@ $(document).ready(function(){
 		}
         hide_aside = !hide_aside;
     });
+	
+	$('#aside_checkboxs input[type=checkbox].check_done').change(function(){
+		$('#list_done').toggle(1);
+	});
+	$('#aside_checkboxs input[type=checkbox].check_undone').change(function(){
+		$('#list_undone').toggle(1);
+	});
+	$('#aside_checkboxs input[type=checkbox].check_expired').change(function(){
+		$('#list_expired').toggle(1);
+	});
 	
 	$('#menu_logout').click(function(){
 		ClearCookie();
@@ -89,40 +98,40 @@ var LoadPlans = function(secret){
 		success: function(response) {
 			$('#book').children().remove();
 			$('#list_plans').empty();
-			$('#list_plans').append('<label><input type="checkbox"/>只顯示進行中計畫</label>');
 			$('#list_plans').append('<div id="list_undone"></div>');
 			$('#list_plans').append('<div id="list_done"></div>');
-
+			$('#list_plans').append('<div id="list_expired"></div>');
+			
+			$('#aside_checkboxs input[type=checkbox]').prop('checked', 'checked');
+			
 			if(pages.length)
 				pages.length = 0;
 
 			var planPacket = $.parseJSON(response);
 			var undone = $.parseJSON(planPacket['undone']);
 			var done = $.parseJSON(planPacket['done']);
+			var expired = $.parseJSON(planPacket['expired']);
 			var user_info = $.parseJSON(planPacket['user_info']);
-			
+
 			pages.push(AddCreatePage());
 			pages.push(AddPersonalPage(user_info, true));
-			
+
 			for(var i in undone){
 				var planData = $.parseJSON(undone[i]);
-				$('#list_undone').append('<li><div class="aside_murmur"></div>' + planData['name'] + '</li>');
-				pages.push(AddPlanPage1(planData, true));
-				pages.push(AddPlanPage2(planData, true));
+				AddPlanPage(planData, true, $('#list_undone'));
 			}
-			
+
 			for(var i in done){
 				var planData = $.parseJSON(done[i]);
-				$('#list_done').append('<li><div class="aside_murmur"></div>' + planData['name'] + '</li>');
-				pages.push(AddPlanPage1(planData, true));
-				pages.push(AddPlanPage2(planData, true));
+				AddPlanPage(planData, true, $('#list_done'));
+			}
+
+			for(var i in expired){
+				var planData = $.parseJSON(expired[i]);
+				AddPlanPage(planData, true, $('#list_expired'));
 			}
 			
-			$('#list_plans input[type=checkbox]').change(function(){
-				$('#list_done').toggle(1);
-			});
-			
-			$('#aside_contents li, #new_plan').bind({
+			$('#aside_contents li').bind({
 				mouseenter: function(){
 					$(this).css('color', 'yellow');
 					$(this).css('cursor', 'pointer');
@@ -132,19 +141,31 @@ var LoadPlans = function(secret){
 				}
 			});
 			
-			$('#aside_contents li').each(function(i){
-				$(this).click(function(){
-					TurnToPage(2*i+3);
-				});
+			$('#new_plan').click(function(){
+				TurnToPage(1);
 			});
 			
-			$('#new_plan').click(function(){
+			$('#aside_personalinfo').click(function(){	
 				TurnToPage(2);
 			});
 			
 			$('#book').bookblock();
 			display_auth();
 		}
+	});
+}
+
+var AddPlanPage = function(planData, personal, list){
+	var list_item = $('<li><div class="aside_murmur"></div>' + planData['name'] + '</li>').appendTo(list);
+	pages.push(AddPlanPage1(planData, personal));
+	pages.push(AddPlanPage2(planData, personal));
+	var page_num = pages.length;
+	list_item.click(function(){
+		TurnToPage(page_num - 1);
+	});
+	list_item.children('.aside_murmur').click(function(e){
+		e.stopPropagation();
+		TurnToPage(page_num);
 	});
 }
 

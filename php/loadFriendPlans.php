@@ -37,13 +37,16 @@
 		date_default_timezone_set('Asia/Taipei');
 		$current_time = date("Y-m-d h:i:s");		
 
-		if(strtotime($current_time) < strtotime($k['deadline']))
+		if($k['end'] == $k['now'])
+			$done[] = json_encode($data);
+		else if(strtotime($current_time) < strtotime($k['deadline']))
 			$undone[] = json_encode($data);
 		else
-			$done[] = json_encode($data);
+			$expired[] = json_encode($data);
 	}
 	$result['done'] = json_encode($done);
 	$result['undone'] = json_encode($undone);
+	$result['expired'] = json_encode($expired);
 	echo json_encode($result);
 	
 	mysql_close();
