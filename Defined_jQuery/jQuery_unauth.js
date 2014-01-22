@@ -178,9 +178,7 @@ var registerAction = function(){
 					$('#hint').css('color', '#00FA03');
 					$('#dialog_register input').val('');
 					alert('註冊成功!');
-					$('#register_back').trigger('click', function(){
-						$('#main_btn_login').trigger('click');
-					});
+					$('#register_back').trigger('click');
 				}
 				else if(response.trim() == "used"){
 					$('#hint').css('color', '#00FA03');

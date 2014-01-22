@@ -62,15 +62,16 @@
 	font-weight:bold;
 	margin-top:10px;
 	margin-left:40px;
+	cursor: default; 
 }
 
 .ex_plan li{
 	margin:5px;
-	cursor: default;
+	cursor: default; 
 }
 
 .ex_plan li:hover{
-	color:#5694ff;
+	//color:#5694ff;
 }
 .IDCard_content {
 	-webkit-transform:rotate(-5deg);
