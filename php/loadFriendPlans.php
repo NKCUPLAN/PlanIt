@@ -34,6 +34,15 @@
 		
 		$data['comment'] = json_encode($comment);
 
+		//Task
+		$res = mysql_query("SELECT * FROM 2_task WHERE plan_id = '$plan_id'");
+		
+		$task = null;
+		while($m = mysql_fetch_assoc($res)){
+			$task[] = json_encode($m);
+		}
+		$data['task'] = json_encode($task);
+		
 		//$result[] = json_encode($data);
 		date_default_timezone_set('Asia/Taipei');
 		$current_time = date("Y-m-d h:i:s");		

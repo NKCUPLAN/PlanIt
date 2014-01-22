@@ -1,4 +1,4 @@
-/*------Initialization------*/
+﻿/*------Initialization------*/
 $(document).ready(function(){	
 	display_unauth();
 });
@@ -177,7 +177,9 @@ var registerAction = function(){
 				if(response.trim() == "success"){
 					$('#hint').css('color', '#00FA03');
 					$('#dialog_register input').val('');
-					alert('Registration is successful!');
+					alert('註冊成功!');
+					$('#register_back').trigger('click');
+					$('#main_btn_login').trigger('click');
 				}
 				else if(response.trim() == "used"){
 					$('#hint').css('color', '#00FA03');

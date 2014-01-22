@@ -192,7 +192,7 @@ var AddCreatePage = function(){
 							<div id="create_task_list">\
 								<label onclick="checkboxToggle(this)" class="create_task_item">\
 									<input type="checkbox" class="checkbox"/>\
-									<span></span><div class="create_task_content">範例 : 記得先...</div>\
+									<span></span><div class="create_task_content">範例 : 記得刪除</div>\
 									<div class="create_task_delete"></div>\
 								</label>\
 							</div>\
@@ -266,11 +266,18 @@ var AddCreatePage = function(){
 					pageData['id'] = data['plan_id'];
 					pageData['task'] = data['task'];
 					AddPlanPage(pageData, true, $('#list_undone'));
-
+					
+					$('#create_task_list').empty();
+					$('#create_task_list').append(
+						'<label onclick="checkboxToggle(this)" class="create_task_item">\
+							<input type="checkbox" class="checkbox"/>\
+							<span></span><div class="create_task_content">範例 : 記得刪除</div>\
+							<div class="create_task_delete"></div>\
+						</label>'
+					);
 					$('#create_back').trigger('click');
 					$('#book').bookblock();
 					TurnToPage(pages.length - 1);
-					$('#create_task_list').empty();
 				}
 			});
 		}
@@ -325,7 +332,7 @@ var AddPersonalPage = function(data, personal){
 		<div id="paper_clip"></div>\
 		<div id="id_card_img" class="'+((parseInt(data['male']))? 'boy':'girl')+'"></div>\
 		<div id="info_name" class="IDCard_content"><label>姓名： </label>'+data['first_name']+data['last_name']+'</div>\
-		<div id="info_id" class="IDCard_content"><label>ID: </label>'+data['acc']+'</div>\
+		<div id="info_id" class="IDCard_content"><label>ID：</label>'+data['acc']+'</div>\
 		<div id="info_gender" class="IDCard_content"><label>性別： </label>'+((parseInt(data['male']))? '男':'女')+'</div>\
 		<div id="plan_count" class="IDCard_content"><label>完成計畫： </label><label>'+data['total_done']+'項</label></div>\
 		<div id="info_mail" class="IDCard_content"><label>電子郵件：</label><br/>'+data['mail']+'</div>'
@@ -333,21 +340,21 @@ var AddPersonalPage = function(data, personal){
 	
 	page_right.append(
 		'<div id="label_undone">\
-			<img src="../PlanIt/img/info/plan_undone.png" alt="plan_undone" height="40" width="160">\
+			<img src="./img/info/plan_undone.png" alt="plan_undone" height="40" width="160">\
 			<div class="ex_plan">\
 				<ol>\
 				</ol>\
 			</div>\
 		</div>\
 		<div id="label_done">\
-			<img src="../PlanIt/img/info/plan_done.png" alt="plan_done" height="40" width="160">\
+			<img src="./img/info/plan_done.png" alt="plan_done" height="40" width="160">\
 			<div class="ex_plan">\
 				<ol>\
 				</ol>\
 			</div>\
 		</div>\
 		<div id="label_expired">\
-			<img src="../PlanIt/img/info/plan_expired.png" alt="plan_expired" height="40" width="160">\
+			<img src="./img/info/plan_expired.png" alt="plan_expired" height="40" width="160">\
 			<div class="ex_plan">\
 				<ol>\
 				</ol>\
@@ -493,7 +500,7 @@ var AddPlanPage1 = function(data, personal){
 							<input type="checkbox" class="checkbox"/>\
 							<span></span><div class="plan_task_content">'+itemValue+'</div>\
 						</label>').appendTo(task_frame.children('.plan_task_list'));
-			if(personal){
+			if(personal && bar.val() != e){
 				var btn_delete = $('<div class="plan_task_delete"></div>').appendTo(task);
 				btn_delete.click(function(){
 					$(this).parent().remove();
@@ -524,10 +531,12 @@ var AddPlanPage1 = function(data, personal){
 					<input type="checkbox" class="checkbox"'+((parseInt(taskData['done']))? 'checked="checked':'')+'"/>\
 					<span></span><div class="plan_task_content">'+taskData['content']+'</div>\
 				</label>').appendTo(task_frame.children('.plan_task_list'));
-				var btn_delete = $('<div class="plan_task_delete"></div>').appendTo(task);
-				btn_delete.click(function(){
-					$(this).parent().remove();
-				});
+				if(personal && bar.val() != e){
+					var btn_delete = $('<div class="plan_task_delete"></div>').appendTo(task);
+					btn_delete.click(function(){
+						$(this).parent().remove();
+					});
+				}
 			}
 		}			
 	}
@@ -687,7 +696,6 @@ var AddPlanPage2 = function(data, personal){
 				var comment = input.val();
 				// uer name
 				if(comment != "") {
-					alert(comment);
 					var pageData = { 
 						plan_id: data['id'],
 						content: comment,
